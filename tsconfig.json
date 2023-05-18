@@ -1,25 +1,71 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
+		"declaration": true,
+		"declarationDir": "./dist",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"jsx": "preserve",
+		"lib": [
+			"ESNext",
+			"DOM"
+		],
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": false,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"outDir": "./dist",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
+		"resolveJsonModule": true,
+		"rootDir": "src",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"typeRoots": [
+			"./src/types",
+			"./node_modules/@types",
+			"./node_modules/vuetify"
+		],
+		"types": [
+			"node",
+			"vuetify"
+		],
+		"useDefineForClassFields": true
+	},
+	"exclude": [
+		"playground",
+		"src/App.vue",
+		"src/main.ts",
+		"src/layout/**/*.ts",
+		"src/layout/**/*.vue",
+		"src/components/**/*.ts",
+		"src/components/**/*.vue",
+		"src/playground/**/*.vue",
+		"src/playground/**/*.ts",
+		"src/stores/**/*.ts",
+		"src/plugins/**/*.ts",
+		"node_modules"
+	],
+	"include": [
+		"src/types/auto-imports.d.ts",
+		"src/types/**/*.ts",
+		"src/types/**/*.d.ts",
+		"src/plugin/**/*.ts",
+		"src/plugin/**/*.vue"
+	],
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }
