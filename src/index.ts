@@ -1,5 +1,6 @@
 import { App, Plugin } from 'vue';
 import VInlineFields from './plugin';
+import './plugin/styles/main.scss';
 
 const install = (app: App) => {
 	for (const prop in VInlineFields) {
@@ -13,11 +14,11 @@ for (const prop in VInlineFields) {
 	component.install = install;
 }
 
-export const InlineCheckbox = VInlineFields.InlineCheckbox;
-export const InlineSelect = VInlineFields.InlineSelect;
-export const InlineSwitch = VInlineFields.InlineSwitch;
-export const InlineTextField = VInlineFields.InlineTextField;
-export const InlineTextarea = VInlineFields.InlineTextarea;
+export const VInlineCheckbox = VInlineFields.VInlineCheckbox;
+export const VInlineSelect = VInlineFields.VInlineSelect;
+export const VInlineSwitch = VInlineFields.VInlineSwitch;
+export const VInlineTextField = VInlineFields.VInlineTextField;
+export const VInlineTextarea = VInlineFields.VInlineTextarea;
 
 export default { VInlineFields } as unknown as Plugin;
 
