@@ -31,7 +31,51 @@
 
 		<v-btn
 			v-if="isPlayground"
-			class="me-2"
+			class="me-2 text-capitalize"
+			:href="links.vuetifyGithub"
+			target="_blank"
+			title="Vuetify Github"
+			variant="outlined"
+		>
+			<v-icon class="me-1">mdi-vuetify</v-icon> Github
+		</v-btn>
+
+		<v-btn
+			v-if="isPlayground"
+			class="me-2 text-capitalize"
+			:href="`${links.vuetify}en/api/v-checkbox/`"
+			target="_blank"
+			title="Vuetify v-checkbox API"
+			variant="outlined"
+		>
+			<v-icon class="me-1">mdi-vuetify</v-icon> VCheckbox
+		</v-btn>
+
+		<v-btn
+			v-if="isPlayground"
+			class="me-2 text-capitalize"
+			:href="`${links.vuetify}en/api/v-select/`"
+			target="_blank"
+			title="Vuetify v-select API"
+			variant="outlined"
+		>
+			<v-icon class="me-1">mdi-vuetify</v-icon> VSelect
+		</v-btn>
+
+		<v-btn
+			v-if="isPlayground"
+			class="me-2 text-capitalize"
+			:href="`${links.vuetify}en/api/v-switch/`"
+			target="_blank"
+			title="Vuetify v-switch API"
+			variant="outlined"
+		>
+			<v-icon class="me-1">mdi-vuetify</v-icon> VSwitch
+		</v-btn>
+
+		<v-btn
+			v-if="isPlayground"
+			class="me-2 text-capitalize"
 			:href="`${links.vuetify}en/api/v-text-field/`"
 			target="_blank"
 			title="Vuetify v-text-field API"
