@@ -1,18 +1,85 @@
-import axios from 'axios';
+import {
+	FieldValue,
+	TimeOpened,
+	UseSaveValue,
+	UseToggleField,
+} from '@/types';
+import axios, {
+	AxiosError,
+	AxiosRequestConfig,
+	AxiosResponse,
+} from 'axios';
 
-function setInlineFieldOpen(id = null, timeOpened = null) {
-	const inlineElementOpen = { id, timeOpened };
-	return inlineElementOpen;
-}
 
-function buildResponseItem(item, name: string, value) {
+// Internal Functions //
+function buildResponseItem(item: object, name: string, value: FieldValue) {
 	const returnItem = { ...item };
 	returnItem[name] = value;
 
 	return returnItem;
 }
 
-const useToggleField = (itemId, showField, attrs, props, timeOpened, closeSiblings, fieldOnly) => {
+function setInlineFieldOpen(id: number, timeOpened: TimeOpened): object {
+	const inlineElementOpen = { id, timeOpened };
+	return inlineElementOpen;
+}
+
+
+// Composables //
+// const useCloseField = (originalValue) => {
+
+// 	useToggleField(itemId, showField, attrs, props, timeOpened, closeSiblings, fieldOnly);
+
+// 	return originalValue;
+// };
+
+const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
+	const allSettings = settings;
+	const submitData = buildResponseItem(allSettings.item as object, name, value);
+
+	if (allSettings.doNotSave) {
+		return;
+	}
+
+	if (allSettings.apiRoute === '') {
+		throw new Error('If the "doNotSave" prop is false, the "apiRoute" prop is required.');
+	}
+
+	// const options: AxiosRequestConfig = {
+	// 	data: submitData,
+	// 	method: settings.method as string,
+	// 	url: allSettings.apiRoute as string,
+	// };
+
+	const response = await axios({
+		data: submitData,
+		method: settings.method as string,
+		url: allSettings.apiRoute as string,
+	})
+		.then((response) => {
+			emit('update', response);
+			allSettings.originalValue = value;
+
+			return {
+				error: false,
+				showField: false,
+			};
+		})
+		.catch((error) => {
+			console.error('error', error);
+
+			emit('error', error);
+
+			return {
+				error: true,
+				showField: false,
+			};
+		});
+
+	return response;
+};
+
+const useToggleField: UseToggleField = (itemId, showField, attrs, props, timeOpened, closeSiblings, fieldOnly) => {
 	let opened = timeOpened;
 
 	if (closeSiblings && !fieldOnly) {
@@ -28,41 +95,9 @@ const useToggleField = (itemId, showField, attrs, props, timeOpened, closeSiblin
 };
 
 
-async function useSaveValue(settings, emits, name, value) {
-	const allSettings = settings;
-	const submitData = buildResponseItem(allSettings.item, name, value);
-
-	if (allSettings.doNotSave) {
-		return;
-	}
-
-	if (allSettings.apiRoute === '') {
-		throw new Error('If the "doNotSave" prop is false, the "apiRoute" prop is required.');
-	}
-
-	const response = await axios({
-		data: submitData,
-		method: settings.method,
-		url: allSettings.apiRoute,
-	})
-		.then((response) => {
-			emits('update', response);
-			allSettings.originalValue = value;
-
-			return { showField: false };
-		})
-		.catch((error) => {
-			console.error('error', error);
-
-			emits('error', error);
-			return { error: true };
-		});
-
-	return response;
-}
-
 
 export {
+	// useCloseField,
 	useSaveValue,
 	useToggleField,
 };

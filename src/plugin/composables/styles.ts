@@ -1,14 +1,21 @@
+import { CSSProperties } from 'vue';
 
-
-
-
-// -------------------------------------------------- TFootSlot //
-export const useInlineValueStyles = (underlineColor, color, error, underlined) => {
+// -------------------------------------------------- Value Styles //
+export const useInlineValueStyles = (
+	underlineColor: string,
+	underlineStyle: string,
+	underlineWidth: string,
+	color: string,
+	error: boolean,
+	underlined: boolean,
+): CSSProperties => {
 	let uColor = underlineColor;
 	uColor = uColor || color;
 
 	const styles = {
 		'border-bottom-color': `rgb(var(--v-theme-${uColor}))`,
+		'border-bottom-style': underlineStyle,
+		'border-bottom-width': underlineWidth,
 	};
 
 	if (error) {
@@ -19,5 +26,5 @@ export const useInlineValueStyles = (underlineColor, color, error, underlined) =
 		styles['border-bottom'] = 'none';
 	}
 
-	return styles;
+	return styles as CSSProperties;
 };
