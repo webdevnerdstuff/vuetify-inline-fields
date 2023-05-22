@@ -1,14 +1,14 @@
-import InlineCheckbox from './InlineCheckbox.vue';
-import InlineSelect from './InlineSelect.vue';
-import InlineSwitch from './InlineSwitch.vue';
-import InlineTextField from './InlineTextField.vue';
-import InlineTextarea from './InlineTextarea.vue';
+import VInlineCheckbox from './VInlineCheckbox.vue';
+import VInlineSelect from './VInlineSelect.vue';
+import VInlineSwitch from './VInlineSwitch.vue';
+import VInlineTextField from './VInlineTextField.vue';
+import VInlineTextarea from './VInlineTextarea.vue';
 
 
 export default {
-	InlineCheckbox,
-	InlineSelect,
-	InlineSwitch,
-	InlineTextField,
-	InlineTextarea,
+	VInlineCheckbox,
+	VInlineSelect,
+	VInlineSwitch,
+	VInlineTextField,
+	VInlineTextarea,
 };
