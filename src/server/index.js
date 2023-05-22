@@ -1,53 +1,25 @@
-// src/server.js
 import {
-	Factory,
 	Model,
 	belongsTo,
 	createServer,
-	RestSerializer,
-	Serializer,
 	hasMany,
+	RestSerializer,
 } from 'miragejs';
-import { faker } from '@faker-js/faker';
 import database from '../playground/configs/database.json';
-
-
-Serializer.extend({
-	include(request, resource) {
-		return Object.keys(this.schema.associationsFor(resource.modelName));
-	}
-});
 
 
 export function makeServer({ environment = 'development' } = {}) {
 	const server = createServer({
 		environment,
 
-		// -------------------------------------------------- Factories //
-		factories: {
-			comment: Factory.extend({
-				name() {
-					return faker.lorem.sentence({ max: 5, min: 3 });
-				},
-			}),
-
-			post: Factory.extend({
-				title() {
-					return faker.lorem.sentence({ max: 5, min: 3 });
-				},
-			}),
-
-			user: Factory.extend({
-				email: faker.internet.email,
-				name: faker.person.fullName,
-				username: faker.internet.userName,
-			})
-		},
-
 		// -------------------------------------------------- Models //
 		models: {
-			post: Model.extend({}),
-			users: Model.extend({}),
+			post: Model.extend({
+				user: belongsTo('user'),
+			}),
+			user: Model.extend({
+				posts: hasMany()
+			}),
 		},
 
 		// -------------------------------------------------- Routes //
@@ -60,22 +32,61 @@ export function makeServer({ environment = 'development' } = {}) {
 			});
 
 			this.get('posts', (schema) => {
-				return schema.posts.all();
+				let posts = schema.posts.all();
+
+				posts = posts.models.map((post) => {
+					if (post.user) {
+						return {
+							...post.attrs,
+							user: {
+								id: post.user.attrs.id,
+								name: post.user.attrs.name,
+							},
+						};
+					}
+
+					return {
+						...post.attrs,
+						user: {},
+					};
+				});
+
+				return {
+					posts,
+				};
 			});
 
-			// ------------------------- Server Side //
+			// ------------------------- Update //
 			this.put('posts', (schema, request) => {
 				const attrs = JSON.parse(request.requestBody);
-				console.log({ attrs });
 
 				const item = attrs.raw;
+				const user = item.user;
+
+				delete item.user;
+
 				const post = schema.posts.find(item.id);
+				item.userId = user.id;
 
 				post.update(item);
 
-				return post;
-			});
+				const response = {
+					...post.attrs,
+					user: {},
+				};
 
+				if (post.user) {
+					response.user = {
+						id: post.user.attrs.id,
+						name: post.user.attrs.name,
+					};
+				}
+
+				// Use to test error response //
+				// throw new Error('Error');
+
+				return response;
+			});
 		},
 
 		// -------------------------------------------------- Seeds //
@@ -86,11 +97,8 @@ export function makeServer({ environment = 'development' } = {}) {
 		// -------------------------------------------------- Serializers //
 		serializers: {
 			application: RestSerializer,
-			comment: Serializer.extend({
-				include: ['post'],
-			}),
 			embed: true,
-			post: Serializer.extend({
+			post: RestSerializer.extend({
 				include: ['user'],
 			}),
 			serializeIds: 'always',
