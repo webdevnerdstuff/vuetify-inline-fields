@@ -1,357 +1,172 @@
-import type {
-	Density,
-	SharedProps,
-	TrueFalseIconsProps,
-	VInlineCheckboxProps,
-	VInlineSelectProps,
-	VInlineSwitchProps,
-	VInlineTextFieldProps,
-	VInlineTextareaProps,
-	ValueIconsProps,
-} from '@/types';
-import type {
-	VSelect,
-	VTextField,
-	VTextarea,
-} from 'vuetify/components';
-
 // * ---------------------------------------- The shared props for all inline fields //
-export const sharedProps: SharedProps = {
+export const sharedProps = {
 	// ? The api route to save the field - [ All Fields ] //
-	apiRoute: {
-		default: '',
-		required: false,
-		type: String,
-	},
+	apiRoute: '',
 
 	// ? The icon to use to cancel - [ All Fields ] //
-	cancelIcon: {
-		default: 'mdi mdi-close',
-		required: false,
-		type: String,
-	},
+	cancelIcon: 'mdi mdi-close',
 
 	// ? If true, the field will close when the user opens another inline form element - [ All Fields ] //
-	closeSiblings: {
-		default: true,
-		required: false,
-		type: Boolean,
-	},
+	closeSiblings: true,
 
 	// ? The Color of the field - [ All Fields ] //
-	color: {
-		default: 'primary',
-		required: false,
-		type: String,
-	},
+	color: 'primary',
 
 	// ? The field density - [ All Fields ] //
-	density: {
-		default: 'compact',
-		required: false,
-		type: String as PropType<Density>,
-	},
+	density: 'compact' as const,
+
+	// ? Disabled the field - [ All Fields ] //
+	disabled: false,
 
 	// ? If true, the field will not save to the database. Emits update:model-value - [ All Fields ] //
-	doNotSave: {
-		default: false,
-		required: false,
-		type: Boolean,
-	},
+	doNotSave: false,
 
-	emptyText: {
-		default: 'empty',
-		required: false,
-		type: String,
-	},
+	emptyText: 'empty',
 
 	// ? If set to true will only show the field - [ All Fields ] //
-	fieldOnly: {
-		default: false,
-		required: false,
-		type: Boolean,
-	},
+	fieldOnly: false,
 
 	// ? Displays/Hides the field details //
-	hideDetails: {
-		default: true,
-		required: false,
-		type: Boolean,
-	},
+	hideDetails: true,
 
-	// ? The item object - [ All Fields ] //
-	item: {
-		default: () => ({}),
-		required: true,
-		type: Object,
-	},
+	// ! Required The item object - [ All Fields ] //
+	// item: () => ({}),
 
 	// ? The field label - [ All Fields ] //
-	label: {
-		default: '',
-		required: false,
-		type: String,
-	},
+	label: '',
 
 	// ? The http method to use when saving the text field - [ All Fields ] //
-	method: {
-		default: 'put',
-		required: false,
-		type: String,
-	},
+	method: 'PUT',
 
 	// ? The column name of the field - [ All Fields ] //
-	name: {
-		default: '',
-		required: true,
-		type: String,
-	},
+	name: '',
 
 	// ? The color of the underline - [ All Fields ] //
-	underlineColor: {
-		default: '',
-		required: false,
-		type: String,
-	},
+	underlineColor: '',
 
 	// ? The style of the underline - [ All Fields ] //
-	underlineStyle: {
-		default: 'dotted',
-		required: false,
-		type: String,
-	},
+	underlineStyle: 'dotted',
 
 	// ? The width of the underline - [ All Fields ] //
-	underlineWidth: {
-		default: '1px',
-		required: false,
-		type: String,
-	},
+	underlineWidth: '1px',
 
 	// ? Displays/Hides the value underline - [ All Fields ] //
-	underlined: {
-		default: true,
-		required: false,
-		type: Boolean,
-	},
+	underlined: true,
 
 	// ? The color of the value - [ All Fields ] //
-	valueColor: {
-		default: 'default',
-		required: false,
-		type: String,
-	},
-
+	valueColor: 'default',
 };
 
 // * ------------------------------ Autofocus //
 const autofocus = {
 	// ? If true, the field will autofocus //
-	autofocus: {
-		default: true,
-		required: false,
-		type: Boolean,
-	},
+	autofocus: true,
 };
 
 // * ------------------------------ Save & Loading Icon //
 const saveAndLoadingIconProps = {
 	// ? Displays/Hides the save icon //
-	hideSaveIcon: {
-		default: false,
-		required: false,
-		type: Boolean,
-	},
+	hideSaveIcon: false,
 
 	// ? The icon to use when loading //
-	loadingIcon: {
-		default: 'mdi mdi-loading mdi-spin',
-		required: false,
-		type: String,
-	},
+	loadingIcon: 'mdi mdi-loading mdi-spin',
 
 	// ? The icon to use when loading //
-	loadingIconColor: {
-		default: 'primary',
-		required: false,
-		type: String,
-	},
+	loadingIconColor: 'primary',
 
 	// ? The icon to use to save //
-	saveIcon: {
-		default: 'mdi mdi-content-save',
-		required: false,
-		type: String,
-	},
+	saveIcon: 'mdi mdi-content-save',
 
 	// ? The icon to use to save //
-	saveIconColor: {
-		default: 'primary',
-		required: false,
-		type: String,
-	},
+	saveIconColor: 'primary',
 };
 
 // * ------------------------------ True/False Icons //
-const trueFalseIcons: TrueFalseIconsProps = {
+const trueFalseIcons = {
 	// ? The "false" value of the field - [ v-checkbox, v-switch ] //
-	falseValue: {
-		default: false,
-		required: false,
-		type: [Boolean, String],
-	},
+	falseValue: false,
 
 	// ? The false icon - [v-checkbox, v-switch] //
-	iconFalse: {
-		default: 'mdi mdi-close',
-		required: false,
-		type: String,
-	},
+	iconFalse: 'mdi mdi-close',
 
 	// ? The color of the icon when false - [v-checkbox, v-switch] //
-	iconFalseColor: {
-		default: 'text-danger',
-		required: false,
-		type: String,
-	},
+	iconFalseColor: 'text-danger',
 
 	// ? The true icon - [v-checkbox, v-switch] //
-	iconTrue: {
-		default: 'mdi mdi-check',
-		required: false,
-		type: String,
-	},
+	iconTrue: 'mdi mdi-check',
 
 	// ? The color of the icon when true - [v-checkbox, v-switch] //
-	iconTrueColor: {
-		default: 'text-success',
-		required: false,
-		type: String,
-	},
+	iconTrueColor: 'text-success',
 
 	// ? Displays/Hides the icons - [v-checkbox, v-switch] //
-	icons: {
-		default: true,
-		required: false,
-		type: Boolean,
-	},
+	icons: true,
 
 	// ? The "true" value of the field - [v-checkbox, v-switch] //
-	trueValue: {
-		default: true,
-		required: false,
-		type: [Boolean, String],
-	},
+	trueValue: true,
 };
 
 // * ------------------------------ Component Value Icons  //
-const valueIcons: ValueIconsProps = {
+const valueIcons = {
 	// ? Displays/Hides the component value icons //
-	icons: {
-		default: true,
-		required: false,
-		type: Boolean,
-	},
+	icons: true,
 };
 
 
 // * ---------------------------------------- Exports //
 
 // v-checkbox //
-const checkboxProps: VInlineCheckboxProps = {
+const checkboxProps = {
 	...sharedProps,
 	...trueFalseIcons,
 	...{
 		// ? The icon of the field when false - [ v-checkbox ] //
-		falseIcon: {
-			default: 'mdi mdi-checkbox-blank-outline',
-			required: false,
-			type: String,
-		},
+		falseIcon: 'mdi mdi-checkbox-blank-outline',
+
 		// ? Displays/Hides the icons //
-		icons: {
-			default: true,
-			required: false,
-			type: Boolean,
-		},
+		icons: true,
+
 		// ? The icon of the field when true - [v-checkbox] //
-		trueIcon: {
-			default: 'mdi mdi-checkbox-outline',
-			required: false,
-			type: String,
-		},
+		trueIcon: 'mdi mdi-checkbox-outline',
 	},
 };
 
 
 // v-select //
-const selectProps: VInlineSelectProps = {
+const selectProps = {
 	...sharedProps,
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
 		// ? The icon to use to clear the field //
-		clearIcon: {
-			default: 'mdi mdi-close-circle-outline',
-			required: false,
-			type: String,
-		},
+		clearIcon: 'mdi mdi-close-circle-outline',
 
 		// ? If true, the field will be clearable //
-		clearable: {
-			default: false,
-			required: false,
-			type: Boolean,
-		},
+		clearable: false,
 
 		// ? Hides the selected items //
-		hideSelected: {
-			default: true,
-			required: false,
-			type: Boolean,
-		},
+		hideSelected: true,
 
-		itemTitle: {
-			default: 'title',
-			required: false,
-			type: String,
-		},
+		itemTitle: 'title',
 
-		itemValue: {
-			default: 'value',
-			required: false,
-			type: String,
-		},
+		itemValue: 'value',
 
 		// ? The select list items - [v-select] //
-		items: {
-			default: () => ([]),
-			required: true,
-			type: Object,
-		},
+		items: () => ([]),
 
 		// ? The variant of the field //
-		variant: {
-			default: 'underlined',
-			required: false,
-			type: String as PropType<VSelect['$props']['variant']>,
-		},
+		variant: 'underlined' as const,
 	},
 };
 
 
 // v-switch //
-const switchProps: VInlineSwitchProps = {
+const switchProps = {
 	...sharedProps,
 	...trueFalseIcons,
 	...valueIcons,
 	...{
 		// ? The icon of the field when false - [ v-checkbox ] //
-		falseIcon: {
-			default: '',
-			required: false,
-			type: String,
-		},
+		falseIcon: '',
 		// // ? Displays/Hides the icons //
 		// icons: {
 		// 	default: true,
@@ -368,37 +183,25 @@ const switchProps: VInlineSwitchProps = {
 };
 
 // v-textarea //
-const textareaProps: VInlineTextareaProps = {
+const textareaProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...sharedProps,
 	...{
 		// ? Automatically grow the textarea depending on amount of text //
-		autoGrow: {
-			default: true,
-			required: false,
-			type: Boolean,
-		},
+		autoGrow: true,
 		// ? The variant of the field //
-		variant: {
-			default: 'filled',
-			required: false,
-			type: String as PropType<VTextarea['$props']['variant']>,
-		},
+		variant: 'filled' as const,
 	},
 };
 
 // v-text-field //
-const textFieldProps: VInlineTextFieldProps = {
+const textFieldProps = {
 	...sharedProps,
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
-		variant: {
-			default: 'underlined',
-			required: false,
-			type: String as PropType<VTextField['$props']['variant']>,
-		},
+		variant: 'underlined' as const,
 	}
 };
 
