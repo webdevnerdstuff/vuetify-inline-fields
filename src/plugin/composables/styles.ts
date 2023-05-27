@@ -1,7 +1,7 @@
 import { CSSProperties } from 'vue';
 
 // -------------------------------------------------- Value Styles //
-export const useInlineValueStyles = (
+export const useFieldDisplayStyles = (
 	underlineColor: string,
 	underlineStyle: string,
 	underlineWidth: string,
