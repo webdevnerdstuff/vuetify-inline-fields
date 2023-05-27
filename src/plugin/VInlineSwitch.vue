@@ -96,11 +96,11 @@ import {
 	useDisplayContainerClass,
 } from './composables/classes';
 import { useFieldDisplayStyles } from './composables/styles';
-
-import {
-	inlineEmits,
-	// inlineWatch,
-} from './shared';
+import inlineEmits from './utils/emits';
+// import {
+// 	inlineEmits,
+// 	// inlineWatch,
+// } from './shared';
 
 
 const modelValue = defineModel<FieldValue>();
