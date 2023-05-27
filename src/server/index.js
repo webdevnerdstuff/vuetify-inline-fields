@@ -61,12 +61,12 @@ export function makeServer({ environment = 'development' } = {}) {
 				const attrs = JSON.parse(request.requestBody);
 
 				const item = attrs.raw;
-				const user = item.user;
+				const user = item.user ?? '';
 
 				delete item.user;
 
 				const post = schema.posts.find(item.id);
-				item.userId = user.id;
+				item.userId = user?.id;
 
 				post.update(item);
 
