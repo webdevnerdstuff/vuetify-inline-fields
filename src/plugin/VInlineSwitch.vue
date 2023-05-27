@@ -6,8 +6,8 @@
 		<span
 			v-if="icons"
 			class="inline-field-value-icons pb-1"
-			:class="inlineFieldValueClass"
-			:style="inlineFieldValueStyle"
+			:class="fieldDisplayClass"
+			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
 			<BooleanIcons v-model="value" />
@@ -16,8 +16,8 @@
 		<span
 			v-else
 			class="pb-1 d-inline-flex align-center justify-center"
-			:class="inlineFieldValueClass"
-			:style="inlineFieldValueStyle"
+			:class="fieldDisplayClass"
+			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
 			{{ value }}
@@ -27,6 +27,7 @@
 	<div
 		v-else
 		class="d-inline-flex align-center"
+		:class="fieldContainerClass"
 	>
 		<v-switch
 			v-bind="$attrs"
@@ -42,16 +43,37 @@
 			:loading="loading"
 			:value="settings.trueValue"
 			@update:model-value="saveValue"
-		/>
+		>
+			<!-- Pass on all scoped slots -->
+			<template
+				v-for="(_, slot) in slots"
+				#[slot]="scope"
+			>
+				<slot
+					:name="slot"
+					v-bind="{ ...scope }"
+				/>
+			</template>
 
-		<v-icon
-			v-if="!settings.fieldOnly"
-			class="ms-4"
-			:icon="cancelIcon"
-			size="x-small"
-			title="Exit"
-			@click="toggleField"
-		/>
+			<template
+				v-if="!slots.append"
+				#append
+			>
+				<v-btn
+					class="ms-1"
+					icon
+					size="x-small"
+					variant="text"
+					@click="toggleField"
+				>
+					<v-icon
+						v-if="!settings.fieldOnly"
+						:icon="cancelIcon"
+						title="Exit"
+					/>
+				</v-btn>
+			</template>
+		</v-switch>
 
 	</div>
 </template>
@@ -61,19 +83,19 @@ import {
 	FieldValue,
 	TimeOpened,
 	UseSaveValue,
+	VInlineSwitchProps,
 } from '@/types';
-import { BooleanIcons } from './components/index';
 import { switchProps } from './utils/props';
-import {
-	useInlineFieldValueClass,
-} from './composables/classes';
+import { BooleanIcons } from './components/index';
 import {
 	useSaveValue,
 	useToggleField,
 } from './composables/methods';
 import {
-	useInlineValueStyles,
-} from './composables/styles';
+	useFieldContainerClass,
+	useDisplayContainerClass,
+} from './composables/classes';
+import { useFieldDisplayStyles } from './composables/styles';
 
 import {
 	inlineEmits,
@@ -88,8 +110,9 @@ const value = computed(() => {
 });
 
 const attrs = useAttrs();
-const props = defineProps({ ...switchProps });
+const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const props = withDefaults(defineProps<VInlineSwitchProps>(), { ...switchProps });
 let settings = reactive({ ...attrs, ...props });
 
 const error = ref<boolean>(false);
@@ -98,11 +121,14 @@ const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 
 
-const inlineFieldValueClass = computed(() => useInlineFieldValueClass(
+const fieldContainerClass = computed(() => useFieldContainerClass('switch'));
+const fieldDisplayClass = computed(() => useDisplayContainerClass(
+	'switch',
 	settings.valueColor,
+	settings.disabled,
 	error.value,
 ));
-const inlineFieldValueStyle = computed(() => useInlineValueStyles(
+const fieldDisplayStyle = computed(() => useFieldDisplayStyles(
 	settings.underlineColor,
 	settings.underlineStyle,
 	settings.underlineWidth,
@@ -112,6 +138,10 @@ const inlineFieldValueStyle = computed(() => useInlineValueStyles(
 ));
 
 function toggleField() {
+	if (settings.disabled) {
+		return;
+	}
+
 	const response = useToggleField(
 		settings.item.id as number,
 		showField.value,
@@ -127,7 +157,7 @@ function toggleField() {
 	timeOpened.value = response.timeOpened;
 }
 
-function saveValue(value) {
+function saveValue(value: undefined) {
 	modelValue.value = value;
 
 	loading.value = true;

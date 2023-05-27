@@ -5,15 +5,18 @@
 	>
 		<span
 			class="pb-1 d-inline-flex align-center justify-center"
-			:class="inlineFieldValueClass"
-			:style="inlineFieldValueStyle"
+			:class="fieldDisplayClass"
+			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
 			{{ value }}
 		</span>
 	</div>
 
-	<div v-else>
+	<div
+		v-else
+		:class="fieldContainerClass"
+	>
 		<v-text-field
 			v-bind="$attrs"
 			v-model="modelValue"
@@ -30,7 +33,21 @@
 			@keyup.enter="saveValue"
 			@keyup.esc="closeField"
 		>
-			<template #append>
+			<!-- Pass on all scoped slots -->
+			<template
+				v-for="(_, slot) in slots"
+				#[slot]="scope"
+			>
+				<slot
+					:name="slot"
+					v-bind="{ ...scope }"
+				/>
+			</template>
+
+			<template
+				v-if="!slots.append"
+				#append
+			>
 				<SaveFieldButtons
 					:cancel-icon="settings.cancelIcon"
 					:field-only="settings.fieldOnly"
@@ -53,19 +70,19 @@ import {
 	FieldValue,
 	TimeOpened,
 	UseSaveValue,
+	VInlineTextFieldProps,
 } from '@/types';
-import { SaveFieldButtons } from './components/index';
 import { textFieldProps } from './utils/props';
-import {
-	useInlineFieldValueClass,
-} from './composables/classes';
+import { SaveFieldButtons } from './components/index';
 import {
 	useSaveValue,
 	useToggleField,
 } from './composables/methods';
 import {
-	useInlineValueStyles,
-} from './composables/styles';
+	useFieldContainerClass,
+	useDisplayContainerClass,
+} from './composables/classes';
+import { useFieldDisplayStyles } from './composables/styles';
 
 import {
 	inlineEmits,
@@ -86,8 +103,9 @@ const value = computed(() => {
 });
 
 const attrs = useAttrs();
-const props = defineProps({ ...textFieldProps });
+const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const props = withDefaults(defineProps<VInlineTextFieldProps>(), { ...textFieldProps });
 let settings = reactive({ ...attrs, ...props });
 
 const empty = ref<boolean>(false);
@@ -98,12 +116,15 @@ const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
 
 
-const inlineFieldValueClass = computed(() => useInlineFieldValueClass(
+const fieldContainerClass = computed(() => useFieldContainerClass('text-field'));
+const fieldDisplayClass = computed(() => useDisplayContainerClass(
+	'text-field',
 	settings.valueColor,
+	settings.disabled,
 	error.value,
 	empty.value,
 ));
-const inlineFieldValueStyle = computed(() => useInlineValueStyles(
+const fieldDisplayStyle = computed(() => useFieldDisplayStyles(
 	settings.underlineColor,
 	settings.underlineStyle,
 	settings.underlineWidth,
@@ -118,6 +139,10 @@ function closeField() {
 }
 
 function toggleField() {
+	if (settings.disabled) {
+		return;
+	}
+
 	const response = useToggleField(
 		settings.item.id as number,
 		showField.value,

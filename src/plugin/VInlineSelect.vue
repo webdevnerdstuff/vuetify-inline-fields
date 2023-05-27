@@ -5,15 +5,18 @@
 	>
 		<span
 			class="pb-1 d-inline-flex align-center justify-center"
-			:class="inlineFieldValueClass"
-			:style="inlineFieldValueStyle"
+			:class="fieldDisplayClass"
+			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
 			{{ value }}
 		</span>
 	</div>
 
-	<div v-else>
+	<div
+		v-else
+		:class="fieldContainerClass"
+	>
 		<v-select
 			v-bind="$attrs"
 			v-model="modelValue"
@@ -36,7 +39,21 @@
 			@keyup.enter="saveValue"
 			@keyup.esc="closeField"
 		>
-			<template #append>
+			<!-- Pass on all scoped slots -->
+			<template
+				v-for="(_, slot) in slots"
+				#[slot]="scope"
+			>
+				<slot
+					:name="slot"
+					v-bind="{ ...scope }"
+				/>
+			</template>
+
+			<template
+				v-if="!slots.append"
+				#append
+			>
 				<SaveFieldButtons
 					:cancel-icon="settings.cancelIcon"
 					:field-only="settings.fieldOnly"
@@ -59,19 +76,20 @@ import {
 	FieldValue,
 	TimeOpened,
 	UseSaveValue,
+	VInlineSelectProps,
 } from '@/types';
-import { SaveFieldButtons } from './components/index';
+import type { VSelect } from 'vuetify/components';
 import { selectProps } from './utils/props';
-import {
-	useInlineFieldValueClass,
-} from './composables/classes';
+import { SaveFieldButtons } from './components/index';
 import {
 	useSaveValue,
 	useToggleField,
 } from './composables/methods';
 import {
-	useInlineValueStyles,
-} from './composables/styles';
+	useFieldContainerClass,
+	useDisplayContainerClass,
+} from './composables/classes';
+import { useFieldDisplayStyles } from './composables/styles';
 
 import {
 	inlineEmits,
@@ -94,13 +112,14 @@ const value = computed(() => {
 });
 
 const attrs = useAttrs();
-const props = defineProps({ ...selectProps });
+const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
 let settings = reactive({ ...attrs, ...props });
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
-const items = ref([]);
+const items = ref();
 const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
@@ -108,15 +127,19 @@ let originalValue = modelValue.value;
 
 
 watchEffect(() => {
-	items.value = settings.items || [] as any;
+	items.value = settings.items || [] as VSelect['$props']['items'];
 });
 
-const inlineFieldValueClass = computed(() => useInlineFieldValueClass(
+
+const fieldContainerClass = computed(() => useFieldContainerClass('select'));
+const fieldDisplayClass = computed(() => useDisplayContainerClass(
+	'select',
 	settings.valueColor,
+	settings.disabled,
 	error.value,
 	empty.value,
 ));
-const inlineFieldValueStyle = computed(() => useInlineValueStyles(
+const fieldDisplayStyle = computed(() => useFieldDisplayStyles(
 	settings.underlineColor,
 	settings.underlineStyle,
 	settings.underlineWidth,
@@ -131,6 +154,10 @@ function closeField() {
 }
 
 function toggleField() {
+	if (settings.disabled) {
+		return;
+	}
+
 	const response = useToggleField(
 		settings.item.id as number,
 		showField.value,
@@ -147,6 +174,7 @@ function toggleField() {
 }
 
 function saveValue() {
+	console.log(modelValue.value);
 	originalValue = modelValue.value;
 	loading.value = true;
 	emit('loading', loading.value);
