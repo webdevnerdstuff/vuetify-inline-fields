@@ -15,6 +15,7 @@ module.exports = {
 		'.eslintrc.js',
 		'vite.build.config.ts',
 		'vite.config.ts',
+		'*.bk.vue',
 	],
 	overrides: [
 		{
