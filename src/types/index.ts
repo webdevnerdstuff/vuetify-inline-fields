@@ -24,97 +24,41 @@ export type Density = null | 'default' | 'comfortable' | 'compact';
 
 // -------------------------------------------------- Props //
 export interface SharedProps {
-	apiRoute: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	cancelIcon: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	closeSiblings: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
-	color: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	density: {
-		default: Density,
-		required: boolean,
-		type: PropType<Density>;
-	};
-	doNotSave?: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
-	emptyText: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	fieldOnly: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
-	hideDetails: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
-	item: {
-		default: () => {},
-		required: boolean,
-		type: PropType<Record<string, unknown>>;
-	};
-	label: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	method?: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	name: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	underlineColor: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	underlineStyle: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	underlineWidth: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	underlined: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
-	valueColor: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-};
+	apiRoute?: string;
+	autofocus?: boolean; 																						// ? AutoFocusProps
+	cancelIcon?: string;
+	closeSiblings?: boolean;
+	color?: string;
+	// density?: Density;
+	disabled?: boolean;
+	doNotSave?: boolean;
+	emptyText?: string;
+	fieldOnly?: boolean;
+	hideDetails?: boolean;
+	item: Record<string, unknown>;
+	label?: string;
+	method?: string;
+	name: string;
+	underlineColor?: string;
+	underlineStyle?: string;
+	underlineWidth?: string;
+	underlined?: boolean;
+	valueColor?: string;
+
+	hideSaveIcon?: boolean; 																			// ? SaveAndLoadingIconProps
+	loadingIcon?: string;																					// ? SaveAndLoadingIconProps
+	loadingIconColor?: string;																		// ? SaveAndLoadingIconProps
+	saveIcon?: string;																						// ? SaveAndLoadingIconProps
+	saveIconColor?: string;																				// ? SaveAndLoadingIconProps
+
+	falseValue?: boolean | string;																// ? TrueFalseIconsProps
+	iconFalse?: string;																						// ? TrueFalseIconsProps
+	iconFalseColor?: string;																			// ? TrueFalseIconsProps
+	iconTrue?: string;																						// ? TrueFalseIconsProps
+	iconTrueColor?: string;																				// ? TrueFalseIconsProps
+	icons?: boolean;																							// ? TrueFalseIconsProps && ValueIconsProps
+	trueValue?: boolean | string;																	// ? TrueFalseIconsProps
+}
 
 export interface AutoFocusProps {
 	autofocus: {
@@ -153,133 +97,62 @@ export interface SaveAndLoadingIconProps {
 }
 
 export interface TrueFalseIconsProps {
-	falseValue?: {
-		default: boolean | string,
-		required: boolean,
-		type: PropType<boolean | string>;
-	};
-	iconFalse?: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	iconFalseColor?: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	iconTrue?: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	iconTrueColor?: {
-		default: string,
-		required: boolean,
-		type: PropType<string>;
-	};
-	icons?: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
-	trueValue?: {
-		default: boolean | string,
-		required: boolean,
-		type: PropType<boolean | string>;
-	};
+	falseValue?: boolean | string;
+	iconFalse?: string;
+	iconFalseColor?: string;
+	iconTrue?: string;
+	iconTrueColor?: string;
+	icons?: boolean;																							// ? ValueIconsProps
+	trueValue?: boolean | string;
 }
 
 export interface ValueIconsProps {
-	icons?: {
-		default: boolean,
-		required: boolean,
-		type: PropType<boolean>;
-	};
+	icons?: boolean;
 }
 
 // Component Props //
-export interface VInlineCheckboxProps extends SharedProps, TrueFalseIconsProps, ValueIconsProps {
-	falseIcon: {
-		default: string,
-		required: boolean,
-		type: PropType<VCheckbox['$props']['falseIcon']>;
-	};
-	trueIcon: {
-		default: string,
-		required: boolean,
-		type: PropType<VCheckbox['$props']['trueIcon']>;
-	};
-};
+export interface VInlineCheckboxProps extends Omit<SharedProps,
+	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveIcon' | 'saveIconColor'
+> {
+	density?: VCheckbox['$props']['density'];
+	falseIcon?: VCheckbox['$props']['falseIcon'];
+	trueIcon?: VCheckbox['$props']['trueIcon'];
+}
 
-export interface VInlineSelectProps extends SharedProps, AutoFocusProps, SaveAndLoadingIconProps {
-	clearIcon: {
-		default: string | 'mdi mdi-close-circle-outline',
-		required: boolean,
-		type: PropType<VSelect['$props']['clearIcon']>;
-	};
-	clearable: {
-		default: VSelect['$props']['clearable'],
-		required: boolean,
-		type: PropType<VSelect['$props']['clearable']>;
-	};
-	hideSelected: {
-		default: VSelect['$props']['hideSelected'],
-		required: boolean,
-		type: PropType<VSelect['$props']['hideSelected']>;
-	};
-	items: {
-		default: () => ([]),
-		required: boolean,
-		type: PropType<VSelect['$props']['items']>;
-	};
-	itemTitle: {
-		default: string | 'title',
-		required: boolean,
-		type: PropType<VSelect['$props']['itemTitle']>;
-	};
-	itemValue: {
-		default: string | 'value',
-		required: boolean,
-		type: PropType<VSelect['$props']['itemValue']>;
-	};
-	variant: {
-		default: VSelect['$props']['variant'],
-		required: boolean,
-		type: PropType<VSelect['$props']['variant']>;
-	};
-};
+export interface VInlineSelectProps extends Omit<SharedProps,
+	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconTrue' | 'iconTrueColor' | 'icons' | 'trueValue'
+> {
+	clearIcon?: VSelect['$props']['clearIcon'];
+	clearable?: VSelect['$props']['clearable'];
+	density?: VSelect['$props']['density'];
+	hideSelected?: VSelect['$props']['hideSelected'];
+	itemTitle?: VSelect['$props']['itemTitle'];
+	itemValue?: VSelect['$props']['itemValue'];
+	items?: VSelect['$props']['items'];
+	variant?: VSelect['$props']['variant'];
+}
 
-export interface VInlineSwitchProps extends SharedProps, TrueFalseIconsProps, ValueIconsProps {
-	falseIcon: {
-		default: VSwitch['$props']['falseIcon'],
-		required: boolean,
-		type: PropType<VSwitch['$props']['falseIcon']>;
-	};
-};
+export interface VInlineSwitchProps extends Omit<SharedProps,
+	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveIcon' | 'saveIconColor'
+> {
+	density?: VSwitch['$props']['density'];
+	falseIcon?: VSwitch['$props']['falseIcon'];
+}
 
-export interface VInlineTextareaProps extends SharedProps, AutoFocusProps, SaveAndLoadingIconProps {
-	autoGrow?: {
-		default: VTextarea['$props']['autoGrow'],
-		required: boolean,
-		type: PropType<VTextarea['$props']['autoGrow']>;
-	};
-	variant: {
-		default: VTextarea['$props']['variant'],
-		required: boolean,
-		type: PropType<VTextarea['$props']['variant']>;
-	};
-};
+export interface VInlineTextareaProps extends Omit<SharedProps,
+	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconTrue' | 'iconTrueColor' | 'icons' | 'trueValue'
+> {
+	autoGrow?: VTextarea['$props']['autoGrow'];
+	density?: VTextarea['$props']['density'];
+	variant?: VTextarea['$props']['variant'];
+}
 
-export interface VInlineTextFieldProps extends SharedProps, AutoFocusProps, SaveAndLoadingIconProps {
-	variant: {
-		default: VTextField['$props']['variant'],
-		required: boolean,
-		type: PropType<VTextField['$props']['variant']>;
-	};
-};
-
-
+export interface VInlineTextFieldProps extends Omit<SharedProps,
+	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconTrue' | 'iconTrueColor' | 'icons' | 'trueValue'
+> {
+	density?: VTextField['$props']['density'];
+	variant?: VTextField['$props']['variant'];
+}
 
 
 // -------------------------------------------------- Methods //
