@@ -21,6 +21,7 @@ export const sharedProps = {
 	// ? If true, the field will not save to the database. Emits update:model-value - [ All Fields ] //
 	doNotSave: false,
 
+	// ? Text to display when the field is empty - [ v-textarea, v-text-field ] //
 	emptyText: 'empty',
 
 	// ? If set to true will only show the field - [ All Fields ] //
@@ -167,18 +168,6 @@ const switchProps = {
 	...{
 		// ? The icon of the field when false - [ v-checkbox ] //
 		falseIcon: '',
-		// // ? Displays/Hides the icons //
-		// icons: {
-		// 	default: true,
-		// 	required: false,
-		// 	type: Boolean,
-		// },
-		// // ? The icon of the field when true - [v-checkbox] //
-		// trueIcon: {
-		// 	default: 'mdi mdi-checkbox-outline',
-		// 	required: false,
-		// 	type: String,
-		// },
 	},
 };
 
