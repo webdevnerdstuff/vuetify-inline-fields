@@ -125,7 +125,7 @@ const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
 
 
-const fieldContainerClass = computed(() => useFieldContainerClass('text-field'));
+const fieldContainerClass = computed(() => useFieldContainerClass('text-field', showField.value));
 const fieldDisplayClass = computed(() => useDisplayContainerClass(
 	'text-field',
 	settings.valueColor,

@@ -140,7 +140,7 @@ watchEffect(() => {
 });
 
 
-const fieldContainerClass = computed(() => useFieldContainerClass('select'));
+const fieldContainerClass = computed(() => useFieldContainerClass('select', showField.value));
 const fieldDisplayClass = computed(() => useDisplayContainerClass(
 	'select',
 	settings.valueColor,
@@ -183,7 +183,6 @@ function toggleField() {
 }
 
 function saveValue() {
-	console.log(modelValue.value);
 	originalValue = modelValue.value;
 	loading.value = true;
 	emit('loading', loading.value);

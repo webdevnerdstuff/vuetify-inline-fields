@@ -127,7 +127,7 @@ const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
 
 
-const fieldContainerClass = computed(() => useFieldContainerClass('textarea'));
+const fieldContainerClass = computed(() => useFieldContainerClass('textarea', showField.value));
 const fieldDisplayClass = computed(() => useDisplayContainerClass(
 	'textarea',
 	settings.valueColor,

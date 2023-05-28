@@ -12,11 +12,12 @@ export const useDisplayContainerClass = (name: string, valueColor: string, disab
 	};
 };
 
-export const useFieldContainerClass = (name: string) => {
+export const useFieldContainerClass = (name: string, active = false) => {
 	return {
 		[`${componentName}`]: true,
 		[`${componentName}--field-value-${name}`]: true,
 		[`${componentName}--field-value`]: true,
+		[`${componentName}--field-active`]: active,
 	};
 };
 

@@ -213,7 +213,7 @@ const textareaProps = {
 		// ? Automatically grow the textarea depending on amount of text //
 		autoGrow: true,
 		// ? The variant of the field //
-		variant: 'filled' as const,
+		variant: 'underlined' as const,
 	},
 };
 

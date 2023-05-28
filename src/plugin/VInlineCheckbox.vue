@@ -131,7 +131,7 @@ const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 
 
-const fieldContainerClass = computed(() => useFieldContainerClass('checkbox'));
+const fieldContainerClass = computed(() => useFieldContainerClass('checkbox', showField.value));
 const fieldDisplayClass = computed(() => useDisplayContainerClass(
 	'checkbox',
 	settings.valueColor,
