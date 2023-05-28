@@ -35,7 +35,7 @@
 						<v-card-title>
 							<v-text-field
 								v-model="search"
-								append-icon="mdi-magnify"
+								append-icon="mdi:mdi-magnify"
 								hide-details
 								label="Search"
 								single-line
@@ -126,12 +126,12 @@
 							<template #[`item.status`]="{ item }">
 								<td
 									:class="{
-											'text-warning': item.raw.status === 'pending',
-											'text-error': item.raw.status === 'debugging',
-											'text-secondary':
-												item.raw.status !== 'debugging' &&
-												item.raw.status !== 'pending',
-										}"
+										'text-warning': item.raw.status === 'pending',
+										'text-error': item.raw.status === 'debugging',
+										'text-secondary':
+											item.raw.status !== 'debugging' &&
+											item.raw.status !== 'pending',
+									}"
 									v-html="item.raw.status"
 								></td>
 							</template>

@@ -37,4 +37,8 @@
 		cursor: default;
 		opacity: var(--v-disabled-opacity);
 	}
+
+	&--save-fields-container {
+		height: 100%;
+	}
 }

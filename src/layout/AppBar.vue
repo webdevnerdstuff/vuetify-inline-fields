@@ -13,7 +13,7 @@
 			@click.stop="toggleDrawer"
 		>
 			<!-- @click.stop="toggleDrawer" -->
-			<v-icon>mdi-menu</v-icon>
+			<v-icon icon="mdi:mdi-menu"></v-icon>
 		</v-app-bar-nav-icon>
 		<v-app-bar-nav-icon
 			v-else
@@ -22,7 +22,7 @@
 			:href="`/${store.storageName}/`"
 			:width="iconSize.width"
 		>
-			<v-icon>mdi-home</v-icon>
+			<v-icon icon="mdi:mdi-home"></v-icon>
 		</v-app-bar-nav-icon>
 
 		<div class="site-title">Vuetify Inline Fields</div>
@@ -37,7 +37,10 @@
 			title="Vuetify Github"
 			variant="outlined"
 		>
-			<v-icon class="me-1">mdi-vuetify</v-icon> Github
+			<v-icon
+				class="me-1"
+				icon="mdi:mdi-vuetify"
+			/> Github
 		</v-btn>
 
 		<v-btn
@@ -48,7 +51,10 @@
 			title="Vuetify v-checkbox API"
 			variant="outlined"
 		>
-			<v-icon class="me-1">mdi-vuetify</v-icon> VCheckbox
+			<v-icon
+				class="me-1"
+				icon="mdi:mdi-vuetify"
+			/> VCheckbox
 		</v-btn>
 
 		<v-btn
@@ -59,7 +65,10 @@
 			title="Vuetify v-select API"
 			variant="outlined"
 		>
-			<v-icon class="me-1">mdi-vuetify</v-icon> VSelect
+			<v-icon
+				class="me-1"
+				icon="mdi:mdi-vuetify"
+			/> VSelect
 		</v-btn>
 
 		<v-btn
@@ -70,7 +79,10 @@
 			title="Vuetify v-switch API"
 			variant="outlined"
 		>
-			<v-icon class="me-1">mdi-vuetify</v-icon> VSwitch
+			<v-icon
+				class="me-1"
+				icon="mdi:mdi-vuetify"
+			/> VSwitch
 		</v-btn>
 
 		<v-btn
@@ -81,7 +93,10 @@
 			title="Vuetify v-text-field API"
 			variant="outlined"
 		>
-			<v-icon class="me-1">mdi-vuetify</v-icon> VTextField
+			<v-icon
+				class="me-1"
+				icon="mdi:mdi-vuetify"
+			/> VTextField
 		</v-btn>
 
 		<v-btn
@@ -93,7 +108,7 @@
 			target="_blank"
 			:width="iconSize.width"
 		>
-			<v-icon>mdi-vuetify</v-icon>
+			<v-icon icon="mdi:mdi-vuetify" />
 		</v-btn>
 
 		<v-btn
@@ -104,7 +119,7 @@
 			target="_blank"
 			:width="iconSize.width"
 		>
-			<v-icon>mdi-github</v-icon>
+			<v-icon icon="mdi:mdi-github" />
 		</v-btn>
 
 		<v-btn
@@ -115,7 +130,7 @@
 			target="_blank"
 			:width="iconSize.width"
 		>
-			<v-icon>mdi-npm</v-icon>
+			<v-icon icon="mdi:mdi-npm" />
 		</v-btn>
 
 		<v-btn
@@ -125,8 +140,14 @@
 			:width="iconSize.width"
 			@click="setTheme"
 		>
-			<v-icon v-if="themeName === 'dark'">mdi-weather-night</v-icon>
-			<v-icon v-else>mdi-weather-sunny</v-icon>
+			<v-icon
+				v-if="themeName === 'dark'"
+				icon="mdi:mdi-weather-night"
+			/>
+			<v-icon
+				v-else
+				icon="mdi:mdi-weather-sunny"
+			/>
 		</v-btn>
 	</v-app-bar>
 </template>

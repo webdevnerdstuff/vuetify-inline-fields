@@ -23,5 +23,7 @@ export const useFieldContainerClass = (name: string) => {
 export const useSaveFieldsContainerClass = () => {
 	return {
 		[`${componentName}--save-fields-container`]: true,
+		'align-center': true,
+		'd-flex': true,
 	};
 };

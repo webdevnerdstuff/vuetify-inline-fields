@@ -3,8 +3,23 @@ export const sharedProps = {
 	// ? The api route to save the field - [ All Fields ] //
 	apiRoute: '',
 
+	// ? The color of the cancel button - [ All Fields ] //
+	cancelButtonColor: 'default',
+
+	// ? The size of the cancel button - [ All Fields ] //
+	cancelButtonSize: 'x-small',
+
+	// ? The title of the cancel button - [ All Fields ] //
+	cancelButtonTitle: 'Exit',
+
+	// ? The variant of the cancel button - [ All Fields ] //
+	cancelButtonVariant: 'tonal' as const,
+
 	// ? The icon to use to cancel - [ All Fields ] //
-	cancelIcon: 'mdi mdi-close',
+	cancelIcon: 'mdi:mdi-close',
+
+	// ? The color of the cancel icon - [ All Fields ] //
+	cancelIconColor: 'default',
 
 	// ? If true, the field will close when the user opens another inline form element - [ All Fields ] //
 	closeSiblings: true,
@@ -70,13 +85,25 @@ const saveAndLoadingIconProps = {
 	hideSaveIcon: false,
 
 	// ? The icon to use when loading //
-	loadingIcon: 'mdi mdi-loading mdi-spin',
+	loadingIcon: 'mdi:mdi-loading mdi:mdi-spin',
 
 	// ? The icon to use when loading //
 	loadingIconColor: 'primary',
 
+	// ? The color of the save button //
+	saveButtonColor: 'primary',
+
+	// ? The size of the save button //
+	saveButtonSize: 'x-small',
+
+	// ? The title of the save button //
+	saveButtonTitle: 'Save',
+
+	// ? The variant of the save button //
+	saveButtonVariant: 'text' as const,
+
 	// ? The icon to use to save //
-	saveIcon: 'mdi mdi-content-save',
+	saveIcon: 'mdi:mdi-content-save',
 
 	// ? The icon to use to save //
 	saveIconColor: 'primary',
@@ -88,16 +115,22 @@ const trueFalseIcons = {
 	falseValue: false,
 
 	// ? The false icon - [v-checkbox, v-switch] //
-	iconFalse: 'mdi mdi-close',
+	iconFalse: 'mdi:mdi-close',
 
 	// ? The color of the icon when false - [v-checkbox, v-switch] //
-	iconFalseColor: 'text-danger',
+	iconFalseColor: 'danger',
+
+	// ? The title of the false icon - [v-checkbox, v-switch] //
+	iconFalseTitle: 'No',
 
 	// ? The true icon - [v-checkbox, v-switch] //
-	iconTrue: 'mdi mdi-check',
+	iconTrue: 'mdi:mdi-check',
 
 	// ? The color of the icon when true - [v-checkbox, v-switch] //
-	iconTrueColor: 'text-success',
+	iconTrueColor: 'success',
+
+	// ? The title of the true icon - [v-checkbox, v-switch] //
+	iconTrueTitle: 'Yes',
 
 	// ? Displays/Hides the icons - [v-checkbox, v-switch] //
 	icons: true,
@@ -121,13 +154,13 @@ const checkboxProps = {
 	...trueFalseIcons,
 	...{
 		// ? The icon of the field when false - [ v-checkbox ] //
-		falseIcon: 'mdi mdi-checkbox-blank-outline',
+		falseIcon: 'mdi:mdi-checkbox-blank-outline',
 
 		// ? Displays/Hides the icons //
 		icons: true,
 
 		// ? The icon of the field when true - [v-checkbox] //
-		trueIcon: 'mdi mdi-checkbox-outline',
+		trueIcon: 'mdi:mdi-checkbox-outline',
 	},
 };
 
@@ -139,7 +172,7 @@ const selectProps = {
 	...saveAndLoadingIconProps,
 	...{
 		// ? The icon to use to clear the field //
-		clearIcon: 'mdi mdi-close-circle-outline',
+		clearIcon: 'mdi:mdi-close-circle-outline',
 
 		// ? If true, the field will be clearable //
 		clearable: false,

@@ -10,7 +10,15 @@
 			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
-			<BooleanIcons v-model="value" />
+			<BooleanIcons
+				v-model="value"
+				:icon-false="settings.iconFalse"
+				:icon-false-color="settings.iconFalseColor"
+				:icon-false-title="settings.iconFalseTitle"
+				:icon-true="settings.iconTrue"
+				:icon-true-color="settings.iconTrueColor"
+				:icon-true-title="settings.iconTrueTitle"
+			/>
 		</span>
 
 		<span
@@ -61,15 +69,17 @@
 			>
 				<v-btn
 					class="ms-1"
+					:color="settings.cancelButtonColor"
 					icon
-					size="x-small"
-					variant="text"
+					:size="settings.cancelButtonSize"
+					:title="settings.cancelButtonTitle"
+					:variant="settings.cancelButtonVariant"
 					@click="toggleField"
 				>
 					<v-icon
 						v-if="!settings.fieldOnly"
+						:color="settings.cancelIconColor"
 						:icon="cancelIcon"
-						title="Exit"
 					/>
 				</v-btn>
 			</template>

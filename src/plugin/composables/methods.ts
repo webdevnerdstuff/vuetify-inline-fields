@@ -6,12 +6,6 @@ import {
 } from '@/types';
 import axios from 'axios';
 
-// import type {
-// 	AxiosError,
-// 	AxiosRequestConfig,
-// 	AxiosResponse,
-// } from 'axios';
-
 
 // Internal Functions //
 function buildResponseItem(item: object, name: string, value: FieldValue) {
@@ -46,12 +40,6 @@ const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
 	if (allSettings.apiRoute === '') {
 		throw new Error('If the "doNotSave" prop is false, the "apiRoute" prop is required.');
 	}
-
-	// const options: AxiosRequestConfig = {
-	// 	data: submitData,
-	// 	method: settings.method as string,
-	// 	url: allSettings.apiRoute as string,
-	// };
 
 	const response = await axios({
 		data: submitData,
@@ -95,7 +83,6 @@ const useToggleField: UseToggleField = (itemId, showField, attrs, props, timeOpe
 		timeOpened: opened,
 	};
 };
-
 
 
 export {

@@ -27,57 +27,57 @@ const active = ref('');
 const menuItems = reactive([
 	{
 		href: '#home',
-		icon: 'mdi-home',
+		icon: 'mdi:mdi-home',
 		title: 'Home',
 	},
 	{
 		href: '#installation',
-		icon: 'mdi-plus-thick',
+		icon: 'mdi:mdi-plus-thick',
 		title: 'Installation',
 	},
 	{
 		href: '#description',
-		icon: 'mdi-information-outline',
+		icon: 'mdi:mdi-information-outline',
 		title: 'Description',
 	},
 	{
 		href: '#props',
-		icon: 'mdi-cog',
+		icon: 'mdi:mdi-cog',
 		title: 'Props',
 	},
 	{
 		href: '#events',
-		icon: 'mdi-calendar-star',
+		icon: 'mdi:mdi-calendar-star',
 		title: 'Events',
 	},
 	{
 		href: '#slots',
-		icon: 'mdi-slot-machine',
+		icon: 'mdi:mdi-slot-machine',
 		title: 'Slots',
 	},
 	{
 		href: '#sass-variables',
-		icon: 'mdi-sass',
+		icon: 'mdi:mdi-sass',
 		title: 'SASS Variables',
 	},
 	{
 		href: '#example',
-		icon: 'mdi-code-json',
+		icon: 'mdi:mdi-code-json',
 		title: 'Example',
 	},
 	{
 		href: '#dependencies',
-		icon: 'mdi-asterisk-circle-outline',
+		icon: 'mdi:mdi-asterisk-circle-outline',
 		title: 'Dependencies',
 	},
 	{
 		href: '#license',
-		icon: 'mdi-card-account-details-outline',
+		icon: 'mdi:mdi-card-account-details-outline',
 		title: 'License',
 	},
 	{
 		href: '#legal',
-		icon: 'mdi-scale-balance',
+		icon: 'mdi:mdi-scale-balance',
 		title: 'Legal',
 	},
 ]);

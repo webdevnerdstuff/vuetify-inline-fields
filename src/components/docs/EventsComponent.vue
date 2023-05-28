@@ -19,7 +19,7 @@
 						<v-card-title>
 							<v-text-field
 								v-model="search"
-								append-icon="mdi-magnify"
+								append-icon="mdi:mdi-magnify"
 								hide-details
 								label="Search"
 								single-line

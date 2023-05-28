@@ -1,14 +1,15 @@
 <template>
 	<div
-		class="icons-container d-flex align-center"
+		:class="saveFieldsContainerClass"
 		v-bind="$attrs"
 	>
 		<v-btn
 			class="ms-1"
+			:color="settings.saveButtonColor"
 			icon
-			size="x-small"
-			:title="loading ? 'Loading' : 'Save'"
-			variant="text"
+			:size="settings.saveButtonSize"
+			:title="loading ? 'Loading' : settings.saveButtonTitle"
+			:variant="settings.saveButtonVariant"
 			@click="saveValue"
 		>
 			<v-icon
@@ -24,22 +25,26 @@
 		</v-btn>
 		<v-btn
 			class="ms-1"
+			:color="settings.cancelButtonColor"
 			icon
-			size="x-small"
-			variant="text"
+			:size="settings.cancelButtonSize"
+			:title="settings.cancelButtonTitle"
+			:variant="settings.cancelButtonVariant"
 			@click="closeField"
 		>
 			<v-icon
 				v-if="!settings.fieldOnly"
 				class="text-default"
+				:color="settings.cancelIconColor"
 				:icon="cancelIcon"
-				title="Exit"
 			/>
 		</v-btn>
 	</div>
 </template>
 
 <script setup lang="ts">
+import { SaveFieldButtons } from '@/types';
+import { useSaveFieldsContainerClass } from '../composables/classes';
 
 const attrs = useAttrs();
 const emit = defineEmits([
@@ -47,42 +52,13 @@ const emit = defineEmits([
 	'save',
 ]);
 
-const props = defineProps({
-	cancelIcon: {
-		required: true,
-		type: String,
-	},
-	fieldOnly: {
-		required: true,
-		type: Boolean,
-	},
-	hideSaveIcon: {
-		required: true,
-		type: Boolean,
-	},
-	loading: {
-		required: true,
-		type: Boolean,
-	},
-	loadingIcon: {
-		required: true,
-		type: String,
-	},
-	loadingIconColor: {
-		required: true,
-		type: String,
-	},
-	saveIcon: {
-		required: true,
-		type: String,
-	},
-	saveIconColor: {
-		required: true,
-		type: String,
-	},
-});
+const props = withDefaults(defineProps<SaveFieldButtons>(), {});
 
 const settings = reactive({ ...attrs, ...props });
+
+const saveFieldsContainerClass = computed(() => {
+	return useSaveFieldsContainerClass();
+});
 
 function closeField() {
 	emit('close');

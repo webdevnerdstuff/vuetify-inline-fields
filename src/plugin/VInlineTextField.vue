@@ -49,12 +49,21 @@
 				#append
 			>
 				<SaveFieldButtons
+					:cancel-button-color="settings.cancelButtonColor"
+					:cancel-button-size="settings.cancelButtonSize"
+					:cancel-button-title="settings.cancelButtonTitle"
+					:cancel-button-variant="settings.cancelButtonVariant"
 					:cancel-icon="settings.cancelIcon"
+					:cancel-icon-color="settings.cancelIconColor"
 					:field-only="settings.fieldOnly"
 					:hide-save-icon="settings.hideSaveIcon"
 					:loading="loading"
 					:loading-icon="settings.loadingIcon"
 					:loading-icon-color="settings.loadingIconColor"
+					:save-button-color="settings.saveButtonColor"
+					:save-button-size="settings.saveButtonSize"
+					:save-button-title="settings.saveButtonTitle"
+					:save-button-variant="settings.saveButtonVariant"
 					:save-icon="settings.saveIcon"
 					:save-icon-color="settings.saveIconColor"
 					@close="closeField"
