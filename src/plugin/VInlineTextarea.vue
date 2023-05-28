@@ -4,12 +4,12 @@
 		class="d-inline-flex align-center justify-center"
 	>
 		<span
-			class="inline-field-value pb-1 d-inline-flex align-center justify-center"
+			class="pb-1 d-inline-flex align-center justify-center"
 			:class="fieldDisplayClass"
 			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
-			{{ value }}
+			{{ displayValue }}
 		</span>
 	</div>
 
@@ -103,7 +103,7 @@ import inlineEmits from './utils/emits';
 
 const modelValue = defineModel<FieldValue>();
 
-const value = computed(() => {
+const displayValue = computed(() => {
 	if (modelValue.value) {
 		empty.value = false;
 		return modelValue.value;

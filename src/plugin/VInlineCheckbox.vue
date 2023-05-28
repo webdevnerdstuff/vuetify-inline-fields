@@ -11,7 +11,7 @@
 			@click="toggleField"
 		>
 			<BooleanIcons
-				v-model="value"
+				v-model="displayValue"
 				:icon-false="settings.iconFalse"
 				:icon-false-color="settings.iconFalseColor"
 				:icon-false-title="settings.iconFalseTitle"
@@ -28,7 +28,7 @@
 			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
-			{{ value }}
+			{{ displayValue }}
 		</span>
 	</div>
 
@@ -114,7 +114,7 @@ import inlineEmits from './utils/emits';
 
 const modelValue = defineModel<FieldValue>();
 
-const value = computed(() => {
+const displayValue = computed(() => {
 	return modelValue.value == settings.trueValue;
 });
 
@@ -174,7 +174,7 @@ function saveValue(value: undefined) {
 	loading.value = true;
 	emit('loading', loading.value);
 
-	useSaveValue(settings, emit as keyof UseSaveValue, settings.name, modelValue.value as keyof UseSaveValue)
+	useSaveValue(settings, emit as keyof UseSaveValue, settings.name, value as keyof UseSaveValue)
 		.then((response) => {
 			error.value = response?.error as boolean ?? false;
 			loading.value = false;

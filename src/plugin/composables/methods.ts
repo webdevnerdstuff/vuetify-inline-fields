@@ -34,7 +34,11 @@ const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
 	const submitData = buildResponseItem(allSettings.item as object, name, value);
 
 	if (allSettings.doNotSave) {
-		return;
+		emit('update', value);
+		return {
+			error: false,
+			value,
+		};
 	}
 
 	if (allSettings.apiRoute === '') {

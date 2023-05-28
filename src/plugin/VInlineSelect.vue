@@ -9,7 +9,7 @@
 			:style="fieldDisplayStyle"
 			@click="toggleField"
 		>
-			{{ value }}
+			{{ displayValue }}
 		</span>
 	</div>
 
@@ -36,7 +36,6 @@
 			:loading="loading"
 			:variant="settings.variant"
 			width="100%"
-			@keyup.enter="saveValue"
 			@keyup.esc="closeField"
 		>
 			<!-- Pass on all scoped slots -->
@@ -108,7 +107,7 @@ import inlineEmits from './utils/emits';
 
 const modelValue = defineModel<FieldValue>();
 
-const value = computed(() => {
+const displayValue = computed(() => {
 	if (modelValue.value && modelValue.value[settings.itemTitle as string]) {
 		empty.value = false;
 		return modelValue.value[settings.itemTitle as string];
