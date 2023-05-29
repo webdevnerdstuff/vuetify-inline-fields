@@ -89,6 +89,7 @@
 
 <script setup lang="ts">
 import {
+	CloseSiblingsBus,
 	FieldValue,
 	TimeOpened,
 	UseSaveValue,
@@ -106,17 +107,9 @@ import {
 } from './composables/classes';
 import { useFieldDisplayStyles } from './composables/styles';
 import inlineEmits from './utils/emits';
-// import {
-// 	inlineEmits,
-// 	// inlineWatch,
-// } from './shared';
 
 
 const modelValue = defineModel<FieldValue>();
-
-const displayValue = computed(() => {
-	return modelValue.value == settings.trueValue;
-});
 
 const attrs = useAttrs();
 const slots = useSlots();
@@ -124,13 +117,19 @@ const emit = defineEmits([...inlineEmits]);
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
 
-
 const error = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 
 
+// ------------------------------------------------ The displayed value //
+const displayValue = computed(() => {
+	return modelValue.value == settings.trueValue;
+});
+
+
+// ------------------------------------------------ Class & Styles //
 const fieldContainerClass = computed(() => useFieldContainerClass('checkbox', showField.value));
 const fieldDisplayClass = computed(() => useDisplayContainerClass(
 	'checkbox',
@@ -147,6 +146,8 @@ const fieldDisplayStyle = computed(() => useFieldDisplayStyles(
 	settings.underlined,
 ));
 
+
+// ------------------------------------------------ Toggle the field //
 function toggleField() {
 	if (settings.disabled) {
 		return;
@@ -165,9 +166,14 @@ function toggleField() {
 	settings = { ...settings, ...response.settings };
 	showField.value = response.showField;
 	timeOpened.value = response.timeOpened;
+
+	if (closeSiblingsBus !== null && settings.closeSiblings && showField.value && !settings.fieldOnly) {
+		closeSiblingsBus.emit(response.timeOpened);
+	}
 }
 
 
+// ------------------------------------------------ Save the value / Emit update //
 function saveValue(value: undefined) {
 	modelValue.value = value;
 
@@ -182,6 +188,33 @@ function saveValue(value: undefined) {
 			toggleField();
 		});
 }
+
+
+// ------------------------------------------------ Close siblings bus event //
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let closeSiblingsBus: unknown | any;
+let unsubscribeBus: () => void;
+
+if (settings.closeSiblings) {
+	import('@vueuse/core').then(({ useEventBus }) => {
+		closeSiblingsBus = useEventBus(CloseSiblingsBus);
+		unsubscribeBus = closeSiblingsBus.on(closeSiblingsListener);
+	});
+}
+
+function closeSiblingsListener(identifier: TimeOpened) {
+	emit('update:closeSiblingFields', timeOpened);
+
+	if (showField.value && timeOpened.value !== identifier) {
+		toggleField();
+	}
+}
+
+onUnmounted(() => {
+	if (typeof unsubscribeBus !== 'undefined') {
+		closeSiblingsBus.off(closeSiblingsListener);
+	}
+});
 </script>
 
 <style lang="scss" scoped>

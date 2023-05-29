@@ -22,7 +22,7 @@ export const sharedProps = {
 	cancelIconColor: 'default',
 
 	// ? If true, the field will close when the user opens another inline form element - [ All Fields ] //
-	closeSiblings: true,
+	closeSiblings: false,
 
 	// ? The Color of the field - [ All Fields ] //
 	color: 'primary',

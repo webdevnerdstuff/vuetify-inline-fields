@@ -7,7 +7,7 @@ import {
 import axios from 'axios';
 
 
-// Internal Functions //
+// ------------------------------------------------ Internal Functions //
 function buildResponseItem(item: object, name: string, value: FieldValue) {
 	const returnItem = { ...item };
 	returnItem[name] = value;
@@ -21,14 +21,7 @@ function setInlineFieldOpen(id: number, timeOpened: TimeOpened): object {
 }
 
 
-// Composables //
-// const useCloseField = (originalValue) => {
-
-// 	useToggleField(itemId, showField, attrs, props, timeOpened, closeSiblings, fieldOnly);
-
-// 	return originalValue;
-// };
-
+// ------------------------------------------------ Composables //
 const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
 	const allSettings = settings;
 	const submitData = buildResponseItem(allSettings.item as object, name, value);
@@ -90,7 +83,6 @@ const useToggleField: UseToggleField = (itemId, showField, attrs, props, timeOpe
 
 
 export {
-	// useCloseField,
 	useSaveValue,
 	useToggleField,
 };
