@@ -1,5 +1,9 @@
 /* eslint-disable no-unused-vars */
 import type {
+	CSSProperties,
+	Ref,
+} from 'vue';
+import type {
 	VBtn,
 	VCheckbox,
 	VSelect,
@@ -135,15 +139,41 @@ export interface SaveFieldButtons extends Required<Pick<SharedProps,
 
 
 // -------------------------------------------------- Composables //
+export interface UseDisplayContainerClass {
+	(
+		name: string,
+		valueColor: string,
+		options: {
+			disabled?: Ref<boolean> | boolean;
+			empty?: Ref<boolean> | boolean;
+			error?: Ref<boolean> | boolean;
+		},
+	): object;
+}
+
+export interface UseFieldDisplayStyles {
+	(
+		options: {
+			color: string;
+			error: Ref<boolean> | boolean;
+			underlineColor: string;
+			underlineStyle: string;
+			underlineWidth: string;
+			underlined: boolean;
+		}
+	): CSSProperties;
+}
+
 export interface UseToggleField {
 	(
-		itemId: number,
-		showField: boolean,
-		attrs: object,
-		props: object,
-		timeOpened: TimeOpened,
-		closeSiblings: boolean,
-		fieldOnly: boolean,
+		options: {
+			attrs: object,
+			closeSiblings: boolean,
+			fieldOnly: boolean,
+			props: object,
+			showField: Ref<boolean> | boolean,
+			timeOpened: TimeOpened,
+		}
 	): {
 		settings: {
 			[key: string]: string | unknown;
@@ -152,18 +182,21 @@ export interface UseToggleField {
 		timeOpened: TimeOpened,
 	};
 }
+
 export interface UseSaveValue {
 	(
-		settings: {
-			[key: string]: string | unknown;
-		},
-		emit: {
-			(e: 'loading', response: boolean): void;
-			(e: 'error', error: AxiosError): AxiosError;
-			(e: 'update', response: unknown): void;
-		},
-		name: string,
-		value: FieldValue,
+		options: {
+			settings: {
+				[key: string]: string | unknown;
+			},
+			emit: {
+				(e: 'loading', response: boolean): void;
+				(e: 'error', error: AxiosError): AxiosError;
+				(e: 'update', response: unknown): void;
+			},
+			name: string,
+			value: FieldValue,
+		}
 	): Promise<{ [key: string]: string | unknown; } | undefined>;
 }
 
