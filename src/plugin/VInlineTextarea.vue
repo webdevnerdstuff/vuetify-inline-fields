@@ -130,18 +130,20 @@ const fieldContainerClass = computed(() => useFieldContainerClass('textarea', sh
 const fieldDisplayClass = computed(() => useDisplayContainerClass(
 	'textarea',
 	settings.valueColor,
-	settings.disabled,
-	error.value,
-	empty.value,
+	{
+		disabled: settings.disabled,
+		empty,
+		error,
+	}
 ));
-const fieldDisplayStyle = computed(() => useFieldDisplayStyles(
-	settings.underlineColor,
-	settings.underlineStyle,
-	settings.underlineWidth,
-	settings.color,
-	error.value,
-	settings.underlined,
-));
+const fieldDisplayStyle = computed(() => useFieldDisplayStyles({
+	color: settings.color,
+	error,
+	underlineColor: settings.underlineColor,
+	underlineStyle: settings.underlineStyle,
+	underlineWidth: settings.underlineWidth,
+	underlined: settings.underlined,
+}));
 
 
 // ------------------------------------------------ Key event to cancel/close field //
@@ -157,15 +159,14 @@ function toggleField() {
 		return;
 	}
 
-	const response = useToggleField(
-		settings.item.id as number,
-		showField.value,
+	const response = useToggleField({
 		attrs,
+		closeSiblings: settings.closeSiblings,
+		fieldOnly: settings.fieldOnly,
 		props,
-		timeOpened.value,
-		settings.closeSiblings,
-		settings.fieldOnly,
-	);
+		showField,
+		timeOpened: timeOpened.value,
+	});
 
 	settings = { ...settings, ...response.settings };
 	showField.value = response.showField;
@@ -183,7 +184,12 @@ function saveValue() {
 	loading.value = true;
 	emit('loading', loading.value);
 
-	useSaveValue(settings, emit as keyof UseSaveValue, settings.name, modelValue.value as keyof UseSaveValue)
+	useSaveValue({
+		emit: emit as keyof UseSaveValue,
+		name: settings.name,
+		settings,
+		value: modelValue.value as keyof UseSaveValue,
+	})
 		.then((response) => {
 			error.value = response?.error as boolean ?? false;
 			loading.value = false;

@@ -1,6 +1,5 @@
 import {
 	FieldValue,
-	TimeOpened,
 	UseSaveValue,
 	UseToggleField,
 } from '@/types';
@@ -15,18 +14,13 @@ function buildResponseItem(item: object, name: string, value: FieldValue) {
 	return returnItem;
 }
 
-function setInlineFieldOpen(id: number, timeOpened: TimeOpened): object {
-	const inlineElementOpen = { id, timeOpened };
-	return inlineElementOpen;
-}
-
 
 // ------------------------------------------------ Composables //
-const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
-	const allSettings = settings;
-	const submitData = buildResponseItem(allSettings.item as object, name, value);
+const useSaveValue: UseSaveValue = async (options) => {
+	const { settings, emit, name, value } = options;
+	const submitData = buildResponseItem(settings.item as object, name, value);
 
-	if (allSettings.doNotSave) {
+	if (settings.doNotSave) {
 		emit('update', value);
 		return {
 			error: false,
@@ -34,18 +28,18 @@ const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
 		};
 	}
 
-	if (allSettings.apiRoute === '') {
+	if (settings.apiRoute === '') {
 		throw new Error('If the "doNotSave" prop is false, the "apiRoute" prop is required.');
 	}
 
 	const response = await axios({
 		data: submitData,
 		method: settings.method as string,
-		url: allSettings.apiRoute as string,
+		url: settings.apiRoute as string,
 	})
 		.then((response) => {
 			emit('update', response);
-			allSettings.originalValue = value;
+			settings.originalValue = value;
 
 			return {
 				error: false,
@@ -66,17 +60,17 @@ const useSaveValue: UseSaveValue = async (settings, emit, name, value) => {
 	return response;
 };
 
-const useToggleField: UseToggleField = (itemId, showField, attrs, props, timeOpened, closeSiblings, fieldOnly) => {
+const useToggleField: UseToggleField = (options) => {
+	const { attrs, closeSiblings, fieldOnly, props, showField, timeOpened } = options;
 	let opened = timeOpened;
 
 	if (closeSiblings && !fieldOnly) {
 		opened = new Date();
-		setInlineFieldOpen(itemId, timeOpened);
 	}
 
 	return {
 		settings: { ...attrs, ...props },
-		showField: !showField,
+		showField: !unref(showField),
 		timeOpened: opened,
 	};
 };

@@ -33,7 +33,6 @@
 			@click="closeField"
 		>
 			<v-icon
-				v-if="!settings.fieldOnly"
 				class="text-default"
 				:color="settings.cancelIconColor"
 				:icon="cancelIcon"
