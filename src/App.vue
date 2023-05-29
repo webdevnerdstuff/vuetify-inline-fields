@@ -1,30 +1,91 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+	<v-app id="home">
+		<!-- ====================================================== App Bar -->
+		<AppBar @updated-drawer="toggleDrawer" />
+
+		<!-- ====================================================== Navigation Drawer -->
+		<v-navigation-drawer
+			v-model="drawer"
+			:absolute="drawerOptions.absolute"
+			:color="drawerOptions.color"
+			:elevation="drawerOptions.elevation"
+		>
+			<MenuComponent :drawerOptions="drawerOptions" />
+		</v-navigation-drawer>
+
+		<!-- ====================================================== Main Container -->
+		<v-main class="main-container pb-10">
+			<v-responsive>
+				<v-container class="px-10">
+					<DocsComponent />
+				</v-container>
+			</v-responsive>
+		</v-main>
+	</v-app>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import { provide, ref } from 'vue';
+import AppBar from './layout/AppBar.vue';
+import MenuComponent from './components/MenuComponent.vue';
+import DocsComponent from './components/DocsComponent.vue';
+import { useCoreStore } from './stores/index';
+
+
+const store = useCoreStore();
+const drawer = ref(true);
+const drawerOptions = ref({
+	absolute: false,
+	color: '',
+	elevation: 10,
+});
+
+provide('drawerOptions', drawerOptions);
+provide('links', store.links);
+
+function toggleDrawer() {
+	drawer.value = !drawer.value;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+</script>
+
+<style lang="scss">
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 70px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.top-app-bar {
+	z-index: 99 !important;
+
+	.nav-drawer-btn {
+		.nav-drawer-icon {
+			height: 18px;
+			width: 18px;
+		}
+	}
+}
+
+.v-heading {
+	position: relative;
+
+	> a {
+		color: rgb(var(--v-theme-primary));
+		display: inline-block;
+		inset: 0;
+		margin: 0 -0.7em;
+		position: absolute;
+
+		&:not(:hover):not(:focus) {
+			opacity: 0;
+		}
+	}
+}
+
+.name-item:not(:hover):not(:focus) span {
+	opacity: 0;
+}
+
+.v-divider {
+	margin: 0;
 }
 </style>

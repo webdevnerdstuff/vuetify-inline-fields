@@ -1,0 +1,44 @@
+.v-inline-fields {
+	&--display {
+		&-value {
+			border-bottom-width: 10px;
+			cursor: pointer;
+
+			&-empty {
+				color: #909090;
+				font-style: italic;
+			}
+		}
+	}
+
+	&--field-value {
+		&-checkbox {
+			.v-input {
+				&__append {
+					margin-left: 0;
+				}
+			}
+		}
+
+		&-select,
+		&-textarea,
+		&-text-field {
+			width: 100%;
+
+			.v-input {
+				&__append {
+					margin-left: .1rem;
+				}
+			}
+		}
+	}
+
+	&--disabled {
+		cursor: default;
+		opacity: var(--v-disabled-opacity);
+	}
+
+	&--save-fields-container {
+		height: 100%;
+	}
+}
