@@ -36,7 +36,6 @@ export default defineConfig({
 				'vue',
 				{
 					vue: ['CSSProperties'],
-					vuetify: ['useTheme']
 				}
 			],
 			vueTemplate: true,

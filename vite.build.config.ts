@@ -55,12 +55,14 @@ export default defineConfig({
 				'vue',
 				{
 					vue: ['CSSProperties'],
-					vuetify: ['useTheme']
 				}
 			],
 			vueTemplate: true,
 		}),
 		vue({
+			script: {
+				defineModel: true,
+			},
 			template: { transformAssetUrls },
 		}),
 		dts({
