@@ -7,13 +7,15 @@ import type {
 	VTextField,
 	VTextarea,
 } from 'vuetify/components';
+import type { EventBusKey } from '@vueuse/core';
 import {
 	AxiosError,
 } from 'axios';
 
 
-// -------------------------------------------------- Vuetify Types //
-export type Density = null | 'default' | 'comfortable' | 'compact';
+// -------------------------------------------------- Types //
+export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
+export type TimeOpened = Date | null;
 
 
 // -------------------------------------------------- Props //
@@ -62,8 +64,6 @@ export interface SharedProps {
 	valueColor?: string;
 }
 
-
-
 // Component Props //
 export interface VInlineCheckboxProps extends Omit<SharedProps,
 	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant'
@@ -108,6 +108,7 @@ export interface VInlineTextFieldProps extends Omit<SharedProps,
 	variant?: VTextField['$props']['variant'];
 }
 
+// -------------------------------------------------- Components //
 export type BooleanIcons = Required<Pick<SharedProps, 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle'>>;
 
 export interface SaveFieldButtons extends Required<Pick<SharedProps,
@@ -131,11 +132,6 @@ export interface SaveFieldButtons extends Required<Pick<SharedProps,
 >> {
 	loading: boolean;
 };
-
-
-// -------------------------------------------------- Methods //
-export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
-export type TimeOpened = Date | null;
 
 
 // -------------------------------------------------- Composables //
@@ -170,3 +166,7 @@ export interface UseSaveValue {
 		value: FieldValue,
 	): Promise<{ [key: string]: string | unknown; } | undefined>;
 }
+
+
+// -------------------------------------------------- Close Siblings Event Bus //
+export const CloseSiblingsBus: EventBusKey<TimeOpened> = Symbol('identifier');
