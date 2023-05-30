@@ -14,10 +14,20 @@
 								<VInlineSwitch
 									v-model="item.raw.active"
 									api-route="api/posts"
+									:cancel-button-color="componentOptions.cancelButtonColor"
+									:cancel-button-variant="componentOptions.cancelButtonVariant"
+									:cancel-icon="componentOptions.cancelIcon"
+									:cancel-icon-color="componentOptions.cancelIconColor"
+									:cancel-icon-text="componentOptions.cancelIconText"
+									:close-siblings="componentOptions.closeSiblings"
 									:color="componentOptions.color"
 									:disabled="componentOptions.disabled"
-									:do-not-save="false"
+									:do-not-save="componentOptions.doNotSave"
 									:field-only="componentOptions.fieldOnly"
+									:icon-false="componentOptions.iconFalse"
+									:icon-false-title="componentOptions.iconFalseTitle"
+									:icon-true="componentOptions.iconTrue"
+									:icon-true-title="componentOptions.iconTrueTitle"
 									:item="item"
 									:label="componentOptions.label"
 									name="active"
@@ -27,6 +37,7 @@
 									:underlined="componentOptions.underlined"
 									@error="showError = $event"
 									@loading="loading = $event"
+									@update="updatedValue($event, 'switch')"
 								/>
 							</div>
 						</template>
@@ -34,9 +45,14 @@
 							<VInlineSelect
 								v-model="item.raw.user"
 								api-route="api/posts"
+								:cancel-button-color="componentOptions.cancelButtonColor"
+								:cancel-button-variant="componentOptions.cancelButtonVariant"
+								:cancel-icon-color="componentOptions.cancelIconColor"
+								:cancel-icon-text="componentOptions.cancelIconText"
+								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
 								:disabled="componentOptions.disabled"
-								:do-not-save="false"
+								:do-not-save="componentOptions.doNotSave"
 								:empty-text="componentOptions.emptyText"
 								:field-only="componentOptions.fieldOnly"
 								:hide-details="componentOptions.hideDetails"
@@ -48,62 +64,101 @@
 								:label="componentOptions.label"
 								name="active"
 								:return-object="true"
+								:save-button-color="componentOptions.saveButtonColor"
+								:save-icon="componentOptions.saveIcon"
+								:save-icon-color="componentOptions.saveIconColor"
+								:save-icon-text="componentOptions.saveIconText"
 								:underline-color="componentOptions.underlineColor"
 								:underline-style="componentOptions.underlineStyle"
 								:underline-width="componentOptions.underlineWidth"
 								:underlined="componentOptions.underlined"
 								@error="showError = $event"
 								@loading="loading = $event"
+								@update="updatedValue($event, 'select')"
 							>
 							</VInlineSelect>
 						</template>
+
 						<template #[`item.title`]="{ item }">
 							<VInlineTextField
 								v-model="item.raw.title"
 								api-route="api/posts"
+								:cancel-button-color="componentOptions.cancelButtonColor"
+								:cancel-button-variant="componentOptions.cancelButtonVariant"
+								:cancel-icon-color="componentOptions.cancelIconColor"
+								:cancel-icon-text="componentOptions.cancelIconText"
+								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
 								:disabled="componentOptions.disabled"
-								:do-not-save="false"
+								:do-not-save="componentOptions.doNotSave"
 								:field-only="componentOptions.fieldOnly"
+								:hide-details="componentOptions.hideDetails"
 								:item="item"
 								:label="componentOptions.label"
 								name="title"
+								required
+								:save-button-color="componentOptions.saveButtonColor"
+								:save-icon-color="componentOptions.saveIconColor"
+								:save-icon-text="componentOptions.saveIconText"
+								:truncate-length="componentOptions.truncateTextFieldLength"
 								:underline-color="componentOptions.underlineColor"
 								:underline-style="componentOptions.underlineStyle"
 								:underline-width="componentOptions.underlineWidth"
 								:underlined="componentOptions.underlined"
 								@error="showError = $event"
 								@loading="loading = $event"
+								@update="updatedValue($event, 'text-field')"
 							/>
 						</template>
+
 						<template #[`item.body`]="{ item }">
 							<VInlineTextarea
 								v-model="item.raw.body"
 								api-route="api/posts"
+								:cancel-button-color="componentOptions.cancelButtonColor"
+								:cancel-button-variant="componentOptions.cancelButtonVariant"
+								:cancel-icon-color="componentOptions.cancelIconColor"
+								:cancel-icon-text="componentOptions.cancelIconText"
+								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
 								:disabled="componentOptions.disabled"
-								:do-not-save="false"
+								:do-not-save="componentOptions.doNotSave"
 								:field-only="componentOptions.fieldOnly"
+								:hide-details="false"
 								:item="item"
 								:label="componentOptions.label"
 								name="body"
+								:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
+								:save-button-color="componentOptions.saveButtonColor"
+								:save-icon-color="componentOptions.saveIconColor"
+								:save-icon-text="componentOptions.saveIconText"
+								:truncate-length="componentOptions.truncateTextareaLength"
 								:underline-color="componentOptions.underlineColor"
 								:underline-style="componentOptions.underlineStyle"
 								:underline-width="componentOptions.underlineWidth"
 								:underlined="componentOptions.underlined"
 								@error="showError = $event"
 								@loading="loading = $event"
+								@update="updatedValue($event, 'textarea')"
 							/>
 						</template>
+
 						<template #[`item.reviewed`]="{ item }">
 							<div class="d-flex flex-align-center">
 								<VInlineCheckbox
 									v-model="item.raw.reviewed"
 									api-route="api/posts"
+									:cancel-button-color="componentOptions.cancelButtonColor"
+									:cancel-button-variant="componentOptions.cancelButtonVariant"
+									:cancel-icon-color="componentOptions.cancelIconColor"
+									:cancel-icon-text="componentOptions.cancelIconText"
+									:close-siblings="componentOptions.closeSiblings"
 									:color="componentOptions.color"
 									:disabled="componentOptions.disabled"
-									:do-not-save="false"
+									:do-not-save="componentOptions.doNotSave"
 									:field-only="componentOptions.fieldOnly"
+									:icon-false-title="componentOptions.iconFalseTitle"
+									:icon-true-title="componentOptions.iconTrueTitle"
 									:item="item"
 									name="reviewed"
 									:underline-color="componentOptions.underlineColor"
@@ -112,6 +167,7 @@
 									:underlined="componentOptions.underlined"
 									@error="showError = $event"
 									@loading="loading = $event"
+									@update="updatedValue($event, 'checkbox')"
 								/>
 							</div>
 						</template>
@@ -146,13 +202,36 @@ const tableOptions = reactive({
 });
 
 const componentOptions = reactive({
+	cancelButtonColor: 'default',
+	cancelButtonVariant: 'text',
+	cancelIcon: undefined,
+	cancelIconColor: 'default',
+	cancelIconText: 'Cancel',
+	closeSiblings: true,
 	color: 'primary',
 	disabled: false,
+	doNotSave: false,
 	emptyText: 'empty',
 	fieldOnly: false,
 	hideDetails: true,
 	hideSelected: true,
+	iconFalse: undefined,
+	iconFalseTitle: undefined,
+	iconTrue: undefined,
+	iconTrueTitle: undefined,
 	label: '',
+	rules: {
+		minLength(value) {
+			return value?.length >= 5 || 'Min 5 characters';
+		},
+		required: value => !!value || 'Field is required',
+	},
+	saveButtonColor: 'default',
+	saveIcon: undefined,
+	saveIconColor: 'primary',
+	saveIconText: 'Save',
+	truncateTextFieldLength: 25,
+	truncateTextareaLength: 75,
 	underlineColor: 'primary',
 	underlineStyle: 'dotted',
 	underlineWidth: '1px',
@@ -217,6 +296,19 @@ function getUsers() {
 			users.value = [...json.users];
 		});
 };
+
+/**
+ * ? You can use this function to update the value in the database.
+ * ? Instead of using the internal axios call.
+ *
+ * @param {any} val
+ * @param {string} field
+ */
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+function updatedValue(val, field) {
+	// Save updated values
+	// console.log('updatedValue', val, field);
+}
 </script>
 
 <style lang="scss" scoped>

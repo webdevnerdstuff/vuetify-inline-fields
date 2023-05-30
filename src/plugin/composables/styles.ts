@@ -1,24 +1,19 @@
 import { CSSProperties } from 'vue';
+import { UseFieldDisplayStyles } from '@/types';
 
 // -------------------------------------------------- Value Styles //
-export const useFieldDisplayStyles = (
-	underlineColor: string,
-	underlineStyle: string,
-	underlineWidth: string,
-	color: string,
-	error: boolean,
-	underlined: boolean,
-): CSSProperties => {
-	let uColor = underlineColor;
-	uColor = uColor || color;
+export const useFieldDisplayStyles: UseFieldDisplayStyles = (options) => {
+	const { underlineStyle, underlineWidth, color, error, underlined } = options;
+	let { underlineColor } = options;
+	underlineColor = underlineColor || color;
 
 	const styles = {
-		'border-bottom-color': `rgb(var(--v-theme-${uColor}))`,
+		'border-bottom-color': `rgb(var(--v-theme-${underlineColor}))`,
 		'border-bottom-style': underlineStyle,
 		'border-bottom-width': underlineWidth,
 	};
 
-	if (error) {
+	if (unref(error)) {
 		styles['border-bottom-color'] = 'rgb(var(--v-theme-danger))';
 	}
 

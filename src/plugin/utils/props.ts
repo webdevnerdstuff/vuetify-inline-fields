@@ -10,7 +10,7 @@ export const sharedProps = {
 	cancelButtonSize: 'x-small',
 
 	// ? The title of the cancel button - [ All Fields ] //
-	cancelButtonTitle: 'Exit',
+	cancelButtonTitle: 'Cancel',
 
 	// ? The variant of the cancel button - [ All Fields ] //
 	cancelButtonVariant: 'tonal' as const,
@@ -146,8 +146,7 @@ const valueIcons = {
 };
 
 
-// * ---------------------------------------- Exports //
-
+// * ---------------------------------------- Fields //
 // v-checkbox //
 const checkboxProps = {
 	...sharedProps,
@@ -163,7 +162,6 @@ const checkboxProps = {
 		trueIcon: 'mdi:mdi-checkbox-outline',
 	},
 };
-
 
 // v-select //
 const selectProps = {
@@ -192,7 +190,6 @@ const selectProps = {
 	},
 };
 
-
 // v-switch //
 const switchProps = {
 	...sharedProps,
@@ -212,6 +209,7 @@ const textareaProps = {
 	...{
 		// ? Automatically grow the textarea depending on amount of text //
 		autoGrow: true,
+
 		// ? The variant of the field //
 		variant: 'underlined' as const,
 	},
@@ -223,6 +221,7 @@ const textFieldProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
+		// ? The variant of the field //
 		variant: 'underlined' as const,
 	}
 };
