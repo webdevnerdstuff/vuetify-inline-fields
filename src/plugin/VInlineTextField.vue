@@ -127,7 +127,7 @@ const displayValue = computed(() => {
 			return useTruncateText({
 				length: settings.truncateLength,
 				suffix: settings.truncateSuffix,
-				text: modelValue.value,
+				text: modelValue.value as string,
 			});
 		}
 
