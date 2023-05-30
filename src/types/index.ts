@@ -37,6 +37,7 @@ export interface SharedProps {
 	disabled?: boolean;
 	doNotSave?: boolean;
 	emptyText?: string;
+	error?: boolean;
 	falseValue?: boolean | string;
 	fieldOnly?: boolean;
 	hideDetails?: boolean;
@@ -54,6 +55,7 @@ export interface SharedProps {
 	loadingIconColor?: string;
 	method?: string;
 	name: string;
+	required?: boolean;
 	saveButtonColor?: VBtn['$props']['color'];
 	saveButtonSize?: VBtn['$props']['size'];
 	saveButtonTitle?: string | undefined;
@@ -61,6 +63,9 @@ export interface SharedProps {
 	saveIcon?: string;
 	saveIconColor?: string;
 	trueValue?: boolean | string;
+	truncateDisplayValue?: number | undefined;
+	truncateLength?: number | undefined;
+	truncateSuffix?: string | undefined;
 	underlineColor?: string;
 	underlineStyle?: string;
 	underlineWidth?: string;
@@ -70,7 +75,7 @@ export interface SharedProps {
 
 // Component Props //
 export interface VInlineCheckboxProps extends Omit<SharedProps,
-	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant'
+	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'
 > {
 	density?: VCheckbox['$props']['density'];
 	falseIcon?: VCheckbox['$props']['falseIcon'];
@@ -78,7 +83,7 @@ export interface VInlineCheckboxProps extends Omit<SharedProps,
 }
 
 export interface VInlineSelectProps extends Omit<SharedProps,
-	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'
+	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'
 > {
 	clearIcon?: VSelect['$props']['clearIcon'];
 	clearable?: VSelect['$props']['clearable'];
@@ -87,11 +92,12 @@ export interface VInlineSelectProps extends Omit<SharedProps,
 	itemTitle?: VSelect['$props']['itemTitle'];
 	itemValue?: VSelect['$props']['itemValue'];
 	items?: VSelect['$props']['items'];
+	rules?: VSelect['$props']['rules'];
 	variant?: VSelect['$props']['variant'];
 }
 
 export interface VInlineSwitchProps extends Omit<SharedProps,
-	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant'
+	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'
 > {
 	density?: VSwitch['$props']['density'];
 	falseIcon?: VSwitch['$props']['falseIcon'];
@@ -102,6 +108,7 @@ export interface VInlineTextareaProps extends Omit<SharedProps,
 > {
 	autoGrow?: VTextarea['$props']['autoGrow'];
 	density?: VTextarea['$props']['density'];
+	rules?: VTextarea['$props']['rules'];
 	variant?: VTextarea['$props']['variant'];
 }
 
@@ -109,8 +116,10 @@ export interface VInlineTextFieldProps extends Omit<SharedProps,
 	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'
 > {
 	density?: VTextField['$props']['density'];
+	rules?: VTextField['$props']['rules'];
 	variant?: VTextField['$props']['variant'];
 }
+
 
 // -------------------------------------------------- Components //
 export type BooleanIcons = Required<Pick<SharedProps, 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle'>>;
@@ -122,6 +131,7 @@ export interface SaveFieldButtons extends Required<Pick<SharedProps,
 	'cancelButtonTitle' |
 	'cancelIcon' |
 	'cancelIconColor' |
+	'error' |
 	'fieldOnly' |
 	'hideSaveIcon' |
 	'loadingIcon' |
@@ -151,36 +161,30 @@ export interface UseDisplayContainerClass {
 	): object;
 }
 
+export interface UseCheckForErrors {
+	(
+		options: {
+			required?: SharedProps['required'],
+			rules?: VTextField['$props']['rules'] | VTextarea['$props']['rules'] | VSelect['$props']['rules'],
+			value?: FieldValue,
+		}
+	): {
+		errors: boolean;
+		results: string[];
+	};
+}
+
 export interface UseFieldDisplayStyles {
 	(
 		options: {
-			color: string;
+			color: SharedProps['color'];
 			error: Ref<boolean> | boolean;
-			underlineColor: string;
-			underlineStyle: string;
-			underlineWidth: string;
-			underlined: boolean;
+			underlineColor: SharedProps['underlineColor'];
+			underlineStyle: SharedProps['underlineStyle'];
+			underlineWidth: SharedProps['underlineWidth'];
+			underlined: SharedProps['underlined'];
 		}
 	): CSSProperties;
-}
-
-export interface UseToggleField {
-	(
-		options: {
-			attrs: object,
-			closeSiblings: boolean,
-			fieldOnly: boolean,
-			props: object,
-			showField: Ref<boolean> | boolean,
-			timeOpened: TimeOpened,
-		}
-	): {
-		settings: {
-			[key: string]: string | unknown;
-		},
-		showField: boolean,
-		timeOpened: TimeOpened,
-	};
 }
 
 export interface UseSaveValue {
@@ -194,10 +198,39 @@ export interface UseSaveValue {
 				(e: 'error', error: AxiosError): AxiosError;
 				(e: 'update', response: unknown): void;
 			},
-			name: string,
+			name: SharedProps['name'],
 			value: FieldValue,
 		}
 	): Promise<{ [key: string]: string | unknown; } | undefined>;
+}
+
+export interface UseToggleField {
+	(
+		options: {
+			attrs: object,
+			closeSiblings: SharedProps['closeSiblings'],
+			fieldOnly: SharedProps['fieldOnly'],
+			props: object,
+			showField: Ref<boolean> | boolean,
+			timeOpened: TimeOpened,
+		}
+	): {
+		settings: {
+			[key: string]: string | unknown;
+		},
+		showField: boolean,
+		timeOpened: TimeOpened,
+	};
+}
+
+export interface UseTruncateText {
+	(
+		options: {
+			length: SharedProps['truncateLength'];
+			suffix: SharedProps['truncateSuffix'];
+			text: string;
+		}
+	): FieldValue;
 }
 
 

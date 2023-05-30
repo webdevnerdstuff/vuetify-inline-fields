@@ -15,7 +15,7 @@
 		>
 			<v-icon
 				v-if="!loading && !settings.hideSaveIcon"
-				:color="hasErrors ? 'danger' : settings.saveIconColor"
+				:color="hasErrors ? 'error' : settings.saveIconColor"
 				:icon="saveIcon"
 			/>
 			<v-icon

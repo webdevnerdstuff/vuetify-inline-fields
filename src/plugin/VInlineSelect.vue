@@ -197,7 +197,22 @@ function toggleField() {
 
 
 // ------------------------------------------------ Check for errors //
-const internalErrorMessages = computed(() => {
+const internalErrors = ref();
+const internalErrorMessages = computed(() => internalErrors.value);
+
+watch(() => showField.value, () => {
+	if (showField.value) {
+		checkInternalErrors();
+	}
+});
+
+watch(() => modelValue.value, () => {
+	if (showField.value) {
+		checkInternalErrors();
+	}
+});
+
+function checkInternalErrors() {
 	const response = useCheckForErrors({
 		required: settings.required,
 		rules: settings.rules,
@@ -206,8 +221,9 @@ const internalErrorMessages = computed(() => {
 
 	error.value = response.errors;
 
+	internalErrors.value = response.results;
 	return response.results;
-});
+}
 
 
 // ------------------------------------------------ Save the value / Emit update //
@@ -259,8 +275,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-:deep(.v-input__append),
-:deep(.v-field__append-inner) {
+:deep(.v-input__append) {
 	padding: 0 !important;
 }
 

@@ -1,7 +1,9 @@
 import {
 	FieldValue,
+	UseCheckForErrors,
 	UseSaveValue,
 	UseToggleField,
+	UseTruncateText
 } from '@/types';
 import axios from 'axios';
 
@@ -16,7 +18,7 @@ function buildResponseItem(item: object, name: string, value: FieldValue) {
 
 
 // ------------------------------------------------ Composables //
-const useCheckForErrors = (options) => {
+const useCheckForErrors: UseCheckForErrors = (options) => {
 	const { required, rules } = options;
 	let { value } = options;
 	value = unref(value);
@@ -39,7 +41,6 @@ const useCheckForErrors = (options) => {
 			const result = handler(value);
 
 			if (result === true) continue;
-			console.log(result);
 			if (typeof result !== 'string') {
 				console.warn(`${result} is not a valid value. Rule functions must return boolean true or a string.`);
 
@@ -57,7 +58,6 @@ const useCheckForErrors = (options) => {
 		results,
 	};
 };
-
 
 const useSaveValue: UseSaveValue = async (options) => {
 	const { settings, emit, name, value } = options;
@@ -118,9 +118,23 @@ const useToggleField: UseToggleField = (options) => {
 	};
 };
 
+const useTruncateText: UseTruncateText = (options) => {
+	const { length = 0 } = options;
+	let { suffix, text } = options;
+	text = text.toString();
+	suffix = suffix || '...';
+
+	if (text.length > length) {
+		return `${text.substring(0, length)}${suffix}`;
+	}
+
+	return text;
+};
+
 
 export {
 	useCheckForErrors,
 	useSaveValue,
 	useToggleField,
+	useTruncateText,
 };
