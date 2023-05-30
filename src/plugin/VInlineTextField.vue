@@ -25,6 +25,7 @@
 			:density="settings.density"
 			:disabled="loading"
 			:error="error"
+			:error-messages="internalErrorMessages"
 			:hide-details="settings.hideDetails"
 			:label="settings.label"
 			:loading="loading"
@@ -49,17 +50,20 @@
 				#append
 			>
 				<SaveFieldButtons
+					v-model="modelValue"
 					:cancel-button-color="settings.cancelButtonColor"
 					:cancel-button-size="settings.cancelButtonSize"
 					:cancel-button-title="settings.cancelButtonTitle"
 					:cancel-button-variant="settings.cancelButtonVariant"
 					:cancel-icon="settings.cancelIcon"
 					:cancel-icon-color="settings.cancelIconColor"
+					:error="error"
 					:field-only="settings.fieldOnly"
 					:hide-save-icon="settings.hideSaveIcon"
 					:loading="loading"
 					:loading-icon="settings.loadingIcon"
 					:loading-icon-color="settings.loadingIconColor"
+					:required="settings.required"
 					:save-button-color="settings.saveButtonColor"
 					:save-button-size="settings.saveButtonSize"
 					:save-button-title="settings.saveButtonTitle"
@@ -85,6 +89,7 @@ import {
 import { textFieldProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
 import {
+	useCheckForErrors,
 	useSaveValue,
 	useToggleField,
 } from './composables/methods';
@@ -147,6 +152,7 @@ const fieldDisplayStyle = computed(() => useFieldDisplayStyles({
 
 // ------------------------------------------------ Key event to cancel/close field //
 function closeField() {
+	error.value = false;
 	modelValue.value = originalValue;
 	toggleField();
 }
@@ -177,8 +183,27 @@ function toggleField() {
 }
 
 
+// ------------------------------------------------ Check for errors //
+const internalErrorMessages = computed(() => {
+	const response = useCheckForErrors({
+		required: settings.required,
+		rules: settings.rules,
+		value: modelValue,
+	});
+
+	error.value = response.errors;
+
+	return response.results;
+});
+
+
 // ------------------------------------------------ Save the value / Emit update //
 function saveValue() {
+	if (error.value) {
+		error.value = true;
+		return;
+	}
+
 	originalValue = modelValue.value;
 	loading.value = true;
 	emit('loading', loading.value);
@@ -226,6 +251,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+:deep(.v-input__append),
 :deep(.v-field__append-inner) {
 	padding: 0 !important;
 }

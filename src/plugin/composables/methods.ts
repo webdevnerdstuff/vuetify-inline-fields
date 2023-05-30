@@ -16,6 +16,49 @@ function buildResponseItem(item: object, name: string, value: FieldValue) {
 
 
 // ------------------------------------------------ Composables //
+const useCheckForErrors = (options) => {
+	const { required, rules } = options;
+	let { value } = options;
+	value = unref(value);
+
+	const results: string[] = [];
+	let hasErrors = false;
+
+	if (required && !value) {
+		results.push('Field is required.');
+
+		return {
+			errors: true,
+			results,
+		};
+	}
+
+	if (rules) {
+		for (const rule of rules) {
+			const handler = typeof rule === 'function' ? rule : () => rule;
+			const result = handler(value);
+
+			if (result === true) continue;
+			console.log(result);
+			if (typeof result !== 'string') {
+				console.warn(`${result} is not a valid value. Rule functions must return boolean true or a string.`);
+
+				continue;
+			}
+
+			results.push(result);
+		}
+
+		hasErrors = results.length > 0;
+	}
+
+	return {
+		errors: hasErrors,
+		results,
+	};
+};
+
+
 const useSaveValue: UseSaveValue = async (options) => {
 	const { settings, emit, name, value } = options;
 	const submitData = buildResponseItem(settings.item as object, name, value);
@@ -77,6 +120,7 @@ const useToggleField: UseToggleField = (options) => {
 
 
 export {
+	useCheckForErrors,
 	useSaveValue,
 	useToggleField,
 };

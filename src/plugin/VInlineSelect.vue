@@ -27,6 +27,7 @@
 			:density="settings.density"
 			:disabled="loading"
 			:error="error"
+			:error-messages="internalErrorMessages"
 			:hide-details="settings.hideDetails"
 			:hide-selected="settings.hideSelected"
 			:item-title="settings.itemTitle"
@@ -60,6 +61,7 @@
 					:cancel-button-variant="settings.cancelButtonVariant"
 					:cancel-icon="settings.cancelIcon"
 					:cancel-icon-color="settings.cancelIconColor"
+					:error="error"
 					:field-only="settings.fieldOnly"
 					:hide-save-icon="settings.hideSaveIcon"
 					:loading="loading"
@@ -91,6 +93,7 @@ import type { VSelect } from 'vuetify/components';
 import { selectProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
 import {
+	useCheckForErrors,
 	useSaveValue,
 	useToggleField,
 } from './composables/methods';
@@ -162,6 +165,7 @@ const fieldDisplayStyle = computed(() => useFieldDisplayStyles({
 
 // ------------------------------------------------ Key event to cancel/close field //
 function closeField() {
+	error.value = false;
 	modelValue.value = originalValue;
 	toggleField();
 }
@@ -190,6 +194,20 @@ function toggleField() {
 		closeSiblingsBus.emit(response.timeOpened);
 	}
 }
+
+
+// ------------------------------------------------ Check for errors //
+const internalErrorMessages = computed(() => {
+	const response = useCheckForErrors({
+		required: settings.required,
+		rules: settings.rules,
+		value: modelValue,
+	});
+
+	error.value = response.errors;
+
+	return response.results;
+});
 
 
 // ------------------------------------------------ Save the value / Emit update //
@@ -241,6 +259,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+:deep(.v-input__append),
 :deep(.v-field__append-inner) {
 	padding: 0 !important;
 }

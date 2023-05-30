@@ -6,6 +6,7 @@
 		<v-btn
 			class="ms-1"
 			:color="settings.saveButtonColor"
+			:disabled="hasErrors"
 			icon
 			:size="settings.saveButtonSize"
 			:title="loading ? 'Loading' : settings.saveButtonTitle"
@@ -14,7 +15,7 @@
 		>
 			<v-icon
 				v-if="!loading && !settings.hideSaveIcon"
-				:color="settings.saveIconColor"
+				:color="hasErrors ? 'danger' : settings.saveIconColor"
 				:icon="saveIcon"
 			/>
 			<v-icon
@@ -55,9 +56,8 @@ const props = withDefaults(defineProps<SaveFieldButtons>(), {});
 
 const settings = reactive({ ...attrs, ...props });
 
-const saveFieldsContainerClass = computed(() => {
-	return useSaveFieldsContainerClass();
-});
+const hasErrors = computed<boolean>(() => props.error);
+const saveFieldsContainerClass = computed<object>(() => useSaveFieldsContainerClass());
 
 function closeField() {
 	emit('close');
