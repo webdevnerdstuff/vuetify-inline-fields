@@ -2,6 +2,7 @@ import colors from 'vuetify/lib/util/colors.mjs';
 
 export const dark = {
 	colors: {
+		accent: '#d00274',
 		danger: colors.red.base,
 		error: colors.red.base,
 		info: colors.teal.base,
@@ -15,6 +16,7 @@ export const dark = {
 
 export const light = {
 	colors: {
+		accent: '#905',
 		danger: colors.red.base,
 		error: colors.red.base,
 		info: colors.teal.darken1,
