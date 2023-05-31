@@ -26,9 +26,9 @@
 
 <script setup>
 import { provide, ref } from 'vue';
-import AppBar from './layout/AppBar.vue';
-import MenuComponent from './components/MenuComponent.vue';
-import DocsComponent from './components/DocsComponent.vue';
+import AppBar from './documentation/layout/AppBar.vue';
+import MenuComponent from './documentation/MenuComponent.vue';
+import DocsComponent from './documentation/DocsComponent.vue';
 import { useCoreStore } from './stores/index';
 
 

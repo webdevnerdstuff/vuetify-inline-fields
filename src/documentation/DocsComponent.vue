@@ -112,7 +112,7 @@ import {
 	SassVariables,
 	SlotsComponent,
 	UsageComponent,
-} from '@/components/docs';
+} from '@/documentation/sections';
 
 const links = inject('links');
 
