@@ -58,7 +58,7 @@ export const sharedProps = {
 	name: '',
 
 	// ? The color of the underline - [ All Fields ] //
-	underlineColor: '',
+	underlineColor: 'primary',
 
 	// ? The style of the underline - [ All Fields ] //
 	underlineStyle: 'dotted',
