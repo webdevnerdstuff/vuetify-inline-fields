@@ -15,7 +15,12 @@
 
 			<v-row>
 				<v-col cols="12">
-					<p>TBD</p>
+					<CodeBlock
+						code="tbd"
+						highlightjs
+						lang="javascript"
+					>
+					</CodeBlock>
 				</v-col>
 			</v-row>
 		</v-col>
@@ -24,6 +29,7 @@
 
 <script setup>
 import { inject } from 'vue';
+
 
 const classes = inject('classes');
 const links = inject('links');

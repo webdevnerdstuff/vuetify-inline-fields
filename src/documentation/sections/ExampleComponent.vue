@@ -25,5 +25,6 @@
 <script setup>
 import { inject } from 'vue';
 
+
 const classes = inject('classes');
 </script>

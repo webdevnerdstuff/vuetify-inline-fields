@@ -38,6 +38,7 @@
 import { inject } from 'vue';
 import { useCoreStore } from '@/stores/index';
 
+
 const classes = inject('classes');
 
 const store = useCoreStore();
