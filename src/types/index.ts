@@ -24,7 +24,7 @@ export type TimeOpened = Date | null;
 
 // -------------------------------------------------- Props //
 export interface SharedProps {
-	apiRoute?: string;
+	apiRoute?: string | undefined;
 	autofocus?: boolean;
 	cancelButtonColor?: VBtn['$props']['color'];
 	cancelButtonSize?: VBtn['$props']['size'];
@@ -54,6 +54,7 @@ export interface SharedProps {
 	loadingIcon?: string;
 	loadingIconColor?: string;
 	method?: string;
+	// TODO: Change this to optional. Throw error if using apiRoute and not providing a name. //
 	name: string;
 	required?: boolean;
 	saveButtonColor?: VBtn['$props']['color'];
@@ -63,7 +64,6 @@ export interface SharedProps {
 	saveIcon?: string;
 	saveIconColor?: string;
 	trueValue?: boolean | string;
-	truncateDisplayValue?: number | undefined;
 	truncateLength?: number | undefined;
 	truncateSuffix?: string | undefined;
 	underlineColor?: string;
