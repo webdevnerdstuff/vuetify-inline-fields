@@ -1,86 +1,65 @@
 <template>
-	<v-list :color="drawerOptions.color ? 'white' : 'primary'">
-		<v-list-item
-			v-for="item in menuItems"
-			:key="item.title"
-			:class="{
-				'v-list-item--active': active === item.href,
-			}"
-			:color="drawerOptions.color ? 'white' : 'primary'"
-			:href="item.href"
-			link
-			:title="item.title"
-		>
-			<template v-slot:prepend>
-				<v-icon :icon="item.icon"></v-icon>
-			</template>
-		</v-list-item>
+	<v-list
+		:color="drawerOptions.color ? 'white' : 'primary'"
+		density="compact"
+	>
+		<template v-for="item in menuItems">
+			<v-list-group
+				v-if="item.items"
+				:key="item.items"
+				:value="item.title"
+			>
+				<template v-slot:activator="{ props }">
+					<v-list-item
+						density="compact"
+						v-bind="props"
+						:prepend-icon="item.icon"
+						:title="item.title"
+					></v-list-item>
+				</template>
+
+				<template v-for="subItem in item.items">
+					<v-list-item
+						v-if="subItem.href"
+						:key="subItem.title"
+						class="sub-items"
+						:href="subItem.href"
+						:prepend-icon="subItem.icon"
+					>
+						<div v-html="subItem.title"></div>
+					</v-list-item>
+				</template>
+			</v-list-group>
+
+			<v-list-item
+				v-else
+				:key="item.title"
+				:class="{
+					'v-list-item--active': active === item.href,
+				}"
+				:color="drawerOptions.color ? 'white' : 'primary'"
+				:href="item.href"
+				link
+				:title="item.title"
+			>
+
+				<template v-slot:prepend>
+					<v-icon :icon="item.icon"></v-icon>
+				</template>
+			</v-list-item>
+		</template>
 	</v-list>
 </template>
 
 <script setup>
-import { inject, onMounted, reactive, ref } from 'vue';
+import { inject, onMounted, ref } from 'vue';
+import { useMenuStore } from '@/stores/menu';
 
 const drawerOptions = inject('drawerOptions');
+const store = useMenuStore();
 
 const active = ref('');
-const menuItems = reactive([
-	{
-		href: '#home',
-		icon: 'mdi:mdi-home',
-		title: 'Home',
-	},
-	{
-		href: '#installation',
-		icon: 'mdi:mdi-plus-thick',
-		title: 'Installation',
-	},
-	{
-		href: '#description',
-		icon: 'mdi:mdi-information-outline',
-		title: 'Description',
-	},
-	{
-		href: '#props',
-		icon: 'mdi:mdi-cog',
-		title: 'Props',
-	},
-	{
-		href: '#events',
-		icon: 'mdi:mdi-calendar-star',
-		title: 'Events',
-	},
-	{
-		href: '#slots',
-		icon: 'mdi:mdi-slot-machine',
-		title: 'Slots',
-	},
-	{
-		href: '#sass-variables',
-		icon: 'mdi:mdi-sass',
-		title: 'SASS Variables',
-	},
-	{
-		href: '#example',
-		icon: 'mdi:mdi-code-json',
-		title: 'Example',
-	},
-	{
-		href: '#dependencies',
-		icon: 'mdi:mdi-asterisk-circle-outline',
-		title: 'Dependencies',
-	},
-	{
-		href: '#license',
-		icon: 'mdi:mdi-card-account-details-outline',
-		title: 'License',
-	},
-	{
-		href: '#legal',
-		icon: 'mdi:mdi-scale-balance',
-		title: 'Legal',
-	},
-]);
+const menuItems = store.menuItems;
 
 onMounted(() => {
 	smoothScroll();
@@ -109,5 +88,14 @@ function smoothScroll() {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.sub-items {
+	font-size: .9em;
+	padding-left: calc(var(--indent-padding) - 10px) !important;
+
+	:deep(.v-icon) {
+		font-size: 1em !important;
+		margin-right: 1em !important;
+	}
+}
 </style>

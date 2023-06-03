@@ -1,64 +1,60 @@
 import { defineStore } from 'pinia';
 import packageJson from '@root/package.json';
 
-const packageName = packageJson.name;
 
+export const useCoreStore = defineStore('core', () => {
+	const packageName = packageJson.name;
+	const storageName = 'vuetify-inline-fields';
 
-// Links //
-const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
-const links = {
-	changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
-	github: repoBaseUrl,
-	githubProfile: 'https://github.com/webdevnerdstuff',
-	license: `${repoBaseUrl}/blob/main/LICENSE.md`,
-	npm: `https://www.npmjs.com/package/${packageName}`,
-	vue: 'https://vuejs.org/',
-	vueUse: 'https://vueuse.org/',
-	vuetify: 'https://vuetifyjs.com/',
-	vuetifyGithub: 'https://github.com/vuetifyjs/vuetify',
-};
+	// Links //
+	const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
+	const links = {
+		changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
+		github: repoBaseUrl,
+		githubProfile: 'https://github.com/webdevnerdstuff',
+		license: `${repoBaseUrl}/blob/main/LICENSE.md`,
+		npm: `https://www.npmjs.com/package/${packageName}`,
+		vue: 'https://vuejs.org/',
+		vueUse: 'https://vueuse.org/',
+		vuetify: 'https://vuetifyjs.com/',
+		vuetifyGithub: 'https://github.com/vuetifyjs/vuetify',
+	};
 
-interface State {
-	links: object;
-	package: object;
-	pluginVersion: string | number;
-	storageName: string;
-}
-
-export const useCoreStore = defineStore('core', {
-	actions: {
+	const actions = {
 		setLocalStorage(val: string): string {
-			const oldValue = localStorage.getItem(this.storageName);
+			const oldValue = localStorage.getItem(storageName);
 			const newValue = val ?? oldValue;
 
-			localStorage.setItem(this.storageName, newValue);
+			localStorage.setItem(storageName, newValue);
 			return newValue;
 		},
 		setTheme(val: string): string {
 			const themeName = val === 'dark' ? 'light' : 'dark';
-			const currentTheme = localStorage.getItem(`${this.storageName}-theme`);
+			const currentTheme = localStorage.getItem(`${storageName}-theme`);
 			const newTheme = themeName ?? currentTheme;
 
-			localStorage.setItem(`${this.storageName}-theme`, newTheme);
+			localStorage.setItem(`${storageName}-theme`, newTheme);
 			return newTheme;
 		},
-	},
-	getters: {
-		getLocalStorage: (state: State) => (): unknown => {
-			const value = localStorage.getItem(state.storageName);
+	};
+
+	const getters = {
+		getLocalStorage: () => (): unknown => {
+			const value = localStorage.getItem(storageName);
 			return value;
 		},
-		getTheme: (state: State) => (): unknown => {
-			const value = localStorage.getItem(`${state.storageName}-theme`);
+		getTheme: () => {
+			const value = localStorage.getItem(`${storageName}-theme`);
 			return value;
 		},
-	},
-	state: (): State => {
-		return {
-			links,
-			package: packageJson,
-			pluginVersion: packageJson.version,
-			storageName: 'vuetify-inline-fields',
-		};
-	},
+	};
+
+	return {
+		...actions,
+		...getters,
+		links,
+		package: packageJson,
+		pluginVersion: packageJson.version,
+		storageName,
+	};
 });

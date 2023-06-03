@@ -75,6 +75,9 @@
 		<!-- Props -->
 		<PropsComponent />
 
+		<!-- Components -->
+		<ComponentsSection />
+
 		<!-- Events -->
 		<EventsComponent />
 
@@ -102,6 +105,7 @@
 import { inject, provide, reactive, ref } from 'vue';
 import packageInfo from '../../package.json';
 import {
+	ComponentsSection,
 	DependenciesComponent,
 	DescriptionComponent,
 	EventsComponent,
