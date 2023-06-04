@@ -17,7 +17,7 @@
 		<v-main class="main-container pb-10">
 			<v-responsive>
 				<v-container class="px-10">
-					<DocsComponent />
+					<DocsPage />
 				</v-container>
 			</v-responsive>
 		</v-main>
@@ -27,8 +27,8 @@
 <script setup>
 import { provide, ref } from 'vue';
 import AppBar from './documentation/layout/AppBar.vue';
-import MenuComponent from './documentation/MenuComponent.vue';
-import DocsComponent from './documentation/DocsComponent.vue';
+import MenuComponent from './documentation/components/MenuComponent.vue';
+import DocsPage from './documentation/DocsPage.vue';
 import { useCoreStore } from './stores/index';
 
 const store = useCoreStore();
