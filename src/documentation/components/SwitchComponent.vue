@@ -14,7 +14,38 @@
 			>#</a>
 			VInlineSwitch
 		</h2>
+	</v-col>
 
+	<v-col cols="12">
+		<v-card>
+			<v-card-title>Component</v-card-title>
+			<v-card-text>
+				<v-row>
+					<v-col cols="2">
+						<VInlineSwitch
+							v-model="values.boolean"
+							:density="density"
+							do-not-save
+							hide-details
+						/>
+					</v-col>
+
+					<v-col cols="2">
+						<div>
+							<v-switch
+								v-model="values.boolean"
+								:density="density"
+								hide-details
+								label="VSwitch"
+							/>
+						</div>
+					</v-col>
+				</v-row>
+			</v-card-text>
+		</v-card>
+	</v-col>
+
+	<v-col cols="12">
 		<PropsTable
 			:headers="propsStore.propsSupported.headers"
 			:items="propsStore.vInlineSwitchProps"
@@ -32,6 +63,17 @@ import PropsTable from '@/documentation/components/PropsTable.vue';
 
 const classes = inject('classes');
 const propsStore = usePropsStore();
+
+const density = ref('compact');
+
+const values = reactive({
+	boolean: true,
+	select: {
+		abbr: 'FL',
+		state: 'Florida',
+	},
+	textField: 'Hello World',
+});
 </script>
 
 <style lang="scss" scoped>

@@ -14,7 +14,39 @@
 			>#</a>
 			VInlineTextField
 		</h2>
+	</v-col>
 
+	<v-col cols="12">
+		<v-card>
+			<v-card-title>Component</v-card-title>
+			<v-card-text>
+				<v-row>
+					<v-col cols="2">
+						<VInlineTextField
+							v-model="values.textField"
+							:density="density"
+							do-not-save
+							:table-field="false"
+							:variant="variant"
+						></VInlineTextField>
+					</v-col>
+
+					<v-col cols="2">
+						<div>
+							<v-text-field
+								v-model="values.textField"
+								:density="density"
+								hide-details
+								:variant="variant"
+							></v-text-field>
+						</div>
+					</v-col>
+				</v-row>
+			</v-card-text>
+		</v-card>
+	</v-col>
+
+	<v-col cols="12">
 		<PropsTable
 			:headers="propsStore.propsSupported.headers"
 			:items="propsStore.vInlineTextFieldProps"
@@ -32,6 +64,18 @@ import PropsTable from '@/documentation/components/PropsTable.vue';
 
 const classes = inject('classes');
 const propsStore = usePropsStore();
+
+const density = ref('compact');
+const variant = ref('underlined');
+
+const values = reactive({
+	boolean: true,
+	select: {
+		abbr: 'FL',
+		state: 'Florida',
+	},
+	textField: 'Hello World',
+});
 </script>
 
 <style lang="scss" scoped>

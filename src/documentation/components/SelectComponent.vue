@@ -14,7 +14,49 @@
 			>#</a>
 			VInlineSelect
 		</h2>
+	</v-col>
 
+	<v-col cols="12">
+		<v-card>
+			<v-card-title>Component</v-card-title>
+			<v-card-text>
+				<v-row>
+					<v-col cols="2">
+						<VInlineSelect
+							v-model="values.select"
+							:density="density"
+							do-not-save
+							item-title="state"
+							item-value="abbr"
+							:items="items"
+							:table-field="false"
+							:variant="variant"
+						>
+						</VInlineSelect>
+					</v-col>
+
+					<v-col cols="2">
+						<div>
+							<v-select
+								v-model="values.select"
+								:density="density"
+								hide-details
+								item-title="state"
+								item-value="abbr"
+								:items="items"
+								label="VSelect"
+								return-object
+								single-line
+								:variant="variant"
+							></v-select>
+						</div>
+					</v-col>
+				</v-row>
+			</v-card-text>
+		</v-card>
+	</v-col>
+
+	<v-col cols="12">
 		<PropsTable
 			:headers="propsStore.propsSupported.headers"
 			:items="propsStore.vInlineSelectProps"
@@ -32,6 +74,41 @@ import PropsTable from '@/documentation/components/PropsTable.vue';
 
 const classes = inject('classes');
 const propsStore = usePropsStore();
+
+const density = ref('compact');
+const variant = ref('underlined');
+
+const values = reactive({
+	boolean: true,
+	select: {
+		abbr: 'FL',
+		state: 'Florida',
+	},
+	textField: 'Hello World',
+});
+
+const items = reactive([
+	{
+		abbr: 'FL',
+		state: 'Florida',
+	},
+	{
+		abbr: 'GA',
+		state: 'Georgia',
+	},
+	{
+		abbr: 'NE',
+		state: 'Nebraska',
+	},
+	{
+		abbr: 'CA',
+		state: 'California',
+	},
+	{
+		abbr: 'NY',
+		state: 'New York',
+	},
+]);
 </script>
 
 <style lang="scss" scoped>
