@@ -1,89 +1,95 @@
 <template>
-	<div
-		v-if="!showField && !settings.fieldOnly"
-		class="d-inline-flex align-center justify-center"
-	>
-		<span
-			v-if="icons"
-			class="inline-field-value-icons pb-1"
-			:class="fieldDisplayClass"
-			:style="fieldDisplayStyle"
-			@click="toggleField"
+	<div :class="inlineFieldsContainerClass">
+		<div
+			v-if="!showField && !settings.fieldOnly"
+			class="v-inline-fields--container-display-container"
+			:class="displayContainerClass"
 		>
-			<BooleanIcons
-				v-model="displayValue"
-				:icon-false="settings.iconFalse"
-				:icon-false-color="settings.iconFalseColor"
-				:icon-false-title="settings.iconFalseTitle"
-				:icon-true="settings.iconTrue"
-				:icon-true-color="settings.iconTrueColor"
-				:icon-true-title="settings.iconTrueTitle"
-			/>
-		</span>
+			<div :class="displaySelectionControlClasses">
+				<div class="v-selection-control__wrapper">
+					<div
+						v-if="icons"
+						class="v-inline-fields--container-display-container-value-icons"
+						:class="displayValueClass"
+						:style="displayValueStyle"
+						@click="toggleField"
+					>
+						<BooleanIcons
+							v-model="displayValue"
+							:icon-false="settings.iconFalse"
+							:icon-false-color="settings.iconFalseColor"
+							:icon-false-title="settings.iconFalseTitle"
+							:icon-true="settings.iconTrue"
+							:icon-true-color="settings.iconTrueColor"
+							:icon-true-title="settings.iconTrueTitle"
+						/>
+					</div>
 
-		<span
+					<div
+						v-else
+						class="pb-1 d-inline-flex align-center justify-center"
+						:class="displayValueClass"
+						:style="displayValueStyle"
+						@click="toggleField"
+					>
+						{{ displayValue }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
 			v-else
-			class="pb-1 d-inline-flex align-center justify-center"
-			:class="fieldDisplayClass"
-			:style="fieldDisplayStyle"
-			@click="toggleField"
+			:class="fieldContainerClass"
 		>
-			{{ displayValue }}
-		</span>
-	</div>
-
-	<div
-		v-else
-		class="d-inline-flex align-center"
-		:class="fieldContainerClass"
-	>
-		<v-checkbox
-			v-bind="$attrs"
-			v-model="modelValue"
-			:color="settings.color"
-			:density="settings.density"
-			:disabled="loading"
-			:error="error"
-			:false-icon="settings.falseIcon"
-			:false-value="settings.falseValue"
-			:hide-details="settings.hideDetails"
-			:label="settings.label"
-			:true-icon="settings.trueIcon"
-			:value="settings.trueValue"
-			@update:model-value="saveValue"
-		>
-			<!-- Pass on all scoped slots -->
-			<template
-				v-for="(_, slot) in slots"
-				#[slot]="scope"
+			<v-checkbox
+				v-bind="$attrs"
+				v-model="modelValue"
+				:color="settings.color"
+				:density="settings.density"
+				:disabled="loading"
+				:error="error"
+				:false-icon="settings.falseIcon"
+				:false-value="settings.falseValue"
+				:hide-details="settings.hideDetails"
+				:label="settings.label"
+				:true-icon="settings.trueIcon"
+				:value="settings.trueValue"
+				@update:model-value="saveValue"
 			>
-				<slot
-					:name="slot"
-					v-bind="{ ...scope }"
-				/>
-			</template>
-
-			<template
-				v-if="!slots.append"
-				#append
-			>
-				<v-btn
-					class="ms-1"
-					:color="settings.cancelButtonColor"
-					icon
-					:size="settings.cancelButtonSize"
-					:title="settings.cancelButtonTitle"
-					:variant="settings.cancelButtonVariant"
-					@click="toggleField"
+				<!-- Pass on all scoped slots -->
+				<template
+					v-for="(_, slot) in slots"
+					#[slot]="scope"
 				>
-					<v-icon
-						v-if="!settings.fieldOnly"
-						:color="settings.cancelIconColor"
-						:icon="settings.cancelIcon"
+					<slot
+						:name="slot"
+						v-bind="{ ...scope }"
 					/>
-				</v-btn>
-			</template>
-		</v-checkbox>
+				</template>
+
+				<template
+					v-if="!slots.append"
+					#append
+				>
+					<v-btn
+						v-if="!settings.fieldOnly"
+						class="ms-1"
+						:color="settings.cancelButtonColor"
+						icon
+						:size="settings.cancelButtonSize"
+						:title="settings.cancelButtonTitle"
+						:variant="settings.cancelButtonVariant"
+						@click="toggleField"
+					>
+						<v-icon
+							:color="settings.cancelIconColor"
+							:icon="settings.cancelIcon"
+						/>
+					</v-btn>
+				</template>
+			</v-checkbox>
+		</div>
 	</div>
 </template>
 
@@ -102,10 +108,13 @@ import {
 	useToggleField,
 } from './composables/methods';
 import {
-	useFieldContainerClass,
 	useDisplayContainerClass,
+	useDisplaySelectionControlClasses,
+	useDisplayValueClass,
+	useFieldContainerClass,
+	useInlineFieldsContainerClass,
 } from './composables/classes';
-import { useFieldDisplayStyles } from './composables/styles';
+import { useDisplayValueStyles } from './composables/styles';
 import inlineEmits from './utils/emits';
 
 
@@ -130,8 +139,27 @@ const displayValue = computed(() => {
 
 
 // ------------------------------------------------ Class & Styles //
-const fieldContainerClass = computed(() => useFieldContainerClass('checkbox', showField.value));
-const fieldDisplayClass = computed(() => useDisplayContainerClass(
+const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
+	density: settings.density,
+	field: 'v-checkbox',
+	tableField: settings.tableField,
+}));
+
+const displayContainerClass = computed(() => useDisplayContainerClass({
+	density: settings.density,
+	field: 'v-checkbox',
+}));
+
+const displaySelectionControlClasses = useDisplaySelectionControlClasses({
+	density: settings.density,
+});
+
+const fieldContainerClass = computed(() => useFieldContainerClass({
+	active: showField.value,
+	name: 'checkbox',
+}));
+
+const displayValueClass = computed(() => useDisplayValueClass(
 	'checkbox',
 	settings.valueColor,
 	{
@@ -139,7 +167,8 @@ const fieldDisplayClass = computed(() => useDisplayContainerClass(
 		error,
 	}
 ));
-const fieldDisplayStyle = computed(() => useFieldDisplayStyles({
+
+const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
 	error,
 	underlineColor: settings.underlineColor,

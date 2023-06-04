@@ -1,79 +1,86 @@
 <template>
-	<div
-		v-if="!showField && !settings.fieldOnly"
-		class="d-inline-flex align-center justify-center"
-	>
-		<span
-			class="pb-1 d-inline-flex align-center justify-center"
-			:class="fieldDisplayClass"
-			:style="fieldDisplayStyle"
-			@click="toggleField"
+	<div :class="inlineFieldsContainerClass">
+		<div
+			v-if="!showField && !settings.fieldOnly"
+			class="v-inline-fields--container-display-container"
+			:class="displayContainerClass"
 		>
-			{{ displayValue }}
-		</span>
-	</div>
+			<div :class="displayInputControlClasses">
+				<div class="v-inline-fields--container-display-container-fields">
+					<div
+						class="d-inline-flex align-center justify-center"
+						:class="displayValueClass"
+						:style="displayValueStyle"
+						@click="toggleField"
+					>
+						{{ displayValue }}
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<div
-		v-else
-		:class="fieldContainerClass"
-	>
-		<v-textarea
-			v-bind="$attrs"
-			v-model="modelValue"
-			:auto-grow="settings.autoGrow"
-			:autofocus="!settings.fieldOnly || settings.autofocus"
-			class="my-2"
-			:color="settings.color"
-			:density="settings.density"
-			:disabled="loading"
-			:error="error"
-			:error-messages="internalErrorMessages"
-			:hide-details="settings.hideDetails"
-			:label="settings.label"
-			:loading="loading"
-			:variant="settings.variant"
-			width="100%"
-			@keyup.esc="closeField"
+		<div
+			v-else
+			:class="fieldContainerClass"
 		>
-			<!-- Pass on all scoped slots -->
-			<template
-				v-for="(_, slot) in slots"
-				#[slot]="scope"
+			<v-textarea
+				v-bind="$attrs"
+				v-model="modelValue"
+				:auto-grow="settings.autoGrow"
+				:autofocus="!settings.fieldOnly || settings.autofocus"
+				:color="settings.color"
+				:density="settings.density"
+				:disabled="loading"
+				:error="error"
+				:error-messages="internalErrorMessages"
+				:hide-details="settings.hideDetails"
+				:label="settings.label"
+				:loading="loading"
+				:rows="settings.rows"
+				:variant="settings.variant"
+				width="100%"
+				@keyup.esc="closeField"
 			>
-				<slot
-					:name="slot"
-					v-bind="{ ...scope }"
-				/>
-			</template>
+				<!-- Pass on all scoped slots -->
+				<template
+					v-for="(_, slot) in slots"
+					#[slot]="scope"
+				>
+					<slot
+						:name="slot"
+						v-bind="{ ...scope }"
+					/>
+				</template>
 
-			<template
-				v-if="!slots.append"
-				#append
-			>
-				<SaveFieldButtons
-					:cancel-button-color="settings.cancelButtonColor"
-					:cancel-button-size="settings.cancelButtonSize"
-					:cancel-button-title="settings.cancelButtonTitle"
-					:cancel-button-variant="settings.cancelButtonVariant"
-					:cancel-icon="settings.cancelIcon"
-					:cancel-icon-color="settings.cancelIconColor"
-					:error="error"
-					:field-only="settings.fieldOnly"
-					:hide-save-icon="settings.hideSaveIcon"
-					:loading="loading"
-					:loading-icon="settings.loadingIcon"
-					:loading-icon-color="settings.loadingIconColor"
-					:save-button-color="settings.saveButtonColor"
-					:save-button-size="settings.saveButtonSize"
-					:save-button-title="settings.saveButtonTitle"
-					:save-button-variant="settings.saveButtonVariant"
-					:save-icon="settings.saveIcon"
-					:save-icon-color="settings.saveIconColor"
-					@close="closeField"
-					@save="saveValue"
-				/>
-			</template>
-		</v-textarea>
+				<template
+					v-if="!slots.append"
+					#append
+				>
+					<SaveFieldButtons
+						:cancel-button-color="settings.cancelButtonColor"
+						:cancel-button-size="settings.cancelButtonSize"
+						:cancel-button-title="settings.cancelButtonTitle"
+						:cancel-button-variant="settings.cancelButtonVariant"
+						:cancel-icon="settings.cancelIcon"
+						:cancel-icon-color="settings.cancelIconColor"
+						:error="error"
+						:field-only="settings.fieldOnly"
+						:hide-save-icon="settings.hideSaveIcon"
+						:loading="loading"
+						:loading-icon="settings.loadingIcon"
+						:loading-icon-color="settings.loadingIconColor"
+						:save-button-color="settings.saveButtonColor"
+						:save-button-size="settings.saveButtonSize"
+						:save-button-title="settings.saveButtonTitle"
+						:save-button-variant="settings.saveButtonVariant"
+						:save-icon="settings.saveIcon"
+						:save-icon-color="settings.saveIconColor"
+						@close="closeField"
+						@save="saveValue"
+					/>
+				</template>
+			</v-textarea>
+		</div>
 	</div>
 </template>
 
@@ -94,10 +101,13 @@ import {
 	useTruncateText,
 } from './composables/methods';
 import {
-	useFieldContainerClass,
 	useDisplayContainerClass,
+	useDisplayInputControlClasses,
+	useDisplayValueClass,
+	useFieldContainerClass,
+	useInlineFieldsContainerClass,
 } from './composables/classes';
-import { useFieldDisplayStyles } from './composables/styles';
+import { useDisplayValueStyles } from './composables/styles';
 import inlineEmits from './utils/emits';
 
 
@@ -139,8 +149,28 @@ const displayValue = computed(() => {
 
 
 // ------------------------------------------------ Class & Styles //
-const fieldContainerClass = computed(() => useFieldContainerClass('textarea', showField.value));
-const fieldDisplayClass = computed(() => useDisplayContainerClass(
+const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
+	density: settings.density,
+	field: 'v-textarea',
+	tableField: settings.tableField,
+}));
+
+const displayContainerClass = computed(() => useDisplayContainerClass({
+	density: settings.density,
+	field: 'v-textarea',
+}));
+
+const displayInputControlClasses = useDisplayInputControlClasses({
+	density: settings.density,
+	variant: settings.variant,
+});
+
+const fieldContainerClass = computed(() => useFieldContainerClass({
+	active: showField.value,
+	name: 'textarea',
+}));
+
+const displayValueClass = computed(() => useDisplayValueClass(
 	'textarea',
 	settings.valueColor,
 	{
@@ -149,7 +179,8 @@ const fieldDisplayClass = computed(() => useDisplayContainerClass(
 		error,
 	}
 ));
-const fieldDisplayStyle = computed(() => useFieldDisplayStyles({
+
+const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
 	error,
 	underlineColor: settings.underlineColor,
