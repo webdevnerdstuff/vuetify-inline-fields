@@ -1,16 +1,18 @@
 <template>
 	<v-icon
 		v-if="modelValue"
-		class="fa-fw"
+		class="v-inline-fields--boolean-icons fa-fw"
 		:color="iconTrueColor"
 		:icon="iconTrue"
+		size="x-small"
 		:title="iconTrueTitle"
 	></v-icon>
 	<v-icon
 		v-else
-		class="fa-fw"
+		class="v-inline-fields--boolean-icons fa-fw"
 		:color="iconFalseColor"
 		:icon="iconFalse"
+		size="x-small"
 		:title="iconFalseTitle"
 	></v-icon>
 </template>
