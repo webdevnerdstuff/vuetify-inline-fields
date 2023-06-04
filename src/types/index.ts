@@ -21,6 +21,11 @@ import {
 export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
 export type TimeOpened = Date | null;
 
+export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['density'] | VSwitch['$props']['density'] | VTextField['$props']['density'] | VTextarea['$props']['density'];
+
+export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props']['variant'] | VTextarea['$props']['variant'];
+
+
 
 // -------------------------------------------------- Props //
 export interface SharedProps {
@@ -49,13 +54,13 @@ export interface SharedProps {
 	iconTrueColor?: string;
 	iconTrueTitle?: string | undefined;
 	icons?: boolean;
-	item: Record<string, unknown>;
+	item?: Record<string, unknown>;
 	label?: string;
 	loadingIcon?: string;
 	loadingIconColor?: string;
 	method?: string;
 	// TODO: Change this to optional. Throw error if using apiRoute and not providing a name. //
-	name: string;
+	name?: string;
 	required?: boolean;
 	saveButtonColor?: VBtn['$props']['color'];
 	saveButtonSize?: VBtn['$props']['size'];
@@ -63,6 +68,7 @@ export interface SharedProps {
 	saveButtonVariant?: VBtn['$props']['variant'];
 	saveIcon?: string;
 	saveIconColor?: string;
+	tableField?: boolean;
 	trueValue?: boolean | string;
 	truncateLength?: number | undefined;
 	truncateSuffix?: string | undefined;
@@ -108,6 +114,7 @@ export interface VInlineTextareaProps extends Omit<SharedProps,
 > {
 	autoGrow?: VTextarea['$props']['autoGrow'];
 	density?: VTextarea['$props']['density'];
+	rows?: VTextarea['$props']['rows'];
 	rules?: VTextarea['$props']['rules'];
 	variant?: VTextarea['$props']['variant'];
 }
@@ -149,7 +156,46 @@ export interface SaveFieldButtons extends Required<Pick<SharedProps,
 
 
 // -------------------------------------------------- Composables //
+
+// ------------------------ Main Container //
+export interface UseInlineFieldsContainerClass {
+	(
+		options: {
+			density?: GlobalDensity;
+			field?: Ref<string> | string;
+			tableField?: SharedProps['tableField'];
+		},
+	): object;
+}
+
+// ------------------------ Display Value Container //
 export interface UseDisplayContainerClass {
+	(
+		options: {
+			density?: GlobalDensity;
+			field?: Ref<string> | string;
+		},
+	): object;
+}
+
+export interface UseDisplayInputControlClass {
+	(
+		options: {
+			density?: GlobalDensity;
+			variant?: GlobalVariant;
+		},
+	): object;
+}
+
+export interface UseDisplaySelectionControlClass {
+	(
+		options: {
+			density?: GlobalDensity;
+		},
+	): object;
+}
+
+export interface UseDisplayValueClass {
 	(
 		name: string,
 		valueColor: string,
@@ -161,6 +207,17 @@ export interface UseDisplayContainerClass {
 	): object;
 }
 
+// ------------------------ Field Container //
+export interface UseFieldContainerClass {
+	(
+		options: {
+			active?: Ref<boolean> | boolean;
+			name?: Ref<string> | string;
+		},
+	): object;
+}
+
+// ------------------------ Other //
 export interface UseCheckForErrors {
 	(
 		options: {
@@ -174,7 +231,7 @@ export interface UseCheckForErrors {
 	};
 }
 
-export interface UseFieldDisplayStyles {
+export interface UseDisplayValueStyles {
 	(
 		options: {
 			color: SharedProps['color'];
