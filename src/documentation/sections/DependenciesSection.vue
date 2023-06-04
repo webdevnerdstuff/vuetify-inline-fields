@@ -1,32 +1,39 @@
 <template>
 	<v-row>
 		<v-col
-			id="license"
+			id="dependencies"
 			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
 				<a
 					:class="classes.headerA"
-					href="#license"
+					href="#dependencies"
 				>#</a>
-				License
+				Dependencies
 			</h2>
 
 			<v-row>
 				<v-col cols="12">
-					Copyright &copy; {{ new Date().getFullYear() }}
 					<a
-						:href="store.links.githubProfile"
-						target="_blank"
-					>WebDevNerdStuff</a>
-					<br />
-					Licensed under the
-					<a
-						:href="`${store.links.github}/blob/master/LICENSE.md`"
+						:href="store.links.vuetify"
 						target="_blank"
 					>
-						MIT License
+						Vuetify v3
+					</a>
+					<br />
+					<a
+						:href="store.links.vue"
+						target="_blank"
+					>
+						Vue 3
+					</a>
+					<br />
+					<a
+						:href="store.links.vueUse"
+						target="_blank"
+					>
+						VueUse
 					</a>
 				</v-col>
 			</v-row>
@@ -38,7 +45,7 @@
 import { inject } from 'vue';
 import { useCoreStore } from '@/stores/index';
 
-const classes = inject('classes');
 
+const classes = inject('classes');
 const store = useCoreStore();
 </script>

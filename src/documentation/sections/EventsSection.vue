@@ -13,6 +13,13 @@
 				Events
 			</h2>
 
+			For component specific events, please refer to the <a
+				:href="store.links.vuetify"
+				target="_blank"
+			>Vuetify</a> documentation.
+		</v-col>
+
+		<v-col cols="12">
 			<v-row>
 				<v-col cols="12">
 					<v-card>
@@ -65,8 +72,11 @@
 
 <script setup>
 import { inject, ref } from 'vue';
+import { useCoreStore } from '@/stores/index';
+
 
 const classes = inject('classes');
+const store = useCoreStore();
 
 const headers = [
 	{
@@ -75,7 +85,7 @@ const headers = [
 		key: 'name',
 		sortable: false,
 		title: 'Name',
-		width: '15%',
+		width: '20%',
 	},
 	{
 		align: 'start',
@@ -87,8 +97,20 @@ const headers = [
 ];
 const items = [
 	{
-		desc: 'TBD',
-		name: 'TBD',
+		desc: 'Emitted when an error occurs',
+		name: 'error',
+	},
+	{
+		desc: 'Emitted when the loading state changes',
+		name: 'loading',
+	},
+	{
+		desc: 'Emitted when the save button is clicked',
+		name: 'update',
+	},
+	{
+		desc: 'Emitted when the close siblings event is triggered',
+		name: 'update:closeSiblingFields',
 	},
 ];
 const search = ref('');

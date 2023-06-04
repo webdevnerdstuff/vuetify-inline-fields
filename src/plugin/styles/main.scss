@@ -1,7 +1,121 @@
+:root {
+	--v-inline-fields-top-padding-compact: 13px;
+	--v-inline-fields-top-padding-comfortable: 17px;
+	--v-inline-fields-top-padding-default: 21px;
+}
+
 .v-inline-fields {
+	&--container {
+		&-inline {
+
+			// tableField prop //
+			&-table-centered {
+				--v-inline-fields-top-padding-compact: 0;
+				--v-inline-fields-top-padding-comfortable: 0;
+				--v-inline-fields-top-padding-default: 0;
+
+				.v-inline-fields--field-value-text-field {
+					.v-input--density-compact {
+
+						// Variants - plain & underlined //
+						.v-field--variant-plain,
+						.v-field--variant-underlined {
+							.v-field__input {
+								min-height: unset !important;
+								padding-bottom: 0;
+								padding-top: 3px;
+							}
+						}
+					}
+
+					.v-input--density-comfortable {
+
+						// Variants - plain & underlined //
+						.v-field--variant-plain,
+						.v-field--variant-underlined {
+							.v-field__input {
+								min-height: unset !important;
+								padding-bottom: 0;
+								padding-top: 2px;
+							}
+						}
+					}
+
+					.v-input--density-default {
+
+						// Variants - plain & underlined //
+						.v-field--variant-plain,
+						.v-field--variant-underlined {
+							.v-field__input {
+								min-height: unset !important;
+								padding-bottom: 0;
+								padding-top: 1px;
+							}
+						}
+					}
+				}
+			}
+
+			// Checkbox & Switch //
+			&-v-checkbox,
+			&-v-switch {
+				&-compact {
+					padding-top: var(--v-inline-fields-top-padding-compact);
+				}
+
+				&-comfortable {
+					padding-top: var(--v-inline-fields-top-padding-comfortable);
+				}
+
+				&-default {
+					padding-top: var(--v-inline-fields-top-padding-default);
+				}
+
+				.v-selection-control {
+					padding-bottom: 1px;
+				}
+			}
+
+			// Select & Textarea & Text Field //
+			&-v-select,
+			&-v-textarea,
+			&-v-text-field {
+				&-compact {
+					.v-inline-fields--container-display-container-fields {
+						padding-top: var(--v-inline-fields-top-padding-compact);
+
+						> div {
+							line-height: 1.5rem;
+						}
+					}
+				}
+
+				&-comfortable {
+					.v-inline-fields--container-display-container-fields {
+						padding-top: var(--v-inline-fields-top-padding-comfortable);
+
+						> div {
+							padding-bottom: 0;
+						}
+					}
+				}
+
+				&-default {
+					.v-inline-fields--container-display-container-fields {
+						padding-top: var(--v-inline-fields-top-padding-default);
+
+						> div {
+							line-height: 1.5rem;
+							padding-bottom: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	&--display {
 		&-value {
-			border-bottom-width: 10px;
 			cursor: pointer;
 
 			&-empty {
@@ -12,14 +126,24 @@
 	}
 
 	&--field-value {
-		&-checkbox {
+
+		// Checkbox & Switch //
+		&-checkbox,
+		&-switch {
 			.v-input {
+				display: flex;
+
 				&__append {
 					margin-left: 0;
 				}
 			}
+
+			:deep(.v-input__control) {
+				display: inline-flex !important;
+			}
 		}
 
+		// Select & Textarea & Text Field //
 		&-select,
 		&-textarea,
 		&-text-field {
@@ -40,5 +164,12 @@
 
 	&--save-fields-container {
 		height: 100%;
+	}
+
+	&--boolean-icons {
+		font-size: calc(var(--v-icon-size-multiplier) * 1em);
+		font-weight: bold;
+		line-height: 1.5rem;
+		padding-bottom: 2px;
 	}
 }

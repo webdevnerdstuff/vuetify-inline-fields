@@ -12,7 +12,6 @@
 			:width="iconSize.width"
 			@click.stop="toggleDrawer"
 		>
-			<!-- @click.stop="toggleDrawer" -->
 			<v-icon icon="mdi:mdi-menu"></v-icon>
 		</v-app-bar-nav-icon>
 		<v-app-bar-nav-icon
@@ -29,87 +28,30 @@
 
 		<v-spacer></v-spacer>
 
-		<v-btn
-			v-if="isPlayground"
-			class="me-2 text-capitalize"
-			:href="links.vuetifyGithub"
-			target="_blank"
-			title="Vuetify Github"
-			variant="outlined"
+		<v-select
+			class="ma-0 pa-0 me-2"
+			density="compact"
+			hide-details
+			:items="menuItems"
+			multiple
+			placeholder="Vuetify Links"
+			prepend-inner-icon="mdi:mdi-vuetify"
+			style="height: inherit; max-width: 300px; width: 300px;"
+			title="name"
+			variant="underlined"
 		>
-			<v-icon
-				class="me-1"
-				icon="mdi:mdi-vuetify"
-			/> Github
-		</v-btn>
-
-		<v-btn
-			v-if="isPlayground"
-			class="me-2 text-capitalize"
-			:href="`${links.vuetify}en/api/v-checkbox/`"
-			target="_blank"
-			title="Vuetify v-checkbox API"
-			variant="outlined"
-		>
-			<v-icon
-				class="me-1"
-				icon="mdi:mdi-vuetify"
-			/> VCheckbox
-		</v-btn>
-
-		<v-btn
-			v-if="isPlayground"
-			class="me-2 text-capitalize"
-			:href="`${links.vuetify}en/api/v-select/`"
-			target="_blank"
-			title="Vuetify v-select API"
-			variant="outlined"
-		>
-			<v-icon
-				class="me-1"
-				icon="mdi:mdi-vuetify"
-			/> VSelect
-		</v-btn>
-
-		<v-btn
-			v-if="isPlayground"
-			class="me-2 text-capitalize"
-			:href="`${links.vuetify}en/api/v-switch/`"
-			target="_blank"
-			title="Vuetify v-switch API"
-			variant="outlined"
-		>
-			<v-icon
-				class="me-1"
-				icon="mdi:mdi-vuetify"
-			/> VSwitch
-		</v-btn>
-
-		<v-btn
-			v-if="isPlayground"
-			class="me-2 text-capitalize"
-			:href="`${links.vuetify}en/api/v-text-field/`"
-			target="_blank"
-			title="Vuetify v-text-field API"
-			variant="outlined"
-		>
-			<v-icon
-				class="me-1"
-				icon="mdi:mdi-vuetify"
-			/> VTextField
-		</v-btn>
-
-		<v-btn
-			v-if="isPlayground"
-			class="me-2"
-			:height="iconSize.height"
-			:href="`${links.vuetify}en/components/all/`"
-			icon
-			target="_blank"
-			:width="iconSize.width"
-		>
-			<v-icon icon="mdi:mdi-vuetify" />
-		</v-btn>
+			<template #item="{ item }">
+				<v-list-item
+					:key="item.key"
+					density="compact"
+					:href="item.raw.link"
+					:prepend-icon="item.raw.icon ? item.raw.icon : 'mdi:mdi-vuetify'"
+					target="_blank"
+					:title="item.raw?.topTitle || item.title"
+				>
+				</v-list-item>
+			</template>
+		</v-select>
 
 		<v-btn
 			class="me-2"
@@ -155,6 +97,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useCoreStore } from '@/stores/index';
+import { useMenuStore } from '@/stores/menu';
 import { useTheme } from 'vuetify';
 
 const emit = defineEmits(['changedTheme', 'updatedDrawer']);
@@ -166,6 +109,11 @@ defineProps({
 	},
 });
 
+onMounted(() => {
+	getTheme();
+});
+
+const menuStore = useMenuStore();
 const store = useCoreStore();
 const theme = useTheme();
 
@@ -173,13 +121,11 @@ const links = store.links;
 const themeName = ref('dark');
 const drawer = ref(true);
 
+const menuItems = [...menuStore.vuetifyLinks, ...menuStore.componentItems];
+
 const iconSize = ref({
 	height: 32,
 	width: 32,
-});
-
-onMounted(() => {
-	getTheme();
 });
 
 function getTheme() {

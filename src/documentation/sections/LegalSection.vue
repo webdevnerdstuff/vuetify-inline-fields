@@ -1,21 +1,24 @@
 <template>
 	<v-row>
 		<v-col
-			id="description"
+			id="legal"
 			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
 				<a
 					:class="classes.headerA"
-					href="#description"
+					href="#legal"
 				>#</a>
-				Description
+				Legal
 			</h2>
 
 			<v-row>
 				<v-col cols="12">
-					<p>TBD</p>
+					<p>
+						Vuetify and the Vuetify logo are trademarks of Vuetify LLC. This
+						component was not created or endorsed by Vuetify.
+					</p>
 				</v-col>
 			</v-row>
 		</v-col>
@@ -25,6 +28,6 @@
 <script setup>
 import { inject } from 'vue';
 
+
 const classes = inject('classes');
-const links = inject('links');
 </script>

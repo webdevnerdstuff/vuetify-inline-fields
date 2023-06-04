@@ -1,16 +1,16 @@
 <template>
 	<v-row>
 		<v-col
-			id="example"
+			id="description"
 			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
 				<a
 					:class="classes.headerA"
-					href="#example"
+					href="#description"
 				>#</a>
-				Example
+				Description
 			</h2>
 
 			<v-row>
@@ -25,5 +25,7 @@
 <script setup>
 import { inject } from 'vue';
 
+
 const classes = inject('classes');
+const links = inject('links');
 </script>

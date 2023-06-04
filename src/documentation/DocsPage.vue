@@ -67,34 +67,37 @@
 		</v-row>
 
 		<!-- Description -->
-		<DescriptionComponent />
+		<DescriptionSection />
 
 		<!-- Usage -->
-		<UsageComponent />
+		<UsageSection />
 
 		<!-- Props -->
-		<PropsComponent />
+		<PropsSection />
+
+		<!-- Components -->
+		<ComponentsSection />
 
 		<!-- Events -->
-		<EventsComponent />
+		<EventsSection />
 
 		<!-- Slots -->
-		<SlotsComponent />
+		<SlotsSection />
 
 		<!-- SASS Variables -->
-		<SassVariables />
+		<SassVariablesSection />
 
 		<!-- Example -->
-		<ExampleComponent />
+		<ExampleSection />
 
 		<!-- Dependencies -->
-		<DependenciesComponent />
+		<DependenciesSection />
 
 		<!-- License -->
-		<LicenseComponent />
+		<LicenseSection />
 
 		<!-- Legal -->
-		<LegalComponent />
+		<LegalSection />
 	</v-container>
 </template>
 
@@ -102,17 +105,18 @@
 import { inject, provide, reactive, ref } from 'vue';
 import packageInfo from '../../package.json';
 import {
-	DependenciesComponent,
-	DescriptionComponent,
-	EventsComponent,
-	ExampleComponent,
-	LegalComponent,
-	LicenseComponent,
-	PropsComponent,
-	SassVariables,
-	SlotsComponent,
-	UsageComponent,
-} from '@/components/docs';
+	ComponentsSection,
+	DependenciesSection,
+	DescriptionSection,
+	EventsSection,
+	ExampleSection,
+	LegalSection,
+	LicenseSection,
+	PropsSection,
+	SassVariablesSection,
+	SlotsSection,
+	UsageSection,
+} from '@/documentation/sections';
 
 const links = inject('links');
 

@@ -57,8 +57,11 @@ export const sharedProps = {
 	// ? The column name of the field - [ All Fields ] //
 	name: '',
 
+	// ? If the field is used in a table this will remove the top padding //
+	tableField: true,
+
 	// ? The color of the underline - [ All Fields ] //
-	underlineColor: '',
+	underlineColor: 'primary',
 
 	// ? The style of the underline - [ All Fields ] //
 	underlineStyle: 'dotted',
@@ -209,6 +212,9 @@ const textareaProps = {
 	...{
 		// ? Automatically grow the textarea depending on amount of text //
 		autoGrow: true,
+
+		// ? The height of the textarea when autoGrow is false //
+		rows: 1,
 
 		// ? The variant of the field //
 		variant: 'underlined' as const,

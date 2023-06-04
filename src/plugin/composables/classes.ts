@@ -1,7 +1,64 @@
-import { UseDisplayContainerClass } from '@/types';
+import {
+	UseDisplayContainerClass,
+	UseDisplayInputControlClass,
+	UseDisplaySelectionControlClass,
+	UseDisplayValueClass,
+	UseFieldContainerClass,
+	UseInlineFieldsContainerClass,
+} from '@/types';
 import { componentName } from '../utils/globals';
 
-export const useDisplayContainerClass: UseDisplayContainerClass = (name, valueColor, options) => {
+
+// ------------------------------------------------ Main Container //
+export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (options) => {
+	const { field = '', density = '', tableField = false } = options;
+
+	return {
+		[`${componentName}--container`]: true,
+		[`${componentName}--container-inline-${field}`]: true,
+		[`${componentName}--container-inline-${field}-${density}`]: true,
+		[`${componentName}--container-inline-table-centered`]: tableField,
+	};
+};
+
+
+// ------------------------------------------------ Display Value Container //
+export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
+	const { field = '', density = '' } = options;
+
+	return {
+		[`${componentName}`]: true,
+		[`${componentName}--container-display-container`]: true,
+		[`${field}`]: true,
+		'v-input': true,
+		[`v-input--density-${density}`]: true,
+		'v-input--horizontal': true,
+	};
+};
+
+export const useDisplayInputControlClasses: UseDisplayInputControlClass = (options) => {
+	const { density = '', variant = '' } = options;
+
+	return {
+		'v-input': true,
+		'v-input--dirty': true,
+		'v-input--horizontal': true,
+		'v-text-field': true,
+		[`v-input--density-${density}`]: true,
+		[`v-text-field--plain-${variant}`]: true,
+	};
+};
+
+export const useDisplaySelectionControlClasses: UseDisplaySelectionControlClass = (options) => {
+	const { density = '' } = options;
+
+	return {
+		'v-selection-control': true,
+		[`v-selection-control--density-${density}`]: true,
+	};
+};
+
+export const useDisplayValueClass: UseDisplayValueClass = (name, valueColor, options) => {
 	const { disabled = false, error = false, empty = false } = options;
 
 	return {
@@ -15,7 +72,11 @@ export const useDisplayContainerClass: UseDisplayContainerClass = (name, valueCo
 	};
 };
 
-export const useFieldContainerClass = (name: string, active = false): object => {
+
+// ------------------------------------------------ Field Container //
+export const useFieldContainerClass: UseFieldContainerClass = (options): object => {
+	const { name, active = false } = options;
+
 	return {
 		[`${componentName}`]: true,
 		[`${componentName}--field-value-${name}`]: true,

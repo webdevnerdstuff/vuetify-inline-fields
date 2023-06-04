@@ -1,8 +1,8 @@
 import { CSSProperties } from 'vue';
-import { UseFieldDisplayStyles } from '@/types';
+import { UseDisplayValueStyles } from '@/types';
 
 // -------------------------------------------------- Value Styles //
-export const useFieldDisplayStyles: UseFieldDisplayStyles = (options) => {
+export const useDisplayValueStyles: UseDisplayValueStyles = (options) => {
 	const { underlineStyle, underlineWidth, color, error, underlined } = options;
 	let { underlineColor } = options;
 	underlineColor = underlineColor || color;
