@@ -32,7 +32,7 @@ export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
 		[`${field}`]: true,
 		'v-input': true,
 		[`v-input--density-${density}`]: true,
-		'v-input--horizontal': false,
+		'v-input--horizontal': true,
 	};
 };
 
