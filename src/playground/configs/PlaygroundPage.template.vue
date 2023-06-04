@@ -21,6 +21,7 @@
 									:cancel-icon-text="componentOptions.cancelIconText"
 									:close-siblings="componentOptions.closeSiblings"
 									:color="componentOptions.color"
+									:density="componentOptions.density"
 									:disabled="componentOptions.disabled"
 									:do-not-save="componentOptions.doNotSave"
 									:field-only="componentOptions.fieldOnly"
@@ -51,6 +52,7 @@
 								:cancel-icon-text="componentOptions.cancelIconText"
 								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
+								:density="componentOptions.density"
 								:disabled="componentOptions.disabled"
 								:do-not-save="componentOptions.doNotSave"
 								:empty-text="componentOptions.emptyText"
@@ -72,6 +74,7 @@
 								:underline-style="componentOptions.underlineStyle"
 								:underline-width="componentOptions.underlineWidth"
 								:underlined="componentOptions.underlined"
+								:variant="componentOptions.variant"
 								@error="showError = $event"
 								@loading="loading = $event"
 								@update="updatedValue($event, 'select')"
@@ -89,6 +92,7 @@
 								:cancel-icon-text="componentOptions.cancelIconText"
 								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
+								:density="componentOptions.density"
 								:disabled="componentOptions.disabled"
 								:do-not-save="componentOptions.doNotSave"
 								:field-only="componentOptions.fieldOnly"
@@ -105,6 +109,7 @@
 								:underline-style="componentOptions.underlineStyle"
 								:underline-width="componentOptions.underlineWidth"
 								:underlined="componentOptions.underlined"
+								:variant="componentOptions.variant"
 								@error="showError = $event"
 								@loading="loading = $event"
 								@update="updatedValue($event, 'text-field')"
@@ -121,6 +126,7 @@
 								:cancel-icon-text="componentOptions.cancelIconText"
 								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
+								:density="componentOptions.density"
 								:disabled="componentOptions.disabled"
 								:do-not-save="componentOptions.doNotSave"
 								:field-only="componentOptions.fieldOnly"
@@ -137,6 +143,7 @@
 								:underline-style="componentOptions.underlineStyle"
 								:underline-width="componentOptions.underlineWidth"
 								:underlined="componentOptions.underlined"
+								:variant="componentOptions.variant"
 								@error="showError = $event"
 								@loading="loading = $event"
 								@update="updatedValue($event, 'textarea')"
@@ -154,6 +161,7 @@
 									:cancel-icon-text="componentOptions.cancelIconText"
 									:close-siblings="componentOptions.closeSiblings"
 									:color="componentOptions.color"
+									:density="componentOptions.density"
 									:disabled="componentOptions.disabled"
 									:do-not-save="componentOptions.doNotSave"
 									:field-only="componentOptions.fieldOnly"
@@ -209,6 +217,7 @@ const componentOptions = reactive({
 	cancelIconText: 'Cancel',
 	closeSiblings: true,
 	color: 'primary',
+	density: 'compact',
 	disabled: false,
 	doNotSave: false,
 	emptyText: 'empty',
@@ -236,6 +245,7 @@ const componentOptions = reactive({
 	underlineStyle: 'dotted',
 	underlineWidth: '1px',
 	underlined: true,
+	variant: 'underlined',
 });
 
 const headers = [
@@ -249,7 +259,7 @@ const headers = [
 		align: 'start',
 		key: 'active',
 		title: 'Active',
-		width: 100,
+		width: 125,
 	},
 	{
 		align: 'start',
