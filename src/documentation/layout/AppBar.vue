@@ -47,7 +47,7 @@
 					:href="item.raw.link"
 					:prepend-icon="item.raw.icon ? item.raw.icon : 'mdi:mdi-vuetify'"
 					target="_blank"
-					:title="item.title"
+					:title="item.raw?.topTitle || item.title"
 				>
 				</v-list-item>
 			</template>
