@@ -159,9 +159,15 @@ const sharedProps = [
 	},
 	{
 		default: 'undefined',
-		desc: "Sets the component's name attribute.",
+		desc: "Sets the component's name attribute",
 		name: 'name',
 		type: 'string',
+	},
+	{
+		default: true,
+		desc: 'Adjusts padding to help the field to be vertically centered in the table cell',
+		name: 'tableField',
+		type: 'boolean',
 	},
 	{
 		default: 'primary',
@@ -462,6 +468,12 @@ const vInlineTextareaProps = [
 			desc: densityDesc,
 			name: 'density',
 			type: "VTextarea['$props']['density']",
+		},
+		{
+			default: 1,
+			desc: 'Default row count',
+			name: 'rows',
+			type: "VTextarea['$props']['rows']",
 		},
 		{
 			default: 'underlined',
