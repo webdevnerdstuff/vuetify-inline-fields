@@ -10,41 +10,41 @@
 						:loading="tableOptions.loading"
 					>
 						<template #[`item.active`]="{ item }">
-							<div class="d-flex flex-align-center">
-								<VInlineSwitch
-									v-model="item.raw.active"
-									api-route="api/posts"
-									:cancel-button-color="componentOptions.cancelButtonColor"
-									:cancel-button-variant="componentOptions.cancelButtonVariant"
-									:cancel-icon="componentOptions.cancelIcon"
-									:cancel-icon-color="componentOptions.cancelIconColor"
-									:cancel-icon-text="componentOptions.cancelIconText"
-									:close-siblings="componentOptions.closeSiblings"
-									:color="componentOptions.color"
-									:density="componentOptions.density"
-									:disabled="componentOptions.disabled"
-									:do-not-save="componentOptions.doNotSave"
-									:field-only="componentOptions.fieldOnly"
-									:icon-false="componentOptions.iconFalse"
-									:icon-false-title="componentOptions.iconFalseTitle"
-									:icon-true="componentOptions.iconTrue"
-									:icon-true-title="componentOptions.iconTrueTitle"
-									:item="item"
-									:label="componentOptions.label"
-									name="active"
-									:underline-color="componentOptions.underlineColor"
-									:underline-style="componentOptions.underlineStyle"
-									:underline-width="componentOptions.underlineWidth"
-									:underlined="componentOptions.underlined"
-									@error="showError = $event"
-									@loading="loading = $event"
-									@update="updatedValue($event, 'switch')"
-								/>
-							</div>
+							<VInlineSwitch
+								v-model="item.raw.active"
+								:align-items="componentOptions.alignItems"
+								api-route="api/posts"
+								:cancel-button-color="componentOptions.cancelButtonColor"
+								:cancel-button-variant="componentOptions.cancelButtonVariant"
+								:cancel-icon="componentOptions.cancelIcon"
+								:cancel-icon-color="componentOptions.cancelIconColor"
+								:cancel-icon-text="componentOptions.cancelIconText"
+								:close-siblings="componentOptions.closeSiblings"
+								:color="componentOptions.color"
+								:density="componentOptions.density"
+								:disabled="componentOptions.disabled"
+								:do-not-save="componentOptions.doNotSave"
+								:field-only="componentOptions.fieldOnly"
+								:icon-false="componentOptions.iconFalse"
+								:icon-false-title="componentOptions.iconFalseTitle"
+								:icon-true="componentOptions.iconTrue"
+								:icon-true-title="componentOptions.iconTrueTitle"
+								:item="item"
+								:label="componentOptions.label"
+								name="active"
+								:underline-color="componentOptions.underlineColor"
+								:underline-style="componentOptions.underlineStyle"
+								:underline-width="componentOptions.underlineWidth"
+								:underlined="componentOptions.underlined"
+								@error="showError = $event"
+								@loading="loading = $event"
+								@update="updatedValue($event, 'switch')"
+							/>
 						</template>
 						<template #[`item.userId`]="{ item }">
 							<VInlineSelect
 								v-model="item.raw.user"
+								:align-items="componentOptions.alignItems"
 								api-route="api/posts"
 								:cancel-button-color="componentOptions.cancelButtonColor"
 								:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -85,6 +85,7 @@
 						<template #[`item.title`]="{ item }">
 							<VInlineTextField
 								v-model="item.raw.title"
+								:align-items="componentOptions.alignItems"
 								api-route="api/posts"
 								:cancel-button-color="componentOptions.cancelButtonColor"
 								:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -119,6 +120,7 @@
 						<template #[`item.body`]="{ item }">
 							<VInlineTextarea
 								v-model="item.raw.body"
+								:align-items="componentOptions.alignItems"
 								api-route="api/posts"
 								:cancel-button-color="componentOptions.cancelButtonColor"
 								:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -151,33 +153,32 @@
 						</template>
 
 						<template #[`item.reviewed`]="{ item }">
-							<div class="d-flex flex-align-center">
-								<VInlineCheckbox
-									v-model="item.raw.reviewed"
-									api-route="api/posts"
-									:cancel-button-color="componentOptions.cancelButtonColor"
-									:cancel-button-variant="componentOptions.cancelButtonVariant"
-									:cancel-icon-color="componentOptions.cancelIconColor"
-									:cancel-icon-text="componentOptions.cancelIconText"
-									:close-siblings="componentOptions.closeSiblings"
-									:color="componentOptions.color"
-									:density="componentOptions.density"
-									:disabled="componentOptions.disabled"
-									:do-not-save="componentOptions.doNotSave"
-									:field-only="componentOptions.fieldOnly"
-									:icon-false-title="componentOptions.iconFalseTitle"
-									:icon-true-title="componentOptions.iconTrueTitle"
-									:item="item"
-									name="reviewed"
-									:underline-color="componentOptions.underlineColor"
-									:underline-style="componentOptions.underlineStyle"
-									:underline-width="componentOptions.underlineWidth"
-									:underlined="componentOptions.underlined"
-									@error="showError = $event"
-									@loading="loading = $event"
-									@update="updatedValue($event, 'checkbox')"
-								/>
-							</div>
+							<VInlineCheckbox
+								v-model="item.raw.reviewed"
+								:align-items="componentOptions.alignItems"
+								api-route="api/posts"
+								:cancel-button-color="componentOptions.cancelButtonColor"
+								:cancel-button-variant="componentOptions.cancelButtonVariant"
+								:cancel-icon-color="componentOptions.cancelIconColor"
+								:cancel-icon-text="componentOptions.cancelIconText"
+								:close-siblings="componentOptions.closeSiblings"
+								:color="componentOptions.color"
+								:density="componentOptions.density"
+								:disabled="componentOptions.disabled"
+								:do-not-save="componentOptions.doNotSave"
+								:field-only="componentOptions.fieldOnly"
+								:icon-false-title="componentOptions.iconFalseTitle"
+								:icon-true-title="componentOptions.iconTrueTitle"
+								:item="item"
+								name="reviewed"
+								:underline-color="componentOptions.underlineColor"
+								:underline-style="componentOptions.underlineStyle"
+								:underline-width="componentOptions.underlineWidth"
+								:underlined="componentOptions.underlined"
+								@error="showError = $event"
+								@loading="loading = $event"
+								@update="updatedValue($event, 'checkbox')"
+							/>
 						</template>
 					</v-data-table>
 				</v-card>
@@ -210,12 +211,13 @@ const tableOptions = reactive({
 });
 
 const componentOptions = reactive({
+	alignItems: 'center',
 	cancelButtonColor: 'default',
 	cancelButtonVariant: 'text',
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
 	cancelIconText: 'Cancel',
-	closeSiblings: true,
+	closeSiblings: false,
 	color: 'primary',
 	density: 'compact',
 	disabled: false,
@@ -243,7 +245,7 @@ const componentOptions = reactive({
 	truncateTextareaLength: 75,
 	underlineColor: 'primary',
 	underlineStyle: 'dotted',
-	underlineWidth: '1px',
+	underlineWidth: '2px',
 	underlined: true,
 	variant: 'underlined',
 });
