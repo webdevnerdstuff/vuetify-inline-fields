@@ -9,9 +9,12 @@ import axios from 'axios';
 
 
 // ------------------------------------------------ Internal Functions //
-function buildResponseItem(item: object, name: string, value: FieldValue) {
+function buildResponseItem(item: object, name: string | undefined, value: FieldValue) {
 	const returnItem = { ...item };
-	returnItem[name] = value;
+
+	if (name) {
+		returnItem[name] = value;
+	}
 
 	return returnItem;
 }
