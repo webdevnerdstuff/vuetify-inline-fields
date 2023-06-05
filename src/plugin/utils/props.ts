@@ -1,5 +1,8 @@
 // * ---------------------------------------- The shared props for all inline fields //
 export const sharedProps = {
+	// ? The vertical alignment of the field //
+	alignItems: 'center' as const,
+
 	// ? The api route to save the field - [ All Fields ] //
 	apiRoute: '',
 
@@ -67,7 +70,7 @@ export const sharedProps = {
 	underlineStyle: 'dotted',
 
 	// ? The width of the underline - [ All Fields ] //
-	underlineWidth: '1px',
+	underlineWidth: '2px',
 
 	// ? Displays/Hides the value underline - [ All Fields ] //
 	underlined: true,

@@ -1,6 +1,17 @@
 import { CSSProperties } from 'vue';
 import { UseDisplayValueStyles } from '@/types';
 
+
+export const useInlineFieldsContainerStyle = (options) => {
+	const { alignItems } = options;
+
+	const styles = {
+		'align-items': alignItems,
+	};
+
+	return styles as CSSProperties;
+};
+
 // -------------------------------------------------- Value Styles //
 export const useDisplayValueStyles: UseDisplayValueStyles = (options) => {
 	const { underlineStyle, underlineWidth, color, error, underlined } = options;

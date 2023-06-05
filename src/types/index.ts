@@ -18,17 +18,18 @@ import {
 
 
 // -------------------------------------------------- Types //
+export type AlignItems = 'normal' | 'stretch' | 'center' | 'start' | 'end' | 'flex-start' | 'flex-end' | 'self-start' | 'self-end' | 'baseline' | 'first baseline' | 'last baseline' | 'safe center' | 'unsafe center' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';
 export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
 export type TimeOpened = Date | null;
 
 export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['density'] | VSwitch['$props']['density'] | VTextField['$props']['density'] | VTextarea['$props']['density'];
-
 export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props']['variant'] | VTextarea['$props']['variant'];
 
 
 
 // -------------------------------------------------- Props //
 export interface SharedProps {
+	alignItems?: AlignItems;
 	apiRoute?: string | undefined;
 	autofocus?: boolean;
 	cancelButtonColor?: VBtn['$props']['color'];
@@ -162,6 +163,7 @@ export interface UseInlineFieldsContainerClass {
 	(
 		options: {
 			density?: GlobalDensity;
+			disabled?: Ref<boolean> | boolean;
 			field?: Ref<string> | string;
 			tableField?: SharedProps['tableField'];
 		},
@@ -200,7 +202,6 @@ export interface UseDisplayValueClass {
 		name: string,
 		valueColor: string,
 		options: {
-			disabled?: Ref<boolean> | boolean;
 			empty?: Ref<boolean> | boolean;
 			error?: Ref<boolean> | boolean;
 		},

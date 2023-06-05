@@ -1,14 +1,16 @@
 <template>
-	<div :class="inlineFieldsContainerClass">
+	<div
+		:class="inlineFieldsContainerClass"
+		:style="inlineFieldsContainerStyle"
+	>
 		<div
 			v-if="!showField && !settings.fieldOnly"
-			class="v-inline-fields--container-display-container"
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
-				<div class="v-inline-fields--container-display-container-fields">
+				<div class="v-inline-fields--display-wrapper">
 					<div
-						class="d-inline-flex align-center justify-center"
+						class="d-inline-flex"
 						:class="displayValueClass"
 						:style="displayValueStyle"
 						@click="toggleField"
@@ -108,7 +110,10 @@ import {
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from './composables/classes';
-import { useDisplayValueStyles } from './composables/styles';
+import {
+	useDisplayValueStyles,
+	useInlineFieldsContainerStyle,
+} from './composables/styles';
 import inlineEmits from './utils/emits';
 
 
@@ -152,6 +157,7 @@ const displayValue = computed(() => {
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
+	disabled: settings.disabled,
 	field: 'v-text-field',
 	tableField: settings.tableField,
 }));
@@ -175,11 +181,14 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	'text-field',
 	settings.valueColor,
 	{
-		disabled: settings.disabled,
 		empty,
 		error,
 	}
 ));
+
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
+	alignItems: settings.alignItems,
+}));
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,

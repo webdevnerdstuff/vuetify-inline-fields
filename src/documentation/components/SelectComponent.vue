@@ -24,6 +24,7 @@
 					<v-col cols="2">
 						<VInlineSelect
 							v-model="values.select"
+							align-items="flex-end"
 							:density="density"
 							do-not-save
 							item-title="state"
@@ -36,6 +37,7 @@
 					</v-col>
 
 					<v-col cols="2">
+						<!-- <div style="border: 1px solid #f00;"> -->
 						<div>
 							<v-select
 								v-model="values.select"

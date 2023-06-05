@@ -6,128 +6,168 @@
 
 .v-inline-fields {
 	&--container {
-		&-inline {
+		display: flex;
+		height: 100%;
 
-			// tableField prop //
-			&-table-centered {
-				--v-inline-fields-top-padding-compact: 0;
-				--v-inline-fields-top-padding-comfortable: 0;
-				--v-inline-fields-top-padding-default: 0;
+		// ------------------------------------------------ Disabled //
+		&-disabled {
+			.v-inline-fields--display-wrapper-value {
+				cursor: default !important;
+				opacity: var(--v-disabled-opacity);
+			}
+		}
 
-				.v-inline-fields--field-value-text-field {
-					.v-input--density-compact {
+		// ------------------------------------------------ Table Field (tableField) Prop = true //
+		&-table {
+			--v-inline-fields-top-padding-compact: 0;
+			--v-inline-fields-top-padding-comfortable: 0;
+			--v-inline-fields-top-padding-default: 0;
 
-						// Variants - plain & underlined //
-						.v-field--variant-plain,
-						.v-field--variant-underlined {
-							.v-field__input {
-								min-height: unset !important;
-								padding-bottom: 0;
-								padding-top: 3px;
+			// ------------------------ Select & Text Field //
+			&.vi-v-select,
+			&.vi-v-text-field {
+
+				// The Field value //
+				.v-inline-fields--field {
+					.v-input {
+						&--density {
+							&-compact,
+							&-comfortable,
+							&-default {
+								.v-input__control {
+									padding-bottom: 3px;
+								}
+
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										min-height: unset !important;
+									}
+								}
 							}
-						}
-					}
 
-					.v-input--density-comfortable {
-
-						// Variants - plain & underlined //
-						.v-field--variant-plain,
-						.v-field--variant-underlined {
-							.v-field__input {
-								min-height: unset !important;
-								padding-bottom: 0;
-								padding-top: 2px;
-							}
-						}
-					}
-
-					.v-input--density-default {
-
-						// Variants - plain & underlined //
-						.v-field--variant-plain,
-						.v-field--variant-underlined {
-							.v-field__input {
-								min-height: unset !important;
-								padding-bottom: 0;
-								padding-top: 1px;
+							&-compact,
+							&-comfortable {
+								line-height: 1rem;
 							}
 						}
 					}
 				}
 			}
 
-			// Checkbox & Switch //
-			&-v-checkbox,
-			&-v-switch {
-				&-compact {
-					padding-top: var(--v-inline-fields-top-padding-compact);
-				}
+			// ------------------------ Select Field //
+			&.vi-v-select {
 
-				&-comfortable {
-					padding-top: var(--v-inline-fields-top-padding-comfortable);
-				}
+				// The Field value //
+				.v-inline-fields--field {
+					.v-input {
+						&--density {
+							&-compact,
+							&-comfortable,
+							&-default {
+								.v-field__append-inner {
+									padding: 0 !important;
+								}
 
-				&-default {
-					padding-top: var(--v-inline-fields-top-padding-default);
-				}
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										padding-top: 0;
+									}
+								}
+							}
 
-				.v-selection-control {
-					padding-bottom: 1px;
+							&-compact,
+							&-comfortable {
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										padding-bottom: 7px;
+									}
+								}
+							}
+
+							&-default {
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										padding-bottom: 2px;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 
-			// Select & Textarea & Text Field //
-			&-v-select,
-			&-v-textarea,
-			&-v-text-field {
-				&-compact {
-					.v-inline-fields--container-display-container-fields {
-						padding-top: var(--v-inline-fields-top-padding-compact);
+			// ------------------------ Text Field //
+			&.vi-v-text-field {
 
-						> div {
-							line-height: 1.5rem;
-						}
-					}
-				}
+				// The Field value //
+				.v-inline-fields--field {
+					.v-input {
+						&--density {
+							&-compact,
+							&-comfortable,
+							&-default {
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										padding-bottom: 0;
+									}
+								}
+							}
 
-				&-comfortable {
-					.v-inline-fields--container-display-container-fields {
-						padding-top: var(--v-inline-fields-top-padding-comfortable);
+							&-compact,
+							&-comfortable {
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										padding-top: 4px;
+									}
+								}
+							}
 
-						> div {
-							padding-bottom: 0;
-						}
-					}
-				}
-
-				&-default {
-					.v-inline-fields--container-display-container-fields {
-						padding-top: var(--v-inline-fields-top-padding-default);
-
-						> div {
-							line-height: 1.5rem;
-							padding-bottom: 5px;
+							&-default {
+								.v-field--variant-underlined,
+								.v-field--variant-plain {
+									.v-field__input {
+										padding-top: 1px;
+									}
+								}
+							}
 						}
 					}
 				}
 			}
 		}
+
+		&-v-textarea,
+		&-v-text-field {
+			max-width: 100%;
+			overflow: hidden;
+		}
 	}
 
+	// ------------------------------------------------ The Display value //
 	&--display {
-		&-value {
-			cursor: pointer;
+		&-wrapper {
+			&-value {
+				cursor: pointer;
+				padding-bottom: 1px;
 
-			&-empty {
-				color: #909090;
-				font-style: italic;
+				&-empty {
+					color: #909090;
+					font-style: italic;
+				}
 			}
 		}
 	}
 
-	&--field-value {
+	// ------------------------------------------------ Field Value //
+	&--field {
 
-		// Checkbox & Switch //
+		// ------------------------ Checkbox & Switch //
 		&-checkbox,
 		&-switch {
 			.v-input {
@@ -143,7 +183,7 @@
 			}
 		}
 
-		// Select & Textarea & Text Field //
+		// ------------------------ Select & Textarea & Text Field //
 		&-select,
 		&-textarea,
 		&-text-field {
@@ -157,19 +197,13 @@
 		}
 	}
 
-	&--disabled {
-		cursor: default;
-		opacity: var(--v-disabled-opacity);
-	}
 
+	// ------------------------------------------------ Components //
 	&--save-fields-container {
 		height: 100%;
 	}
 
 	&--boolean-icons {
 		font-size: calc(var(--v-icon-size-multiplier) * 1em);
-		font-weight: bold;
-		line-height: 1.5rem;
-		padding-bottom: 2px;
 	}
 }

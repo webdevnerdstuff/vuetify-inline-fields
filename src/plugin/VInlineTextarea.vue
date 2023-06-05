@@ -1,5 +1,8 @@
 <template>
-	<div :class="inlineFieldsContainerClass">
+	<div
+		:class="inlineFieldsContainerClass"
+		:style="inlineFieldsContainerStyle"
+	>
 		<div
 			v-if="!showField && !settings.fieldOnly"
 			class="v-inline-fields--container-display-container"
@@ -107,7 +110,10 @@ import {
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from './composables/classes';
-import { useDisplayValueStyles } from './composables/styles';
+import {
+	useDisplayValueStyles,
+	useInlineFieldsContainerStyle,
+} from './composables/styles';
 import inlineEmits from './utils/emits';
 
 
@@ -151,6 +157,7 @@ const displayValue = computed(() => {
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
+	disabled: settings.disabled,
 	field: 'v-textarea',
 	tableField: settings.tableField,
 }));
@@ -174,11 +181,14 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	'textarea',
 	settings.valueColor,
 	{
-		disabled: settings.disabled,
 		empty,
 		error,
 	}
 ));
+
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
+	alignItems: settings.alignItems,
+}));
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,

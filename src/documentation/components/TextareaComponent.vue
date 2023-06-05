@@ -24,10 +24,11 @@
 					<v-col cols="2">
 						<VInlineTextarea
 							v-model="values.textField"
+							align-items="flex-start"
 							:density="density"
 							do-not-save
 							rows="1"
-							:table-field="false"
+							:table-field="true"
 							:variant="variant"
 						></VInlineTextarea>
 					</v-col>
