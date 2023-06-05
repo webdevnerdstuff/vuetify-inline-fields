@@ -11,13 +11,17 @@ import { componentName } from '../utils/globals';
 
 // ------------------------------------------------ Main Container //
 export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (options) => {
-	const { field = '', density = '', tableField = false } = options;
+	const { field = '', density = '', disabled = false, tableField = false } = options;
 
 	return {
+		[`${componentName}`]: true,
 		[`${componentName}--container`]: true,
-		[`${componentName}--container-inline-${field}`]: true,
-		[`${componentName}--container-inline-${field}-${density}`]: true,
-		[`${componentName}--container-inline-table-centered`]: tableField,
+		[`${componentName}--container-disabled`]: unref(disabled),
+		[`${componentName}--container-table`]: tableField,
+		[`${componentName}--container-${field}`]: true,
+		[`${componentName}--container-${field}-${density}`]: true,
+		[`vi-${field}`]: true,
+		[`vi-${field}-${density}`]: true,
 	};
 };
 
@@ -27,8 +31,7 @@ export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
 	const { field = '', density = '' } = options;
 
 	return {
-		[`${componentName}`]: true,
-		[`${componentName}--container-display-container`]: true,
+		[`${componentName}--display-wrapper-value`]: true,
 		[`${field}`]: true,
 		'v-input': true,
 		[`v-input--density-${density}`]: true,
@@ -53,20 +56,19 @@ export const useDisplaySelectionControlClasses: UseDisplaySelectionControlClass 
 	const { density = '' } = options;
 
 	return {
-		'v-selection-control': true,
+		// 'v-selection-control': true,
 		[`v-selection-control--density-${density}`]: true,
 	};
 };
 
 export const useDisplayValueClass: UseDisplayValueClass = (name, valueColor, options) => {
-	const { disabled = false, error = false, empty = false } = options;
+	const { error = false, empty = false } = options;
 
 	return {
 		[`${componentName}`]: true,
-		[`${componentName}--disabled`]: unref(disabled),
 		[`${componentName}--display-value-${name}`]: true,
 		[`${componentName}--display-value`]: true,
-		[`${componentName}--display-value-empty`]: unref(empty),
+		[`${componentName}--display-wrapper-value-empty`]: unref(empty),
 		[`text-${valueColor}`]: !unref(error),
 		'text-danger': unref(error),
 	};
@@ -79,8 +81,8 @@ export const useFieldContainerClass: UseFieldContainerClass = (options): object 
 
 	return {
 		[`${componentName}`]: true,
-		[`${componentName}--field-value-${name}`]: true,
-		[`${componentName}--field-value`]: true,
+		[`${componentName}--field`]: true,
+		[`${componentName}--field-${name}`]: true,
 		[`${componentName}--field-active`]: active,
 	};
 };

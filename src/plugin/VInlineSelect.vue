@@ -1,19 +1,23 @@
 <template>
-	<div :class="inlineFieldsContainerClass">
+	<div
+		:class="inlineFieldsContainerClass"
+		:style="inlineFieldsContainerStyle"
+	>
 		<div
 			v-if="!showField && !settings.fieldOnly"
-			class="v-inline-fields--container-display-container"
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
-				<span
-					class="pb-1 d-inline-flex align-center justify-center"
-					:class="displayValueClass"
-					:style="displayValueStyle"
-					@click="toggleField"
-				>
-					{{ displayValue }}
-				</span>
+				<div class="v-inline-fields--display-wrapper">
+					<div
+						class="d-inline-flex"
+						:class="displayValueClass"
+						:style="displayValueStyle"
+						@click="toggleField"
+					>
+						{{ displayValue }}
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -109,7 +113,10 @@ import {
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from './composables/classes';
-import { useDisplayValueStyles } from './composables/styles';
+import {
+	useDisplayValueStyles,
+	useInlineFieldsContainerStyle,
+} from './composables/styles';
 import inlineEmits from './utils/emits';
 
 
@@ -153,6 +160,7 @@ watchEffect(() => {
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
+	disabled: settings.disabled,
 	field: 'v-select',
 	tableField: settings.tableField,
 }));
@@ -176,11 +184,14 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	'select',
 	settings.valueColor,
 	{
-		disabled: settings.disabled,
 		empty,
 		error,
 	}
 ));
+
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
+	alignItems: settings.alignItems,
+}));
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
@@ -306,6 +317,10 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 :deep(.v-input__append) {
 	padding: 0 !important;
+}
+
+:deep(.v-field__field) {
+	align-items: flex-end !important;
 }
 
 .icons-container {
