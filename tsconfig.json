@@ -37,8 +37,7 @@
 			"./node_modules/vuetify"
 		],
 		"types": [
-			"node",
-			"vuetify"
+			"node"
 		],
 		"useDefineForClassFields": true
 	},
