@@ -34,10 +34,6 @@
 							&-compact,
 							&-comfortable,
 							&-default {
-								.v-input__control {
-									padding-bottom: 3px;
-								}
-
 								.v-field--variant-underlined,
 								.v-field--variant-plain {
 									.v-field__input {
@@ -49,6 +45,26 @@
 							&-compact,
 							&-comfortable {
 								line-height: 1rem;
+							}
+						}
+					}
+				}
+			}
+
+			&.vi-v-select,
+			&.vi-v-textarea,
+			&.vi-v-text-field {
+
+				// The Field value //
+				.v-inline-fields--field {
+					.v-input {
+						&--density {
+							&-compact,
+							&-comfortable,
+							&-default {
+								.v-input__control {
+									padding-bottom: 3px;
+								}
 							}
 						}
 					}
