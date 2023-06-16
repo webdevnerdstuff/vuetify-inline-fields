@@ -99,6 +99,7 @@ export interface VInlineSelectProps extends Omit<SharedProps,
 	itemTitle?: VSelect['$props']['itemTitle'];
 	itemValue?: VSelect['$props']['itemValue'];
 	items?: VSelect['$props']['items'];
+	menu?: VSelect['$props']['menu'];
 	rules?: VSelect['$props']['rules'];
 	variant?: VSelect['$props']['variant'];
 }
@@ -200,7 +201,7 @@ export interface UseDisplaySelectionControlClass {
 export interface UseDisplayValueClass {
 	(
 		name: string,
-		valueColor: string,
+		valueColor: SharedProps['valueColor'],
 		options: {
 			empty?: Ref<boolean> | boolean;
 			error?: Ref<boolean> | boolean;

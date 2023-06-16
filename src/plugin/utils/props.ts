@@ -191,6 +191,8 @@ const selectProps = {
 		// ? The select list items - [v-select] //
 		items: () => ([]),
 
+		menu: true,
+
 		// ? The variant of the field //
 		variant: 'underlined' as const,
 	},
