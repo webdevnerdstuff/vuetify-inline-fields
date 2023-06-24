@@ -50,12 +50,6 @@ const variantDesc = 'Applies a distinct style to the';
 
 const sharedProps = [
 	{
-		default: 'undefined',
-		desc: 'The api route to save the field if the <code>doNotSave</code> prop is set to <code>false</code>',
-		name: 'apiRoute',
-		type: 'string | undefined',
-	},
-	{
 		default: 'default',
 		desc: `${colorDesc} cancel button`,
 		name: 'cancelButtonColor',
@@ -113,12 +107,6 @@ const sharedProps = [
 		default: false,
 		desc: 'Disables the field',
 		name: 'disabled',
-		type: 'boolean',
-	},
-	{
-		default: true,
-		desc: 'If <code>true</code> the component will not use axios to attempt to save the value. The prop <code>apiRoute</code> is required if this prop is set to <code>false</code>',
-		name: 'doNotSave',
 		type: 'boolean',
 	},
 	{
