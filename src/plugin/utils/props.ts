@@ -3,9 +3,6 @@ export const sharedProps = {
 	// ? The vertical alignment of the field //
 	alignItems: 'center' as const,
 
-	// ? The api route to save the field - [ All Fields ] //
-	apiRoute: '',
-
 	// ? The color of the cancel button - [ All Fields ] //
 	cancelButtonColor: 'default',
 
@@ -19,7 +16,7 @@ export const sharedProps = {
 	cancelButtonVariant: 'tonal' as const,
 
 	// ? The icon to use to cancel - [ All Fields ] //
-	cancelIcon: 'mdi:mdi-close',
+	cancelIcon: undefined,
 
 	// ? The color of the cancel icon - [ All Fields ] //
 	cancelIconColor: 'default',
@@ -36,9 +33,6 @@ export const sharedProps = {
 	// ? Disabled the field - [ All Fields ] //
 	disabled: false,
 
-	// ? If true, the field will not save to the database. Emits update:model-value - [ All Fields ] //
-	doNotSave: false,
-
 	// ? Text to display when the field is empty - [ v-textarea, v-text-field ] //
 	emptyText: 'empty',
 
@@ -53,6 +47,8 @@ export const sharedProps = {
 
 	// ? The field label - [ All Fields ] //
 	label: '',
+
+	loading: false,
 
 	// ? The http method to use when saving the text field - [ All Fields ] //
 	method: 'PUT',
@@ -91,7 +87,7 @@ const saveAndLoadingIconProps = {
 	hideSaveIcon: false,
 
 	// ? The icon to use when loading //
-	loadingIcon: 'mdi:mdi-loading mdi:mdi-spin',
+	loadingIcon: undefined,
 
 	// ? The icon to use when loading //
 	loadingIconColor: 'primary',
@@ -109,7 +105,7 @@ const saveAndLoadingIconProps = {
 	saveButtonVariant: 'text' as const,
 
 	// ? The icon to use to save //
-	saveIcon: 'mdi:mdi-content-save',
+	saveIcon: undefined,
 
 	// ? The icon to use to save //
 	saveIconColor: 'primary',
@@ -121,7 +117,7 @@ const trueFalseIcons = {
 	falseValue: false,
 
 	// ? The false icon - [v-checkbox, v-switch] //
-	iconFalse: 'mdi:mdi-close',
+	iconFalse: undefined,
 
 	// ? The color of the icon when false - [v-checkbox, v-switch] //
 	iconFalseColor: 'danger',
@@ -130,7 +126,7 @@ const trueFalseIcons = {
 	iconFalseTitle: 'No',
 
 	// ? The true icon - [v-checkbox, v-switch] //
-	iconTrue: 'mdi:mdi-check',
+	iconTrue: undefined,
 
 	// ? The color of the icon when true - [v-checkbox, v-switch] //
 	iconTrueColor: 'success',
@@ -176,7 +172,7 @@ const selectProps = {
 	...saveAndLoadingIconProps,
 	...{
 		// ? The icon to use to clear the field //
-		clearIcon: 'mdi:mdi-close-circle-outline',
+		clearIcon: undefined,
 
 		// ? If true, the field will be clearable //
 		clearable: false,
