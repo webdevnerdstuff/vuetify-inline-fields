@@ -1,2 +1,6 @@
-PlaygroundPage.vue
-tableDefaults.ts
+*
+
+!.gitignore
+
+!configs/
+!configs/**/*

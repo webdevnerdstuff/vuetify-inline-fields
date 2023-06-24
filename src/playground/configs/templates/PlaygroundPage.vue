@@ -64,6 +64,7 @@
 								item-value="id"
 								:items="users"
 								:label="componentOptions.label"
+								:menu="componentOptions.menu"
 								name="active"
 								:return-object="true"
 								:save-button-color="componentOptions.saveButtonColor"
@@ -225,12 +226,13 @@ const componentOptions = reactive({
 	emptyText: 'empty',
 	fieldOnly: false,
 	hideDetails: true,
-	hideSelected: true,
+	hideSelected: false,
 	iconFalse: undefined,
 	iconFalseTitle: undefined,
 	iconTrue: undefined,
 	iconTrueTitle: undefined,
 	label: '',
+	menu: true,
 	rules: {
 		minLength(value) {
 			return value?.length >= 5 || 'Min 5 characters';
@@ -305,7 +307,10 @@ function getUsers() {
 	fetch('api/users')
 		.then((response) => response.json())
 		.then((json) => {
-			users.value = [...json.users];
+			users.value = json.users.map((user) => ({
+				id: user.id,
+				name: user.name,
+			}));
 		});
 };
 
@@ -319,7 +324,7 @@ function getUsers() {
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 function updatedValue(val, field) {
 	// Save updated values
-	// console.log('updatedValue', val, field);
+	console.log('updatedValue', val, field);
 }
 </script>
 
