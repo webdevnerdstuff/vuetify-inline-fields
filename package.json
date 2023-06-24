@@ -1,6 +1,6 @@
 {
 	"name": "vuetify-inline-fields",
-	"version": "0.0.1-alpha",
+	"version": "0.0.1-beta",
 	"description": "The vuetify-inline-fields",
 	"private": false,
 	"main": "dist/vuetify-inline-fields.cjs.js",
