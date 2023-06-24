@@ -87,7 +87,7 @@
 					>
 						<v-icon
 							:color="settings.cancelIconColor"
-							:icon="settings.cancelIcon"
+							:icon="theCancelIcon"
 						/>
 					</v-btn>
 				</template>
@@ -101,15 +101,13 @@ import {
 	CloseSiblingsBus,
 	FieldValue,
 	TimeOpened,
-	UseSaveValue,
 	VInlineCheckboxProps,
 } from '@/types';
+import type { IconOptions } from 'vuetify';
 import { checkboxProps } from './utils/props';
 import { BooleanIcons } from './components/index';
-import {
-	useSaveValue,
-	useToggleField,
-} from './composables/methods';
+import { useToggleField } from './composables/methods';
+import { useGetIcon } from './composables/icons';
 import {
 	useDisplayContainerClass,
 	useDisplaySelectionControlClasses,
@@ -129,6 +127,8 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
+
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
 
@@ -136,6 +136,16 @@ const error = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
+
+
+// ------------------------------------------------ Icons //
+const theCancelIcon = computed(() => {
+	return useGetIcon({
+		icon: settings.cancelIcon,
+		iconOptions,
+		name: 'false',
+	});
+});
 
 
 // ------------------------------------------------ The displayed value //
@@ -214,24 +224,12 @@ function toggleField() {
 
 
 // ------------------------------------------------ Save the value / Emit update //
-function saveValue(value: undefined) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function saveValue(value: any) {
 	modelValue.value = value;
 
-	loading.value = true;
-	emit('loading', loading.value);
-
-	useSaveValue({
-		emit: emit as keyof UseSaveValue,
-		name: settings.name,
-		settings,
-		value: value as keyof UseSaveValue,
-	})
-		.then((response) => {
-			error.value = response?.error as boolean ?? false;
-			loading.value = false;
-			emit('loading', loading.value);
-			toggleField();
-		});
+	emit('update', value);
+	toggleField();
 }
 
 

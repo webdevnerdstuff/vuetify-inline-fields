@@ -29,7 +29,7 @@
 				v-bind="$attrs"
 				v-model="modelValue"
 				:autofocus="!settings.fieldOnly || settings.autofocus"
-				:clear-icon="settings.clearIcon"
+				:clear-icon="theClearIcon"
 				:clearable="settings.clearable"
 				:color="settings.color"
 				:density="settings.density"
@@ -96,15 +96,14 @@ import {
 	CloseSiblingsBus,
 	FieldValue,
 	TimeOpened,
-	UseSaveValue,
 	VInlineSelectProps,
 } from '@/types';
+import type { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import { selectProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
-	useSaveValue,
 	useToggleField,
 } from './composables/methods';
 import {
@@ -119,23 +118,43 @@ import {
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useGetIcon } from './composables/icons';
 
 
 const modelValue = defineModel<FieldValue>();
 
 const attrs = useAttrs();
-const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const slots = useSlots();
+
 const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
+const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 let settings = reactive({ ...attrs, ...props });
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
 const items = ref();
-const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
+
+
+// ------------------------------------------------ Loading //
+watch(() => props.loading, (newVal, oldVal) => {
+	if (!newVal && oldVal && showField.value) {
+		toggleField();
+	}
+});
+
+
+// ------------------------------------------------ Icons //
+const theClearIcon = computed(() => {
+	return useGetIcon({
+		icon: props.clearIcon,
+		iconOptions,
+		name: 'clear',
+	});
+});
 
 
 // ------------------------------------------------ The displayed value //
@@ -270,21 +289,8 @@ function checkInternalErrors() {
 // ------------------------------------------------ Save the value / Emit update //
 function saveValue() {
 	originalValue = modelValue.value;
-	loading.value = true;
-	emit('loading', loading.value);
 
-	useSaveValue({
-		emit: emit as keyof UseSaveValue,
-		name: settings.name,
-		settings,
-		value: modelValue.value as keyof UseSaveValue,
-	})
-		.then((response) => {
-			error.value = response?.error as boolean ?? false;
-			loading.value = false;
-			emit('loading', loading.value);
-			toggleField();
-		});
+	emit('update', modelValue.value);
 }
 
 
@@ -316,6 +322,10 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+// TODO: When clearable prop = true //
+// FIX: Adjust clearable icon position and fontawesome size
+// FIX: Adjust arrow icon position and fontawesome size
+
 :deep(.v-input__append) {
 	padding: 0 !important;
 }
