@@ -170,6 +170,7 @@ export interface UseInlineFieldsContainerClass {
 			density?: GlobalDensity;
 			disabled?: Ref<boolean> | boolean;
 			field?: Ref<string> | string;
+			iconSet?: string;
 			tableField?: SharedProps['tableField'];
 		},
 	): object;
