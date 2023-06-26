@@ -1,145 +1,152 @@
-declare const _default: import("vue").DefineComponent<{
-    error: {
-        type: globalThis.PropType<boolean>;
-        required: true;
-    };
+import type { PropType as __PropType } from 'vue';
+declare const _sfc_main: import("vue").DefineComponent<{
     loading: {
-        type: globalThis.PropType<boolean>;
-        required: true;
-    };
-    hideSaveIcon: {
-        type: globalThis.PropType<boolean>;
-        required: true;
-    };
-    loadingIcon: {
-        type: globalThis.PropType<string>;
-    };
-    loadingIconColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonSize: {
-        type: globalThis.PropType<string | number>;
-        required: true;
-    };
-    saveIcon: {
-        type: globalThis.PropType<string>;
-    };
-    saveIconColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonTitle: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+        type: __PropType<boolean>;
         required: true;
     };
     cancelButtonColor: {
-        type: globalThis.PropType<string>;
+        type: __PropType<string>;
         required: true;
     };
     cancelButtonSize: {
-        type: globalThis.PropType<string | number>;
-        required: true;
-    };
-    cancelButtonTitle: {
-        type: globalThis.PropType<string>;
+        type: __PropType<string | number>;
         required: true;
     };
     cancelButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+        type: __PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
         required: true;
     };
-    cancelIcon: {
-        type: globalThis.PropType<string>;
+    cancelButtonTitle: {
+        type: __PropType<string>;
+        required: true;
     };
     cancelIconColor: {
-        type: globalThis.PropType<string>;
+        type: __PropType<string>;
+        required: true;
+    };
+    error: {
+        type: __PropType<boolean>;
         required: true;
     };
     fieldOnly: {
-        type: globalThis.PropType<boolean>;
+        type: __PropType<boolean>;
         required: true;
+    };
+    hideSaveIcon: {
+        type: __PropType<boolean>;
+        required: true;
+    };
+    loadingIconColor: {
+        type: __PropType<string>;
+        required: true;
+    };
+    saveButtonColor: {
+        type: __PropType<string>;
+        required: true;
+    };
+    saveButtonSize: {
+        type: __PropType<string | number>;
+        required: true;
+    };
+    saveButtonTitle: {
+        type: __PropType<string>;
+        required: true;
+    };
+    saveButtonVariant: {
+        type: __PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+        required: true;
+    };
+    saveIconColor: {
+        type: __PropType<string>;
+        required: true;
+    };
+    cancelIcon: {
+        type: __PropType<string | undefined>;
+        required: false;
+    };
+    loadingIcon: {
+        type: __PropType<string | undefined>;
+        required: false;
+    };
+    saveIcon: {
+        type: __PropType<string | undefined>;
+        required: false;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "save")[], "close" | "save", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    error: {
-        type: globalThis.PropType<boolean>;
-        required: true;
-    };
     loading: {
-        type: globalThis.PropType<boolean>;
-        required: true;
-    };
-    hideSaveIcon: {
-        type: globalThis.PropType<boolean>;
-        required: true;
-    };
-    loadingIcon: {
-        type: globalThis.PropType<string>;
-    };
-    loadingIconColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonSize: {
-        type: globalThis.PropType<string | number>;
-        required: true;
-    };
-    saveIcon: {
-        type: globalThis.PropType<string>;
-    };
-    saveIconColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonTitle: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    saveButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+        type: __PropType<boolean>;
         required: true;
     };
     cancelButtonColor: {
-        type: globalThis.PropType<string>;
+        type: __PropType<string>;
         required: true;
     };
     cancelButtonSize: {
-        type: globalThis.PropType<string | number>;
-        required: true;
-    };
-    cancelButtonTitle: {
-        type: globalThis.PropType<string>;
+        type: __PropType<string | number>;
         required: true;
     };
     cancelButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+        type: __PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
         required: true;
     };
-    cancelIcon: {
-        type: globalThis.PropType<string>;
+    cancelButtonTitle: {
+        type: __PropType<string>;
+        required: true;
     };
     cancelIconColor: {
-        type: globalThis.PropType<string>;
+        type: __PropType<string>;
+        required: true;
+    };
+    error: {
+        type: __PropType<boolean>;
         required: true;
     };
     fieldOnly: {
-        type: globalThis.PropType<boolean>;
+        type: __PropType<boolean>;
         required: true;
+    };
+    hideSaveIcon: {
+        type: __PropType<boolean>;
+        required: true;
+    };
+    loadingIconColor: {
+        type: __PropType<string>;
+        required: true;
+    };
+    saveButtonColor: {
+        type: __PropType<string>;
+        required: true;
+    };
+    saveButtonSize: {
+        type: __PropType<string | number>;
+        required: true;
+    };
+    saveButtonTitle: {
+        type: __PropType<string>;
+        required: true;
+    };
+    saveButtonVariant: {
+        type: __PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+        required: true;
+    };
+    saveIconColor: {
+        type: __PropType<string>;
+        required: true;
+    };
+    cancelIcon: {
+        type: __PropType<string | undefined>;
+        required: false;
+    };
+    loadingIcon: {
+        type: __PropType<string | undefined>;
+        required: false;
+    };
+    saveIcon: {
+        type: __PropType<string | undefined>;
+        required: false;
     };
 }>> & {
     onSave?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;
-export default _default;
+export default _sfc_main;
