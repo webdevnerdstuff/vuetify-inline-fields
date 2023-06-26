@@ -4,7 +4,7 @@ export const sharedProps = {
 	cancelButtonColor: 'default',
 	cancelButtonSize: 'x-small',
 	cancelButtonTitle: 'Cancel',
-	cancelButtonVariant: 'tonal' as const,
+	cancelButtonVariant: 'text' as const,
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
 	closeSiblings: false,
@@ -68,6 +68,7 @@ const valueIcons = {
 const checkboxProps = {
 	...sharedProps,
 	...trueFalseIcons,
+	...saveAndLoadingIconProps,
 	...{
 		falseIcon: undefined,
 		icons: true,
