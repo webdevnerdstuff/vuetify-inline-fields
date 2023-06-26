@@ -216,7 +216,6 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	console.log('settings.loadingWait', settings.loadingWait);
 	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
