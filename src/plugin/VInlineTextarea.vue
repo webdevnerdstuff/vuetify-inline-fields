@@ -164,6 +164,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-textarea',
+	loading: props.loading,
+	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
 
@@ -215,7 +217,7 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled) {
+	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
 

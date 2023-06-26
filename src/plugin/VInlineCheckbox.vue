@@ -52,11 +52,11 @@
 				:density="settings.density"
 				:disabled="loading"
 				:error="error"
-				:false-icon="settings.falseIcon"
+				:false-icon="theFalseIcon"
 				:false-value="settings.falseValue"
 				:hide-details="settings.hideDetails"
 				:label="settings.label"
-				:true-icon="settings.trueIcon"
+				:true-icon="theTrueIcon"
 				:value="settings.trueValue"
 				@update:model-value="saveValue"
 			>
@@ -79,6 +79,7 @@
 						v-if="!settings.fieldOnly"
 						class="ms-1"
 						:color="settings.cancelButtonColor"
+						:disabled="loading"
 						icon
 						:size="settings.cancelButtonSize"
 						:title="settings.cancelButtonTitle"
@@ -129,13 +130,22 @@ const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
+console.log(iconOptions);
+
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
 
 const error = ref<boolean>(false);
-const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
+
+
+// ------------------------------------------------ Loading //
+watch(() => props.loading, (newVal, oldVal) => {
+	if (!newVal && oldVal && showField.value) {
+		toggleField();
+	}
+});
 
 
 // ------------------------------------------------ Icons //
@@ -147,6 +157,21 @@ const theCancelIcon = computed(() => {
 	});
 });
 
+const theFalseIcon = computed(() => {
+	return useGetIcon({
+		icon: props.trueIcon,
+		iconOptions,
+		name: 'checkboxFalse',
+	});
+});
+
+const theTrueIcon = computed(() => {
+	return useGetIcon({
+		icon: props.iconTrue,
+		iconOptions,
+		name: 'checkboxTrue',
+	});
+});
 
 // ------------------------------------------------ The displayed value //
 const displayValue = computed(() => {
@@ -159,6 +184,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-checkbox',
+	loading: props.loading,
+	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
 
@@ -200,7 +227,7 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled) {
+	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
 

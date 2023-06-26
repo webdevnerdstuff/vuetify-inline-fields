@@ -182,6 +182,9 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-select',
+	iconSet: iconOptions?.defaultSet,
+	loading: props.loading,
+	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
 
@@ -233,7 +236,7 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled) {
+	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
 
@@ -322,9 +325,22 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-// TODO: When clearable prop = true //
-// FIX: Adjust clearable icon position and fontawesome size
-// FIX: Adjust arrow icon position and fontawesome size
+.v-inline-fields {
+	&--container {
+		&-icon-set {
+			&-fa {
+				:deep(.v-field__clearable) {
+					align-items: center;
+					font-size: .8rem;
+				}
+
+				:deep(.v-field__append-inner) {
+					align-items: center;
+				}
+			}
+		}
+	}
+}
 
 :deep(.v-input__append) {
 	padding: 0 !important;
@@ -332,6 +348,10 @@ onUnmounted(() => {
 
 :deep(.v-field__field) {
 	align-items: flex-end !important;
+}
+
+:deep(.v-field__clearable) {
+	padding: 0 !important;
 }
 
 .icons-container {
