@@ -52,43 +52,43 @@ const sharedProps = [
 	{
 		default: 'default',
 		desc: `${colorDesc} cancel button`,
-		name: 'cancelButtonColor',
+		name: 'cancel-button-color',
 		type: "VBtn['$props']['color']",
 	},
 	{
 		default: 'x-small',
 		desc: 'Sets the height and width of the cancel button',
-		name: 'cancelButtonSize',
+		name: 'cancel-button-size',
 		type: "VBtn['$props']['size']",
 	},
 	{
 		default: 'Cancel',
 		desc: 'The title of the cancel button',
-		name: 'cancelButtonTitle',
+		name: 'cancel-button-title',
 		type: 'string | undefined',
 	},
 	{
 		default: 'tonal',
 		desc: `${variantDesc} cancel button`,
-		name: 'cancelButtonVariant',
+		name: 'cancel-button-variant',
 		type: "VBtn['$props']['variant']",
 	},
 	{
-		default: 'mdi:mdi-close',
+		default: undefined,
 		desc: 'The icon to use to cancel',
-		name: 'cancelIcon',
-		type: 'string',
+		name: 'cancel-icon',
+		type: 'string | undefined',
 	},
 	{
 		default: 'default',
 		desc: `${colorDesc} cancel icon`,
-		name: 'cancelIconColor',
+		name: 'cancel-icon-color',
 		type: 'string',
 	},
 	{
 		default: false,
 		desc: 'If <code>true</code>, the field will close when the user opens another inline form element',
-		name: 'closeSiblings',
+		name: 'close-siblings',
 		type: 'boolean',
 	},
 	{
@@ -112,19 +112,19 @@ const sharedProps = [
 	{
 		default: 'empty',
 		desc: 'Text to display when the field is empty',
-		name: 'emptyText',
+		name: 'empty-text',
 		type: 'string',
 	},
 	{
 		default: false,
 		desc: 'If set to <code>true</code> will only show the field',
-		name: 'fieldOnly',
+		name: 'field-only',
 		type: 'boolean',
 	},
 	{
 		default: true,
 		desc: 'Hides hint and validation errors. When set to auto messages will be rendered only if there\'s a message (hint, error message, counter value etc) to display',
-		name: 'hideDetails',
+		name: 'hide-details',
 		type: 'boolean'
 	},
 	{
@@ -134,19 +134,19 @@ const sharedProps = [
 		type: 'Record<string, unknown>',
 	},
 	{
-		default: 'undefined',
+		default: undefined,
 		desc: 'Sets the text of the <code>v-label</code> or <code>v-field-label</code> component',
 		name: 'label',
 		type: 'string',
 	},
 	{
-		default: 'PUT',
-		desc: 'The http method to use when saving the text field',
-		name: 'method',
-		type: 'string',
+		default: 'true',
+		desc: 'Sets the text of the field cursor to <code>wait</code> and prevents the field from opening until <code>loading</code> has returned to false',
+		name: 'loading-wait',
+		type: 'boolean',
 	},
 	{
-		default: 'undefined',
+		default: undefined,
 		desc: "Sets the component's name attribute",
 		name: 'name',
 		type: 'string',
@@ -154,25 +154,25 @@ const sharedProps = [
 	{
 		default: true,
 		desc: 'Adjusts padding to help the field to be vertically centered in the table cell',
-		name: 'tableField',
+		name: 'table-field',
 		type: 'boolean',
 	},
 	{
 		default: 'primary',
 		desc: `${colorDesc} display value underline`,
-		name: 'underlineColor',
+		name: 'underline-color',
 		type: 'string',
 	},
 	{
 		default: 'dotted',
 		desc: 'The style of the display value underline',
-		name: 'underlineStyle',
+		name: 'underline-style',
 		type: 'string',
 	},
 	{
 		default: '1px',
 		desc: 'The width of the display value underline',
-		name: 'underlineWidth',
+		name: 'underline-width',
 		type: 'string',
 	},
 	{
@@ -184,7 +184,7 @@ const sharedProps = [
 	{
 		default: 'default',
 		desc: `${colorDesc} value`,
-		name: 'valueColor',
+		name: 'value-color',
 		type: 'string',
 	},
 ];
@@ -193,7 +193,7 @@ const autofocusProp = [
 	{
 		default: false,
 		desc: 'If <code>true</code>, the field will autofocus',
-		name: 'autofocus',
+		name: 'auto-focus',
 		type: 'boolean',
 	},
 ];
@@ -202,55 +202,55 @@ const saveAndLoadingIconProps = [
 	{
 		default: false,
 		desc: 'Displays/Hides the save icon',
-		name: 'hideSaveIcon',
+		name: 'hide-save-icon',
 		type: 'boolean',
 	},
 	{
-		default: 'mdi:mdi-loading mdi:mdi-spin',
+		default: undefined,
 		desc: 'The icon to use when loading',
-		name: 'loadingIcon',
-		type: 'string',
+		name: 'loading-icon',
+		type: 'string | undefined',
 	},
 	{
 		default: 'primary',
 		desc: `${colorDesc} loading icon`,
-		name: 'loadingIconColor',
+		name: 'loading-icon-color',
 		type: 'string',
 	},
 	{
 		default: 'primary',
 		desc: `${colorDesc} save button`,
-		name: 'saveButtonColor',
+		name: 'save-button-color',
 		type: "VBtn['$props']['color']",
 	},
 	{
 		default: 'x-small',
 		desc: 'Sets the height and width of the save button',
-		name: 'saveButtonSize',
+		name: 'save-button-size',
 		type: "VBtn['$props']['size']",
 	},
 	{
 		default: 'Save',
 		desc: 'The title of the save button',
-		name: 'saveButtonTitle',
+		name: 'save-button-title',
 		type: 'string | undefined',
 	},
 	{
 		default: 'text',
 		desc: `${variantDesc} save button`,
-		name: 'saveButtonVariant',
+		name: 'save-button-variant',
 		type: "VBtn['$props']['variant']",
 	},
 	{
-		default: 'mdi:mdi-content-save',
+		default: undefined,
 		desc: 'The icon to use to save',
-		name: 'saveIcon',
-		type: 'string',
+		name: 'save-icon',
+		type: 'string | undefined',
 	},
 	{
 		default: 'primary',
 		desc: `${colorDesc} save icon`,
-		name: 'saveIconColor',
+		name: 'save-icon-color',
 		type: 'string',
 	},
 ];
@@ -259,43 +259,43 @@ const trueFalseIconProps = [
 	{
 		default: false,
 		desc: 'Sets value for falsy state',
-		name: 'falseValue',
+		name: 'false-value',
 		type: 'boolean | string',
 	},
 	{
-		default: 'mdi:mdi-close',
+		default: undefined,
 		desc: 'The <code>false</code> icon',
-		name: 'iconFalse',
-		type: 'string',
+		name: 'icon-false',
+		type: 'string | undefined',
 	},
 	{
 		default: 'danger',
 		desc: `${colorDesc} icon when <code>false</code>`,
-		name: 'iconFalseColor',
+		name: 'icon-false-color',
 		type: 'string',
 	},
 	{
 		default: 'No',
 		desc: 'The title of the <code>false</code> icon',
-		name: 'iconFalseTitle',
+		name: 'icon-false-title',
 		type: 'string | undefined',
 	},
 	{
-		default: 'mdi:mdi-check',
+		default: undefined,
 		desc: 'The <code>true</code> icon',
-		name: 'iconTrue',
-		type: 'string',
+		name: 'icon-true',
+		type: 'string | undefined',
 	},
 	{
 		default: 'success',
 		desc: `${colorDesc} icon when <code>true</code>`,
-		name: 'iconTrueColor',
+		name: 'icon-true-color',
 		type: 'string',
 	},
 	{
 		default: 'Yes',
 		desc: 'The title of the <code>true</code> icon',
-		name: 'iconTrueTitle',
+		name: 'icon-true-title',
 		type: 'string | undefined',
 	},
 	{
@@ -307,7 +307,7 @@ const trueFalseIconProps = [
 	{
 		default: true,
 		desc: 'Sets value for truthy state',
-		name: 'trueValue',
+		name: 'true-value',
 		type: 'boolean | string',
 	},
 ];
@@ -316,13 +316,13 @@ const truncateProps = [
 	{
 		default: 0,
 		desc: 'The number of characters to truncate the displayed value',
-		name: 'truncateLength',
+		name: 'truncate-length',
 		type: 'number | undefined',
 	},
 	{
 		default: '...',
 		desc: 'The suffix to use when truncating the displayed value',
-		name: 'truncateSuffix',
+		name: 'truncate-suffix',
 		type: 'string | undefined',
 	},
 ];
@@ -338,15 +338,15 @@ const vInlineCheckboxProps = [
 			type: "VCheckbox['$props']['density']",
 		},
 		{
-			default: 'mdi:mdi-checkbox-blank-outline',
+			default: undefined,
 			desc: 'The icon of the field when <code>false</code>',
-			name: 'falseIcon',
+			name: 'false-icon',
 			type: "VCheckbox['$props']['falseIcon']",
 		},
 		{
-			default: 'mdi:mdi-checkbox-outline',
+			default: undefined,
 			desc: 'The icon of the field when <code>true</code>',
-			name: 'trueIcon',
+			name: 'true-icon',
 			type: "VCheckbox['$props']['trueIcon']",
 		},
 		{
@@ -364,9 +364,9 @@ const vInlineSelectProps = [
 	...saveAndLoadingIconProps,
 	...[
 		{
-			default: 'mdi:mdi-close-circle-outline',
+			default: undefined,
 			desc: 'The icon to use to clear the field',
-			name: 'clearIcon',
+			name: 'clear-icon',
 			type: "VSelect['$props']['clearIcon']",
 		},
 		{
@@ -384,19 +384,19 @@ const vInlineSelectProps = [
 		{
 			default: true,
 			desc: 'Hides the selected items',
-			name: 'hideSelected',
+			name: 'hide-selected',
 			type: "VSelect['$props']['hideSelected']",
 		},
 		{
 			default: 'title',
 			desc: 'The item title',
-			name: 'itemTitle',
+			name: 'item-title',
 			type: "VSelect['$props']['itemTitle']",
 		},
 		{
 			default: 'value',
 			desc: 'The item value',
-			name: 'itemValue',
+			name: 'item-value',
 			type: "VSelect['$props']['itemValue']",
 		},
 		{
@@ -425,10 +425,10 @@ const vInlineSwitchProps = [
 			type: "VSwitch['$props']['density']",
 		},
 		{
-			default: 'mdi:mdi-checkbox-blank-outline',
+			default: undefined,
 			desc: 'The icon of the field when <code>false</code>',
-			name: 'falseIcon',
-			type: "falseIcon['$props']['falseIcon']",
+			name: 'false-icon',
+			type: "VSwitch['$props']['falseIcon']",
 		},
 		{
 			default: true,
@@ -448,7 +448,7 @@ const vInlineTextareaProps = [
 		{
 			default: true,
 			desc: 'Automatically grow the textarea depending on amount of text',
-			name: 'autoGrow',
+			name: 'auto-grow',
 			type: "VTextarea['$props']['autoGrow']",
 		},
 		{
