@@ -11,7 +11,7 @@
 		"watch": "pnpm dev",
 		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
 		"bundle": "rollup -c --bundleConfigAsCjs",
-		"build": "vue-tsc && vite build --config vite.build.config.ts",
+		"build": "vite build --config vite.build.config.ts",
 		"build:docs": "vite build",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d docs",
@@ -45,7 +45,7 @@
 	"bugs": {
 		"url": "https://github.com/webdevnerdstuff/vuetify-inline-fields/issues"
 	},
-	"homepage": "https://github.com/webdevnerdstuff/vuetify-inline-fields",
+	"homepage": "https://webdevnerdstuff.github.io/vuetify-inline-fields/",
 	"keywords": [
 		"vuetify-inline-fields",
 		"vuetify",
