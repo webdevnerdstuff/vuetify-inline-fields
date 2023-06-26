@@ -1,11 +1,11 @@
 import { Fragment as pe, reactive as Le, computed as p, watchEffect as He, toRefs as Kl, capitalize as Yl, warn as gn, watch as q, onScopeDispose as Se, effectScope as Gn, inject as ue, ref as N, unref as u, provide as Ae, shallowRef as oe, defineComponent as Ue, camelize as Xl, h as yn, getCurrentInstance as ua, onBeforeUnmount as Ge, readonly as Kn, toRaw as We, TransitionGroup as ca, Transition as et, createVNode as c, mergeProps as G, onBeforeMount as Jl, nextTick as ge, withDirectives as fe, resolveDirective as De, vShow as rt, isRef as tt, onMounted as bt, toRef as Y, Text as da, resolveDynamicComponent as va, Teleport as pa, cloneVNode as fa, createTextVNode as ma, vModelText as ga, mergeModels as Oe, useModel as st, openBlock as le, createBlock as it, useAttrs as ut, createElementBlock as ce, withCtx as ye, normalizeClass as te, createCommentVNode as Yn, mergeDefaults as St, useSlots as Ct, onUnmounted as xt, normalizeStyle as Ve, createElementVNode as xe, toDisplayString as wt, createSlots as kt, renderList as Vt, renderSlot as Bt, normalizeProps as It, guardReactiveProps as _t, withKeys as on } from "vue";
 /**
  * @name vuetify-inline-fields
- * @version 1.0.0-beta-1.1
+ * @version 1.0.0-beta-1.2
  * @description Vuetify's Inline Form Fields Component Library offers a comprehensive collection of reusable UI components designed to create elegant and efficient inline form fields within your applications.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
- * @homepage https://github.com/webdevnerdstuff/vuetify-inline-fields
+ * @homepage https://webdevnerdstuff.github.io/vuetify-inline-fields/
  * @repository https://github.com/webdevnerdstuff/vuetify-inline-fields
  * @license MIT License
  */
