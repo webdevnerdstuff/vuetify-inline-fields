@@ -2,6 +2,8 @@ import { UseGetIcon } from '../../types';
 
 const defaultIcons = {
 	fa: {
+		checkboxFalse: 'far fa-square',
+		checkboxTrue: 'fa-check-square',
 		clear: 'fa-circle-xmark',
 		false: 'fa-xmark',
 		loading: 'fa-circle-notch',
@@ -9,6 +11,8 @@ const defaultIcons = {
 		true: 'fa-check',
 	},
 	mdi: {
+		checkboxFalse: 'mdi:mdi-checkbox-blank-outline',
+		checkboxTrue: 'mdi:mdi-checkbox-outline',
 		clear: 'mdi-close-circle-outline',
 		false: 'mdi-close',
 		loading: 'mdi-loading',
