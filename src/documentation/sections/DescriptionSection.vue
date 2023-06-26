@@ -15,7 +15,7 @@
 
 			<v-row>
 				<v-col cols="12">
-					<p>Vuetify's Inline Form Fields Component Library offers a comprehensive collection of reusable UI components
+					<p>Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components
 						designed to create elegant and efficient inline form fields within your applications. With seamless
 						integration into Vuetify's UI framework and a wide range of customizable options, developers can effortlessly
 						incorporate inline fields that perfectly align with their application's needs.
