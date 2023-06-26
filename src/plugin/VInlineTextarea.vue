@@ -92,14 +92,12 @@ import {
 	CloseSiblingsBus,
 	FieldValue,
 	TimeOpened,
-	UseSaveValue,
 	VInlineTextareaProps,
 } from '@/types';
 import { textareaProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
-	useSaveValue,
 	useToggleField,
 	useTruncateText,
 } from './composables/methods';
@@ -127,10 +125,17 @@ let settings = reactive({ ...attrs, ...props });
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
-const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
+
+
+// ------------------------------------------------ Loading //
+watch(() => props.loading, (newVal, oldVal) => {
+	if (!newVal && oldVal && showField.value) {
+		toggleField();
+	}
+});
 
 
 // ------------------------------------------------ The displayed value //
@@ -159,6 +164,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-textarea',
+	loading: props.loading,
+	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
 
@@ -210,7 +217,7 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled) {
+	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
 
@@ -266,21 +273,8 @@ function checkInternalErrors() {
 // ------------------------------------------------ Save the value / Emit update //
 function saveValue() {
 	originalValue = modelValue.value;
-	loading.value = true;
-	emit('loading', loading.value);
 
-	useSaveValue({
-		emit: emit as keyof UseSaveValue,
-		name: settings.name,
-		settings,
-		value: modelValue.value as keyof UseSaveValue,
-	})
-		.then((response) => {
-			error.value = response?.error as boolean ?? false;
-			loading.value = false;
-			emit('loading', loading.value);
-			toggleField();
-		});
+	emit('update', modelValue.value);
 }
 
 

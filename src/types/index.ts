@@ -11,6 +11,7 @@ import type {
 	VTextField,
 	VTextarea,
 } from 'vuetify/components';
+import type { IconOptions } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
 import {
 	AxiosError,
@@ -26,48 +27,45 @@ export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['
 export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props']['variant'] | VTextarea['$props']['variant'];
 
 
-
 // -------------------------------------------------- Props //
 export interface SharedProps {
 	alignItems?: AlignItems;
-	apiRoute?: string | undefined;
 	autofocus?: boolean;
 	cancelButtonColor?: VBtn['$props']['color'];
 	cancelButtonSize?: VBtn['$props']['size'];
 	cancelButtonTitle?: string | undefined;
 	cancelButtonVariant?: VBtn['$props']['variant'];
-	cancelIcon?: string;
+	cancelIcon?: string | undefined;
 	cancelIconColor?: string;
 	closeSiblings?: boolean;
 	color?: string;
 	disabled?: boolean;
-	doNotSave?: boolean;
 	emptyText?: string;
 	error?: boolean;
 	falseValue?: boolean | string;
 	fieldOnly?: boolean;
 	hideDetails?: boolean;
 	hideSaveIcon?: boolean;
-	iconFalse?: string;
+	iconFalse?: string | undefined;
 	iconFalseColor?: string;
 	iconFalseTitle?: string | undefined;
-	iconTrue?: string;
+	iconTrue?: string | undefined;
 	iconTrueColor?: string;
 	iconTrueTitle?: string | undefined;
 	icons?: boolean;
 	item?: Record<string, unknown>;
 	label?: string;
-	loadingIcon?: string;
+	loading?: boolean;
+	loadingIcon?: string | undefined;
 	loadingIconColor?: string;
-	method?: string;
-	// TODO: Change this to optional. Throw error if using apiRoute and not providing a name. //
+	loadingWait?: boolean;
 	name?: string;
 	required?: boolean;
 	saveButtonColor?: VBtn['$props']['color'];
 	saveButtonSize?: VBtn['$props']['size'];
 	saveButtonTitle?: string | undefined;
 	saveButtonVariant?: VBtn['$props']['variant'];
-	saveIcon?: string;
+	saveIcon?: string | undefined;
 	saveIconColor?: string;
 	tableField?: boolean;
 	trueValue?: boolean | string;
@@ -85,20 +83,21 @@ export interface VInlineCheckboxProps extends Omit<SharedProps,
 	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'
 > {
 	density?: VCheckbox['$props']['density'];
-	falseIcon?: VCheckbox['$props']['falseIcon'];
-	trueIcon?: VCheckbox['$props']['trueIcon'];
+	falseIcon?: string | undefined;
+	trueIcon?: string | undefined;
 }
 
 export interface VInlineSelectProps extends Omit<SharedProps,
 	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'
 > {
-	clearIcon?: VSelect['$props']['clearIcon'];
+	clearIcon?: string | undefined;
 	clearable?: VSelect['$props']['clearable'];
 	density?: VSelect['$props']['density'];
 	hideSelected?: VSelect['$props']['hideSelected'];
 	itemTitle?: VSelect['$props']['itemTitle'];
 	itemValue?: VSelect['$props']['itemValue'];
 	items?: VSelect['$props']['items'];
+	menu?: VSelect['$props']['menu'];
 	rules?: VSelect['$props']['rules'];
 	variant?: VSelect['$props']['variant'];
 }
@@ -130,30 +129,36 @@ export interface VInlineTextFieldProps extends Omit<SharedProps,
 
 
 // -------------------------------------------------- Components //
-export type BooleanIcons = Required<Pick<SharedProps, 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle'>>;
+export interface BooleanIcons extends
+	Required<Pick<SharedProps, 'iconFalseColor' | 'iconFalseTitle' | 'iconTrueColor' | 'iconTrueTitle'>>,
+	Pick<SharedProps,
+		'iconFalse' |
+		'iconTrue'
+	> { };
 
-export interface SaveFieldButtons extends Required<Pick<SharedProps,
-	'cancelButtonColor' |
-	'cancelButtonSize' |
-	'cancelButtonVariant' |
-	'cancelButtonTitle' |
-	'cancelIcon' |
-	'cancelIconColor' |
-	'error' |
-	'fieldOnly' |
-	'hideSaveIcon' |
-	'loadingIcon' |
-	'loadingIconColor' |
-	'saveButtonColor' |
-	'saveButtonSize' |
-	'saveButtonTitle' |
-	'saveButtonVariant' |
-	'saveIconColor' |
-	'saveButtonVariant' |
-	'saveIcon'
->> {
-	loading: boolean;
-};
+export interface SaveFieldButtons extends
+	Required<Pick<SharedProps,
+		'cancelButtonColor' |
+		'cancelButtonSize' |
+		'cancelButtonVariant' |
+		'cancelButtonTitle' |
+		'cancelIconColor' |
+		'error' |
+		'fieldOnly' |
+		'hideSaveIcon' |
+		'loadingIconColor' |
+		'saveButtonColor' |
+		'saveButtonSize' |
+		'saveButtonTitle' |
+		'saveButtonVariant' |
+		'saveIconColor' |
+		'saveButtonVariant'
+	>>,
+	Pick<SharedProps,
+		'cancelIcon' |
+		'loadingIcon' |
+		'saveIcon'
+	> { loading: boolean; };
 
 
 // -------------------------------------------------- Composables //
@@ -165,6 +170,9 @@ export interface UseInlineFieldsContainerClass {
 			density?: GlobalDensity;
 			disabled?: Ref<boolean> | boolean;
 			field?: Ref<string> | string;
+			iconSet?: string;
+			loading?: Ref<boolean> | boolean;
+			loadingWait?: Ref<SharedProps['loadingWait']> | SharedProps['loadingWait'];
 			tableField?: SharedProps['tableField'];
 		},
 	): object;
@@ -200,7 +208,7 @@ export interface UseDisplaySelectionControlClass {
 export interface UseDisplayValueClass {
 	(
 		name: string,
-		valueColor: string,
+		valueColor: SharedProps['valueColor'],
 		options: {
 			empty?: Ref<boolean> | boolean;
 			error?: Ref<boolean> | boolean;
@@ -217,6 +225,18 @@ export interface UseFieldContainerClass {
 		},
 	): object;
 }
+
+// ------------------------ Icons //
+export interface UseGetIcon {
+	(
+		options: {
+			icon: string | undefined;
+			iconOptions: IconOptions | undefined;
+			name: string;
+		}
+	): string;
+}
+
 
 // ------------------------ Other //
 export interface UseCheckForErrors {

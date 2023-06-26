@@ -29,7 +29,7 @@
 				v-bind="$attrs"
 				v-model="modelValue"
 				:autofocus="!settings.fieldOnly || settings.autofocus"
-				:clear-icon="settings.clearIcon"
+				:clear-icon="theClearIcon"
 				:clearable="settings.clearable"
 				:color="settings.color"
 				:density="settings.density"
@@ -43,6 +43,7 @@
 				:items="items"
 				:label="settings.label"
 				:loading="loading"
+				:menu="settings.menu"
 				:variant="settings.variant"
 				width="100%"
 				@keyup.esc="closeField"
@@ -95,15 +96,14 @@ import {
 	CloseSiblingsBus,
 	FieldValue,
 	TimeOpened,
-	UseSaveValue,
 	VInlineSelectProps,
 } from '@/types';
+import type { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import { selectProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
-	useSaveValue,
 	useToggleField,
 } from './composables/methods';
 import {
@@ -118,23 +118,43 @@ import {
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useGetIcon } from './composables/icons';
 
 
 const modelValue = defineModel<FieldValue>();
 
 const attrs = useAttrs();
-const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const slots = useSlots();
+
 const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
+const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 let settings = reactive({ ...attrs, ...props });
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
 const items = ref();
-const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
+
+
+// ------------------------------------------------ Loading //
+watch(() => props.loading, (newVal, oldVal) => {
+	if (!newVal && oldVal && showField.value) {
+		toggleField();
+	}
+});
+
+
+// ------------------------------------------------ Icons //
+const theClearIcon = computed(() => {
+	return useGetIcon({
+		icon: props.clearIcon,
+		iconOptions,
+		name: 'clear',
+	});
+});
 
 
 // ------------------------------------------------ The displayed value //
@@ -162,6 +182,9 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-select',
+	iconSet: iconOptions?.defaultSet,
+	loading: props.loading,
+	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
 
@@ -213,7 +236,7 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled) {
+	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
 
@@ -269,21 +292,8 @@ function checkInternalErrors() {
 // ------------------------------------------------ Save the value / Emit update //
 function saveValue() {
 	originalValue = modelValue.value;
-	loading.value = true;
-	emit('loading', loading.value);
 
-	useSaveValue({
-		emit: emit as keyof UseSaveValue,
-		name: settings.name,
-		settings,
-		value: modelValue.value as keyof UseSaveValue,
-	})
-		.then((response) => {
-			error.value = response?.error as boolean ?? false;
-			loading.value = false;
-			emit('loading', loading.value);
-			toggleField();
-		});
+	emit('update', modelValue.value);
 }
 
 
@@ -315,12 +325,33 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.v-inline-fields {
+	&--container {
+		&-icon-set {
+			&-fa {
+				:deep(.v-field__clearable) {
+					align-items: center;
+					font-size: .8rem;
+				}
+
+				:deep(.v-field__append-inner) {
+					align-items: center;
+				}
+			}
+		}
+	}
+}
+
 :deep(.v-input__append) {
 	padding: 0 !important;
 }
 
 :deep(.v-field__field) {
 	align-items: flex-end !important;
+}
+
+:deep(.v-field__clearable) {
+	padding: 0 !important;
 }
 
 .icons-container {

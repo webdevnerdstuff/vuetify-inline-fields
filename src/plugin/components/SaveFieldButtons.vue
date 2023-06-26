@@ -16,12 +16,13 @@
 			<v-icon
 				v-if="!loading && !settings.hideSaveIcon"
 				:color="hasErrors ? 'error' : settings.saveIconColor"
-				:icon="saveIcon"
+				:icon="theSaveIcon"
 			/>
 			<v-icon
 				v-else-if="!settings.hideSaveIcon"
+				:class="loadingIconClasses"
 				:color="settings.loadingIconColor"
-				:icon="loadingIcon"
+				:icon="theLoadingIcon"
 			/>
 		</v-btn>
 		<v-btn
@@ -36,7 +37,7 @@
 			<v-icon
 				class="text-default"
 				:color="settings.cancelIconColor"
-				:icon="cancelIcon"
+				:icon="theCancelIcon"
 			/>
 		</v-btn>
 	</div>
@@ -44,7 +45,9 @@
 
 <script setup lang="ts">
 import { SaveFieldButtons } from '@/types';
+import type { IconOptions } from 'vuetify';
 import { useSaveFieldsContainerClass } from '../composables/classes';
+import { useGetIcon } from '../composables/icons';
 
 const attrs = useAttrs();
 const emit = defineEmits([
@@ -53,11 +56,49 @@ const emit = defineEmits([
 ]);
 
 const props = withDefaults(defineProps<SaveFieldButtons>(), {});
-
-const settings = reactive({ ...attrs, ...props });
+const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
 const hasErrors = computed<boolean>(() => props.error);
 const saveFieldsContainerClass = computed<object>(() => useSaveFieldsContainerClass());
+const loading = computed(() => props.loading);
+
+const settings = reactive({ ...attrs, ...props });
+
+const loadingIconClasses = computed(() => {
+	if (iconOptions?.defaultSet === 'fa') {
+		return 'fa-spin';
+	}
+
+	if (iconOptions?.defaultSet === 'mdi') {
+		return 'mdi-spin';
+	}
+
+	return '';
+});
+
+const theCancelIcon = computed(() => {
+	return useGetIcon({
+		icon: props.cancelIcon,
+		iconOptions,
+		name: 'false',
+	});
+});
+
+const theLoadingIcon = computed(() => {
+	return useGetIcon({
+		icon: props.loadingIcon,
+		iconOptions,
+		name: 'loading',
+	});
+});
+
+const theSaveIcon = computed(() => {
+	return useGetIcon({
+		icon: props.saveIcon,
+		iconOptions,
+		name: 'save',
+	});
+});
 
 function closeField() {
 	emit('close');

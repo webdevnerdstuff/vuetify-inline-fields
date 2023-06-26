@@ -1,23 +1,8 @@
 import {
-	FieldValue,
 	UseCheckForErrors,
-	UseSaveValue,
 	UseToggleField,
 	UseTruncateText
 } from '@/types';
-import axios from 'axios';
-
-
-// ------------------------------------------------ Internal Functions //
-function buildResponseItem(item: object, name: string | undefined, value: FieldValue) {
-	const returnItem = { ...item };
-
-	if (name) {
-		returnItem[name] = value;
-	}
-
-	return returnItem;
-}
 
 
 // ------------------------------------------------ Composables //
@@ -62,50 +47,6 @@ const useCheckForErrors: UseCheckForErrors = (options) => {
 	};
 };
 
-const useSaveValue: UseSaveValue = async (options) => {
-	const { settings, emit, name, value } = options;
-	const submitData = buildResponseItem(settings.item as object, name, value);
-
-	if (settings.doNotSave) {
-		emit('update', value);
-		return {
-			error: false,
-			value,
-		};
-	}
-
-	if (settings.apiRoute === '') {
-		throw new Error('If the "doNotSave" prop is false, the "apiRoute" prop is required.');
-	}
-
-	const response = await axios({
-		data: submitData,
-		method: settings.method as string,
-		url: settings.apiRoute as string,
-	})
-		.then((response) => {
-			emit('update', response);
-			settings.originalValue = value;
-
-			return {
-				error: false,
-				showField: false,
-			};
-		})
-		.catch((error) => {
-			console.error('error', error);
-
-			emit('error', error);
-
-			return {
-				error: true,
-				showField: false,
-			};
-		});
-
-	return response;
-};
-
 const useToggleField: UseToggleField = (options) => {
 	const { attrs, closeSiblings, fieldOnly, props, showField, timeOpened } = options;
 	let opened = timeOpened;
@@ -137,7 +78,6 @@ const useTruncateText: UseTruncateText = (options) => {
 
 export {
 	useCheckForErrors,
-	useSaveValue,
 	useToggleField,
 	useTruncateText,
 };

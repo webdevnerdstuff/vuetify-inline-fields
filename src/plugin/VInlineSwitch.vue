@@ -85,7 +85,7 @@
 					>
 						<v-icon
 							:color="settings.cancelIconColor"
-							:icon="cancelIcon"
+							:icon="theCancelIcon"
 						/>
 					</v-btn>
 				</template>
@@ -99,15 +99,13 @@ import {
 	CloseSiblingsBus,
 	FieldValue,
 	TimeOpened,
-	UseSaveValue,
 	VInlineSwitchProps,
 } from '@/types';
+import type { IconOptions } from 'vuetify';
 import { switchProps } from './utils/props';
 import { BooleanIcons } from './components/index';
-import {
-	useSaveValue,
-	useToggleField,
-} from './composables/methods';
+import { useToggleField } from './composables/methods';
+import { useGetIcon } from './composables/icons';
 import {
 	useDisplayContainerClass,
 	useDisplaySelectionControlClasses,
@@ -127,13 +125,32 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
+
 const props = withDefaults(defineProps<VInlineSwitchProps>(), { ...switchProps });
 let settings = reactive({ ...attrs, ...props });
 
 const error = ref<boolean>(false);
-const loading = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
+
+
+// ------------------------------------------------ Loading //
+watch(() => props.loading, (newVal, oldVal) => {
+	if (!newVal && oldVal && showField.value) {
+		toggleField();
+	}
+});
+
+
+// ------------------------------------------------ Icons //
+const theCancelIcon = computed(() => {
+	return useGetIcon({
+		icon: settings.cancelIcon,
+		iconOptions,
+		name: 'false',
+	});
+});
 
 
 // ------------------------------------------------ The displayed value //
@@ -147,6 +164,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-switch',
+	loading: props.loading,
+	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
 
@@ -188,7 +207,7 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled) {
+	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
 
@@ -212,24 +231,11 @@ function toggleField() {
 
 
 // ------------------------------------------------ Save the value / Emit update //
-function saveValue(value: undefined) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function saveValue(value: any) {
 	modelValue.value = value;
 
-	loading.value = true;
-	emit('loading', loading.value);
-
-	useSaveValue({
-		emit: emit as keyof UseSaveValue,
-		name: settings.name,
-		settings,
-		value: value as keyof UseSaveValue,
-	})
-		.then((response) => {
-			error.value = response?.error as boolean ?? false;
-			loading.value = false;
-			emit('loading', loading.value);
-			toggleField();
-		});
+	emit('update', value);
 }
 
 
