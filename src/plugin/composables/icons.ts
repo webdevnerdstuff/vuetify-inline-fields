@@ -3,7 +3,7 @@ import { UseGetIcon } from '../../types';
 const defaultIcons = {
 	fa: {
 		checkboxFalse: 'far fa-square',
-		checkboxTrue: 'fa-check-square',
+		checkboxTrue: 'far fa-square-check',
 		clear: 'fa-circle-xmark',
 		false: 'fa-xmark',
 		loading: 'fa-circle-notch',
