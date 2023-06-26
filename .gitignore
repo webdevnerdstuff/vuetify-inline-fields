@@ -9,7 +9,6 @@ lerna-debug.log*
 
 node_modules
 docs
-dist
 dist-ssr
 *.local
 
@@ -27,4 +26,3 @@ dist-ssr
 
 
 src/plugin/**/*.bk.*
-src/plugin/shared

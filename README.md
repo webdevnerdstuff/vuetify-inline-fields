@@ -1,16 +1,16 @@
-<!-- <p align="center">
+<p align="center">
   <img alt="Vuetify Logo" width="100" src="https://raw.githubusercontent.com/webdevnerdstuff/vuetify-inline-fields/main/src/assets/vuetify-logo.svg">
-</p> -->
+</p>
 
 <p>
-  <h1 align="center">Vuetify Inline Fields (alpha)</h1>
+  <h1 align="center">Vuetify Inline Fields (beta)</h1>
 </p>
 
 <p align="center">
-  <!-- <a href="https://www.npmjs.com/package/vuetify-inline-fields">
+  <a href="https://www.npmjs.com/package/vuetify-inline-fields">
     <img src="https://img.shields.io/npm/v/vuetify-inline-fields?color=1867c0&logo=npm" alt="NPM Package">
   </a>
-  &nbsp; -->
+  &nbsp;
   <a href="https://github.com/webdevnerdstuff/vuetify-inline-fields">
     <img src="https://img.shields.io/badge/GitHub-WebDevNerdStuff-brightgreen.svg?logo=github" alt="@WebDevNerdStuff">
   </a>
@@ -19,12 +19,14 @@
 
 ## Description
 
-TBD
+Vuetify's Inline Form Fields Component Library offers a comprehensive collection of reusable UI components designed to create elegant and efficient inline form fields within your applications. With seamless integration into Vuetify's UI framework and a wide range of customizable options, developers can effortlessly incorporate inline fields that perfectly align with their application's needs.  
+  
+Additionally, this library provides enhanced integration specifically tailored for usage within data tables. Developers can seamlessly integrate inline form fields directly into their data table cells, facilitating efficient inline editing and data manipulation. This feature empowers users to make changes directly within the table, streamlining the editing process and improving productivity.
 
 
 ## Development Playground
 
-The `vuetify-inline-fields` is still a work in progress. If you would like to test the component library out, you can clone the repo and run the following commands:
+The `vuetify-inline-fields` is still in beta. If you would like to test the component library out, you can clone the repo and run the following commands:
 
 `pnpm i && pnpm play`  
   
@@ -35,23 +37,22 @@ This will open up a Playground page that loads the file `./src/playground/Playgr
  
 Using [pnpm](https://pnpm.io/):
 ```
-pnpm add TBD
+pnpm add vuetify-inline-fields
 ```
 
 Using npm:
 ```
-npm i TBD
+npm i vuetify-inline-fields
 ```
  
 ## Documentation
  
-Component is still in development. Documentation will be added once component is ready for production.
-<!-- [Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-inline-fields/)  -->
+[Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-inline-fields/) 
 
 ## Dependencies
  
 [Vuetify v3](https://vuetifyjs.com/)  
-[Vue 3](https://vuejs.org/)
+[Vue 3](https://vuejs.org/)  
 [VueUse](https://vueuse.org/)
 
 
