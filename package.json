@@ -1,7 +1,7 @@
 {
 	"name": "vuetify-inline-fields",
-	"version": "1.0.0-beta-1",
-	"description": "The vuetify-inline-fields",
+	"version": "1.0.0-beta-1.1",
+	"description": "Vuetify's Inline Form Fields Component Library offers a comprehensive collection of reusable UI components designed to create elegant and efficient inline form fields within your applications.",
 	"private": false,
 	"main": "dist/vuetify-inline-fields.cjs.js",
 	"module": "dist/vuetify-inline-fields.es.js",
@@ -27,12 +27,12 @@
 	"author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)",
 	"funding": [
 		{
-			"type": "patreon",
-			"url": "https://www.patreon.com/WebDevNerdStuff"
+			"type": "paypal",
+			"url": "https://paypal.me/webdevnerdstuff"
 		},
 		{
-			"type": "individual",
-			"url": "https://bit.ly/wdns-paypal-veet-plugin"
+			"type": "patreon",
+			"url": "https://www.patreon.com/WebDevNerdStuff"
 		}
 	],
 	"license": "MIT",
