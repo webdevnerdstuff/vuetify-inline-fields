@@ -17,6 +17,12 @@
 			}
 		}
 
+		&-loading {
+			.v-inline-fields--display-wrapper-value {
+				cursor: wait !important;
+			}
+		}
+
 		// ------------------------------------------------ Table Field (tableField) Prop = true //
 		&-table {
 			--v-inline-fields-top-padding-compact: 0;
