@@ -10,7 +10,7 @@ export const useCoreStore = defineStore('core', () => {
 	const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
 	const links = {
 		changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
-		discord: 'https://discord.gg/ksYZfB5F',
+		discord: 'https://discord.com/users/979453275369783346',
 		github: repoBaseUrl,
 		githubProfile: 'https://github.com/webdevnerdstuff',
 		license: `${repoBaseUrl}/blob/main/LICENSE.md`,
