@@ -58,7 +58,7 @@ export interface SharedProps {
 	loading?: boolean;
 	loadingIcon?: string | undefined;
 	loadingIconColor?: string;
-	method?: string;
+	loadingWait?: boolean;
 	name?: string;
 	required?: boolean;
 	saveButtonColor?: VBtn['$props']['color'];
@@ -83,8 +83,8 @@ export interface VInlineCheckboxProps extends Omit<SharedProps,
 	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'
 > {
 	density?: VCheckbox['$props']['density'];
-	falseIcon?: VCheckbox['$props']['falseIcon'];
-	trueIcon?: VCheckbox['$props']['trueIcon'];
+	falseIcon?: string | undefined;
+	trueIcon?: string | undefined;
 }
 
 export interface VInlineSelectProps extends Omit<SharedProps,
@@ -171,6 +171,8 @@ export interface UseInlineFieldsContainerClass {
 			disabled?: Ref<boolean> | boolean;
 			field?: Ref<string> | string;
 			iconSet?: string;
+			loading?: Ref<boolean> | boolean;
+			loadingWait?: Ref<SharedProps['loadingWait']> | SharedProps['loadingWait'];
 			tableField?: SharedProps['tableField'];
 		},
 	): object;
