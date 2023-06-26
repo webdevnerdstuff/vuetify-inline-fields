@@ -1,149 +1,64 @@
 // * ---------------------------------------- The shared props for all inline fields //
 export const sharedProps = {
-	// ? The vertical alignment of the field //
 	alignItems: 'center' as const,
-
-	// ? The color of the cancel button - [ All Fields ] //
 	cancelButtonColor: 'default',
-
-	// ? The size of the cancel button - [ All Fields ] //
 	cancelButtonSize: 'x-small',
-
-	// ? The title of the cancel button - [ All Fields ] //
 	cancelButtonTitle: 'Cancel',
-
-	// ? The variant of the cancel button - [ All Fields ] //
 	cancelButtonVariant: 'tonal' as const,
-
-	// ? The icon to use to cancel - [ All Fields ] //
 	cancelIcon: undefined,
-
-	// ? The color of the cancel icon - [ All Fields ] //
 	cancelIconColor: 'default',
-
-	// ? If true, the field will close when the user opens another inline form element - [ All Fields ] //
 	closeSiblings: false,
-
-	// ? The Color of the field - [ All Fields ] //
 	color: 'primary',
-
-	// ? The field density - [ All Fields ] //
 	density: 'compact' as const,
-
-	// ? Disabled the field - [ All Fields ] //
 	disabled: false,
-
-	// ? Text to display when the field is empty - [ v-textarea, v-text-field ] //
 	emptyText: 'empty',
-
-	// ? If set to true will only show the field - [ All Fields ] //
 	fieldOnly: false,
-
-	// ? Displays/Hides the field details //
 	hideDetails: true,
-
-	// ! Required The item object - [ All Fields ] //
-	// item: () => ({}),
-
-	// ? The field label - [ All Fields ] //
 	label: '',
-
 	loading: false,
-
-	// ? The http method to use when saving the text field - [ All Fields ] //
-	method: 'PUT',
-
-	// ? The column name of the field - [ All Fields ] //
+	loadingWait: true,
 	name: '',
-
-	// ? If the field is used in a table this will remove the top padding //
 	tableField: true,
-
-	// ? The color of the underline - [ All Fields ] //
 	underlineColor: 'primary',
-
-	// ? The style of the underline - [ All Fields ] //
 	underlineStyle: 'dotted',
-
-	// ? The width of the underline - [ All Fields ] //
 	underlineWidth: '2px',
-
-	// ? Displays/Hides the value underline - [ All Fields ] //
 	underlined: true,
-
-	// ? The color of the value - [ All Fields ] //
 	valueColor: 'default',
 };
 
 // * ------------------------------ Autofocus //
 const autofocus = {
-	// ? If true, the field will autofocus //
 	autofocus: true,
 };
 
 // * ------------------------------ Save & Loading Icon //
 const saveAndLoadingIconProps = {
-	// ? Displays/Hides the save icon //
 	hideSaveIcon: false,
-
-	// ? The icon to use when loading //
 	loadingIcon: undefined,
-
-	// ? The icon to use when loading //
 	loadingIconColor: 'primary',
-
-	// ? The color of the save button //
 	saveButtonColor: 'primary',
-
-	// ? The size of the save button //
 	saveButtonSize: 'x-small',
-
-	// ? The title of the save button //
 	saveButtonTitle: 'Save',
-
-	// ? The variant of the save button //
 	saveButtonVariant: 'text' as const,
-
-	// ? The icon to use to save //
 	saveIcon: undefined,
-
-	// ? The icon to use to save //
 	saveIconColor: 'primary',
 };
 
 // * ------------------------------ True/False Icons //
 const trueFalseIcons = {
-	// ? The "false" value of the field - [ v-checkbox, v-switch ] //
 	falseValue: false,
-
-	// ? The false icon - [v-checkbox, v-switch] //
 	iconFalse: undefined,
-
-	// ? The color of the icon when false - [v-checkbox, v-switch] //
 	iconFalseColor: 'danger',
-
-	// ? The title of the false icon - [v-checkbox, v-switch] //
 	iconFalseTitle: 'No',
-
-	// ? The true icon - [v-checkbox, v-switch] //
 	iconTrue: undefined,
-
-	// ? The color of the icon when true - [v-checkbox, v-switch] //
 	iconTrueColor: 'success',
-
-	// ? The title of the true icon - [v-checkbox, v-switch] //
 	iconTrueTitle: 'Yes',
-
-	// ? Displays/Hides the icons - [v-checkbox, v-switch] //
 	icons: true,
-
-	// ? The "true" value of the field - [v-checkbox, v-switch] //
 	trueValue: true,
 };
 
 // * ------------------------------ Component Value Icons  //
 const valueIcons = {
-	// ? Displays/Hides the component value icons //
 	icons: true,
 };
 
@@ -154,14 +69,9 @@ const checkboxProps = {
 	...sharedProps,
 	...trueFalseIcons,
 	...{
-		// ? The icon of the field when false - [ v-checkbox ] //
-		falseIcon: 'mdi:mdi-checkbox-blank-outline',
-
-		// ? Displays/Hides the icons //
+		falseIcon: undefined,
 		icons: true,
-
-		// ? The icon of the field when true - [v-checkbox] //
-		trueIcon: 'mdi:mdi-checkbox-outline',
+		trueIcon: undefined,
 	},
 };
 
@@ -171,25 +81,13 @@ const selectProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
-		// ? The icon to use to clear the field //
 		clearIcon: undefined,
-
-		// ? If true, the field will be clearable //
 		clearable: false,
-
-		// ? Hides the selected items //
 		hideSelected: true,
-
 		itemTitle: 'title',
-
 		itemValue: 'value',
-
-		// ? The select list items - [v-select] //
 		items: () => ([]),
-
 		menu: true,
-
-		// ? The variant of the field //
 		variant: 'underlined' as const,
 	},
 };
@@ -200,7 +98,6 @@ const switchProps = {
 	...trueFalseIcons,
 	...valueIcons,
 	...{
-		// ? The icon of the field when false - [ v-checkbox ] //
 		falseIcon: '',
 	},
 };
@@ -211,13 +108,8 @@ const textareaProps = {
 	...saveAndLoadingIconProps,
 	...sharedProps,
 	...{
-		// ? Automatically grow the textarea depending on amount of text //
 		autoGrow: true,
-
-		// ? The height of the textarea when autoGrow is false //
 		rows: 1,
-
-		// ? The variant of the field //
 		variant: 'underlined' as const,
 	},
 };
@@ -228,7 +120,6 @@ const textFieldProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
-		// ? The variant of the field //
 		variant: 'underlined' as const,
 	}
 };
