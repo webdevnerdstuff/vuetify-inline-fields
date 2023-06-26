@@ -1,4 +1,4 @@
-import '@/Libraries/fontawesome';
+import '@/libraries/fontawesome';
 import App from './App.vue';
 import CodeBlock from 'vue3-code-block';
 import { createApp } from 'vue';
