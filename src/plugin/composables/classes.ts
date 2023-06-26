@@ -11,7 +11,7 @@ import { componentName } from '../utils/globals';
 
 // ------------------------------------------------ Main Container //
 export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (options) => {
-	const { field = '', density = '', disabled = false, iconSet = 'mdi', tableField = false } = options;
+	const { field = '', density = '', disabled = false, iconSet = 'mdi', loading = false, loadingWait, tableField = false } = options;
 
 	return {
 		[`${componentName}`]: true,
@@ -19,6 +19,7 @@ export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (opt
 		[`${componentName}--container-disabled`]: unref(disabled),
 		[`${componentName}--container-table`]: tableField,
 		[`${componentName}--container-icon-set-${iconSet}`]: true,
+		[`${componentName}--container-loading`]: loading && loadingWait,
 		[`${componentName}--container-${field}`]: true,
 		[`${componentName}--container-${field}-${density}`]: true,
 		[`vi-${field}`]: true,
