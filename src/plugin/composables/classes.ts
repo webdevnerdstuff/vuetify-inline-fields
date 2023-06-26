@@ -1,4 +1,5 @@
 import {
+	UseCancelButtonClass,
 	UseDisplayContainerClass,
 	UseDisplayInputControlClass,
 	UseDisplaySelectionControlClass,
@@ -89,10 +90,21 @@ export const useFieldContainerClass: UseFieldContainerClass = (options): object 
 	};
 };
 
+
+// ------------------------------------------------ Save Field Buttons //
 export const useSaveFieldsContainerClass = (): object => {
 	return {
 		[`${componentName}--save-fields-container`]: true,
 		'align-center': true,
 		'd-flex': true,
+	};
+};
+
+export const useCancelButtonClass: UseCancelButtonClass = (options): object => {
+	const { cancelButtonVariant } = options;
+
+	return {
+		'me-1': cancelButtonVariant === 'elevated',
+		'ms-1': true,
 	};
 };
