@@ -47,20 +47,6 @@ const store = useCoreStore();
 </script>
 
 <style lang="scss" scoped>
-:deep(code) {
-	background-color: rgba(255, 255, 255, 0.1) !important;
-	border-radius: 3px;
-	font-size: 85%;
-	font-weight: normal;
-	padding: 0.2em 0.4em;
-}
-
-:deep(.v-theme--light) {
-	code {
-		background-color: rgba(0, 0, 0, 0.1) !important;
-	}
-}
-
 :deep(.v-input__details) {
 	max-height: 10px;
 	min-height: 10px;

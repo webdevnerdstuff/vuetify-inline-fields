@@ -26,7 +26,7 @@
 							v-model="values.textField"
 							align-items="flex-start"
 							:density="density"
-							do-not-save
+							:loading-wait="false"
 							rows="1"
 							:table-field="true"
 							:variant="variant"
@@ -55,7 +55,7 @@
 			:items="propsStore.vInlineTextareaProps"
 			section-id="inline-textarea-props"
 			section-title="Props"
-			subtitle="These are all props for the <code>VInlineTextarea</code> component"
+			subtitle="These are all props for the <code class='ic'>VInlineTextarea</code> component"
 		/>
 	</v-col>
 </template>

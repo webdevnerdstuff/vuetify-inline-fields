@@ -25,8 +25,8 @@
 						<VInlineSwitch
 							v-model="values.boolean"
 							:density="density"
-							do-not-save
 							hide-details
+							:loading-wait="false"
 						/>
 					</v-col>
 
@@ -51,7 +51,7 @@
 			:items="propsStore.vInlineSwitchProps"
 			section-id="inline-switch-props"
 			section-title="Props"
-			subtitle="These are all props for the <code>VInlineSwitch</code> component"
+			subtitle="These are all props for the <code class='ic'>VInlineSwitch</code> component"
 		/>
 	</v-col>
 </template>

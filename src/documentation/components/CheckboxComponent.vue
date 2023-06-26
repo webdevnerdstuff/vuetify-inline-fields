@@ -25,8 +25,8 @@
 						<VInlineCheckbox
 							v-model="values.boolean"
 							:density="density"
-							do-not-save
 							hide-details
+							:loading-wait="false"
 						/>
 					</v-col>
 
@@ -52,7 +52,7 @@
 			:items="propsStore.vInlineCheckboxProps"
 			section-id="inline-checkbox-props"
 			section-title="Props"
-			subtitle="These are all props for the <code>VInlineCheckbox</code> component"
+			subtitle="These are all props for the <code class='ic'>VInlineCheckbox</code> component"
 		/>
 	</v-col>
 </template>
