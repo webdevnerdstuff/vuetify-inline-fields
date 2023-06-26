@@ -1,6 +1,6 @@
 {
 	"name": "vuetify-inline-fields",
-	"version": "1.0.0-beta-1.1",
+	"version": "1.0.0-beta-1.2",
 	"description": "Vuetify's Inline Form Fields Component Library offers a comprehensive collection of reusable UI components designed to create elegant and efficient inline form fields within your applications.",
 	"private": false,
 	"main": "dist/vuetify-inline-fields.cjs.js",
@@ -11,7 +11,7 @@
 		"watch": "pnpm dev",
 		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
 		"bundle": "rollup -c --bundleConfigAsCjs",
-		"build": "vite build --config vite.build.config.ts",
+		"build": "vue-tsc && vite build --config vite.build.config.ts",
 		"build:docs": "vite build",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d docs",
