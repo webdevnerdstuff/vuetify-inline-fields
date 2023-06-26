@@ -75,22 +75,28 @@
 					v-if="!slots.append"
 					#append
 				>
-					<v-btn
-						v-if="!settings.fieldOnly"
-						class="ms-1"
-						:color="settings.cancelButtonColor"
-						:disabled="loading"
-						icon
-						:size="settings.cancelButtonSize"
-						:title="settings.cancelButtonTitle"
-						:variant="settings.cancelButtonVariant"
-						@click="toggleField"
-					>
-						<v-icon
-							:color="settings.cancelIconColor"
-							:icon="theCancelIcon"
-						/>
-					</v-btn>
+					<SaveFieldButtons
+						:cancel-button-color="settings.cancelButtonColor"
+						:cancel-button-size="settings.cancelButtonSize"
+						:cancel-button-title="settings.cancelButtonTitle"
+						:cancel-button-variant="settings.cancelButtonVariant"
+						:cancel-icon="settings.cancelIcon"
+						:cancel-icon-color="settings.cancelIconColor"
+						:error="error"
+						:field-only="settings.fieldOnly"
+						:hide-save-icon="true"
+						:loading="loading"
+						:loading-icon="settings.loadingIcon"
+						:loading-icon-color="settings.loadingIconColor"
+						:save-button-color="settings.saveButtonColor"
+						:save-button-size="settings.saveButtonSize"
+						:save-button-title="settings.saveButtonTitle"
+						:save-button-variant="settings.saveButtonVariant"
+						:save-icon="settings.saveIcon"
+						:save-icon-color="settings.saveIconColor"
+						@close="closeField"
+						@save="saveValue"
+					/>
 				</template>
 			</v-checkbox>
 		</div>
@@ -106,7 +112,10 @@ import {
 } from '@/types';
 import type { IconOptions } from 'vuetify';
 import { checkboxProps } from './utils/props';
-import { BooleanIcons } from './components/index';
+import {
+	BooleanIcons,
+	SaveFieldButtons,
+} from './components/index';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
@@ -130,8 +139,6 @@ const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
-console.log(iconOptions);
-
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
 
@@ -149,14 +156,6 @@ watch(() => props.loading, (newVal, oldVal) => {
 
 
 // ------------------------------------------------ Icons //
-const theCancelIcon = computed(() => {
-	return useGetIcon({
-		icon: settings.cancelIcon,
-		iconOptions,
-		name: 'false',
-	});
-});
-
 const theFalseIcon = computed(() => {
 	return useGetIcon({
 		icon: props.trueIcon,
@@ -223,6 +222,13 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 	underlineWidth: settings.underlineWidth,
 	underlined: settings.underlined,
 }));
+
+
+// ------------------------------------------------ Key event to cancel/close field //
+function closeField() {
+	error.value = false;
+	toggleField();
+}
 
 
 // ------------------------------------------------ Toggle the field //
