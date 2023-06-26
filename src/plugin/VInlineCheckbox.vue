@@ -256,7 +256,10 @@ function saveValue(value: any) {
 	modelValue.value = value;
 
 	emit('update', value);
-	toggleField();
+
+	if (!settings.loadingWait) {
+		toggleField();
+	}
 }
 
 

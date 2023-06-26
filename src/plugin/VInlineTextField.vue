@@ -216,6 +216,7 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
+	console.log('settings.loadingWait', settings.loadingWait);
 	if (settings.disabled || (settings.loadingWait && props.loading)) {
 		return;
 	}
@@ -278,6 +279,10 @@ function saveValue() {
 
 	originalValue = modelValue.value;
 	emit('update', modelValue.value);
+
+	if (!settings.loadingWait) {
+		toggleField();
+	}
 }
 
 
