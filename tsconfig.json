@@ -49,6 +49,8 @@
 		"src/layout/**/*.vue",
 		"src/components/**/*.ts",
 		"src/components/**/*.vue",
+		"src/documentation/**/*.ts",
+		"src/documentation/**/*.vue",
 		"src/playground/**/*.vue",
 		"src/playground/**/*.ts",
 		"src/stores/**/*.ts",
