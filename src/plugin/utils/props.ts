@@ -126,5 +126,11 @@ const textFieldProps = {
 };
 
 
-// Default Export //
-export { checkboxProps, selectProps, switchProps, textFieldProps, textareaProps };
+// Export //
+export {
+	checkboxProps,
+	selectProps,
+	switchProps,
+	textFieldProps,
+	textareaProps,
+};
