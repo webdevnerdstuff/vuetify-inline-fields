@@ -47,11 +47,6 @@ const store = useCoreStore();
 </script>
 
 <style lang="scss" scoped>
-:deep(.v-input__details) {
-	max-height: 10px;
-	min-height: 10px;
-}
-
 .switch-label {
 	:deep(.v-label) {
 		opacity: 1 !important;
