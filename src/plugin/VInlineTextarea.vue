@@ -27,18 +27,18 @@
 			:class="fieldContainerClass"
 		>
 			<v-textarea
-				v-bind="$attrs"
+				v-bind="bindingSettings"
 				v-model="modelValue"
 				:auto-grow="settings.autoGrow"
 				:autofocus="!settings.fieldOnly || settings.autofocus"
 				:color="settings.color"
 				:density="settings.density"
-				:disabled="loading"
+				:disabled="loadingProp"
 				:error="error"
 				:error-messages="internalErrorMessages"
 				:hide-details="settings.hideDetails"
 				:label="settings.label"
-				:loading="loading"
+				:loading="loadingProp"
 				:rows="settings.rows"
 				:variant="settings.variant"
 				width="100%"
@@ -69,7 +69,7 @@
 						:error="error"
 						:field-only="settings.fieldOnly"
 						:hide-save-icon="settings.hideSaveIcon"
-						:loading="loading"
+						:loading="loadingProp"
 						:loading-icon="settings.loadingIcon"
 						:loading-icon-color="settings.loadingIconColor"
 						:save-button-color="settings.saveButtonColor"
@@ -122,6 +122,7 @@ const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 const props = withDefaults(defineProps<VInlineTextareaProps>(), { ...textareaProps });
 let settings = reactive({ ...attrs, ...props });
+const loadingProp = computed(() => props.loading);
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
@@ -130,8 +131,12 @@ const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
 
 
+// ------------------------------------------------ Binding Events & Props //
+const bindingSettings = computed(() => settings);
+
+
 // ------------------------------------------------ Loading //
-watch(() => props.loading, (newVal, oldVal) => {
+watch(() => loadingProp.value, (newVal, oldVal) => {
 	if (!newVal && oldVal && showField.value) {
 		toggleField();
 	}
@@ -164,7 +169,7 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-textarea',
-	loading: props.loading,
+	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
@@ -217,7 +222,7 @@ function closeField() {
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled || (settings.loadingWait && props.loading)) {
+	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
 

@@ -44,17 +44,17 @@
 			:class="fieldContainerClass"
 		>
 			<v-switch
-				v-bind="$attrs"
+				v-bind="bindingSettings"
 				v-model="modelValue"
 				:color="settings.color"
 				:density="settings.density"
-				:disabled="loading"
+				:disabled="loadingProp"
 				:error="error"
 				:false-icon="settings.falseIcon"
 				:false-value="settings.falseValue"
 				:hide-details="settings.hideDetails"
 				:label="settings.label"
-				:loading="loading"
+				:loading="loadingProp"
 				:value="settings.trueValue"
 				@update:model-value="saveValue"
 			>
@@ -129,14 +129,19 @@ const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
 const props = withDefaults(defineProps<VInlineSwitchProps>(), { ...switchProps });
 let settings = reactive({ ...attrs, ...props });
+const loadingProp = computed(() => props.loading);
 
 const error = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 
 
+// ------------------------------------------------ Binding Events & Props //
+const bindingSettings = computed(() => settings);
+
+
 // ------------------------------------------------ Loading //
-watch(() => props.loading, (newVal, oldVal) => {
+watch(() => loadingProp.value, (newVal, oldVal) => {
 	if (!newVal && oldVal && showField.value) {
 		toggleField();
 	}
@@ -164,7 +169,7 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-switch',
-	loading: props.loading,
+	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
@@ -207,7 +212,7 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled || (settings.loadingWait && props.loading)) {
+	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
 
