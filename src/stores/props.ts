@@ -53,13 +53,13 @@ const sharedProps = [
 		default: 'default',
 		desc: `${colorDesc} cancel button`,
 		name: 'cancel-button-color',
-		type: "VBtn['$props']['color']",
+		type: "string | undefined",
 	},
 	{
 		default: 'x-small',
 		desc: 'Sets the height and width of the cancel button',
 		name: 'cancel-button-size',
-		type: "VBtn['$props']['size']",
+		type: "string | number | undefined",
 	},
 	{
 		default: 'Cancel',
@@ -87,7 +87,7 @@ const sharedProps = [
 	},
 	{
 		default: false,
-		desc: 'If <code>true</code>, the field will close when the user opens another inline form element',
+		desc: 'If <code class="ic">true</code>, the field will close when the user opens another inline form element',
 		name: 'close-siblings',
 		type: 'boolean',
 	},
@@ -117,7 +117,7 @@ const sharedProps = [
 	},
 	{
 		default: false,
-		desc: 'If set to <code>true</code> will only show the field',
+		desc: 'If set to <code class="ic">true</code> will only show the field',
 		name: 'field-only',
 		type: 'boolean',
 	},
@@ -135,13 +135,13 @@ const sharedProps = [
 	},
 	{
 		default: undefined,
-		desc: 'Sets the text of the <code>v-label</code> or <code>v-field-label</code> component',
+		desc: 'Sets the text of the <code class="ic">v-label</code> or <code class="ic">v-field-label</code> component',
 		name: 'label',
 		type: 'string',
 	},
 	{
 		default: 'true',
-		desc: 'Sets the text of the field cursor to <code>wait</code> and prevents the field from opening until <code>loading</code> has returned to false',
+		desc: 'The cursor for unopened fields, with the same loading prop value, is set to "wait" and their selection is disabled until the loading process is completed. Additionally, the saving field will remain visible but disabled until the loading is finished',
 		name: 'loading-wait',
 		type: 'boolean',
 	},
@@ -192,7 +192,7 @@ const sharedProps = [
 const autofocusProp = [
 	{
 		default: false,
-		desc: 'If <code>true</code>, the field will autofocus',
+		desc: 'If <code class="ic">true</code>, the field will autofocus',
 		name: 'auto-focus',
 		type: 'boolean',
 	},
@@ -221,13 +221,13 @@ const saveAndLoadingIconProps = [
 		default: 'primary',
 		desc: `${colorDesc} save button`,
 		name: 'save-button-color',
-		type: "VBtn['$props']['color']",
+		type: "string | undefined",
 	},
 	{
 		default: 'x-small',
-		desc: 'Sets the height and width of the save button',
+		desc: 'Sets the height and width of the save/loading button',
 		name: 'save-button-size',
-		type: "VBtn['$props']['size']",
+		type: "string | number | undefined",
 	},
 	{
 		default: 'Save',
@@ -237,7 +237,7 @@ const saveAndLoadingIconProps = [
 	},
 	{
 		default: 'text',
-		desc: `${variantDesc} save button`,
+		desc: `${variantDesc} save/loading button`,
 		name: 'save-button-variant',
 		type: "VBtn['$props']['variant']",
 	},
@@ -264,37 +264,37 @@ const trueFalseIconProps = [
 	},
 	{
 		default: undefined,
-		desc: 'The <code>false</code> icon',
+		desc: 'The displayed <code class="ic">false</code> icon when the field is not editable',
 		name: 'icon-false',
 		type: 'string | undefined',
 	},
 	{
 		default: 'danger',
-		desc: `${colorDesc} icon when <code>false</code>`,
+		desc: `${colorDesc} icon when <code class="ic">false</code>`,
 		name: 'icon-false-color',
 		type: 'string',
 	},
 	{
 		default: 'No',
-		desc: 'The title of the <code>false</code> icon',
+		desc: 'The title of the <code class="ic">false</code> icon',
 		name: 'icon-false-title',
 		type: 'string | undefined',
 	},
 	{
 		default: undefined,
-		desc: 'The <code>true</code> icon',
+		desc: 'The displayed <code class="ic">true</code> icon when the field is not editable',
 		name: 'icon-true',
 		type: 'string | undefined',
 	},
 	{
 		default: 'success',
-		desc: `${colorDesc} icon when <code>true</code>`,
+		desc: `${colorDesc} icon when <code class="ic">true</code>`,
 		name: 'icon-true-color',
 		type: 'string',
 	},
 	{
 		default: 'Yes',
-		desc: 'The title of the <code>true</code> icon',
+		desc: 'The title of the <code class="ic">true</code> icon',
 		name: 'icon-true-title',
 		type: 'string | undefined',
 	},
@@ -329,31 +329,20 @@ const truncateProps = [
 
 const vInlineCheckboxProps = [
 	...sharedProps,
+	...saveAndLoadingIconProps,
 	...trueFalseIconProps,
 	...[
 		{
-			default: 'compact',
-			desc: densityDesc,
-			name: 'density',
-			type: "VCheckbox['$props']['density']",
-		},
-		{
 			default: undefined,
-			desc: 'The icon of the field when <code>false</code>',
+			desc: 'The icon of the checkbox when <code class="ic">false</code>',
 			name: 'false-icon',
-			type: "VCheckbox['$props']['falseIcon']",
+			type: "string | undefined",
 		},
 		{
 			default: undefined,
-			desc: 'The icon of the field when <code>true</code>',
+			desc: 'The icon of the checkbox when <code class="ic">true</code>',
 			name: 'true-icon',
-			type: "VCheckbox['$props']['trueIcon']",
-		},
-		{
-			default: true,
-			desc: 'Displays/Hides the icons',
-			name: 'icons',
-			type: 'boolean',
+			type: "string | undefined",
 		},
 	]
 ];
@@ -373,19 +362,13 @@ const vInlineSelectProps = [
 			default: false,
 			desc: 'Allows for the component to be cleared',
 			name: 'clearable',
-			type: "VSelect['$props']['clearable']",
-		},
-		{
-			default: 'compact',
-			desc: densityDesc,
-			name: 'density',
-			type: "VSelect['$props']['density']",
+			type: "boolean | undefined",
 		},
 		{
 			default: true,
 			desc: 'Hides the selected items',
 			name: 'hide-selected',
-			type: "VSelect['$props']['hideSelected']",
+			type: "boolean | undefined",
 		},
 		{
 			default: 'title',
@@ -419,22 +402,10 @@ const vInlineSwitchProps = [
 	...trueFalseIconProps,
 	...[
 		{
-			default: 'compact',
-			desc: densityDesc,
-			name: 'density',
-			type: "VSwitch['$props']['density']",
-		},
-		{
 			default: undefined,
-			desc: 'The icon of the field when <code>false</code>',
+			desc: 'The icon of the field when <code class="ic">false</code>',
 			name: 'false-icon',
 			type: "VSwitch['$props']['falseIcon']",
-		},
-		{
-			default: true,
-			desc: 'Displays/Hides the icons',
-			name: 'icons',
-			type: 'boolean',
 		},
 	]
 ];
@@ -449,19 +420,13 @@ const vInlineTextareaProps = [
 			default: true,
 			desc: 'Automatically grow the textarea depending on amount of text',
 			name: 'auto-grow',
-			type: "VTextarea['$props']['autoGrow']",
-		},
-		{
-			default: 'compact',
-			desc: densityDesc,
-			name: 'density',
-			type: "VTextarea['$props']['density']",
+			type: "boolean | undefined",
 		},
 		{
 			default: 1,
 			desc: 'Default row count',
 			name: 'rows',
-			type: "VTextarea['$props']['rows']",
+			type: "string | number | undefined",
 		},
 		{
 			default: 'underlined',
@@ -478,12 +443,6 @@ const vInlineTextFieldProps = [
 	...saveAndLoadingIconProps,
 	...truncateProps,
 	...[
-		{
-			default: 'compact',
-			desc: densityDesc,
-			name: 'density',
-			type: "VTextField['$props']['density']",
-		},
 		{
 			default: 'underlined',
 			desc: `${variantDesc} component`,

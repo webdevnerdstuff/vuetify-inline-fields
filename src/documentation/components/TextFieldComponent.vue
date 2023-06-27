@@ -26,7 +26,7 @@
 							v-model="values.textField"
 							align-items="flex-end"
 							:density="density"
-							do-not-save
+							:loading-wait="false"
 							:table-field="false"
 							:variant="variant"
 						></VInlineTextField>

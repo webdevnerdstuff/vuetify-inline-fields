@@ -46,11 +46,11 @@
 			:class="fieldContainerClass"
 		>
 			<v-checkbox
-				v-bind="$attrs"
+				v-bind="bindingSettings"
 				v-model="modelValue"
 				:color="settings.color"
 				:density="settings.density"
-				:disabled="loading"
+				:disabled="loadingProp"
 				:error="error"
 				:false-icon="theFalseIcon"
 				:false-value="settings.falseValue"
@@ -75,22 +75,28 @@
 					v-if="!slots.append"
 					#append
 				>
-					<v-btn
-						v-if="!settings.fieldOnly"
-						class="ms-1"
-						:color="settings.cancelButtonColor"
-						:disabled="loading"
-						icon
-						:size="settings.cancelButtonSize"
-						:title="settings.cancelButtonTitle"
-						:variant="settings.cancelButtonVariant"
-						@click="toggleField"
-					>
-						<v-icon
-							:color="settings.cancelIconColor"
-							:icon="theCancelIcon"
-						/>
-					</v-btn>
+					<SaveFieldButtons
+						:cancel-button-color="settings.cancelButtonColor"
+						:cancel-button-size="settings.cancelButtonSize"
+						:cancel-button-title="settings.cancelButtonTitle"
+						:cancel-button-variant="settings.cancelButtonVariant"
+						:cancel-icon="settings.cancelIcon"
+						:cancel-icon-color="settings.cancelIconColor"
+						:error="error"
+						:field-only="settings.fieldOnly"
+						:hide-save-icon="true"
+						:loading="loadingProp"
+						:loading-icon="settings.loadingIcon"
+						:loading-icon-color="settings.loadingIconColor"
+						:save-button-color="settings.saveButtonColor"
+						:save-button-size="settings.saveButtonSize"
+						:save-button-title="settings.saveButtonTitle"
+						:save-button-variant="settings.saveButtonVariant"
+						:save-icon="settings.saveIcon"
+						:save-icon-color="settings.saveIconColor"
+						@close="closeField"
+						@save="saveValue"
+					/>
 				</template>
 			</v-checkbox>
 		</div>
@@ -106,7 +112,10 @@ import {
 } from '@/types';
 import type { IconOptions } from 'vuetify';
 import { checkboxProps } from './utils/props';
-import { BooleanIcons } from './components/index';
+import {
+	BooleanIcons,
+	SaveFieldButtons,
+} from './components/index';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
@@ -130,18 +139,21 @@ const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
-console.log(iconOptions);
-
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
+const loadingProp = computed(() => props.loading);
 
 const error = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 
 
+// ------------------------------------------------ Binding Events & Props //
+const bindingSettings = computed(() => settings);
+
+
 // ------------------------------------------------ Loading //
-watch(() => props.loading, (newVal, oldVal) => {
+watch(() => loadingProp.value, (newVal, oldVal) => {
 	if (!newVal && oldVal && showField.value) {
 		toggleField();
 	}
@@ -149,14 +161,6 @@ watch(() => props.loading, (newVal, oldVal) => {
 
 
 // ------------------------------------------------ Icons //
-const theCancelIcon = computed(() => {
-	return useGetIcon({
-		icon: settings.cancelIcon,
-		iconOptions,
-		name: 'false',
-	});
-});
-
 const theFalseIcon = computed(() => {
 	return useGetIcon({
 		icon: props.trueIcon,
@@ -184,7 +188,7 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-checkbox',
-	loading: props.loading,
+	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
 }));
@@ -225,9 +229,16 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 }));
 
 
+// ------------------------------------------------ Key event to cancel/close field //
+function closeField() {
+	error.value = false;
+	toggleField();
+}
+
+
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled || (settings.loadingWait && props.loading)) {
+	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
 
@@ -256,7 +267,10 @@ function saveValue(value: any) {
 	modelValue.value = value;
 
 	emit('update', value);
-	toggleField();
+
+	if (!settings.loadingWait) {
+		toggleField();
+	}
 }
 
 

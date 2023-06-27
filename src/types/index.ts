@@ -80,7 +80,7 @@ export interface SharedProps {
 
 // Component Props //
 export interface VInlineCheckboxProps extends Omit<SharedProps,
-	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'
+	'autofocus' | 'truncateLength' | 'truncateSuffix'
 > {
 	density?: VCheckbox['$props']['density'];
 	falseIcon?: string | undefined;
@@ -159,6 +159,15 @@ export interface SaveFieldButtons extends
 		'loadingIcon' |
 		'saveIcon'
 	> { loading: boolean; };
+
+
+export interface UseCancelButtonClass {
+	(
+		options: {
+			cancelButtonVariant?: SharedProps['cancelButtonVariant'];
+		},
+	): object;
+}
 
 
 // -------------------------------------------------- Composables //

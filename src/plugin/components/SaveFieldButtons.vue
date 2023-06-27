@@ -4,6 +4,7 @@
 		v-bind="$attrs"
 	>
 		<v-btn
+			v-if="!settings.hideSaveIcon"
 			class="ms-1"
 			:color="settings.saveButtonColor"
 			:disabled="hasErrors"
@@ -14,19 +15,20 @@
 			@click="saveValue"
 		>
 			<v-icon
-				v-if="!loading && !settings.hideSaveIcon"
+				v-if="!loading"
 				:color="hasErrors ? 'error' : settings.saveIconColor"
 				:icon="theSaveIcon"
 			/>
 			<v-icon
-				v-else-if="!settings.hideSaveIcon"
+				v-else
 				:class="loadingIconClasses"
 				:color="settings.loadingIconColor"
 				:icon="theLoadingIcon"
 			/>
 		</v-btn>
+
 		<v-btn
-			class="ms-1"
+			:class="cancelButtonClasses"
 			:color="settings.cancelButtonColor"
 			icon
 			:size="settings.cancelButtonSize"
@@ -35,6 +37,13 @@
 			@click="closeField"
 		>
 			<v-icon
+				v-if="settings.hideSaveIcon && loading"
+				:class="loadingIconClasses"
+				:color="settings.loadingIconColor"
+				:icon="theLoadingIcon"
+			/>
+			<v-icon
+				v-else
 				class="text-default"
 				:color="settings.cancelIconColor"
 				:icon="theCancelIcon"
@@ -46,7 +55,10 @@
 <script setup lang="ts">
 import { SaveFieldButtons } from '@/types';
 import type { IconOptions } from 'vuetify';
-import { useSaveFieldsContainerClass } from '../composables/classes';
+import {
+	useCancelButtonClass,
+	useSaveFieldsContainerClass,
+} from '../composables/classes';
 import { useGetIcon } from '../composables/icons';
 
 const attrs = useAttrs();
@@ -74,6 +86,12 @@ const loadingIconClasses = computed(() => {
 	}
 
 	return '';
+});
+
+const cancelButtonClasses = computed(() => {
+	return useCancelButtonClass({
+		cancelButtonVariant: settings.cancelButtonVariant,
+	});
 });
 
 const theCancelIcon = computed(() => {

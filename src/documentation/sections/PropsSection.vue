@@ -36,7 +36,7 @@
 				:items="propsStore.saveAndLoadingIconProps"
 				section-id="props-save-and-loading-icon"
 				section-title="Save &amp; Loading Props"
-				subtitle="These are all props for the for the <code>VInlineSelect</code>, <code>VInlineTextarea</code>, and <code>VInlineTextField</code> components"
+				subtitle="These are all props for the for the <code class='ic'>VInlineSelect</code>, <code class='ic'>VInlineTextarea</code>, and <code class='ic'>VInlineTextField</code> components"
 			/>
 
 			<PropsTable
@@ -44,7 +44,7 @@
 				:items="propsStore.trueFalseIconProps"
 				section-id="props-true-false-icon"
 				section-title="True/False Icon Props"
-				subtitle="These are all props for the for the <code>VInlineCheckbox</code> and <code>VInlineSwitch</code> components"
+				subtitle="These are all props for the for the <code class='ic'>VInlineCheckbox</code> and <code class='ic'>VInlineSwitch</code> components"
 			/>
 		</v-col>
 	</v-row>

@@ -26,10 +26,11 @@
 							v-model="values.select"
 							align-items="flex-end"
 							:density="density"
-							do-not-save
 							item-title="state"
 							item-value="abbr"
 							:items="items"
+							:loading-wait="false"
+							return-object
 							:table-field="false"
 							:variant="variant"
 						>
@@ -64,7 +65,7 @@
 			:items="propsStore.vInlineSelectProps"
 			section-id="inline-select-props"
 			section-title="Props"
-			subtitle="These are all props for the <code>VInlineSelect</code> component"
+			subtitle="These are all props for the <code class='ic'>VInlineSelect</code> component"
 		/>
 	</v-col>
 </template>
@@ -83,17 +84,13 @@ const variant = ref('underlined');
 const values = reactive({
 	boolean: true,
 	select: {
-		abbr: 'FL',
-		state: 'Florida',
+		abbr: 'CA',
+		state: 'California',
 	},
 	textField: 'Hello World',
 });
 
 const items = reactive([
-	{
-		abbr: 'FL',
-		state: 'Florida',
-	},
 	{
 		abbr: 'GA',
 		state: 'Georgia',

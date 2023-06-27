@@ -131,5 +131,24 @@ const componentVersion = ref(packageInfo.version);
 provide('classes', classes);
 </script>
 
+<style lang="scss" scoped>
+:deep(code) {
+	&.ic {
+		background-color: rgba(255, 255, 255, 0.1) !important;
+		border-radius: 3px;
+		font-size: 85%;
+		font-weight: normal;
+		padding: 0.2em 0.4em;
+	}
+}
+</style>
+
 <style lang="scss">
+.v-theme--light {
+	code {
+		&.ic {
+			background-color: rgba(0, 0, 0, 0.1) !important;
+		}
+	}
+}
 </style>
