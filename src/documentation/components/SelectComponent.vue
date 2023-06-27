@@ -30,6 +30,7 @@
 							item-value="abbr"
 							:items="items"
 							:loading-wait="false"
+							return-object
 							:table-field="false"
 							:variant="variant"
 						>
@@ -83,17 +84,13 @@ const variant = ref('underlined');
 const values = reactive({
 	boolean: true,
 	select: {
-		abbr: 'FL',
-		state: 'Florida',
+		abbr: 'CA',
+		state: 'California',
 	},
 	textField: 'Hello World',
 });
 
 const items = reactive([
-	{
-		abbr: 'FL',
-		state: 'Florida',
-	},
 	{
 		abbr: 'GA',
 		state: 'Georgia',

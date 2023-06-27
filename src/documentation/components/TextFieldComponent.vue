@@ -53,7 +53,7 @@
 			:items="propsStore.vInlineTextFieldProps"
 			section-id="inline-text-field-props"
 			section-title="Props"
-			subtitle="These are all props for the <code class='ic'>VInlineTextField</code> component"
+			subtitle="These are all props for the <code>VInlineTextField</code> component"
 		/>
 	</v-col>
 </template>
