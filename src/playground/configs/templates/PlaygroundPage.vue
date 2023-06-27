@@ -30,6 +30,7 @@
 								:item="item"
 								:label="componentOptions.label"
 								:loading="item.raw.loading"
+								:loading-wait="componentOptions.loadingWait"
 								name="active"
 								:underline-color="componentOptions.underlineColor"
 								:underline-style="componentOptions.underlineStyle"
@@ -48,6 +49,7 @@
 								:cancel-button-variant="componentOptions.cancelButtonVariant"
 								:cancel-icon-color="componentOptions.cancelIconColor"
 								:cancel-icon-text="componentOptions.cancelIconText"
+								:clearable="componentOptions.clearable"
 								:close-siblings="componentOptions.closeSiblings"
 								:color="componentOptions.color"
 								:density="componentOptions.density"
@@ -62,9 +64,10 @@
 								:items="users"
 								:label="componentOptions.label"
 								:loading="item.raw.loading"
+								:loading-wait="componentOptions.loadingWait"
 								:menu="componentOptions.menu"
 								name="userId"
-								:return-object="true"
+								return-object
 								:save-button-color="componentOptions.saveButtonColor"
 								:save-icon="componentOptions.saveIcon"
 								:save-icon-color="componentOptions.saveIconColor"
@@ -97,9 +100,11 @@
 								:item="item"
 								:label="componentOptions.label"
 								:loading="item.raw.loading"
+								:loading-wait="componentOptions.loadingWait"
 								name="title"
 								required
 								:save-button-color="componentOptions.saveButtonColor"
+								:save-button-variant="componentOptions.saveButtonVariant"
 								:save-icon-color="componentOptions.saveIconColor"
 								:save-icon-text="componentOptions.saveIconText"
 								:truncate-length="componentOptions.truncateTextFieldLength"
@@ -130,6 +135,7 @@
 								:item="item"
 								:label="componentOptions.label"
 								:loading="item.raw.loading"
+								:loading-wait="componentOptions.loadingWait"
 								name="body"
 								:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
 								:save-button-color="componentOptions.saveButtonColor"
@@ -162,6 +168,8 @@
 								:icon-false-title="componentOptions.iconFalseTitle"
 								:icon-true-title="componentOptions.iconTrueTitle"
 								:item="item"
+								:loading="item.raw.loading"
+								:loading-wait="componentOptions.loadingWait"
 								name="reviewed"
 								:underline-color="componentOptions.underlineColor"
 								:underline-style="componentOptions.underlineStyle"
@@ -208,6 +216,7 @@ const componentOptions = reactive({
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
 	cancelIconText: 'Cancel',
+	clearable: false,
 	closeSiblings: true,
 	color: 'primary',
 	density: 'compact',
@@ -221,6 +230,7 @@ const componentOptions = reactive({
 	iconTrue: undefined,
 	iconTrueTitle: undefined,
 	label: '',
+	loadingWait: true,
 	menu: true,
 	rules: {
 		minLength(value) {
@@ -229,6 +239,7 @@ const componentOptions = reactive({
 		required: value => !!value || 'Field is required',
 	},
 	saveButtonColor: 'default',
+	saveButtonVariant: 'text',
 	saveIcon: undefined,
 	saveIconColor: 'primary',
 	saveIconText: 'Save',
