@@ -334,36 +334,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.v-inline-fields {
-	&--container {
-		&-icon-set {
-			&-fa {
-				:deep(.v-field__clearable) {
-					align-items: center;
-					font-size: .8rem;
-				}
-
-				:deep(.v-field__append-inner) {
-					align-items: center;
-				}
-			}
-		}
-	}
-}
-
-:deep(.v-input__append) {
-	padding: 0 !important;
-}
-
 :deep(.v-field__field) {
 	align-items: flex-end !important;
-}
-
-:deep(.v-field__clearable) {
-	padding: 0 !important;
-}
-
-.icons-container {
-	height: 100%;
 }
 </style>

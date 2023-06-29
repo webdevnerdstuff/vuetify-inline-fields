@@ -4,6 +4,16 @@
 	--v-inline-fields-top-padding-default: 21px;
 }
 
+%clearable-icons {
+	.v-field__clearable,
+	.v-field__append-inner,
+	.v-input__append {
+		align-items: flex-end !important;
+		padding-bottom: 8px !important;
+		padding-top: 0 !important;
+	}
+}
+
 .v-inline-fields {
 	&--container {
 		display: flex;
@@ -20,6 +30,18 @@
 		&-loading {
 			.v-inline-fields--display-wrapper-value {
 				cursor: wait !important;
+			}
+		}
+
+		&-icon-set {
+			&-fa {
+				.v-field__clearable {
+					font-size: .8rem;
+				}
+
+				.v-field__append-inner {
+					align-items: center;
+				}
 			}
 		}
 
@@ -87,8 +109,10 @@
 							&-compact,
 							&-comfortable,
 							&-default {
+								@extend %clearable-icons;
+
 								.v-field__append-inner {
-									padding: 0 !important;
+									padding: 0 0 6px !important;
 								}
 
 								.v-field--variant-underlined,
@@ -101,6 +125,8 @@
 
 							&-compact,
 							&-comfortable {
+								@extend %clearable-icons;
+
 								.v-field--variant-underlined,
 								.v-field--variant-plain {
 									.v-field__input {
@@ -110,6 +136,8 @@
 							}
 
 							&-default {
+								@extend %clearable-icons;
+
 								.v-field--variant-underlined,
 								.v-field--variant-plain {
 									.v-field__input {
@@ -132,6 +160,8 @@
 							&-compact,
 							&-comfortable,
 							&-default {
+								@extend %clearable-icons;
+
 								.v-field--variant-underlined,
 								.v-field--variant-plain {
 									.v-field__input {
@@ -142,6 +172,8 @@
 
 							&-compact,
 							&-comfortable {
+								@extend %clearable-icons;
+
 								.v-field--variant-underlined,
 								.v-field--variant-plain {
 									.v-field__input {
@@ -151,6 +183,8 @@
 							}
 
 							&-default {
+								@extend %clearable-icons;
+
 								.v-field--variant-underlined,
 								.v-field--variant-plain {
 									.v-field__input {
@@ -227,5 +261,12 @@
 
 	&--boolean-icons {
 		font-size: calc(var(--v-icon-size-multiplier) * 1em);
+	}
+
+	.truncate {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 250px;
 	}
 }
