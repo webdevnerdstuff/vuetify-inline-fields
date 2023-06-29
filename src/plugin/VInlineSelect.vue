@@ -43,7 +43,7 @@
 				:items="items"
 				:label="settings.label"
 				:loading="loadingProp"
-				:menu="settings.menu"
+				:menu="settings.menu && !settings.fieldOnly"
 				:variant="settings.variant"
 				width="100%"
 				@keyup.esc="closeField"
