@@ -74,7 +74,7 @@ const sharedProps = [
 		type: "VBtn['$props']['variant']",
 	},
 	{
-		default: undefined,
+		default: '$close',
 		desc: 'The icon to use to cancel',
 		name: 'cancel-icon',
 		type: 'string | undefined',
@@ -198,6 +198,15 @@ const autofocusProp = [
 	},
 ];
 
+const clearIconProp = [
+	{
+		default: '$clear',
+		desc: 'The icon to use to clear the field',
+		name: 'clear-icon',
+		type: "string | undefined",
+	},
+];
+
 const saveAndLoadingIconProps = [
 	{
 		default: false,
@@ -263,7 +272,7 @@ const trueFalseIconProps = [
 		type: 'boolean | string',
 	},
 	{
-		default: undefined,
+		default: '$close',
 		desc: 'The displayed <code class="ic">false</code> icon when the field is not editable',
 		name: 'icon-false',
 		type: 'string | undefined',
@@ -281,7 +290,7 @@ const trueFalseIconProps = [
 		type: 'string | undefined',
 	},
 	{
-		default: undefined,
+		default: '$complete',
 		desc: 'The displayed <code class="ic">true</code> icon when the field is not editable',
 		name: 'icon-true',
 		type: 'string | undefined',
@@ -333,13 +342,13 @@ const vInlineCheckboxProps = [
 	...trueFalseIconProps,
 	...[
 		{
-			default: undefined,
+			default: '$close',
 			desc: 'The icon of the checkbox when <code class="ic">false</code>',
 			name: 'false-icon',
 			type: "string | undefined",
 		},
 		{
-			default: undefined,
+			default: '$complete',
 			desc: 'The icon of the checkbox when <code class="ic">true</code>',
 			name: 'true-icon',
 			type: "string | undefined",
@@ -350,14 +359,9 @@ const vInlineCheckboxProps = [
 const vInlineSelectProps = [
 	...sharedProps,
 	...autofocusProp,
+	...clearIconProp,
 	...saveAndLoadingIconProps,
 	...[
-		{
-			default: undefined,
-			desc: 'The icon to use to clear the field',
-			name: 'clear-icon',
-			type: "VSelect['$props']['clearIcon']",
-		},
 		{
 			default: false,
 			desc: 'Allows for the component to be cleared',
@@ -402,7 +406,7 @@ const vInlineSwitchProps = [
 	...trueFalseIconProps,
 	...[
 		{
-			default: undefined,
+			default: '$close',
 			desc: 'The icon of the field when <code class="ic">false</code>',
 			name: 'false-icon',
 			type: "VSwitch['$props']['falseIcon']",
@@ -413,6 +417,7 @@ const vInlineSwitchProps = [
 const vInlineTextareaProps = [
 	...sharedProps,
 	...autofocusProp,
+	...clearIconProp,
 	...saveAndLoadingIconProps,
 	...truncateProps,
 	...[
@@ -440,6 +445,7 @@ const vInlineTextareaProps = [
 const vInlineTextFieldProps = [
 	...sharedProps,
 	...autofocusProp,
+	...clearIconProp,
 	...saveAndLoadingIconProps,
 	...truncateProps,
 	...[
