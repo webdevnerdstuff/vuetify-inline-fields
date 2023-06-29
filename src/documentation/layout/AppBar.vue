@@ -35,7 +35,7 @@
 			:items="menuItems"
 			multiple
 			placeholder="Vuetify Links"
-			prepend-inner-icon="mdi:mdi-vuetify"
+			prepend-inner-icon="$vuetify"
 			style="height: inherit; max-width: 300px; width: 300px;"
 			title="name"
 			variant="underlined"
@@ -45,7 +45,7 @@
 					:key="item.key"
 					density="compact"
 					:href="item.raw.link"
-					:prepend-icon="item.raw.icon ? item.raw.icon : 'mdi:mdi-vuetify'"
+					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
 					target="_blank"
 					:title="item.raw?.topTitle || item.title"
 				>
