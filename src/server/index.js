@@ -24,7 +24,14 @@ export function makeServer({ environment = 'development' } = {}) {
 
 		// -------------------------------------------------- Routes //
 		routes() {
-			this.namespace = 'vuetify-inline-fields/playground/api';
+			let namespace = 'vuetify-inline-fields/api';
+
+			if (this.environment === 'playground') {
+				namespace = 'vuetify-inline-fields/playground/api';
+			}
+
+			this.namespace = namespace;
+
 
 			// ------------------------- Client Side //
 			this.get('users', (schema) => {
@@ -87,6 +94,9 @@ export function makeServer({ environment = 'development' } = {}) {
 
 				return response;
 			});
+
+			this.passthrough('https://cdn.jsdelivr.net/gh/PrismJS/prism@1.29.0/*');
+			this.passthrough('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/*');
 		},
 
 		// -------------------------------------------------- Seeds //
