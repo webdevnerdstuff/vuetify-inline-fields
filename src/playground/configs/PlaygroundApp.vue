@@ -20,7 +20,11 @@
 
 					<v-row>
 						<v-col class="v-col-12">
-							<PlaygroundPage />
+							<v-container>
+								<v-row class="row mb-4">
+									<PlaygroundPage />
+								</v-row>
+							</v-container>
 						</v-col>
 					</v-row>
 				</v-container>

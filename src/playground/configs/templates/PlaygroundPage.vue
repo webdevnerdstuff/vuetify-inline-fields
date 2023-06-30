@@ -1,200 +1,190 @@
 <template>
-	<v-container>
-		<v-row class="row my-4">
-			<v-col cols="12">
-				<v-card elevation="5">
-					<v-data-table
-						:headers="headers"
-						:items="posts"
-						:items-per-page="tableOptions.itemsPerPage"
-						:loading="tableOptions.loading"
+	<v-col cols="12">
+		<v-card elevation="5">
+			<v-data-table
+				:headers="headers"
+				:items="posts"
+				:items-per-page="tableOptions.itemsPerPage"
+				:loading="tableOptions.loading"
+			>
+				<template #[`item.active`]="{ item }">
+					<VInlineSwitch
+						v-model="item.raw.active"
+						:align-items="componentOptions.alignItems"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon="componentOptions.cancelIcon"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:cancel-icon-text="componentOptions.cancelIconText"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:field-only="componentOptions.fieldOnly"
+						:icon-false="componentOptions.iconFalse"
+						:icon-false-title="componentOptions.iconFalseTitle"
+						:icon-true="componentOptions.iconTrue"
+						:icon-true-title="componentOptions.iconTrueTitle"
+						:item="item"
+						:label="componentOptions.label"
+						:loading="item.raw.loading"
+						:loading-wait="componentOptions.loadingWait"
+						name="active"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						@error="showError = $event"
+						@update="updatedValue(item.raw, 'reviewed')"
+					/>
+				</template>
+
+				<template #[`item.userId`]="{ item }">
+					<VInlineSelect
+						v-model="item.raw.user"
+						:align-items="componentOptions.alignItems"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:cancel-icon-text="componentOptions.cancelIconText"
+						:clearable="componentOptions.clearable"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:empty-text="componentOptions.emptyText"
+						:field-only="componentOptions.fieldOnly"
+						:hide-details="componentOptions.hideDetails"
+						:hide-selected="componentOptions.hideSelected"
+						:item="item"
+						item-title="name"
+						item-value="id"
+						:items="users"
+						:label="componentOptions.label"
+						:loading="item.raw.loading"
+						:loading-wait="componentOptions.loadingWait"
+						:menu="componentOptions.menu"
+						name="userId"
+						return-object
+						:save-button-color="componentOptions.saveButtonColor"
+						:save-icon="componentOptions.saveIcon"
+						:save-icon-color="componentOptions.saveIconColor"
+						:save-icon-text="componentOptions.saveIconText"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						:variant="componentOptions.variant"
+						@error="showError = $event"
+						@update="updatedValue(item.raw, 'userId')"
 					>
-						<template #[`item.active`]="{ item }">
-							<VInlineSwitch
-								v-model="item.raw.active"
-								:align-items="componentOptions.alignItems"
-								:cancel-button-color="componentOptions.cancelButtonColor"
-								:cancel-button-variant="componentOptions.cancelButtonVariant"
-								:cancel-icon="componentOptions.cancelIcon"
-								:cancel-icon-color="componentOptions.cancelIconColor"
-								:cancel-icon-text="componentOptions.cancelIconText"
-								:close-siblings="componentOptions.closeSiblings"
-								:color="componentOptions.color"
-								:density="componentOptions.density"
-								:disabled="componentOptions.disabled"
-								:field-only="componentOptions.fieldOnly"
-								:icon-false="componentOptions.iconFalse"
-								:icon-false-title="componentOptions.iconFalseTitle"
-								:icon-true="componentOptions.iconTrue"
-								:icon-true-title="componentOptions.iconTrueTitle"
-								:item="item"
-								:label="componentOptions.label"
-								:loading="item.raw.loading"
-								:loading-wait="componentOptions.loadingWait"
-								name="active"
-								:underline-color="componentOptions.underlineColor"
-								:underline-style="componentOptions.underlineStyle"
-								:underline-width="componentOptions.underlineWidth"
-								:underlined="componentOptions.underlined"
-								@error="showError = $event"
-								@update="updatedValue(item.raw, 'reviewed')"
-							/>
-						</template>
+					</VInlineSelect>
+				</template>
 
-						<template #[`item.userId`]="{ item }">
-							<VInlineSelect
-								v-model="item.raw.user"
-								:align-items="componentOptions.alignItems"
-								:cancel-button-color="componentOptions.cancelButtonColor"
-								:cancel-button-variant="componentOptions.cancelButtonVariant"
-								:cancel-icon-color="componentOptions.cancelIconColor"
-								:cancel-icon-text="componentOptions.cancelIconText"
-								:clearable="componentOptions.clearable"
-								:close-siblings="componentOptions.closeSiblings"
-								:color="componentOptions.color"
-								:density="componentOptions.density"
-								:disabled="componentOptions.disabled"
-								:empty-text="componentOptions.emptyText"
-								:field-only="componentOptions.fieldOnly"
-								:hide-details="componentOptions.hideDetails"
-								:hide-selected="componentOptions.hideSelected"
-								:item="item"
-								item-title="name"
-								item-value="id"
-								:items="users"
-								:label="componentOptions.label"
-								:loading="item.raw.loading"
-								:loading-wait="componentOptions.loadingWait"
-								:menu="componentOptions.menu"
-								name="userId"
-								return-object
-								:save-button-color="componentOptions.saveButtonColor"
-								:save-icon="componentOptions.saveIcon"
-								:save-icon-color="componentOptions.saveIconColor"
-								:save-icon-text="componentOptions.saveIconText"
-								:underline-color="componentOptions.underlineColor"
-								:underline-style="componentOptions.underlineStyle"
-								:underline-width="componentOptions.underlineWidth"
-								:underlined="componentOptions.underlined"
-								:variant="componentOptions.variant"
-								@error="showError = $event"
-								@update="updatedValue(item.raw, 'userId')"
-							>
-							</VInlineSelect>
-						</template>
+				<template #[`item.title`]="{ item }">
+					<VInlineTextField
+						v-model="item.raw.title"
+						:align-items="componentOptions.alignItems"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:cancel-icon-text="componentOptions.cancelIconText"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:field-only="componentOptions.fieldOnly"
+						:hide-details="componentOptions.hideDetails"
+						:item="item"
+						:label="componentOptions.label"
+						:loading="item.raw.loading"
+						:loading-wait="componentOptions.loadingWait"
+						name="title"
+						required
+						:save-button-color="componentOptions.saveButtonColor"
+						:save-button-variant="componentOptions.saveButtonVariant"
+						:save-icon-color="componentOptions.saveIconColor"
+						:save-icon-text="componentOptions.saveIconText"
+						:truncate-length="componentOptions.truncateTextFieldLength"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						:variant="componentOptions.variant"
+						@error="showError = $event"
+						@update="updatedValue(item.raw, 'title')"
+					/>
+				</template>
 
-						<template #[`item.title`]="{ item }">
-							<VInlineTextField
-								v-model="item.raw.title"
-								:align-items="componentOptions.alignItems"
-								:cancel-button-color="componentOptions.cancelButtonColor"
-								:cancel-button-variant="componentOptions.cancelButtonVariant"
-								:cancel-icon-color="componentOptions.cancelIconColor"
-								:cancel-icon-text="componentOptions.cancelIconText"
-								:close-siblings="componentOptions.closeSiblings"
-								:color="componentOptions.color"
-								:density="componentOptions.density"
-								:disabled="componentOptions.disabled"
-								:field-only="componentOptions.fieldOnly"
-								:hide-details="componentOptions.hideDetails"
-								:item="item"
-								:label="componentOptions.label"
-								:loading="item.raw.loading"
-								:loading-wait="componentOptions.loadingWait"
-								name="title"
-								required
-								:save-button-color="componentOptions.saveButtonColor"
-								:save-button-variant="componentOptions.saveButtonVariant"
-								:save-icon-color="componentOptions.saveIconColor"
-								:save-icon-text="componentOptions.saveIconText"
-								:truncate-length="componentOptions.truncateTextFieldLength"
-								:underline-color="componentOptions.underlineColor"
-								:underline-style="componentOptions.underlineStyle"
-								:underline-width="componentOptions.underlineWidth"
-								:underlined="componentOptions.underlined"
-								:variant="componentOptions.variant"
-								@error="showError = $event"
-								@update="updatedValue(item.raw, 'title')"
-							/>
-						</template>
+				<template #[`item.body`]="{ item }">
+					<VInlineTextarea
+						v-model="item.raw.body"
+						:align-items="componentOptions.alignItems"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:cancel-icon-text="componentOptions.cancelIconText"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:field-only="componentOptions.fieldOnly"
+						:hide-details="false"
+						:item="item"
+						:label="componentOptions.label"
+						:loading="item.raw.loading"
+						:loading-wait="componentOptions.loadingWait"
+						name="body"
+						:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
+						:save-button-color="componentOptions.saveButtonColor"
+						:save-icon-color="componentOptions.saveIconColor"
+						:save-icon-text="componentOptions.saveIconText"
+						:truncate-length="componentOptions.truncateTextareaLength"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						:variant="componentOptions.variant"
+						@error="showError = $event"
+						@update="updatedValue(item.raw, 'body')"
+					/>
+				</template>
 
-						<template #[`item.body`]="{ item }">
-							<VInlineTextarea
-								v-model="item.raw.body"
-								:align-items="componentOptions.alignItems"
-								:cancel-button-color="componentOptions.cancelButtonColor"
-								:cancel-button-variant="componentOptions.cancelButtonVariant"
-								:cancel-icon-color="componentOptions.cancelIconColor"
-								:cancel-icon-text="componentOptions.cancelIconText"
-								:close-siblings="componentOptions.closeSiblings"
-								:color="componentOptions.color"
-								:density="componentOptions.density"
-								:disabled="componentOptions.disabled"
-								:field-only="componentOptions.fieldOnly"
-								:hide-details="false"
-								:item="item"
-								:label="componentOptions.label"
-								:loading="item.raw.loading"
-								:loading-wait="componentOptions.loadingWait"
-								name="body"
-								:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
-								:save-button-color="componentOptions.saveButtonColor"
-								:save-icon-color="componentOptions.saveIconColor"
-								:save-icon-text="componentOptions.saveIconText"
-								:truncate-length="componentOptions.truncateTextareaLength"
-								:underline-color="componentOptions.underlineColor"
-								:underline-style="componentOptions.underlineStyle"
-								:underline-width="componentOptions.underlineWidth"
-								:underlined="componentOptions.underlined"
-								:variant="componentOptions.variant"
-								@error="showError = $event"
-								@update="updatedValue(item.raw, 'body')"
-							/>
-						</template>
-
-						<template #[`item.reviewed`]="{ item }">
-							<VInlineCheckbox
-								v-model="item.raw.reviewed"
-								:align-items="componentOptions.alignItems"
-								:cancel-button-color="componentOptions.cancelButtonColor"
-								:cancel-button-variant="componentOptions.cancelButtonVariant"
-								:cancel-icon-color="componentOptions.cancelIconColor"
-								:cancel-icon-text="componentOptions.cancelIconText"
-								:close-siblings="componentOptions.closeSiblings"
-								:color="componentOptions.color"
-								:density="componentOptions.density"
-								:disabled="componentOptions.disabled"
-								:field-only="componentOptions.fieldOnly"
-								:icon-false-title="componentOptions.iconFalseTitle"
-								:icon-true-title="componentOptions.iconTrueTitle"
-								:item="item"
-								:loading="item.raw.loading"
-								:loading-wait="componentOptions.loadingWait"
-								name="reviewed"
-								:underline-color="componentOptions.underlineColor"
-								:underline-style="componentOptions.underlineStyle"
-								:underline-width="componentOptions.underlineWidth"
-								:underlined="componentOptions.underlined"
-								@error="showError = $event"
-								@update="updatedValue(item.raw, 'reviewed')"
-							/>
-						</template>
-					</v-data-table>
-				</v-card>
-			</v-col>
-		</v-row>
-	</v-container>
+				<template #[`item.reviewed`]="{ item }">
+					<VInlineCheckbox
+						v-model="item.raw.reviewed"
+						:align-items="componentOptions.alignItems"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:cancel-icon-text="componentOptions.cancelIconText"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:field-only="componentOptions.fieldOnly"
+						:icon-false-title="componentOptions.iconFalseTitle"
+						:icon-true-title="componentOptions.iconTrueTitle"
+						:item="item"
+						:loading="item.raw.loading"
+						:loading-wait="componentOptions.loadingWait"
+						name="reviewed"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						@error="showError = $event"
+						@update="updatedValue(item.raw, 'reviewed')"
+					/>
+				</template>
+			</v-data-table>
+		</v-card>
+	</v-col>
 </template>
 
 
 <script setup>
-import {
-	VInlineCheckbox,
-	VInlineSelect,
-	VInlineSwitch,
-	VInlineTextField,
-	VInlineTextarea,
-} from '../';
+// ? Components are already loaded via the configs/playground.ts file //
 
 onMounted(() => {
 	getPosts();
@@ -319,9 +309,10 @@ function getUsers() {
 
 /**
  * ? This is where you would save the item in the database.
+ * @param {object} item The item being updated.
+ * @param {string} field The field being updated.
  */
-function updatedValue(item, field) {
-	console.log('PlaygroundPage.vue: updatedValue', field, item);
+function updatedValue(item) {
 	item.loading = true;
 
 	// ? Simulate a delay while item is saving.
