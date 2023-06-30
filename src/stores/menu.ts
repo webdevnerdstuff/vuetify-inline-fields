@@ -81,6 +81,23 @@ export const useMenuStore = defineStore('menu', () => {
 			title: 'Description',
 		},
 		{
+			href: '#usage',
+			icon: 'mdi:mdi-power-plug-outline',
+			title: 'Usage',
+		},
+		{
+			href: '#example',
+			icon: 'mdi:mdi-code-json',
+			title: 'Example',
+		},
+		{
+			href: '#components',
+			icon: '$vuetify',
+			items: componentItems,
+			key: 'components',
+			title: 'Components',
+		},
+		{
 			href: '#props',
 			icon: 'mdi:mdi-cog',
 			items: [
@@ -112,13 +129,6 @@ export const useMenuStore = defineStore('menu', () => {
 			title: 'Props',
 		},
 		{
-			href: '#components',
-			icon: 'mdi:mdi-cog',
-			items: componentItems,
-			key: 'components',
-			title: 'Components',
-		},
-		{
 			href: '#events',
 			icon: 'mdi:mdi-calendar-star',
 			title: 'Events',
@@ -129,14 +139,9 @@ export const useMenuStore = defineStore('menu', () => {
 			title: 'Slots',
 		},
 		{
-			href: '#sass-variables',
-			icon: 'mdi:mdi-sass',
-			title: 'SASS Variables',
-		},
-		{
-			href: '#example',
-			icon: 'mdi:mdi-code-json',
-			title: 'Example',
+			href: '#playground',
+			icon: 'mdi:mdi-seesaw',
+			title: 'Playground',
 		},
 		{
 			href: '#dependencies',
