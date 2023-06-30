@@ -2,7 +2,6 @@
 	<v-row>
 		<v-col
 			id="components-props"
-			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
@@ -22,11 +21,11 @@
 			</div>
 		</v-col>
 
-		<CheckboxComponent />
-		<SelectComponent />
-		<SwitchComponent />
-		<TextareaComponent />
-		<TextFieldComponent />
+		<CheckboxComponent :codeBlockOptions="codeBlockOptions" />
+		<SelectComponent :codeBlockOptions="codeBlockOptions" />
+		<SwitchComponent :codeBlockOptions="codeBlockOptions" />
+		<TextareaComponent :codeBlockOptions="codeBlockOptions" />
+		<TextFieldComponent :codeBlockOptions="codeBlockOptions" />
 	</v-row>
 </template>
 
@@ -41,6 +40,14 @@ import {
 	TextareaComponent,
 	TextFieldComponent,
 } from '@/documentation/components/index';
+
+
+defineProps({
+	codeBlockOptions: {
+		required: true,
+		type: Object,
+	},
+});
 
 const classes = inject('classes');
 const store = useCoreStore();

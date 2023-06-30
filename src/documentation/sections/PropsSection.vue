@@ -2,7 +2,6 @@
 	<v-row>
 		<v-col
 			id="props"
-			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
@@ -19,10 +18,14 @@
 					:href="store.links.vuetify"
 					target="_blank"
 				>Vuetify</a> documentation for each components specific props.
+
+				<br />
+				<br />
+				You can pass any of the props/events for the specific Vuetify components which will be bound to the fields.
 			</div>
 		</v-col>
-		<v-col cols="12">
 
+		<v-col cols="12">
 			<PropsTable
 				:headers="propsStore.propsSupported.headers"
 				:items="propsStore.sharedProps"

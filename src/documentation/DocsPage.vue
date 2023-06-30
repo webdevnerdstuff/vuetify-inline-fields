@@ -1,104 +1,104 @@
 <template>
-	<v-container fluid>
-		<v-row class="text-center">
-			<v-col cols="12">
-				<v-img
-					class="my-3"
-					contain
-					height="200"
-					src="../assets/vuetify-logo.svg"
-				/>
-			</v-col>
+	<v-row class="text-center">
+		<v-col cols="12">
+			<v-img
+				class="my-3"
+				contain
+				height="200"
+				src="../assets/vuetify-logo.svg"
+			/>
+		</v-col>
 
-			<v-col class="mb-4">
-				<h1 class="v-heading text-h3 text-sm-h3 mb-4">
-					Vuetify Inline Fields Table
-				</h1>
-				<v-chip
-					color="primary"
-					size="small"
-					variant="outlined"
-				>
-					v{{ componentVersion }}
-				</v-chip>
-			</v-col>
-		</v-row>
-
-		<!-- Installation -->
-		<v-row id="installation">
-			<v-col
-				class="mb-5"
-				cols="12"
+		<v-col class="mb-4">
+			<h1 class="v-heading text-h3 text-sm-h3 mb-4">
+				Vuetify Inline Fields Table
+			</h1>
+			<v-chip
+				color="primary"
+				size="small"
+				variant="outlined"
 			>
-				<h2 :class="classes.h2">
-					<a
-						:class="classes.headerA"
-						href="#installation"
-					>#</a>
-					Installation
-				</h2>
+				v{{ componentVersion }}
+			</v-chip>
+		</v-col>
+	</v-row>
 
-				<v-row>
-					<v-col cols="12">
-						<CodeBlock
-							code="pnpm add vuetify-inline-fields"
-							highlightjs
-							lang="plain"
-						>
-							<template #label>
-								Using <a
-									:href="links.pnpm"
-									target="_blank"
-								>pnpm</a>:
-							</template>
-						</CodeBlock>
-					</v-col>
-					<v-col cols="12">
-						<CodeBlock
-							code="npm i vuetify-inline-fields"
-							highlightjs
-							lang="plain"
-						>
-							<template #label>Using npm:</template>
-						</CodeBlock>
-					</v-col>
-				</v-row>
-			</v-col>
-		</v-row>
+	<!-- Installation -->
+	<v-row id="installation">
+		<v-col
+			class="mb-5"
+			cols="12"
+		>
+			<h2 :class="classes.h2">
+				<a
+					:class="classes.headerA"
+					href="#installation"
+				>#</a>
+				Installation
+			</h2>
 
-		<!-- Description -->
-		<DescriptionSection />
+			<v-row>
+				<v-col cols="12">
+					<CodeBlock
+						code="pnpm add vuetify-inline-fields"
+						:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
+						lang="plain"
+						:prismjs="codeBlockSettings.plugin === 'prismjs'"
+						:theme="codeBlockSettings.theme"
+					>
+						<template #label>
+							Using <a
+								:href="links.pnpm"
+								target="_blank"
+							>pnpm</a>:
+						</template>
+					</CodeBlock>
+				</v-col>
+				<v-col cols="12">
+					<CodeBlock
+						code="npm i vuetify-inline-fields"
+						highlightjs
+						lang="plain"
+					>
+						<template #label>Using npm:</template>
+					</CodeBlock>
+				</v-col>
+			</v-row>
+		</v-col>
+	</v-row>
 
-		<!-- Usage -->
-		<UsageSection />
+	<!-- Description -->
+	<DescriptionSection />
 
-		<!-- Props -->
-		<PropsSection />
+	<!-- Usage -->
+	<UsageSection :codeBlockOptions="codeBlockOptions" />
 
-		<!-- Components -->
-		<ComponentsSection />
+	<!-- Example -->
+	<ExampleSection />
 
-		<!-- Events -->
-		<EventsSection />
+	<!-- Components -->
+	<ComponentsSection :codeBlockOptions="codeBlockOptions" />
 
-		<!-- Slots -->
-		<SlotsSection />
+	<!-- Props -->
+	<PropsSection />
 
-		<!-- SASS Variables -->
-		<SassVariablesSection />
+	<!-- Events -->
+	<EventsSection :codeBlockOptions="codeBlockOptions" />
 
-		<!-- Example -->
-		<ExampleSection />
+	<!-- Slots -->
+	<SlotsSection />
 
-		<!-- Dependencies -->
-		<DependenciesSection />
+	<!-- Playground -->
+	<PlaygroundSection :codeBlockOptions="codeBlockOptions" />
 
-		<!-- License -->
-		<LicenseSection />
+	<!-- Dependencies -->
+	<DependenciesSection />
 
-		<!-- Legal -->
-		<LegalSection />
-	</v-container>
+	<!-- License -->
+	<LicenseSection />
+
+	<!-- Legal -->
+	<LegalSection />
 </template>
 
 <script setup>
@@ -112,19 +112,28 @@ import {
 	ExampleSection,
 	LegalSection,
 	LicenseSection,
+	PlaygroundSection,
 	PropsSection,
-	SassVariablesSection,
 	SlotsSection,
 	UsageSection,
 } from '@/documentation/sections';
 
+
+const props = defineProps({
+	codeBlockOptions: {
+		required: true,
+		type: Object,
+	},
+});
+
+const codeBlockSettings = computed(() => props.codeBlockOptions);
 const links = inject('links');
 
 const classes = reactive({
 	appLink: 'app-link text-decoration-none primary--text font-weight-medium d-inline-block font-weight-bold',
-	h2: 'v-heading text-h4 text-sm-h4 mb-3',
-	h3: 'v-heading text-h5 text-sm-h5 mb-1',
-	headerA: 'text-decoration-none text-right text-md-left',
+	h2: 'text-primary v-heading text-h4 text-sm-h4 mb-2',
+	h3: 'text-blue-darken-2 v-heading text-h5 text-sm-h5 mb-0',
+	headerA: 'text-decoration-none text-right text-md-left d-none d-sm-flex',
 });
 const componentVersion = ref(packageInfo.version);
 

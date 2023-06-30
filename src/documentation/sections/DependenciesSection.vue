@@ -2,7 +2,6 @@
 	<v-row>
 		<v-col
 			id="dependencies"
-			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
