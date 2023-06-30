@@ -2,7 +2,6 @@
 	<v-row>
 		<v-col
 			id="events"
-			class="mb-5"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
@@ -58,7 +57,7 @@
 										</span>
 									</td>
 
-									<td>{{ item.raw.desc }}</td>
+									<td><span v-html="item.raw.desc"></span></td>
 								</tr>
 							</template>
 						</v-data-table>
@@ -66,15 +65,39 @@
 				</v-col>
 			</v-row>
 		</v-col>
+
+		<v-col cols="12">
+			<CodeBlock
+				class="mb-6"
+				:code="exampleCode"
+				:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
+				label=""
+				lang="html"
+				:prismjs="codeBlockSettings.plugin === 'prismjs'"
+				:theme="codeBlockSettings.theme"
+			>
+				<template #label>
+					<code class="ic">@update</code> Event Example
+				</template>
+			</CodeBlock>
+		</v-col>
 	</v-row>
 </template>
 
 
 <script setup>
-import { inject, ref } from 'vue';
+import { computed, inject, ref } from 'vue';
 import { useCoreStore } from '@/stores/index';
 
 
+const props = defineProps({
+	codeBlockOptions: {
+		required: true,
+		type: Object,
+	},
+});
+
+const codeBlockSettings = computed(() => props.codeBlockOptions);
 const classes = inject('classes');
 const store = useCoreStore();
 
@@ -97,21 +120,31 @@ const headers = [
 ];
 const items = [
 	{
-		desc: 'Emitted when an error occurs',
-		name: 'error',
-	},
-	{
-		desc: 'Emitted when the loading state changes',
-		name: 'loading',
-	},
-	{
-		desc: 'Emitted when the save button is clicked',
+		desc: 'Emitted when the save button is clicked. The value of the field is passed as the first argument and the field name is passed as the second argument',
 		name: 'update',
 	},
 	{
-		desc: 'Emitted when the close siblings event is triggered',
+		desc: 'Emitted when the close siblings event is triggered.<br />This is intended for internal use only',
 		name: 'update:closeSiblingFields',
 	},
 ];
 const search = ref('');
+
+const exampleCode = `<template>
+  <VInlineCheckbox
+    v-model="checkboxValue"
+    name="reviewed"
+    @update="updatedValue"
+  />
+<\/template>
+
+<script setup>
+import { ref } from 'vue';
+
+const checkboxValue = ref(true);
+
+function updatedValue(value, field) {
+  // ...do something awesome
+}
+<\/script>`;
 </script>

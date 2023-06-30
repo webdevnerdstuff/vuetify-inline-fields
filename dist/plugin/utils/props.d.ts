@@ -3,7 +3,7 @@ export declare const sharedProps: {
     cancelButtonColor: string;
     cancelButtonSize: string;
     cancelButtonTitle: string;
-    cancelButtonVariant: "tonal";
+    cancelButtonVariant: "text";
     cancelIcon: undefined;
     cancelIconColor: string;
     closeSiblings: boolean;
@@ -28,6 +28,15 @@ declare const checkboxProps: {
     falseIcon: undefined;
     icons: boolean;
     trueIcon: undefined;
+    hideSaveIcon: boolean;
+    loadingIcon: undefined;
+    loadingIconColor: string;
+    saveButtonColor: string;
+    saveButtonSize: string;
+    saveButtonTitle: string;
+    saveButtonVariant: "text";
+    saveIcon: undefined;
+    saveIconColor: string;
     falseValue: boolean;
     iconFalse: undefined;
     iconFalseColor: string;
@@ -40,7 +49,7 @@ declare const checkboxProps: {
     cancelButtonColor: string;
     cancelButtonSize: string;
     cancelButtonTitle: string;
-    cancelButtonVariant: "tonal";
+    cancelButtonVariant: "text";
     cancelIcon: undefined;
     cancelIconColor: string;
     closeSiblings: boolean;
@@ -84,7 +93,7 @@ declare const selectProps: {
     cancelButtonColor: string;
     cancelButtonSize: string;
     cancelButtonTitle: string;
-    cancelButtonVariant: "tonal";
+    cancelButtonVariant: "text";
     cancelIcon: undefined;
     cancelIconColor: string;
     closeSiblings: boolean;
@@ -120,7 +129,7 @@ declare const switchProps: {
     cancelButtonColor: string;
     cancelButtonSize: string;
     cancelButtonTitle: string;
-    cancelButtonVariant: "tonal";
+    cancelButtonVariant: "text";
     cancelIcon: undefined;
     cancelIconColor: string;
     closeSiblings: boolean;
@@ -149,7 +158,7 @@ declare const textareaProps: {
     cancelButtonColor: string;
     cancelButtonSize: string;
     cancelButtonTitle: string;
-    cancelButtonVariant: "tonal";
+    cancelButtonVariant: "text";
     cancelIcon: undefined;
     cancelIconColor: string;
     closeSiblings: boolean;
@@ -196,7 +205,7 @@ declare const textFieldProps: {
     cancelButtonColor: string;
     cancelButtonSize: string;
     cancelButtonTitle: string;
-    cancelButtonVariant: "tonal";
+    cancelButtonVariant: "text";
     cancelIcon: undefined;
     cancelIconColor: string;
     closeSiblings: boolean;
@@ -217,4 +226,4 @@ declare const textFieldProps: {
     underlined: boolean;
     valueColor: string;
 };
-export { checkboxProps, selectProps, switchProps, textFieldProps, textareaProps };
+export { checkboxProps, selectProps, switchProps, textFieldProps, textareaProps, };

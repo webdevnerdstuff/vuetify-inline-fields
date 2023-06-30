@@ -2,22 +2,22 @@ import { UseGetIcon } from '../../types';
 
 const defaultIcons = {
 	fa: {
-		checkboxFalse: 'far fa-square',
+		checkboxFalse: '$checkboxOff',
 		checkboxTrue: 'far fa-square-check',
-		clear: 'fa-circle-xmark',
-		false: 'fa-xmark',
+		clear: '$clear',
+		false: '$close',
 		loading: 'fa-circle-notch',
 		save: 'fa-floppy-disk',
-		true: 'fa-check',
+		true: '$complete',
 	},
 	mdi: {
-		checkboxFalse: 'mdi:mdi-checkbox-blank-outline',
+		checkboxFalse: '$checkboxOff',
 		checkboxTrue: 'mdi:mdi-checkbox-outline',
-		clear: 'mdi-close-circle-outline',
-		false: 'mdi-close',
+		clear: '$clear',
+		false: '$close',
 		loading: 'mdi-loading',
 		save: 'mdi-content-save',
-		true: 'mdi-check',
+		true: '$complete',
 	},
 };
 

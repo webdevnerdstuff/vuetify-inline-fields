@@ -59,7 +59,7 @@ export interface SharedProps {
     underlined?: boolean;
     valueColor?: string;
 }
-export interface VInlineCheckboxProps extends Omit<SharedProps, 'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'> {
+export interface VInlineCheckboxProps extends Omit<SharedProps, 'autofocus' | 'truncateLength' | 'truncateSuffix'> {
     density?: VCheckbox['$props']['density'];
     falseIcon?: string | undefined;
     trueIcon?: string | undefined;
@@ -82,12 +82,14 @@ export interface VInlineSwitchProps extends Omit<SharedProps, 'autofocus' | 'hid
 }
 export interface VInlineTextareaProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'> {
     autoGrow?: VTextarea['$props']['autoGrow'];
+    clearIcon?: string | undefined;
     density?: VTextarea['$props']['density'];
     rows?: VTextarea['$props']['rows'];
     rules?: VTextarea['$props']['rules'];
     variant?: VTextarea['$props']['variant'];
 }
 export interface VInlineTextFieldProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'> {
+    clearIcon?: string | undefined;
     density?: VTextField['$props']['density'];
     rules?: VTextField['$props']['rules'];
     variant?: VTextField['$props']['variant'];
@@ -96,6 +98,11 @@ export interface BooleanIcons extends Required<Pick<SharedProps, 'iconFalseColor
 }
 export interface SaveFieldButtons extends Required<Pick<SharedProps, 'cancelButtonColor' | 'cancelButtonSize' | 'cancelButtonVariant' | 'cancelButtonTitle' | 'cancelIconColor' | 'error' | 'fieldOnly' | 'hideSaveIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveButtonTitle' | 'saveButtonVariant' | 'saveIconColor' | 'saveButtonVariant'>>, Pick<SharedProps, 'cancelIcon' | 'loadingIcon' | 'saveIcon'> {
     loading: boolean;
+}
+export interface UseCancelButtonClass {
+    (options: {
+        cancelButtonVariant?: SharedProps['cancelButtonVariant'];
+    }): object;
 }
 export interface UseInlineFieldsContainerClass {
     (options: {

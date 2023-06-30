@@ -31,6 +31,7 @@
 				v-model="modelValue"
 				:auto-grow="settings.autoGrow"
 				:autofocus="!settings.fieldOnly || settings.autofocus"
+				:clear-icon="theClearIcon"
 				:color="settings.color"
 				:density="settings.density"
 				:disabled="loadingProp"
@@ -94,6 +95,7 @@ import {
 	TimeOpened,
 	VInlineTextareaProps,
 } from '@/types';
+import type { IconOptions } from 'vuetify';
 import { textareaProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
 import {
@@ -113,6 +115,7 @@ import {
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useGetIcon } from './composables/icons';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -121,6 +124,7 @@ const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 const props = withDefaults(defineProps<VInlineTextareaProps>(), { ...textareaProps });
+const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 let settings = reactive({ ...attrs, ...props });
 const loadingProp = computed(() => props.loading);
 
@@ -140,6 +144,16 @@ watch(() => loadingProp.value, (newVal, oldVal) => {
 	if (!newVal && oldVal && showField.value) {
 		toggleField();
 	}
+});
+
+
+// ------------------------------------------------ Icons //
+const theClearIcon = computed(() => {
+	return useGetIcon({
+		icon: props.clearIcon,
+		iconOptions,
+		name: 'clear',
+	});
 });
 
 
@@ -169,6 +183,7 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	density: settings.density,
 	disabled: settings.disabled,
 	field: 'v-textarea',
+	iconSet: iconOptions?.defaultSet,
 	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
@@ -315,11 +330,4 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-:deep(.v-input__append) {
-	padding: 0 !important;
-}
-
-.icons-container {
-	height: 100%;
-}
 </style>

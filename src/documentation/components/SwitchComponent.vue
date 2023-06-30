@@ -46,6 +46,18 @@
 	</v-col>
 
 	<v-col cols="12">
+		<CodeBlock
+			class="mb-6"
+			:code="exampleCode"
+			:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
+			label="Basic Example"
+			lang="html"
+			:prismjs="codeBlockSettings.plugin === 'prismjs'"
+			:theme="codeBlockSettings.theme"
+		></CodeBlock>
+	</v-col>
+
+	<v-col cols="12">
 		<PropsTable
 			:headers="propsStore.propsSupported.headers"
 			:items="propsStore.vInlineSwitchProps"
@@ -57,10 +69,19 @@
 </template>
 
 <script setup>
-import { inject } from 'vue';
+import { computed, inject, reactive, ref } from 'vue';
 import { usePropsStore } from '@/stores/props';
 import PropsTable from '@/documentation/components/PropsTable.vue';
 
+
+const props = defineProps({
+	codeBlockOptions: {
+		required: true,
+		type: Object,
+	},
+});
+
+const codeBlockSettings = computed(() => props.codeBlockOptions);
 const classes = inject('classes');
 const propsStore = usePropsStore();
 
@@ -74,6 +95,19 @@ const values = reactive({
 	},
 	textField: 'Hello World',
 });
+
+const exampleCode = `<template>
+  <VInlineSwitch
+    v-model="switchValue"
+    name="active"
+  />
+<\/template>
+
+<script setup>
+import { ref } from 'vue';
+
+const switchValue = ref(true);
+<\/script>`;
 </script>
 
 <style lang="scss" scoped>

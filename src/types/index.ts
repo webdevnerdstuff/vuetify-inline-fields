@@ -113,6 +113,7 @@ export interface VInlineTextareaProps extends Omit<SharedProps,
 	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'
 > {
 	autoGrow?: VTextarea['$props']['autoGrow'];
+	clearIcon?: string | undefined;
 	density?: VTextarea['$props']['density'];
 	rows?: VTextarea['$props']['rows'];
 	rules?: VTextarea['$props']['rules'];
@@ -122,6 +123,7 @@ export interface VInlineTextareaProps extends Omit<SharedProps,
 export interface VInlineTextFieldProps extends Omit<SharedProps,
 	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'
 > {
+	clearIcon?: string | undefined;
 	density?: VTextField['$props']['density'];
 	rules?: VTextField['$props']['rules'];
 	variant?: VTextField['$props']['variant'];
