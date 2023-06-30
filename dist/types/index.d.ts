@@ -2,7 +2,6 @@ import type { CSSProperties, Ref } from 'vue';
 import type { VBtn, VCheckbox, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
 import type { IconOptions } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
-import { AxiosError } from 'axios';
 export type AlignItems = 'normal' | 'stretch' | 'center' | 'start' | 'end' | 'flex-start' | 'flex-end' | 'self-start' | 'self-end' | 'baseline' | 'first baseline' | 'last baseline' | 'safe center' | 'unsafe center' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';
 export type FieldValue = string | boolean | number | object | [] | null | {
     [key: string]: string | unknown;
@@ -170,22 +169,6 @@ export interface UseDisplayValueStyles {
         underlineWidth: SharedProps['underlineWidth'];
         underlined: SharedProps['underlined'];
     }): CSSProperties;
-}
-export interface UseSaveValue {
-    (options: {
-        settings: {
-            [key: string]: string | unknown;
-        };
-        emit: {
-            (e: 'loading', response: boolean): void;
-            (e: 'error', error: AxiosError): AxiosError;
-            (e: 'update', response: unknown): void;
-        };
-        name: SharedProps['name'];
-        value: FieldValue;
-    }): Promise<{
-        [key: string]: string | unknown;
-    } | undefined>;
 }
 export interface UseToggleField {
     (options: {
