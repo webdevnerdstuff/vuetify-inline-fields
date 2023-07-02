@@ -13,9 +13,6 @@ import type {
 } from 'vuetify/components';
 import type { IconOptions } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
-import {
-	AxiosError,
-} from 'axios';
 
 
 // -------------------------------------------------- Types //
@@ -274,23 +271,6 @@ export interface UseDisplayValueStyles {
 			underlined: SharedProps['underlined'];
 		}
 	): CSSProperties;
-}
-
-export interface UseSaveValue {
-	(
-		options: {
-			settings: {
-				[key: string]: string | unknown;
-			},
-			emit: {
-				(e: 'loading', response: boolean): void;
-				(e: 'error', error: AxiosError): AxiosError;
-				(e: 'update', response: unknown): void;
-			},
-			name: SharedProps['name'],
-			value: FieldValue,
-		}
-	): Promise<{ [key: string]: string | unknown; } | undefined>;
 }
 
 export interface UseToggleField {
