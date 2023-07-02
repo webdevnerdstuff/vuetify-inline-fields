@@ -11,31 +11,29 @@
 				>#</a>
 				Dependencies
 			</h2>
+		</v-col>
 
-			<v-row>
-				<v-col cols="12">
-					<a
-						:href="store.links.vuetify"
-						target="_blank"
-					>
-						Vuetify v3
-					</a>
-					<br />
-					<a
-						:href="store.links.vue"
-						target="_blank"
-					>
-						Vue 3
-					</a>
-					<br />
-					<a
-						:href="store.links.vueUse"
-						target="_blank"
-					>
-						VueUse
-					</a>
-				</v-col>
-			</v-row>
+		<v-col cols="12">
+			<a
+				:href="store.links.vuetify"
+				target="_blank"
+			>
+				Vuetify v3
+			</a>
+			<br />
+			<a
+				:href="store.links.vue"
+				target="_blank"
+			>
+				Vue 3
+			</a>
+			<br />
+			<a
+				:href="store.links.vueUse"
+				target="_blank"
+			>
+				VueUse
+			</a>
 		</v-col>
 	</v-row>
 </template>
