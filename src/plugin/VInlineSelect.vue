@@ -98,7 +98,7 @@ import {
 	TimeOpened,
 	VInlineSelectProps,
 } from '@/types';
-import type { IconOptions } from 'vuetify';
+import { IconOptions, useTheme } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import { selectProps } from './utils/props';
 import { SaveFieldButtons } from './components/index';
@@ -127,8 +127,10 @@ const attrs = useAttrs();
 const emit = defineEmits([...inlineEmits]);
 const slots = useSlots();
 
-const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
+const theme = useTheme();
+
+const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
 let settings = reactive({ ...attrs, ...props });
 const loadingProp = computed(() => props.loading);
 
@@ -224,6 +226,7 @@ const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle(
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
 	error,
+	theme,
 	underlineColor: settings.underlineColor,
 	underlineStyle: settings.underlineStyle,
 	underlineWidth: settings.underlineWidth,

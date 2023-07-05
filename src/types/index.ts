@@ -11,7 +11,7 @@ import type {
 	VTextField,
 	VTextarea,
 } from 'vuetify/components';
-import type { IconOptions } from 'vuetify';
+import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
 
 
@@ -22,6 +22,12 @@ export type TimeOpened = Date | null;
 
 export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['density'] | VSwitch['$props']['density'] | VTextField['$props']['density'] | VTextarea['$props']['density'];
 export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props']['variant'] | VTextarea['$props']['variant'];
+
+
+// -------------------------------------------------- Colors //
+export type HEXColor = string;
+export type HSLColor = [number, number, number, number | string];
+export type RGBColor = [number, number, number, number | string];
 
 
 // -------------------------------------------------- Props //
@@ -265,6 +271,7 @@ export interface UseDisplayValueStyles {
 		options: {
 			color: SharedProps['color'];
 			error: Ref<boolean> | boolean;
+			theme: ThemeInstance;
 			underlineColor: SharedProps['underlineColor'];
 			underlineStyle: SharedProps['underlineStyle'];
 			underlineWidth: SharedProps['underlineWidth'];

@@ -110,7 +110,7 @@ import {
 	TimeOpened,
 	VInlineCheckboxProps,
 } from '@/types';
-import type { IconOptions } from 'vuetify';
+import { IconOptions, useTheme } from 'vuetify';
 import { checkboxProps } from './utils/props';
 import {
 	BooleanIcons,
@@ -137,7 +137,9 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
+const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
@@ -222,6 +224,7 @@ const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle(
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
 	error,
+	theme,
 	underlineColor: settings.underlineColor,
 	underlineStyle: settings.underlineStyle,
 	underlineWidth: settings.underlineWidth,
