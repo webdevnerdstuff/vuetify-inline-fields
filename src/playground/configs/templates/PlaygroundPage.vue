@@ -167,6 +167,22 @@
 					/>
 				</template>
 
+				<template #[`item.range`]="{ item }">
+					<VInlineCustomField
+						v-model="item.raw.range"
+						:loading="item.raw.loading"
+						@update="updatedValue(item.raw, 'range')"
+					>
+						<template #default="">
+							<v-slider
+								v-model="item.raw.range"
+								show-ticks
+								step="10"
+							></v-slider>
+						</template>
+					</VInlineCustomField>
+				</template>
+
 				<template #[`item.reviewed`]="{ item }">
 					<VInlineCheckbox
 						v-model="item.raw.reviewed"
@@ -297,6 +313,13 @@ const headers = [
 		key: 'body',
 		title: 'Body',
 	},
+	// ? "Range" is used for the VInlineCustomField example
+	// ? Comment out the body field above to use this one (so it fits)  //
+	// {
+	// 	align: 'start',
+	// 	key: 'range',
+	// 	title: 'Range',
+	// },
 	{
 		align: 'start',
 		key: 'reviewed',
