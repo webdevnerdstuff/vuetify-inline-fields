@@ -93,7 +93,16 @@ export const useMenuStore = defineStore('menu', () => {
 		{
 			href: '#components',
 			icon: '$vuetify',
-			items: componentItems,
+			items: [
+				...componentItems,
+				{
+					href: '#components-v-inline-custom-field',
+					icon: 'mdi:mdi-mushroom',
+					key: 'v-inline-custom-field',
+					title: 'VInlineCustomField',
+					topTitle: 'VInlineCustomField',
+				}
+			],
 			key: 'components',
 			title: 'Components',
 		},
