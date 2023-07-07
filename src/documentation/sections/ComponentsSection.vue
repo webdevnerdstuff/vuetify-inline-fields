@@ -26,6 +26,7 @@
 		<SwitchComponent :codeBlockOptions="codeBlockOptions" />
 		<TextareaComponent :codeBlockOptions="codeBlockOptions" />
 		<TextFieldComponent :codeBlockOptions="codeBlockOptions" />
+		<CustomComponent :codeBlockOptions="codeBlockOptions" />
 	</v-row>
 </template>
 
@@ -35,6 +36,7 @@ import { useCoreStore } from '@/stores/index';
 
 import {
 	CheckboxComponent,
+	CustomComponent,
 	SelectComponent,
 	SwitchComponent,
 	TextareaComponent,

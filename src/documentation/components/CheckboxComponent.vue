@@ -21,7 +21,10 @@
 			<v-card-title>Component</v-card-title>
 			<v-card-text>
 				<v-row>
-					<v-col cols="2">
+					<v-col
+						class="d-flex align-center"
+						cols="2"
+					>
 						<VInlineCheckbox
 							v-model="values.boolean"
 							:density="density"

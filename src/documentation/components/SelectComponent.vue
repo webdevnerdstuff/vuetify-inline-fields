@@ -21,7 +21,10 @@
 			<v-card-title>Component</v-card-title>
 			<v-card-text>
 				<v-row>
-					<v-col cols="2">
+					<v-col
+						class="d-flex align-end"
+						cols="2"
+					>
 						<VInlineSelect
 							v-model="values.select"
 							:density="density"
