@@ -130,6 +130,7 @@ import {
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useBindingSettings } from './composables/bindings';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -151,7 +152,7 @@ const timeOpened = ref<TimeOpened>(null);
 
 
 // ------------------------------------------------ Binding Events & Props //
-const bindingSettings = computed(() => settings);
+const bindingSettings = computed(() => useBindingSettings(settings));
 
 
 // ------------------------------------------------ Loading //
