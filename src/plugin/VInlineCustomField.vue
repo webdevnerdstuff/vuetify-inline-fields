@@ -131,6 +131,7 @@ const slotBindings = computed(() => ({
 	...settings,
 	...{
 		loading: loadingProp.value,
+		modelValue: modelValue.value,
 		originalValue: originalValue,
 	}
 }));
