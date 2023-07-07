@@ -8,16 +8,10 @@
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
-				<div class="v-inline-fields--display-wrapper">
-					<div
-						class="d-inline-flex"
-						:class="displayValueClass"
-						:style="displayValueStyle"
-						@click="toggleField"
-					>
-						{{ displayValue }}
-					</div>
-				</div>
+				<DisplayedValue
+					v-bind="bindingDisplay"
+					@toggleField="toggleField"
+				/>
 			</div>
 		</div>
 
@@ -98,10 +92,10 @@ import {
 	TimeOpened,
 	VInlineSelectProps,
 } from '@/types';
-import { IconOptions, useTheme } from 'vuetify';
+import { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import { selectProps } from './utils/props';
-import { SaveFieldButtons } from './components/index';
+import { DisplayedValue, SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
 	useToggleField,
@@ -109,26 +103,22 @@ import {
 import {
 	useDisplayContainerClass,
 	useDisplayInputControlClasses,
-	useDisplayValueClass,
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from './composables/classes';
-import {
-	useDisplayValueStyles,
-	useInlineFieldsContainerStyle,
-} from './composables/styles';
+import { useInlineFieldsContainerStyle } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useBindingSettings } from './composables/bindings';
 import { useGetIcon } from './composables/icons';
 
 
 const modelValue = defineModel<FieldValue>();
 
 const attrs = useAttrs();
-const emit = defineEmits([...inlineEmits]);
 const slots = useSlots();
+const emit = defineEmits([...inlineEmits]);
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
-const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
 let settings = reactive({ ...attrs, ...props });
@@ -140,10 +130,6 @@ const items = ref();
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
-
-
-// ------------------------------------------------ Binding Events & Props //
-const bindingSettings = computed(() => settings);
 
 
 // ------------------------------------------------ Loading //
@@ -178,6 +164,37 @@ const displayValue = computed(() => {
 });
 
 
+// ------------------------------------------------ Binding Events & Props //
+const bindingSettings = computed(() => useBindingSettings(settings));
+
+const bindingDisplay = computed(() => {
+	return {
+		color: settings.color,
+		displayAppendIcon: props.displayAppendIcon,
+		displayAppendIconColor: props.displayAppendIconColor,
+		displayAppendIconSize: props.displayAppendIconSize,
+		displayAppendInnerIcon: props.displayAppendInnerIcon,
+		displayAppendInnerIconColor: props.displayAppendInnerIconColor,
+		displayAppendInnerIconSize: props.displayAppendInnerIconSize,
+		displayPrependIcon: props.displayPrependIcon,
+		displayPrependIconColor: props.displayPrependIconColor,
+		displayPrependIconSize: props.displayPrependIconSize,
+		displayPrependInnerIcon: props.displayPrependInnerIcon,
+		displayPrependInnerIconColor: props.displayPrependInnerIconColor,
+		displayPrependInnerIconSize: props.displayPrependInnerIconSize,
+		displayValue: displayValue.value,
+		empty,
+		error,
+		field: 'v-text-field',
+		underlineColor: settings.underlineColor,
+		underlineStyle: settings.underlineStyle,
+		underlineWidth: settings.underlineWidth,
+		underlined: settings.underlined,
+		valueColor: settings.valueColor,
+	};
+});
+
+
 // ------------------------------------------------ Watch the items //
 watchEffect(() => {
 	items.value = settings.items || [] as VSelect['$props']['items'];
@@ -193,6 +210,7 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
+	variant: settings.variant,
 }));
 
 const displayContainerClass = computed(() => useDisplayContainerClass({
@@ -210,27 +228,8 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'select',
 }));
 
-const displayValueClass = computed(() => useDisplayValueClass(
-	'select',
-	settings.valueColor,
-	{
-		empty,
-		error,
-	}
-));
-
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
 	alignItems: settings.alignItems,
-}));
-
-const displayValueStyle = computed(() => useDisplayValueStyles({
-	color: settings.color,
-	error,
-	theme,
-	underlineColor: settings.underlineColor,
-	underlineStyle: settings.underlineStyle,
-	underlineWidth: settings.underlineWidth,
-	underlined: settings.underlined,
 }));
 
 

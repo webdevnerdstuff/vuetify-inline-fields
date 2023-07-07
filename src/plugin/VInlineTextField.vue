@@ -8,16 +8,10 @@
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
-				<div class="v-inline-fields--display-wrapper">
-					<div
-						class="d-inline-flex"
-						:class="displayValueClass"
-						:style="displayValueStyle"
-						@click="toggleField"
-					>
-						{{ displayValue }}
-					</div>
-				</div>
+				<DisplayedValue
+					v-bind="bindingDisplay"
+					@toggleField="toggleField"
+				/>
 			</div>
 		</div>
 
@@ -30,15 +24,11 @@
 				v-model="modelValue"
 				:autofocus="!settings.fieldOnly || settings.autofocus"
 				:clear-icon="theClearIcon"
-				:color="settings.color"
-				:density="settings.density"
 				:disabled="loadingProp"
 				:error="error"
 				:error-messages="internalErrorMessages"
-				:hide-details="settings.hideDetails"
 				:label="settings.label"
 				:loading="loadingProp"
-				:variant="settings.variant"
 				width="100%"
 				@keyup.enter="saveValue"
 				@keyup.esc="closeField"
@@ -95,9 +85,9 @@ import {
 	TimeOpened,
 	VInlineTextFieldProps,
 } from '@/types';
-import { IconOptions, useTheme } from 'vuetify';
+import { IconOptions } from 'vuetify';
 import { textFieldProps } from './utils/props';
-import { SaveFieldButtons } from './components/index';
+import { DisplayedValue, SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
 	useToggleField,
@@ -106,15 +96,12 @@ import {
 import {
 	useDisplayContainerClass,
 	useDisplayInputControlClasses,
-	useDisplayValueClass,
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from './composables/classes';
-import {
-	useDisplayValueStyles,
-	useInlineFieldsContainerStyle,
-} from './composables/styles';
+import { useInlineFieldsContainerStyle } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useBindingSettings } from './composables/bindings';
 import { useGetIcon } from './composables/icons';
 
 
@@ -125,7 +112,6 @@ const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
-const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineTextFieldProps>(), { ...textFieldProps });
 let settings = reactive({ ...attrs, ...props });
@@ -138,10 +124,6 @@ const timeOpened = ref<TimeOpened>(null);
 let originalValue = modelValue.value;
 
 
-// ------------------------------------------------ Binding Events & Props //
-const bindingSettings = computed(() => settings);
-
-
 // ------------------------------------------------ Loading //
 watch(() => loadingProp.value, (newVal, oldVal) => {
 	if (!newVal && oldVal && showField.value) {
@@ -151,7 +133,7 @@ watch(() => loadingProp.value, (newVal, oldVal) => {
 
 
 // ------------------------------------------------ Icons //
-const theClearIcon = computed(() => {
+const theClearIcon = computed<string>(() => {
 	return useGetIcon({
 		icon: props.clearIcon,
 		iconOptions,
@@ -181,6 +163,37 @@ const displayValue = computed(() => {
 });
 
 
+// ------------------------------------------------ Binding Events & Props //
+const bindingSettings = computed(() => useBindingSettings(settings));
+
+const bindingDisplay = computed(() => {
+	return {
+		color: settings.color,
+		displayAppendIcon: props.displayAppendIcon,
+		displayAppendIconColor: props.displayAppendIconColor,
+		displayAppendIconSize: props.displayAppendIconSize,
+		displayAppendInnerIcon: props.displayAppendInnerIcon,
+		displayAppendInnerIconColor: props.displayAppendInnerIconColor,
+		displayAppendInnerIconSize: props.displayAppendInnerIconSize,
+		displayPrependIcon: props.displayPrependIcon,
+		displayPrependIconColor: props.displayPrependIconColor,
+		displayPrependIconSize: props.displayPrependIconSize,
+		displayPrependInnerIcon: props.displayPrependInnerIcon,
+		displayPrependInnerIconColor: props.displayPrependInnerIconColor,
+		displayPrependInnerIconSize: props.displayPrependInnerIconSize,
+		displayValue: displayValue.value,
+		empty,
+		error,
+		field: 'v-text-field',
+		underlineColor: settings.underlineColor,
+		underlineStyle: settings.underlineStyle,
+		underlineWidth: settings.underlineWidth,
+		underlined: settings.underlined,
+		valueColor: settings.valueColor,
+	};
+});
+
+
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
@@ -190,6 +203,7 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
 	tableField: settings.tableField,
+	variant: settings.variant,
 }));
 
 const displayContainerClass = computed(() => useDisplayContainerClass({
@@ -207,27 +221,8 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'text-field',
 }));
 
-const displayValueClass = computed(() => useDisplayValueClass(
-	'text-field',
-	settings.valueColor,
-	{
-		empty,
-		error,
-	}
-));
-
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
 	alignItems: settings.alignItems,
-}));
-
-const displayValueStyle = computed(() => useDisplayValueStyles({
-	color: settings.color,
-	error,
-	theme,
-	underlineColor: settings.underlineColor,
-	underlineStyle: settings.underlineStyle,
-	underlineWidth: settings.underlineWidth,
-	underlined: settings.underlined,
 }));
 
 
