@@ -1,5 +1,8 @@
 import { CSSProperties } from 'vue';
-import { UseDisplayValueStyles } from '@/types';
+import {
+	UseDisplayValueStyles,
+	UsePrependAppendIconStyles,
+} from '@/types';
 import { useGetColor } from './colors';
 
 
@@ -34,6 +37,19 @@ export const useDisplayValueStyles: UseDisplayValueStyles = (options) => {
 	if (!underlined) {
 		styles['border-bottom'] = 'none';
 	}
+
+	return styles as CSSProperties;
+};
+
+
+export const usePrependAppendIconStyles: UsePrependAppendIconStyles = (options) => {
+	const { underlineWidth } = options;
+
+	const width = !underlineWidth ? '0px' : underlineWidth;
+
+	const styles = {
+		borderBottom: `${width} solid transparent`,
+	};
 
 	return styles as CSSProperties;
 };
