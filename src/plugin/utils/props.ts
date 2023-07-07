@@ -11,6 +11,18 @@ export const sharedProps = {
 	color: 'primary',
 	density: 'compact' as const,
 	disabled: false,
+	displayAppendIcon: undefined,
+	displayAppendIconColor: 'primary',
+	displayAppendIconSize: 'x-small',
+	displayAppendInnerIcon: undefined,
+	displayAppendInnerIconColor: 'secondary',
+	displayAppendInnerIconSize: 'x-small',
+	displayPrependIcon: undefined,
+	displayPrependIconColor: 'danger',
+	displayPrependIconSize: 'x-small',
+	displayPrependInnerIcon: undefined,
+	displayPrependInnerIconColor: 'success',
+	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
 	hideDetails: true,
@@ -111,6 +123,8 @@ const textareaProps = {
 	...{
 		autoGrow: true,
 		rows: 1,
+		truncateLength: undefined,
+		truncateSuffix: '...',
 		variant: 'underlined' as const,
 	},
 };
@@ -121,6 +135,8 @@ const textFieldProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
+		truncateLength: undefined,
+		truncateSuffix: '...',
 		variant: 'underlined' as const,
 	}
 };
