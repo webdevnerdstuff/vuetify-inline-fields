@@ -3,11 +3,8 @@
 	--v-inline-fields-top-padding-comfortable: 17px;
 	--v-inline-fields-top-padding-default: 21px;
 	--v-inline-fields-input-height: 24px;
-
-	//
 	--v-inline-fields-density-compact-height: 32px;
 	--v-inline-fields-density-comfortable-height: 40px;
-	--v-inline-fields-density-default-height: 48px;
 }
 
 %clearable-icons {
@@ -22,7 +19,7 @@
 }
 
 .v-inline-fields {
-	// ------------------------------------------------ The Display value //
+	// ------------------------------------------------ The Display Value Container //
 	&--display {
 		&-container {
 			* {
@@ -31,6 +28,7 @@
 			}
 		}
 
+		// ------------------------ Displayed Value //
 		&-value {
 			cursor: pointer;
 			letter-spacing: 0.009375em !important;
@@ -47,24 +45,18 @@
 			}
 		}
 
-		&-prepend-icon {
-			align-items: flex-end;
-			display: inline-flex;
-		}
+		// ------------------------ Prepend/Append Icons //
+		&-append,
+		&-prepend {
+			&-icon {
+				align-items: flex-end;
+				display: inline-flex;
+			}
 
-		&-prepend-inner-icon {
-			align-items: flex-end;
-			display: inline-flex;
-		}
-
-		&-append-icon {
-			align-items: flex-end;
-			display: inline-flex;
-		}
-
-		&-append-inner-icon {
-			align-items: flex-end;
-			display: inline-flex;
+			&-inner-icon {
+				align-items: flex-end;
+				display: inline-flex;
+			}
 		}
 	}
 
@@ -87,19 +79,24 @@
 		// ------------------------------------------------ Icon Set //
 		&-icon-set {
 			&-fa {
-				.v-field__clearable {
-					font-size: .8rem;
-				}
+				.v-field {
+					&__clearable {
+						font-size: .8rem;
+					}
 
-				.v-field__append-inner {
-					align-items: flex-end;
+					&__append-inner {
+						align-items: flex-end;
+					}
 				}
 			}
 		}
 
 		// ------------------------------------------------ Fields //
-		&-v-text-field,
-		&-v-select {
+
+		// ------------------------ VSelect, VTextField //
+		&-v-select,
+		&-v-text-field {
+			// ----------- Compact //
 			&-compact {
 				&-plain,
 				&-underlined {
@@ -134,6 +131,7 @@
 				}
 			}
 
+			// ----------- Comfortable //
 			&-comfortable {
 				&-plain,
 				&-underlined {
@@ -169,7 +167,9 @@
 			}
 		}
 
+		// ------------------------ VSelect //
 		&-v-select {
+			// ----------- Compact //
 			&-compact {
 				&-plain,
 				&-underlined {
@@ -179,6 +179,7 @@
 				}
 			}
 
+			// ----------- Comfortable //
 			&-comfortable {
 				&-plain,
 				&-underlined {
@@ -186,6 +187,43 @@
 						padding-top: 8px !important;
 					}
 				}
+			}
+		}
+
+		// ------------------------ VTextarea //
+		&-v-textarea {
+			.v-inline-fields--save-fields-container {
+				align-items: flex-end;
+			}
+		}
+
+		// ------------------------ VSelect, VTextarea, VTextField //
+		&-v-select,
+		&-v-textarea,
+		&-v-text-field {
+			width: 100%;
+		}
+
+		// ------------------------ VCheckbox, VSwitch //
+		&-v-checkbox,
+		&-v-switch {
+			.v-input {
+				align-items: center;
+				display: flex;
+				padding-bottom: 0;
+
+				&__append {
+					margin-left: 0;
+					padding-bottom: 0 !important;
+				}
+			}
+
+			.v-selection-control {
+				min-height: unset;
+			}
+
+			.v-inline-fields--save-fields-container {
+				align-items: center !important;
 			}
 		}
 
@@ -204,7 +242,6 @@
 		.v-field__append-inner,
 		.v-field__prepend-inner {
 			padding-bottom: 10px !important;
-			padding-top: 0 !important;
 		}
 
 		&-compact {
@@ -241,16 +278,11 @@
 			.v-field__append-inner,
 			.v-field__prepend-inner {
 				align-items: flex-end !important;
-				padding-bottom: 6px;
+				padding-bottom: 6px !important;
 
 				.v-icon {
 					font-size: calc(var(--v-icon-size-multiplier) * 1.5em) !important;
 				}
-			}
-
-			.v-field__append-inner,
-			.v-field__prepend-inner {
-				padding-bottom: 6px !important;
 			}
 
 			.v-inline-fields--save-fields-container {
@@ -259,38 +291,7 @@
 		}
 	}
 
-	&--field {
-		// ------------------------ Checkbox & Switch //
-		&-checkbox,
-		&-switch {
-			.v-input {
-				display: flex;
-
-				&__append {
-					margin-left: 0;
-				}
-			}
-
-			:deep(.v-input__control) {
-				display: inline-flex !important;
-			}
-		}
-
-		// ------------------------ Select & Textarea & Text Field //
-		// &-select,
-		// &-textarea,
-		// &-text-field {
-		// 	width: 100%;
-
-		// 	.v-input {
-		// 		&__append {
-		// 			margin-left: .1rem;
-		// 		}
-		// 	}
-		// }
-	}
-
-	// ------------------------------------------------ Components //
+	// ------------------------------------------------ Save Field Container //
 	&--save-fields-container {
 		align-items: center;
 		display: flex;
@@ -298,10 +299,12 @@
 		margin-left: .1rem;
 	}
 
+	// ------------------------------------------------ Boolean Icons //
 	&--boolean-icons {
 		font-size: calc(var(--v-icon-size-multiplier) * 1em);
 	}
 
+	// ------------------------------------------------ Truncate //
 	.truncate {
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -309,13 +312,8 @@
 		width: 250px;
 	}
 
+	// ------------------------------------------------ Misc //
 	.v-input__append {
 		padding-top: 0;
-	}
-
-	.v-field__outline {
-		.v-label {
-			padding-top: 2px;
-		}
 	}
 }

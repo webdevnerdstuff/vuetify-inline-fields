@@ -221,9 +221,7 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'text-field',
 }));
 
-const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
-	alignItems: settings.alignItems,
-}));
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 
 // ------------------------------------------------ Key event to cancel/close field //

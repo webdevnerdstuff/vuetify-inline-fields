@@ -19,7 +19,6 @@ import type { EventBusKey } from '@vueuse/core';
 
 
 // -------------------------------------------------- Types //
-export type AlignItems = 'normal' | 'stretch' | 'center' | 'start' | 'end' | 'flex-start' | 'flex-end' | 'self-start' | 'self-end' | 'baseline' | 'first baseline' | 'last baseline' | 'safe center' | 'unsafe center' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';
 export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
 export type TimeOpened = Date | null;
 
@@ -44,7 +43,6 @@ export type RGBColor = [number, number, number, number | string];
 
 // -------------------------------------------------- Props //
 export interface SharedProps {
-	alignItems?: AlignItems;
 	autofocus?: boolean;
 	cancelButtonColor?: VBtnColor;
 	cancelButtonSize?: VBtnSize;

@@ -1,6 +1,5 @@
 // * ---------------------------------------- The shared props for all inline fields //
 export const sharedProps = {
-	alignItems: 'center' as const,
 	cancelButtonColor: 'default',
 	cancelButtonSize: 'x-small',
 	cancelButtonTitle: 'Cancel',

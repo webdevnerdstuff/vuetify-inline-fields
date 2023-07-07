@@ -228,9 +228,7 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'select',
 }));
 
-const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
-	alignItems: settings.alignItems,
-}));
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 
 // ------------------------------------------------ Key event to cancel/close field //

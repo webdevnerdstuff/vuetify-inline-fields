@@ -223,9 +223,7 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'textarea',
 }));
 
-const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
-	alignItems: settings.alignItems,
-}));
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 
 // ------------------------------------------------ Key event to cancel/close field //

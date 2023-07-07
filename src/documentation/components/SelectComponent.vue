@@ -24,7 +24,6 @@
 					<v-col cols="2">
 						<VInlineSelect
 							v-model="values.select"
-							align-items="flex-end"
 							:density="density"
 							item-title="state"
 							item-value="abbr"

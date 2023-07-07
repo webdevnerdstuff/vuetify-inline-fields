@@ -6,12 +6,8 @@ import {
 import { useGetColor } from './colors';
 
 
-export const useInlineFieldsContainerStyle = (options) => {
-	const { alignItems } = options;
-
-	const styles = {
-		'align-items': alignItems,
-	};
+export const useInlineFieldsContainerStyle = () => {
+	const styles = {};
 
 	return styles as CSSProperties;
 };

@@ -218,9 +218,7 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	}
 ));
 
-const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
-	alignItems: settings.alignItems,
-}));
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,

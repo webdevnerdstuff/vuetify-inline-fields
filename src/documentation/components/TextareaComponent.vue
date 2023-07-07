@@ -24,7 +24,6 @@
 					<v-col cols="2">
 						<VInlineTextarea
 							v-model="values.textField"
-							align-items="flex-start"
 							:density="density"
 							:loading-wait="false"
 							rows="1"
