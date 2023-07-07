@@ -1,53 +1,50 @@
-import type { PropType as __PropType } from 'vue';
-declare const _sfc_main: import("vue").DefineComponent<{
+declare const _default: import("vue").DefineComponent<{
+    modelValue: globalThis.PropType<any>;
+    iconFalse: {
+        type: globalThis.PropType<string>;
+    };
     iconFalseColor: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
     iconFalseTitle: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
+    iconTrue: {
+        type: globalThis.PropType<string>;
+    };
     iconTrueColor: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
     iconTrueTitle: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
-    };
-    iconFalse: {
-        type: __PropType<string | undefined>;
-        required: false;
-    };
-    iconTrue: {
-        type: __PropType<string | undefined>;
-        required: false;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    modelValue: globalThis.PropType<any>;
+    iconFalse: {
+        type: globalThis.PropType<string>;
+    };
     iconFalseColor: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
     iconFalseTitle: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
+    iconTrue: {
+        type: globalThis.PropType<string>;
+    };
     iconTrueColor: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
     iconTrueTitle: {
-        type: __PropType<string>;
+        type: globalThis.PropType<string>;
         required: true;
     };
-    iconFalse: {
-        type: __PropType<string | undefined>;
-        required: false;
-    };
-    iconTrue: {
-        type: __PropType<string | undefined>;
-        required: false;
-    };
 }>>, {}, {}>;
-export default _sfc_main;
+export default _default;

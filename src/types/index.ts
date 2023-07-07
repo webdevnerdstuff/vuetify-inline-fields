@@ -1,41 +1,69 @@
 /* eslint-disable no-unused-vars */
 import type {
 	CSSProperties,
+	JSXComponent,
+	MaybeRef,
 	Ref,
 } from 'vue';
 import type {
 	VBtn,
 	VCheckbox,
+	VIcon,
 	VSelect,
 	VSwitch,
 	VTextField,
 	VTextarea,
 } from 'vuetify/components';
-import type { IconOptions } from 'vuetify';
+import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
 
 
 // -------------------------------------------------- Types //
-export type AlignItems = 'normal' | 'stretch' | 'center' | 'start' | 'end' | 'flex-start' | 'flex-end' | 'self-start' | 'self-end' | 'baseline' | 'first baseline' | 'last baseline' | 'safe center' | 'unsafe center' | 'inherit' | 'initial' | 'revert' | 'revert-layer' | 'unset';
 export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
 export type TimeOpened = Date | null;
 
 export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['density'] | VSwitch['$props']['density'] | VTextField['$props']['density'] | VTextarea['$props']['density'];
 export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props']['variant'] | VTextarea['$props']['variant'];
 
+export type VIconColor = VIcon['$props']['color'];
+export type VIconSize = VIcon['$props']['size'];
+export type VIconValue = string | (string | [path: string, opacity: number])[] | JSXComponent;
+
+export type VBtnColor = VBtn['$props']['color'];
+export type VBtnSize = VBtn['$props']['size'];
+export type VBtnVariant = VBtn['$props']['variant'];
+
+
+// -------------------------------------------------- Colors //
+export type HEXColor = string;
+export type HSLColor = [number, number, number, number | string];
+export type RGBColor = [number, number, number, number | string];
+
+
 
 // -------------------------------------------------- Props //
 export interface SharedProps {
-	alignItems?: AlignItems;
 	autofocus?: boolean;
-	cancelButtonColor?: VBtn['$props']['color'];
-	cancelButtonSize?: VBtn['$props']['size'];
+	cancelButtonColor?: VBtnColor;
+	cancelButtonSize?: VBtnSize;
 	cancelButtonTitle?: string | undefined;
-	cancelButtonVariant?: VBtn['$props']['variant'];
+	cancelButtonVariant?: VBtnVariant;
 	cancelIcon?: string | undefined;
 	cancelIconColor?: string;
 	closeSiblings?: boolean;
 	color?: string;
+	displayAppendIcon?: VIconValue;
+	displayAppendIconColor?: VIconColor;
+	displayAppendIconSize?: VIconSize;
+	displayAppendInnerIcon?: VIconValue;
+	displayAppendInnerIconColor?: VIconColor;
+	displayAppendInnerIconSize?: VIconSize;
+	displayPrependIcon?: VIconValue;
+	displayPrependIconColor?: VIconColor;
+	displayPrependIconSize?: VIconSize;
+	displayPrependInnerIcon?: VIconValue;
+	displayPrependInnerIconColor?: VIconColor;
+	displayPrependInnerIconSize?: VIconSize;
 	disabled?: boolean;
 	emptyText?: string;
 	error?: boolean;
@@ -58,10 +86,10 @@ export interface SharedProps {
 	loadingWait?: boolean;
 	name?: string;
 	required?: boolean;
-	saveButtonColor?: VBtn['$props']['color'];
-	saveButtonSize?: VBtn['$props']['size'];
+	saveButtonColor?: VBtnColor;
+	saveButtonSize?: VBtnSize;
 	saveButtonTitle?: string | undefined;
-	saveButtonVariant?: VBtn['$props']['variant'];
+	saveButtonVariant?: VBtnVariant;
 	saveIcon?: string | undefined;
 	saveIconColor?: string;
 	tableField?: boolean;
@@ -135,6 +163,28 @@ export interface BooleanIcons extends
 		'iconTrue'
 	> { };
 
+
+export interface DisplayValueProps {
+	[key: string]: any;
+	color: SharedProps['color'];
+	displayAppendIcon: SharedProps['displayAppendIcon'];
+	displayAppendIconColor: SharedProps['displayAppendIconColor'];
+	displayAppendInnerIcon: SharedProps['displayAppendInnerIcon'];
+	displayAppendInnerIconColor: SharedProps['displayAppendInnerIconColor'];
+	displayPrependIcon: SharedProps['displayPrependIcon'];
+	displayPrependIconColor: SharedProps['displayPrependIconColor'];
+	displayPrependInnerIcon: SharedProps['displayPrependInnerIcon'];
+	displayPrependInnerIconColor: SharedProps['displayPrependInnerIconColor'];
+	displayValue: any;
+	empty?: MaybeRef<boolean> | boolean | undefined;
+	error?: MaybeRef<boolean> | boolean | undefined;
+	field: string;
+	underlineColor?: SharedProps['underlineColor'];
+	underlineStyle?: SharedProps['underlineStyle'];
+	underlineWidth?: SharedProps['underlineWidth'];
+	underlined?: SharedProps['underlined'];
+}
+
 export interface SaveFieldButtons extends
 	Required<Pick<SharedProps,
 		'cancelButtonColor' |
@@ -182,6 +232,7 @@ export interface UseInlineFieldsContainerClass {
 			loading?: Ref<boolean> | boolean;
 			loadingWait?: Ref<SharedProps['loadingWait']> | SharedProps['loadingWait'];
 			tableField?: SharedProps['tableField'];
+			variant?: GlobalVariant;
 		},
 	): object;
 }
@@ -224,6 +275,38 @@ export interface UseDisplayValueClass {
 	): object;
 }
 
+export interface UseDisplayValueStyles {
+	(
+		options: {
+			color: SharedProps['color'];
+			error: MaybeRef<boolean> | boolean | undefined;
+			theme: ThemeInstance;
+			underlineColor: SharedProps['underlineColor'];
+			underlineStyle: SharedProps['underlineStyle'];
+			underlineWidth: SharedProps['underlineWidth'];
+			underlined: SharedProps['underlined'];
+		}
+	): CSSProperties;
+}
+
+// ------------------------ Display Value Container Prepend/Append Icons //
+export interface UsePrependAppendIconClasses {
+	(
+		options: {
+			inner?: Ref<boolean> | boolean;
+			position?: Ref<string> | string;
+		},
+	): object;
+}
+
+export interface UsePrependAppendIconStyles {
+	(
+		options: {
+			underlineWidth: SharedProps['underlineWidth'];
+		}
+	): CSSProperties;
+}
+
 // ------------------------ Field Container //
 export interface UseFieldContainerClass {
 	(
@@ -260,18 +343,7 @@ export interface UseCheckForErrors {
 	};
 }
 
-export interface UseDisplayValueStyles {
-	(
-		options: {
-			color: SharedProps['color'];
-			error: Ref<boolean> | boolean;
-			underlineColor: SharedProps['underlineColor'];
-			underlineStyle: SharedProps['underlineStyle'];
-			underlineWidth: SharedProps['underlineWidth'];
-			underlined: SharedProps['underlined'];
-		}
-	): CSSProperties;
-}
+
 
 export interface UseToggleField {
 	(
@@ -305,3 +377,14 @@ export interface UseTruncateText {
 
 // -------------------------------------------------- Close Siblings Event Bus //
 export const CloseSiblingsBus: EventBusKey<TimeOpened> = Symbol('identifier');
+
+
+// ------------------------- Helpers //
+export interface UseConvertToUnit {
+	(
+		options: {
+			str: string | number,
+			unit?: string,
+		}
+	): string | void;
+}

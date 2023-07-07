@@ -15,6 +15,7 @@ for (const prop in VInlineFields) {
 }
 
 export const VInlineCheckbox = VInlineFields.VInlineCheckbox;
+export const VInlineCustomField = VInlineFields.VInlineCustomField;
 export const VInlineSelect = VInlineFields.VInlineSelect;
 export const VInlineSwitch = VInlineFields.VInlineSwitch;
 export const VInlineTextField = VInlineFields.VInlineTextField;

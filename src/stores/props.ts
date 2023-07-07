@@ -123,7 +123,7 @@ const sharedProps = [
 	},
 	{
 		default: true,
-		desc: 'Hides hint and validation errors. When set to auto messages will be rendered only if there\'s a message (hint, error message, counter value etc) to display',
+		desc: 'Hide details is not fully supported as the fields are intended for use in tables. You can set this prop to <code class="ic">false</code> to show the details but styling will not be ideal',
 		name: 'hide-details',
 		type: 'boolean'
 	},
@@ -135,7 +135,7 @@ const sharedProps = [
 	},
 	{
 		default: undefined,
-		desc: 'Sets the text of the <code class="ic">v-label</code> or <code class="ic">v-field-label</code> component',
+		desc: 'Label is not fully supported as the fields are intended for use in tables and the column header signifies what that column is for. You can set this prop to show the label but styling will not be ideal',
 		name: 'label',
 		type: 'string',
 	},

@@ -6,13 +6,16 @@ import {
 	UseDisplayValueClass,
 	UseFieldContainerClass,
 	UseInlineFieldsContainerClass,
+	UsePrependAppendIconClasses,
 } from '@/types';
 import { componentName } from '../utils/globals';
 
 
 // ------------------------------------------------ Main Container //
 export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (options) => {
-	const { field = '', density = '', disabled = false, iconSet = 'mdi', loading = false, loadingWait, tableField = false } = options;
+	const { field = '', density = '', disabled = false, iconSet = 'mdi', loading = false, loadingWait, tableField = false, variant } = options;
+
+	const hasDensityAndVariant = density && variant;
 
 	return {
 		[`${componentName}`]: true,
@@ -21,10 +24,22 @@ export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (opt
 		[`${componentName}--container-table`]: tableField,
 		[`${componentName}--container-icon-set-${iconSet}`]: true,
 		[`${componentName}--container-loading`]: loading && loadingWait,
+		// Field //
 		[`${componentName}--container-${field}`]: true,
 		[`${componentName}--container-${field}-${density}`]: true,
-		[`vi-${field}`]: true,
-		[`vi-${field}-${density}`]: true,
+		[`${componentName}--container-${field}-${density}-${variant}`]: hasDensityAndVariant,
+		[`${componentName}--container-${field}-${variant}`]: variant,
+		[`${componentName}--container-${field}-${variant}-${density}`]: hasDensityAndVariant,
+
+		// Density //
+		[`${componentName}--container-${density}`]: density,
+		[`${componentName}--container-${density}-${field}`]: density,
+		[`${componentName}--container-${density}-${variant}`]: hasDensityAndVariant,
+
+		// Variant //
+		[`${componentName}--container-${variant}`]: variant,
+		[`${componentName}--container-${variant}-${density}`]: hasDensityAndVariant,
+		[`${componentName}--container-${variant}-${field}`]: variant,
 	};
 };
 
@@ -34,6 +49,7 @@ export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
 	const { field = '', density = '' } = options;
 
 	return {
+		[`${componentName}--display-container`]: true,
 		[`${componentName}--display-wrapper-value`]: true,
 		[`${field}`]: true,
 		'v-input': true,
@@ -59,7 +75,6 @@ export const useDisplaySelectionControlClasses: UseDisplaySelectionControlClass 
 	const { density = '' } = options;
 
 	return {
-		// 'v-selection-control': true,
 		[`v-selection-control--density-${density}`]: true,
 	};
 };
@@ -71,15 +86,29 @@ export const useDisplayValueClass: UseDisplayValueClass = (name, valueColor, opt
 		[`${componentName}`]: true,
 		[`${componentName}--display-value-${name}`]: true,
 		[`${componentName}--display-value`]: true,
-		[`${componentName}--display-wrapper-value-empty`]: unref(empty),
+		[`${componentName}--display-value-empty`]: unref(empty),
 		[`text-${valueColor}`]: !unref(error),
 		'text-danger': unref(error),
 	};
 };
 
 
+// ------------------------ Prepend/Append Icons //
+export const usePrependAppendIconClasses: UsePrependAppendIconClasses = (options) => {
+	const { inner = false, position } = options;
+
+	return {
+		[`${componentName}--display-icon`]: !inner,
+		[`${componentName}--display-${position}-icon`]: !inner,
+		[`${componentName}--display-${position}-inner-icon`]: inner,
+		'me-1': position === 'prepend',
+		'ms-1': position === 'append',
+	};
+};
+
+
 // ------------------------------------------------ Field Container //
-export const useFieldContainerClass: UseFieldContainerClass = (options): object => {
+export const useFieldContainerClass: UseFieldContainerClass = (options) => {
 	const { name, active = false } = options;
 
 	return {
@@ -95,12 +124,12 @@ export const useFieldContainerClass: UseFieldContainerClass = (options): object 
 export const useSaveFieldsContainerClass = (): object => {
 	return {
 		[`${componentName}--save-fields-container`]: true,
-		'align-center': true,
-		'd-flex': true,
+		// 'align-center': true,
+		// 'd-flex': true,
 	};
 };
 
-export const useCancelButtonClass: UseCancelButtonClass = (options): object => {
+export const useCancelButtonClass: UseCancelButtonClass = (options) => {
 	const { cancelButtonVariant } = options;
 
 	return {

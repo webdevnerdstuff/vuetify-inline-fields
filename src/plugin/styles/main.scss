@@ -2,271 +2,318 @@
 	--v-inline-fields-top-padding-compact: 13px;
 	--v-inline-fields-top-padding-comfortable: 17px;
 	--v-inline-fields-top-padding-default: 21px;
+	--v-inline-fields-input-height: 24px;
+	--v-inline-fields-density-compact-height: 32px;
+	--v-inline-fields-density-comfortable-height: 40px;
 }
 
 %clearable-icons {
 	.v-field__clearable,
-	.v-field__append-inner,
 	.v-input__append {
-		align-items: flex-end !important;
-		padding-bottom: 8px !important;
 		padding-top: 0 !important;
+
+		.v-icon {
+			font-size: 1rem !important;
+		}
 	}
 }
 
 .v-inline-fields {
-	&--container {
-		display: flex;
-		height: 100%;
+	// ------------------------------------------------ The Display Value Container //
+	&--display {
+		&-container {
+			* {
+				align-items: center;
+				display: flex;
+			}
+		}
 
+		// ------------------------ Displayed Value //
+		&-value {
+			cursor: pointer;
+			letter-spacing: 0.009375em !important;
+
+			&-empty {
+				color: #909090;
+				font-style: italic;
+			}
+
+			&-checkbox,
+			&-switch {
+				padding-bottom: 2px;
+				padding-top: 6px;
+			}
+		}
+
+		// ------------------------ Prepend/Append Icons //
+		&-append,
+		&-prepend {
+			&-icon {
+				align-items: flex-end;
+				display: inline-flex;
+			}
+
+			&-inner-icon {
+				align-items: flex-end;
+				display: inline-flex;
+			}
+		}
+	}
+
+	&--container {
 		// ------------------------------------------------ Disabled //
 		&-disabled {
-			.v-inline-fields--display-wrapper-value {
+			.v-inline-fields--display-value {
 				cursor: default !important;
 				opacity: var(--v-disabled-opacity);
 			}
 		}
 
+		// ------------------------------------------------ Loading //
 		&-loading {
-			.v-inline-fields--display-wrapper-value {
+			.v-inline-fields--display-value {
 				cursor: wait !important;
 			}
 		}
 
+		// ------------------------------------------------ Icon Set //
 		&-icon-set {
 			&-fa {
-				.v-field__clearable {
-					font-size: .8rem;
-				}
+				.v-field {
+					&__clearable {
+						font-size: .8rem;
+					}
 
-				.v-field__append-inner {
-					align-items: center;
+					&__append-inner {
+						align-items: flex-end;
+					}
 				}
 			}
 		}
 
-		// ------------------------------------------------ Table Field (tableField) Prop = true //
-		&-table {
-			--v-inline-fields-top-padding-compact: 0;
-			--v-inline-fields-top-padding-comfortable: 0;
-			--v-inline-fields-top-padding-default: 0;
+		// ------------------------------------------------ Fields //
 
-			// ------------------------ Select & Text Field //
-			&.vi-v-select,
-			&.vi-v-text-field {
-
-				// The Field value //
-				.v-inline-fields--field {
+		// ------------------------ VSelect, VTextField //
+		&-v-select,
+		&-v-text-field {
+			// ----------- Compact //
+			&-compact {
+				&-plain,
+				&-underlined {
 					.v-input {
-						&--density {
-							&-compact,
-							&-comfortable,
-							&-default {
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										min-height: unset !important;
-									}
-								}
-							}
+						height: var(--v-inline-fields-density-compact-height);
+						max-height: var(--v-inline-fields-density-compact-height);
 
-							&-compact,
-							&-comfortable {
-								line-height: 1rem;
+						&__control {
+							@extend %clearable-icons;
+
+							padding-bottom: 4px;
+						}
+
+						> div {
+							height: inherit !important;
+							max-height: inherit !important;
+						}
+
+						.v-field__input {
+							padding-top: 0;
+
+							input {
+								padding-bottom: 10px;
 							}
+						}
+
+						.v-select__selection {
+							align-items: center;
+							padding-bottom: 10px;
 						}
 					}
 				}
 			}
 
-			&.vi-v-select,
-			&.vi-v-textarea,
-			&.vi-v-text-field {
-
-				// The Field value //
-				.v-inline-fields--field {
+			// ----------- Comfortable //
+			&-comfortable {
+				&-plain,
+				&-underlined {
 					.v-input {
-						&--density {
-							&-compact,
-							&-comfortable,
-							&-default {
-								.v-input__control {
-									padding-bottom: 3px;
-								}
+						height: var(--v-inline-fields-density-comfortable-height);
+						max-height: var(--v-inline-fields-density-comfortable-height);
+
+						&__control {
+							@extend %clearable-icons;
+
+							padding-bottom: 8px;
+						}
+
+						> div {
+							height: inherit !important;
+							max-height: inherit !important;
+						}
+
+						.v-field__input {
+							padding-top: 0;
+
+							input {
+								padding-bottom: 6px;
 							}
 						}
-					}
-				}
-			}
 
-			// ------------------------ Select Field //
-			&.vi-v-select {
-
-				// The Field value //
-				.v-inline-fields--field {
-					.v-input {
-						&--density {
-							&-compact,
-							&-comfortable,
-							&-default {
-								@extend %clearable-icons;
-
-								.v-field__append-inner {
-									padding: 0 0 6px !important;
-								}
-
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										padding-top: 0;
-									}
-								}
-							}
-
-							&-compact,
-							&-comfortable {
-								@extend %clearable-icons;
-
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										padding-bottom: 7px;
-									}
-								}
-							}
-
-							&-default {
-								@extend %clearable-icons;
-
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										padding-bottom: 2px;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			// ------------------------ Text Field //
-			&.vi-v-text-field {
-
-				// The Field value //
-				.v-inline-fields--field {
-					.v-input {
-						&--density {
-							&-compact,
-							&-comfortable,
-							&-default {
-								@extend %clearable-icons;
-
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										padding-bottom: 0;
-									}
-								}
-							}
-
-							&-compact,
-							&-comfortable {
-								@extend %clearable-icons;
-
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										padding-top: 4px;
-									}
-								}
-							}
-
-							&-default {
-								@extend %clearable-icons;
-
-								.v-field--variant-underlined,
-								.v-field--variant-plain {
-									.v-field__input {
-										padding-top: 1px;
-									}
-								}
-							}
+						.v-select__selection {
+							align-items: center;
+							padding-bottom: 6px;
 						}
 					}
 				}
 			}
 		}
 
+		// ------------------------ VSelect //
+		&-v-select {
+			// ----------- Compact //
+			&-compact {
+				&-plain,
+				&-underlined {
+					.v-field__append-inner {
+						padding-top: 4px !important;
+					}
+				}
+			}
+
+			// ----------- Comfortable //
+			&-comfortable {
+				&-plain,
+				&-underlined {
+					.v-field__append-inner {
+						padding-top: 8px !important;
+					}
+				}
+			}
+		}
+
+		// ------------------------ VTextarea //
+		&-v-textarea {
+			.v-inline-fields--save-fields-container {
+				align-items: flex-end;
+			}
+		}
+
+		// ------------------------ VSelect, VTextarea, VTextField //
+		&-v-select,
 		&-v-textarea,
 		&-v-text-field {
-			max-width: 100%;
-			overflow: hidden;
+			width: 100%;
 		}
-	}
 
-	// ------------------------------------------------ The Display value //
-	&--display {
-		&-wrapper {
-			&-value {
-				cursor: pointer;
-				padding-bottom: 1px;
-
-				&-empty {
-					color: #909090;
-					font-style: italic;
-				}
-			}
-		}
-	}
-
-	// ------------------------------------------------ Field Value //
-	&--field {
-
-		// ------------------------ Checkbox & Switch //
-		&-checkbox,
-		&-switch {
+		// ------------------------ VCheckbox, VSwitch //
+		&-v-checkbox,
+		&-v-switch {
 			.v-input {
+				align-items: center;
 				display: flex;
+				padding-bottom: 0;
 
 				&__append {
 					margin-left: 0;
+					padding-bottom: 0 !important;
 				}
 			}
 
-			:deep(.v-input__control) {
-				display: inline-flex !important;
+			.v-selection-control {
+				min-height: unset;
+			}
+
+			.v-inline-fields--save-fields-container {
+				align-items: center !important;
 			}
 		}
 
-		// ------------------------ Select & Textarea & Text Field //
-		&-select,
-		&-textarea,
-		&-text-field {
-			width: 100%;
+		// ------------------------------------------------ Prepend/Append //
+		.v-input__append,
+		.v-input__prepend,
+		.v-field__append-inner,
+		.v-field__prepend-inner {
+			padding-top: 0 !important;
 
-			.v-input {
-				&__append {
-					margin-left: .1rem;
+			.v-icon {
+				font-size: 1rem !important;
+			}
+		}
+
+		.v-field__append-inner,
+		.v-field__prepend-inner {
+			padding-bottom: 10px !important;
+		}
+
+		&-compact {
+			.v-input__append,
+			.v-input__prepend,
+			.v-field__append-inner,
+			.v-field__prepend-inner {
+				align-items: center !important;
+			}
+
+			.v-field__append-inner,
+			.v-field__prepend-inner {
+				padding-bottom: 10px !important;
+			}
+		}
+
+		&-comfortable {
+			.v-input__append,
+			.v-input__prepend,
+			.v-field__append-inner,
+			.v-field__prepend-inner {
+				align-items: center !important;
+			}
+
+			.v-field__append-inner,
+			.v-field__prepend-inner {
+				padding-bottom: 6px !important;
+			}
+		}
+
+		&-default {
+			.v-input__append,
+			.v-input__prepend,
+			.v-field__append-inner,
+			.v-field__prepend-inner {
+				align-items: flex-end !important;
+				padding-bottom: 6px !important;
+
+				.v-icon {
+					font-size: calc(var(--v-icon-size-multiplier) * 1.5em) !important;
 				}
+			}
+
+			.v-inline-fields--save-fields-container {
+				align-items: flex-end !important;
 			}
 		}
 	}
 
-
-	// ------------------------------------------------ Components //
+	// ------------------------------------------------ Save Field Container //
 	&--save-fields-container {
+		align-items: center;
+		display: flex;
 		height: 100%;
+		margin-left: .1rem;
 	}
 
+	// ------------------------------------------------ Boolean Icons //
 	&--boolean-icons {
 		font-size: calc(var(--v-icon-size-multiplier) * 1em);
 	}
 
+	// ------------------------------------------------ Truncate //
 	.truncate {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		width: 250px;
+	}
+
+	// ------------------------------------------------ Misc //
+	.v-input__append {
+		padding-top: 0;
 	}
 }

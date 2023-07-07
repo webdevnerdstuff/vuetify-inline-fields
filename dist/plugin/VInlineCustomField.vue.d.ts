@@ -468,7 +468,67 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineStyle: string;
     underlineWidth: string;
     valueColor: string;
-}, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>>>;
+}, {}>, {
+    default?(_: {
+        loading: boolean;
+        modelValue: FieldValue | undefined;
+        originalValue: FieldValue | undefined;
+        error: boolean;
+        rules?: readonly ((string | boolean) | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>) | {
+            then: <TResult1 = string | boolean, TResult2 = never>(onfulfilled?: ((value: string | boolean) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => PromiseLike<TResult1 | TResult2>;
+        })[] | undefined;
+        clearIcon?: string | undefined;
+        item?: Record<string, unknown> | undefined;
+        required: boolean;
+        truncateLength: number | undefined;
+        truncateSuffix: string;
+        variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
+        hideSaveIcon: boolean;
+        loadingIcon: string | undefined;
+        loadingIconColor: string;
+        saveButtonColor: string;
+        saveButtonSize: string | number;
+        saveButtonTitle: string;
+        saveButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
+        saveIcon: string | undefined;
+        saveIconColor: string;
+        autofocus: boolean;
+        cancelButtonColor: string;
+        cancelButtonSize: string | number;
+        cancelButtonTitle: string;
+        cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
+        cancelIcon: string | undefined;
+        cancelIconColor: string;
+        closeSiblings: boolean;
+        color: string;
+        density: "default" | "comfortable" | "compact" | null;
+        disabled: boolean;
+        displayAppendIcon: import('../../src/types').VIconValue | undefined;
+        displayAppendIconColor: string;
+        displayAppendIconSize: string | number;
+        displayAppendInnerIcon: import('../../src/types').VIconValue | undefined;
+        displayAppendInnerIconColor: string;
+        displayAppendInnerIconSize: string | number;
+        displayPrependIcon: import('../../src/types').VIconValue | undefined;
+        displayPrependIconColor: string;
+        displayPrependIconSize: string | number;
+        displayPrependInnerIcon: import('../../src/types').VIconValue | undefined;
+        displayPrependInnerIconColor: string;
+        displayPrependInnerIconSize: string | number;
+        emptyText: string;
+        fieldOnly: boolean;
+        hideDetails: boolean;
+        label: string;
+        loadingWait: boolean;
+        name: string;
+        tableField: boolean;
+        underlineColor: string;
+        underlineStyle: string;
+        underlineWidth: string;
+        underlined: boolean;
+        valueColor: string;
+    }): any;
+}>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

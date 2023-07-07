@@ -2,6 +2,7 @@
 	<v-col cols="12">
 		<v-card elevation="5">
 			<v-data-table
+				density="default"
 				:headers="headers"
 				:items="posts"
 				:items-per-page="tableOptions.itemsPerPage"
@@ -10,8 +11,8 @@
 				<template #[`item.active`]="{ item }">
 					<VInlineSwitch
 						v-model="item.raw.active"
-						:align-items="componentOptions.alignItems"
 						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon="componentOptions.cancelIcon"
 						:cancel-icon-color="componentOptions.cancelIconColor"
@@ -26,7 +27,6 @@
 						:icon-true="componentOptions.iconTrue"
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:item="item"
-						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="active"
@@ -42,34 +42,35 @@
 				<template #[`item.userId`]="{ item }">
 					<VInlineSelect
 						v-model="item.raw.user"
-						:align-items="componentOptions.alignItems"
 						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:cancel-icon-text="componentOptions.cancelIconText"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
+						:display-append-icon="componentOptions.displayAppendIcon"
+						:display-append-icon-color="componentOptions.displayAppendIconColor"
+						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
+						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:empty-text="componentOptions.emptyText"
 						:field-only="componentOptions.fieldOnly"
-						:hide-details="componentOptions.hideDetails"
 						:hide-selected="componentOptions.hideSelected"
 						:item="item"
 						item-title="name"
 						item-value="id"
 						:items="users"
-						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						:menu="componentOptions.menu"
 						name="userId"
 						return-object
 						:save-button-color="componentOptions.saveButtonColor"
+						:save-button-title="componentOptions.saveButtonTitle"
 						:save-icon="componentOptions.saveIcon"
 						:save-icon-color="componentOptions.saveIconColor"
-						:save-icon-text="componentOptions.saveIconText"
 						:underline-color="componentOptions.underlineColor"
 						:underline-style="componentOptions.underlineStyle"
 						:underline-width="componentOptions.underlineWidth"
@@ -84,24 +85,36 @@
 				<template #[`item.title`]="{ item }">
 					<VInlineTextField
 						v-model="item.raw.title"
-						:align-items="componentOptions.alignItems"
+						:append-icon="componentOptions.appendIcon"
+						:append-inner-icon="componentOptions.appendIcon"
 						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:cancel-icon-text="componentOptions.cancelIconText"
+						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
+						:display-append-icon="componentOptions.displayAppendIcon"
+						:display-append-icon-color="componentOptions.displayAppendIconColor"
+						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
+						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
+						:display-prepend-icon="componentOptions.displayPrependIcon"
+						:display-prepend-iconColor="componentOptions.displayPrependIconColor"
+						:display-prepend-inner-icon="componentOptions.displayPrependInnerIcon"
+						:display-prepend-inner-icon-color="componentOptions.displayPrependInnerIconColor"
 						:field-only="componentOptions.fieldOnly"
-						:hide-details="componentOptions.hideDetails"
 						:item="item"
-						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="title"
+						:prepend-icon="componentOptions.appendIcon"
+						:prepend-inner-icon="componentOptions.appendIcon"
 						required
+						:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
 						:save-button-color="componentOptions.saveButtonColor"
+						:save-button-title="componentOptions.saveButtonTitle"
 						:save-button-variant="componentOptions.saveButtonVariant"
 						:save-icon-color="componentOptions.saveIconColor"
 						:save-icon-text="componentOptions.saveIconText"
@@ -113,30 +126,34 @@
 						:variant="componentOptions.variant"
 						@error="showError = $event"
 						@update="updatedValue(item.raw, 'title')"
-					/>
+					>
+						<template #[`display-append-icon`]>foo</template>
+					</VInlineTextField>
 				</template>
 
 				<template #[`item.body`]="{ item }">
 					<VInlineTextarea
 						v-model="item.raw.body"
-						:align-items="componentOptions.alignItems"
 						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:cancel-icon-text="componentOptions.cancelIconText"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
+						:display-append-icon="componentOptions.displayAppendIcon"
+						:display-append-icon-color="componentOptions.displayAppendIconColor"
+						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
+						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:field-only="componentOptions.fieldOnly"
-						:hide-details="false"
 						:item="item"
-						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="body"
 						:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
 						:save-button-color="componentOptions.saveButtonColor"
+						:save-button-title="componentOptions.saveButtonTitle"
 						:save-icon-color="componentOptions.saveIconColor"
 						:save-icon-text="componentOptions.saveIconText"
 						:truncate-length="componentOptions.truncateTextareaLength"
@@ -150,14 +167,29 @@
 					/>
 				</template>
 
+				<template #[`item.range`]="{ item }">
+					<VInlineCustomField
+						v-model="item.raw.range"
+						:loading="item.raw.loading"
+						@update="updatedValue(item.raw, 'range')"
+					>
+						<template #default="">
+							<v-slider
+								v-model="item.raw.range"
+								show-ticks
+								step="10"
+							></v-slider>
+						</template>
+					</VInlineCustomField>
+				</template>
+
 				<template #[`item.reviewed`]="{ item }">
 					<VInlineCheckbox
 						v-model="item.raw.reviewed"
-						:align-items="componentOptions.alignItems"
 						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:cancel-icon-text="componentOptions.cancelIconText"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -200,26 +232,36 @@ const tableOptions = reactive({
 });
 
 const componentOptions = reactive({
-	alignItems: 'center',
+	// appendIcon: 'mdi:mdi-cog',
 	cancelButtonColor: 'default',
+	cancelButtonTitle: 'Cancel',
 	cancelButtonVariant: 'text',
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
-	cancelIconText: 'Cancel',
 	clearable: false,
-	closeSiblings: true,
+	closeSiblings: false,
 	color: 'primary',
 	density: 'compact',
 	disabled: false,
+	// displayAppendIcon: 'mdi:mdi-pencil',
+	// displayAppendIconColor: 'primary',
+	// displayAppendIconSize: 'x-small',
+	// displayAppendInnerIcon: 'mdi:mdi-pencil',
+	// displayAppendInnerIconColor: 'secondary',
+	// displayAppendInnerIconSize: 'x-small',
+	// displayPrependIcon: 'mdi:mdi-pencil',
+	// displayPrependIconColor: 'danger',
+	// displayPrependIconSize: 'x-small',
+	// displayPrependInnerIcon: 'mdi:mdi-pencil',
+	// displayPrependInnerIconColor: 'success',
+	// displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
-	hideDetails: true,
 	hideSelected: false,
 	iconFalse: undefined,
 	iconFalseTitle: undefined,
 	iconTrue: undefined,
 	iconTrueTitle: undefined,
-	label: '',
 	loadingWait: true,
 	menu: true,
 	rules: {
@@ -229,10 +271,10 @@ const componentOptions = reactive({
 		required: value => !!value || 'Field is required',
 	},
 	saveButtonColor: 'default',
+	saveButtonTitle: 'Save',
 	saveButtonVariant: 'text',
 	saveIcon: undefined,
 	saveIconColor: 'primary',
-	saveIconText: 'Save',
 	truncateTextFieldLength: 25,
 	truncateTextareaLength: 75,
 	underlineColor: 'primary',
@@ -271,6 +313,13 @@ const headers = [
 		key: 'body',
 		title: 'Body',
 	},
+	// ? "Range" is used for the VInlineCustomField example
+	// ? Comment out the body field above to use this one (so it fits)  //
+	// {
+	// 	align: 'start',
+	// 	key: 'range',
+	// 	title: 'Range',
+	// },
 	{
 		align: 'start',
 		key: 'reviewed',

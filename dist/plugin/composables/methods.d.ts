@@ -1,4 +1,4 @@
-import { UseCheckForErrors, UseToggleField, UseTruncateText } from '../../types';
+import { UseCheckForErrors, UseToggleField, UseTruncateText } from '../../../src/types';
 declare const useCheckForErrors: UseCheckForErrors;
 declare const useToggleField: UseToggleField;
 declare const useTruncateText: UseTruncateText;

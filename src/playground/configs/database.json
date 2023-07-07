@@ -248,7 +248,9 @@
 			"active": null,
 			"title": null,
 			"body": null,
-			"reviewed": null
+			"reviewed": null,
+			"date": "",
+			"range": 50
 		},
 		{
 			"userId": 8,

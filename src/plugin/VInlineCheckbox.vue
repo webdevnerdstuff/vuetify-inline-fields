@@ -110,7 +110,7 @@ import {
 	TimeOpened,
 	VInlineCheckboxProps,
 } from '@/types';
-import type { IconOptions } from 'vuetify';
+import { IconOptions, useTheme } from 'vuetify';
 import { checkboxProps } from './utils/props';
 import {
 	BooleanIcons,
@@ -130,6 +130,7 @@ import {
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
+import { useBindingSettings } from './composables/bindings';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -137,7 +138,9 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
+const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
 let settings = reactive({ ...attrs, ...props });
@@ -149,7 +152,7 @@ const timeOpened = ref<TimeOpened>(null);
 
 
 // ------------------------------------------------ Binding Events & Props //
-const bindingSettings = computed(() => settings);
+const bindingSettings = computed(() => useBindingSettings(settings));
 
 
 // ------------------------------------------------ Loading //
@@ -215,13 +218,12 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	}
 ));
 
-const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle({
-	alignItems: settings.alignItems,
-}));
+const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
 	error,
+	theme,
 	underlineColor: settings.underlineColor,
 	underlineStyle: settings.underlineStyle,
 	underlineWidth: settings.underlineWidth,
