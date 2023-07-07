@@ -1,4 +1,5 @@
 import { CSSProperties } from 'vue';
-import { UseDisplayValueStyles } from '../../types';
-export declare const useInlineFieldsContainerStyle: (options: any) => CSSProperties;
+import { UseDisplayValueStyles, UsePrependAppendIconStyles } from '../../../src/types';
+export declare const useInlineFieldsContainerStyle: () => CSSProperties;
 export declare const useDisplayValueStyles: UseDisplayValueStyles;
+export declare const usePrependAppendIconStyles: UsePrependAppendIconStyles;
