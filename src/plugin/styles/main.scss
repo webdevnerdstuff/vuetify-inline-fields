@@ -39,6 +39,12 @@
 				color: #909090;
 				font-style: italic;
 			}
+
+			&-checkbox,
+			&-switch {
+				padding-bottom: 2px;
+				padding-top: 6px;
+			}
 		}
 
 		&-prepend-icon {
@@ -253,7 +259,6 @@
 		}
 	}
 
-	// TODO: Fix this
 	&--field {
 		// ------------------------ Checkbox & Switch //
 		&-checkbox,
