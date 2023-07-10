@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
 import type {
 	CSSProperties,
@@ -19,7 +20,7 @@ import type { EventBusKey } from '@vueuse/core';
 
 
 // -------------------------------------------------- Types //
-export type FieldValue = string | boolean | number | object | [] | null | { [key: string]: string | unknown; };
+export type FieldValue = any;
 export type TimeOpened = Date | null;
 
 export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['density'] | VSwitch['$props']['density'] | VTextField['$props']['density'] | VTextarea['$props']['density'];
@@ -67,7 +68,7 @@ export interface SharedProps {
 	disabled?: boolean;
 	emptyText?: string;
 	error?: boolean;
-	falseValue?: boolean | string;
+	falseValue?: boolean | string | undefined;
 	fieldOnly?: boolean;
 	hideDetails?: boolean;
 	hideSaveIcon?: boolean;
@@ -93,7 +94,7 @@ export interface SharedProps {
 	saveIcon?: string | undefined;
 	saveIconColor?: string;
 	tableField?: boolean;
-	trueValue?: boolean | string;
+	trueValue?: boolean | string | undefined;
 	truncateLength?: number | undefined;
 	truncateSuffix?: string | undefined;
 	underlineColor?: string;
@@ -176,7 +177,7 @@ export interface DisplayValueProps {
 	displayPrependInnerIcon: SharedProps['displayPrependInnerIcon'];
 	displayPrependInnerIconColor: SharedProps['displayPrependInnerIconColor'];
 	displayValue: any;
-	empty?: MaybeRef<boolean> | boolean | undefined;
+	empty?: Ref<boolean> | boolean;
 	error?: MaybeRef<boolean> | boolean | undefined;
 	field: string;
 	underlineColor?: SharedProps['underlineColor'];
@@ -387,4 +388,13 @@ export interface UseConvertToUnit {
 			unit?: string,
 		}
 	): string | void;
+}
+
+export interface UseTruthyModelValue {
+	(
+		options: {
+			modelValue: any,
+			trueValue?: any,
+		}
+	): boolean;
 }

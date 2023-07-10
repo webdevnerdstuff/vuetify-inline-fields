@@ -16,7 +16,7 @@
 						@click="toggleField"
 					>
 						<BooleanIcons
-							v-model="displayValue"
+							v-model="truthyModelValue"
 							:icon-false="settings.iconFalse"
 							:icon-false-color="settings.iconFalseColor"
 							:icon-false-title="settings.iconFalseTitle"
@@ -45,7 +45,6 @@
 		>
 			<v-switch
 				v-bind="bindingSettings"
-				v-model="modelValue"
 				:color="settings.color"
 				:density="settings.density"
 				:disabled="loadingProp"
@@ -55,7 +54,8 @@
 				:hide-details="settings.hideDetails"
 				:label="settings.label"
 				:loading="loadingProp"
-				:value="settings.trueValue"
+				:model-value="truthyModelValue"
+				:true-value="settings.trueValue"
 				@update:model-value="saveValue"
 			>
 				<!-- Pass on all scoped slots -->
@@ -104,6 +104,7 @@ import {
 import { IconOptions, useTheme } from 'vuetify';
 import { switchProps } from './utils/props';
 import { BooleanIcons } from './components/index';
+import { useTruthyModelValue } from './composables/helpers';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
@@ -165,6 +166,11 @@ const theCancelIcon = computed(() => {
 const displayValue = computed(() => {
 	return modelValue.value == settings.trueValue;
 });
+
+const truthyModelValue = computed(() => useTruthyModelValue({
+	modelValue,
+	trueValue: settings.trueValue,
+}));
 
 
 // ------------------------------------------------ Class & Styles //

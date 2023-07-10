@@ -63,7 +63,7 @@ declare const _default: {
                 readonly error?: boolean | undefined;
                 style?: unknown;
                 class?: unknown;
-                readonly modelValue?: import("../types").FieldValue | undefined;
+                readonly modelValue?: any;
                 readonly item?: Record<string, unknown> | undefined;
                 key?: string | number | symbol | undefined;
                 ref?: import("vue").VNodeRef | undefined;
@@ -85,7 +85,7 @@ declare const _default: {
             $emit: (event: string, ...args: any[]) => void;
             $el: any;
             $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-                modelValue: globalThis.PropType<import("../types").FieldValue>;
+                modelValue: globalThis.PropType<any>;
                 error: {
                     type: globalThis.PropType<boolean>;
                 };
@@ -394,7 +394,7 @@ declare const _default: {
             $nextTick: typeof import("vue").nextTick;
             $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean> | undefined): import("vue").WatchStopHandle;
         } & Readonly<import("vue").ExtractPropTypes<{
-            modelValue: globalThis.PropType<import("../types").FieldValue>;
+            modelValue: globalThis.PropType<any>;
             error: {
                 type: globalThis.PropType<boolean>;
             };
@@ -631,7 +631,7 @@ declare const _default: {
         __isTeleport?: undefined;
         __isSuspense?: undefined;
     } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-        modelValue: globalThis.PropType<import("../types").FieldValue>;
+        modelValue: globalThis.PropType<any>;
         error: {
             type: globalThis.PropType<boolean>;
         };
@@ -979,7 +979,7 @@ declare const _default: {
                 readonly error?: boolean | undefined;
                 style?: unknown;
                 class?: unknown;
-                readonly modelValue?: import("../types").FieldValue | undefined;
+                readonly modelValue?: any;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -1003,7 +1003,7 @@ declare const _default: {
             $emit: (event: string, ...args: any[]) => void;
             $el: any;
             $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-                modelValue: globalThis.PropType<import("../types").FieldValue>;
+                modelValue: globalThis.PropType<any>;
                 error: {
                     type: globalThis.PropType<boolean>;
                 };
@@ -1283,7 +1283,7 @@ declare const _default: {
             $nextTick: typeof import("vue").nextTick;
             $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean> | undefined): import("vue").WatchStopHandle;
         } & Readonly<import("vue").ExtractPropTypes<{
-            modelValue: globalThis.PropType<import("../types").FieldValue>;
+            modelValue: globalThis.PropType<any>;
             error: {
                 type: globalThis.PropType<boolean>;
             };
@@ -1498,7 +1498,7 @@ declare const _default: {
         __isTeleport?: undefined;
         __isSuspense?: undefined;
     } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-        modelValue: globalThis.PropType<import("../types").FieldValue>;
+        modelValue: globalThis.PropType<any>;
         error: {
             type: globalThis.PropType<boolean>;
         };
@@ -1761,8 +1761,8 @@ declare const _default: {
         $slots: {
             default?(_: {
                 loading: boolean;
-                modelValue: import("../types").FieldValue | undefined;
-                originalValue: import("../types").FieldValue | undefined;
+                modelValue: any;
+                originalValue: any;
                 error: boolean;
                 rules?: readonly ((string | boolean) | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>) | {
                     then: <TResult1 = string | boolean, TResult2 = never>(onfulfilled?: ((value: string | boolean) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => PromiseLike<TResult1 | TResult2>;
@@ -1882,7 +1882,7 @@ declare const _default: {
                 readonly error?: boolean | undefined;
                 style?: unknown;
                 class?: unknown;
-                readonly modelValue?: import("../types").FieldValue | undefined;
+                readonly modelValue?: any;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly item?: Record<string, unknown> | undefined;
                 key?: string | number | symbol | undefined;
@@ -1905,7 +1905,7 @@ declare const _default: {
             $emit: (event: string, ...args: any[]) => void;
             $el: any;
             $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-                modelValue: globalThis.PropType<import("../types").FieldValue>;
+                modelValue: globalThis.PropType<any>;
                 error: {
                     type: globalThis.PropType<boolean>;
                 };
@@ -2207,7 +2207,7 @@ declare const _default: {
             $nextTick: typeof import("vue").nextTick;
             $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean> | undefined): import("vue").WatchStopHandle;
         } & Readonly<import("vue").ExtractPropTypes<{
-            modelValue: globalThis.PropType<import("../types").FieldValue>;
+            modelValue: globalThis.PropType<any>;
             error: {
                 type: globalThis.PropType<boolean>;
             };
@@ -2439,7 +2439,7 @@ declare const _default: {
         __isTeleport?: undefined;
         __isSuspense?: undefined;
     } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-        modelValue: globalThis.PropType<import("../types").FieldValue>;
+        modelValue: globalThis.PropType<any>;
         error: {
             type: globalThis.PropType<boolean>;
         };
@@ -2777,7 +2777,7 @@ declare const _default: {
                 readonly error?: boolean | undefined;
                 style?: unknown;
                 class?: unknown;
-                readonly modelValue?: import("../types").FieldValue | undefined;
+                readonly modelValue?: any;
                 readonly item?: Record<string, unknown> | undefined;
                 key?: string | number | symbol | undefined;
                 ref?: import("vue").VNodeRef | undefined;
@@ -2799,7 +2799,7 @@ declare const _default: {
             $emit: (event: string, ...args: any[]) => void;
             $el: any;
             $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-                modelValue: globalThis.PropType<import("../types").FieldValue>;
+                modelValue: globalThis.PropType<any>;
                 error: {
                     type: globalThis.PropType<boolean>;
                 };
@@ -3058,7 +3058,7 @@ declare const _default: {
             $nextTick: typeof import("vue").nextTick;
             $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean> | undefined): import("vue").WatchStopHandle;
         } & Readonly<import("vue").ExtractPropTypes<{
-            modelValue: globalThis.PropType<import("../types").FieldValue>;
+            modelValue: globalThis.PropType<any>;
             error: {
                 type: globalThis.PropType<boolean>;
             };
@@ -3255,7 +3255,7 @@ declare const _default: {
         __isTeleport?: undefined;
         __isSuspense?: undefined;
     } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-        modelValue: globalThis.PropType<import("../types").FieldValue>;
+        modelValue: globalThis.PropType<any>;
         error: {
             type: globalThis.PropType<boolean>;
         };
@@ -3553,7 +3553,7 @@ declare const _default: {
                 readonly error?: boolean | undefined;
                 style?: unknown;
                 class?: unknown;
-                readonly modelValue?: import("../types").FieldValue | undefined;
+                readonly modelValue?: any;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -3577,7 +3577,7 @@ declare const _default: {
             $emit: (event: string, ...args: any[]) => void;
             $el: any;
             $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-                modelValue: globalThis.PropType<import("../types").FieldValue>;
+                modelValue: globalThis.PropType<any>;
                 error: {
                     type: globalThis.PropType<boolean>;
                 };
@@ -3857,7 +3857,7 @@ declare const _default: {
             $nextTick: typeof import("vue").nextTick;
             $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean> | undefined): import("vue").WatchStopHandle;
         } & Readonly<import("vue").ExtractPropTypes<{
-            modelValue: globalThis.PropType<import("../types").FieldValue>;
+            modelValue: globalThis.PropType<any>;
             error: {
                 type: globalThis.PropType<boolean>;
             };
@@ -4072,7 +4072,7 @@ declare const _default: {
         __isTeleport?: undefined;
         __isSuspense?: undefined;
     } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-        modelValue: globalThis.PropType<import("../types").FieldValue>;
+        modelValue: globalThis.PropType<any>;
         error: {
             type: globalThis.PropType<boolean>;
         };
@@ -4393,7 +4393,7 @@ declare const _default: {
                 readonly error?: boolean | undefined;
                 style?: unknown;
                 class?: unknown;
-                readonly modelValue?: import("../types").FieldValue | undefined;
+                readonly modelValue?: any;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -4417,7 +4417,7 @@ declare const _default: {
             $emit: (event: string, ...args: any[]) => void;
             $el: any;
             $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-                modelValue: globalThis.PropType<import("../types").FieldValue>;
+                modelValue: globalThis.PropType<any>;
                 error: {
                     type: globalThis.PropType<boolean>;
                 };
@@ -4707,7 +4707,7 @@ declare const _default: {
             $nextTick: typeof import("vue").nextTick;
             $watch<T extends string | ((...args: any) => any)>(source: T, cb: T extends (...args: any) => infer R ? (args_0: R, args_1: R) => any : (...args: any) => any, options?: import("vue").WatchOptions<boolean> | undefined): import("vue").WatchStopHandle;
         } & Readonly<import("vue").ExtractPropTypes<{
-            modelValue: globalThis.PropType<import("../types").FieldValue>;
+            modelValue: globalThis.PropType<any>;
             error: {
                 type: globalThis.PropType<boolean>;
             };
@@ -4930,7 +4930,7 @@ declare const _default: {
         __isTeleport?: undefined;
         __isSuspense?: undefined;
     } & import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
-        modelValue: globalThis.PropType<import("../types").FieldValue>;
+        modelValue: globalThis.PropType<any>;
         error: {
             type: globalThis.PropType<boolean>;
         };

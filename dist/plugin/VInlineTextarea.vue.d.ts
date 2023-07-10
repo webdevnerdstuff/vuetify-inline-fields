@@ -1,6 +1,5 @@
-import { FieldValue } from '../../src/types';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    modelValue: globalThis.PropType<FieldValue>;
+    modelValue: globalThis.PropType<any>;
     error: {
         type: globalThis.PropType<boolean>;
     };
@@ -101,7 +100,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -113,7 +112,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -125,7 +124,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -137,7 +136,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -217,7 +216,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    modelValue: globalThis.PropType<FieldValue>;
+    modelValue: globalThis.PropType<any>;
     error: {
         type: globalThis.PropType<boolean>;
     };
@@ -318,7 +317,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -330,7 +329,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -342,7 +341,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -354,7 +353,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../../src/types').VIconValue>;
+        type: globalThis.PropType<import('../types').VIconValue>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -457,16 +456,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cancelIcon: string;
     cancelIconColor: string;
     closeSiblings: boolean;
-    displayAppendIcon: import('../../src/types').VIconValue;
+    displayAppendIcon: import('../types').VIconValue;
     displayAppendIconColor: string;
     displayAppendIconSize: string | number;
-    displayAppendInnerIcon: import('../../src/types').VIconValue;
+    displayAppendInnerIcon: import('../types').VIconValue;
     displayAppendInnerIconColor: string;
     displayAppendInnerIconSize: string | number;
-    displayPrependIcon: import('../../src/types').VIconValue;
+    displayPrependIcon: import('../types').VIconValue;
     displayPrependIconColor: string;
     displayPrependIconSize: string | number;
-    displayPrependInnerIcon: import('../../src/types').VIconValue;
+    displayPrependInnerIcon: import('../types').VIconValue;
     displayPrependInnerIconColor: string;
     displayPrependInnerIconSize: string | number;
     emptyText: string;

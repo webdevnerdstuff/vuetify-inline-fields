@@ -5,20 +5,18 @@
 	>
 		<div
 			v-if="!showField && !settings.fieldOnly"
-			class="v-inline-fields--container-display-container"
 			:class="displayContainerClass"
 		>
 			<div :class="displaySelectionControlClasses">
 				<div class="v-selection-control__wrapper">
 					<div
 						v-if="icons"
-						class="v-inline-fields--container-display-container-value-icons"
 						:class="displayValueClass"
 						:style="displayValueStyle"
 						@click="toggleField"
 					>
 						<BooleanIcons
-							v-model="displayValue"
+							v-model="truthyModelValue"
 							:icon-false="settings.iconFalse"
 							:icon-false-color="settings.iconFalseColor"
 							:icon-false-title="settings.iconFalseTitle"
@@ -47,7 +45,6 @@
 		>
 			<v-checkbox
 				v-bind="bindingSettings"
-				v-model="modelValue"
 				:color="settings.color"
 				:density="settings.density"
 				:disabled="loadingProp"
@@ -56,8 +53,9 @@
 				:false-value="settings.falseValue"
 				:hide-details="settings.hideDetails"
 				:label="settings.label"
+				:model-value="truthyModelValue"
 				:true-icon="theTrueIcon"
-				:value="settings.trueValue"
+				:true-value="settings.trueValue"
 				@update:model-value="saveValue"
 			>
 				<!-- Pass on all scoped slots -->
@@ -116,6 +114,7 @@ import {
 	BooleanIcons,
 	SaveFieldButtons,
 } from './components/index';
+import { useTruthyModelValue } from './composables/helpers';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
@@ -184,6 +183,11 @@ const theTrueIcon = computed(() => {
 const displayValue = computed(() => {
 	return modelValue.value == settings.trueValue;
 });
+
+const truthyModelValue = computed(() => useTruthyModelValue({
+	modelValue,
+	trueValue: settings.trueValue,
+}));
 
 
 // ------------------------------------------------ Class & Styles //

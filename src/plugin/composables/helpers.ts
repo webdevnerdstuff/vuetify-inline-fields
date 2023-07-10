@@ -1,4 +1,7 @@
-import { UseConvertToUnit } from '@/types';
+import {
+	UseConvertToUnit,
+	UseTruthyModelValue,
+} from '@/types';
 
 
 /**
@@ -16,4 +19,37 @@ export const useConvertToUnit: UseConvertToUnit = (options) => {
 	}
 
 	return `${Number(str)}${unit}`;
+};
+
+
+export const useTruthyModelValue: UseTruthyModelValue = (options) => {
+	const { modelValue, trueValue } = options;
+
+	const value = unref(modelValue);
+
+	if (value?.toLowerCase?.() === 'true') {
+		return true;
+	}
+
+	if (value === '1') {
+		return true;
+	}
+
+	if (value == '1') {
+		return true;
+	}
+
+	if (value === true) {
+		return true;
+	}
+
+	if (value == trueValue) {
+		return true;
+	}
+
+	if (value === trueValue) {
+		return true;
+	}
+
+	return false;
 };
