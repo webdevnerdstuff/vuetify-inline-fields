@@ -1,6 +1,6 @@
 {
 	"name": "vuetify-inline-fields",
-	"version": "1.0.0-beta-1.4",
+	"version": "1.0.0-beta-1.5",
 	"description": "Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.",
 	"private": false,
 	"main": "dist/vuetify-inline-fields.cjs.js",
