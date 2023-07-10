@@ -7,7 +7,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayAppendIconColor: {
@@ -15,7 +15,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayAppendInnerIconColor: {
@@ -23,7 +23,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayPrependIconColor: {
@@ -31,7 +31,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayPrependInnerIconColor: {
@@ -43,7 +43,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     empty: {
-        type: globalThis.PropType<import("vue").MaybeRef<boolean>>;
+        type: globalThis.PropType<boolean | globalThis.Ref<boolean>>;
     };
     error: {
         type: globalThis.PropType<import("vue").MaybeRef<boolean>>;
@@ -73,7 +73,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayAppendIconColor: {
@@ -81,7 +81,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayAppendInnerIconColor: {
@@ -89,7 +89,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayPrependIconColor: {
@@ -97,7 +97,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../../../src/types').VIconValue | undefined>;
+        type: globalThis.PropType<import('../../types').VIconValue | undefined>;
         required: true;
     };
     displayPrependInnerIconColor: {
@@ -109,7 +109,7 @@ declare const _default: import("vue").DefineComponent<{
         required: true;
     };
     empty: {
-        type: globalThis.PropType<import("vue").MaybeRef<boolean>>;
+        type: globalThis.PropType<boolean | globalThis.Ref<boolean>>;
     };
     error: {
         type: globalThis.PropType<import("vue").MaybeRef<boolean>>;
