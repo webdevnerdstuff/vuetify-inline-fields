@@ -34,5 +34,4 @@ import { inject } from 'vue';
 
 
 const classes = inject('classes');
-const links = inject('links');
 </script>
