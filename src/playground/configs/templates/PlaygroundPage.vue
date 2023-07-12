@@ -17,6 +17,8 @@
 						:cancel-icon="componentOptions.cancelIcon"
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:cancel-icon-text="componentOptions.cancelIconText"
+						:card-field="componentOptions.cardField"
+						:card-props="componentOptions.cardProps"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -27,6 +29,7 @@
 						:icon-true="componentOptions.iconTrue"
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:item="item"
+						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="active"
@@ -46,6 +49,8 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
+						:card-field="componentOptions.cardField"
+						:card-props="componentOptions.cardProps"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
@@ -57,11 +62,13 @@
 						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:empty-text="componentOptions.emptyText"
 						:field-only="componentOptions.fieldOnly"
+						:hide-details="componentOptions.hideDetails"
 						:hide-selected="componentOptions.hideSelected"
 						:item="item"
 						item-title="name"
 						item-value="id"
 						:items="users"
+						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						:menu="componentOptions.menu"
@@ -91,6 +98,8 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
+						:card-field="componentOptions.cardField"
+						:card-props="componentOptions.cardProps"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
@@ -105,7 +114,9 @@
 						:display-prepend-inner-icon="componentOptions.displayPrependInnerIcon"
 						:display-prepend-inner-icon-color="componentOptions.displayPrependInnerIconColor"
 						:field-only="componentOptions.fieldOnly"
+						:hide-details="componentOptions.hideDetails"
 						:item="item"
+						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="title"
@@ -138,6 +149,8 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
+						:card-field="componentOptions.cardField"
+						:card-props="componentOptions.cardProps"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -147,7 +160,9 @@
 						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
 						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:field-only="componentOptions.fieldOnly"
+						:hide-details="componentOptions.hideDetails"
 						:item="item"
+						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="body"
@@ -170,12 +185,15 @@
 				<template #[`item.range`]="{ item }">
 					<VInlineCustomField
 						v-model="item.raw.range"
+						:card-field="componentOptions.cardField"
+						:card-props="componentOptions.cardProps"
 						:loading="item.raw.loading"
 						@update="updatedValue(item.raw, 'range')"
 					>
 						<template #default="">
 							<v-slider
 								v-model="item.raw.range"
+								hide-details
 								show-ticks
 								step="10"
 							></v-slider>
@@ -190,6 +208,8 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
+						:card-field="componentOptions.cardField"
+						:card-props="componentOptions.cardProps"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -198,6 +218,7 @@
 						:icon-false-title="componentOptions.iconFalseTitle"
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:item="item"
+						:label="componentOptions.label"
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="reviewed"
@@ -238,6 +259,13 @@ const componentOptions = reactive({
 	cancelButtonVariant: 'text',
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
+	cardField: true,
+	cardProps: {
+		color: '--v-theme-primary',
+		elevation: 0,
+		variant: 'flat',
+		width: undefined,
+	},
 	clearable: false,
 	closeSiblings: false,
 	color: 'primary',
@@ -257,11 +285,13 @@ const componentOptions = reactive({
 	// displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
+	hideDetails: true,
 	hideSelected: false,
 	iconFalse: undefined,
 	iconFalseTitle: undefined,
 	iconTrue: undefined,
 	iconTrueTitle: undefined,
+	label: undefined,
 	loadingWait: true,
 	menu: true,
 	rules: {
