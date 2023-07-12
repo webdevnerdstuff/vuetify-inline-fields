@@ -1,7 +1,7 @@
 import { CSSProperties } from 'vue';
 import {
 	UseDisplayValueStyles,
-	UseFloatingCardContainerStyle,
+	UseCardContainerStyle,
 	UsePrependAppendIconStyles,
 } from '@/types';
 import { useGetColor } from './colors';
@@ -54,7 +54,7 @@ export const usePrependAppendIconStyles: UsePrependAppendIconStyles = (options) 
 
 
 // -------------------------------------------------- Floating Cards //
-export const useFloatingCardContainerStyle: UseFloatingCardContainerStyle = (options) => {
+export const useCardContainerStyle: UseCardContainerStyle = (options) => {
 	const { cardMinWidth, cardWidth, field } = options;
 	const coords = useGetFieldCoordinates({ field });
 

@@ -21,8 +21,8 @@
 			:class="fieldContainerClass"
 		>
 			<Teleport
-				:disabled="!settings.floatingCardField"
-				:to="floatingCard"
+				:disabled="!settings.cardField"
+				:to="cardFieldRef"
 			>
 				<v-text-field
 					v-bind="bindingSettings"
@@ -82,19 +82,19 @@
 			</Teleport>
 		</div>
 
-		<!-- Floating Field -->
+		<!-- Card Field-->
 		<Teleport
-			v-if="settings.floatingCardField"
+			v-if="settings.cardField"
 			to="body"
 		>
 			<div
 				class="v-inline-fields--card-container"
 				:class="!showField ? 'd-none' : ''"
-				:style="floatingCardContainerStyle"
+				:style="cardContainerStyle"
 			>
 				<v-card v-bind="bindingCard">
 					<v-card-text>
-						<div ref="floatingCard"></div>
+						<div ref="cardFieldRef"></div>
 					</v-card-text>
 				</v-card>
 			</div>
@@ -124,7 +124,7 @@ import {
 	useInlineFieldsContainerClass,
 } from './composables/classes';
 import {
-	useFloatingCardContainerStyle,
+	useCardContainerStyle,
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
@@ -220,7 +220,7 @@ const bindingDisplay = computed(() => {
 	};
 });
 
-const bindingCard = computed(() => settings.floatingCardProps);
+const bindingCard = computed(() => settings.cardProps);
 
 
 // ------------------------------------------------ Class & Styles //
@@ -251,7 +251,7 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 }));
 
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
-const floatingCardContainerStyle = computed(() => fieldCoordinates.value);
+const cardContainerStyle = computed(() => fieldCoordinates.value);
 
 
 // ------------------------------------------------ Key event to cancel/close field //
@@ -262,10 +262,10 @@ function closeField() {
 }
 
 
-// ----------------------------------------------- Floating Field //
+// ----------------------------------------------- Card Field//
 const fieldCoordinates = ref<CSSProperties>();
 const inlineFieldsContainer = ref<HTMLElement | null>(null);
-const floatingCard = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | null>(null);
 
 
 // ------------------------------------------------ Toggle the field //
@@ -274,9 +274,9 @@ function toggleField() {
 		return;
 	}
 
-	fieldCoordinates.value = useFloatingCardContainerStyle({
-		cardMinWidth: settings.floatingCardProps?.minWidth,
-		cardWidth: settings.floatingCardProps?.width,
+	fieldCoordinates.value = useCardContainerStyle({
+		cardMinWidth: settings.cardProps?.minWidth,
+		cardWidth: settings.cardProps?.width,
 		field: inlineFieldsContainer.value,
 	});
 

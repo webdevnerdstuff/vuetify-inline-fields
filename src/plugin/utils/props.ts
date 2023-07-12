@@ -6,6 +6,10 @@ export const sharedProps = {
 	cancelButtonVariant: 'text' as const,
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
+	cardField: false,
+	cardProps: () => ({
+		elevation: 5,
+	}),
 	closeSiblings: false,
 	color: 'primary',
 	density: 'compact' as const,
@@ -24,10 +28,6 @@ export const sharedProps = {
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
-	floatingCardField: false,
-	floatingCardProps: () => ({
-		elevation: 5,
-	}),
 	hideDetails: true,
 	label: '',
 	loading: false,

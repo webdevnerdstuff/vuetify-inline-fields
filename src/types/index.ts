@@ -58,8 +58,11 @@ export interface SharedProps {
 	cancelButtonVariant?: VBtnVariant;
 	cancelIcon?: string | undefined;
 	cancelIconColor?: string;
+	cardField?: boolean;
+	cardProps?: VCard['$props'];
 	closeSiblings?: boolean;
 	color?: string;
+	disabled?: boolean;
 	displayAppendIcon?: VIconValue;
 	displayAppendIconColor?: VIconColor;
 	displayAppendIconSize?: VIconSize;
@@ -72,13 +75,10 @@ export interface SharedProps {
 	displayPrependInnerIcon?: VIconValue;
 	displayPrependInnerIconColor?: VIconColor;
 	displayPrependInnerIconSize?: VIconSize;
-	disabled?: boolean;
 	emptyText?: string;
 	error?: boolean;
 	falseValue?: boolean | string | undefined;
 	fieldOnly?: boolean;
-	floatingCardField?: boolean;
-	floatingCardProps?: VCard['$props'];
 	hideDetails?: boolean;
 	hideSaveIcon?: boolean;
 	iconFalse?: string | undefined;
@@ -166,7 +166,7 @@ export interface VInlineTextFieldProps extends Omit<SharedProps,
 
 
 // -------------------------------------------------- Components //
-export interface UseFloatingCardContainerStyle {
+export interface UseCardContainerStyle {
 	(
 		options: {
 			field: unknown;
