@@ -1,5 +1,6 @@
 <template>
 	<div
+		ref="inlineFieldsContainer"
 		:class="inlineFieldsContainerClass"
 		:style="inlineFieldsContainerStyle"
 	>
@@ -43,54 +44,77 @@
 			v-else
 			:class="fieldContainerClass"
 		>
-			<v-switch
-				v-bind="bindingSettings"
-				:color="settings.color"
-				:density="settings.density"
-				:disabled="loadingProp"
-				:error="error"
-				:false-icon="settings.falseIcon"
-				:false-value="settings.falseValue"
-				:hide-details="settings.hideDetails"
-				:label="settings.label"
-				:loading="loadingProp"
-				:model-value="truthyModelValue"
-				:true-value="settings.trueValue"
-				@update:model-value="saveValue"
+			<Teleport
+				:disabled="!settings.floatingCardField"
+				:to="floatingCard"
 			>
-				<!-- Pass on all scoped slots -->
-				<template
-					v-for="(_, slot) in slots"
-					#[slot]="scope"
+				<v-switch
+					v-bind="bindingSettings"
+					:color="settings.color"
+					:density="settings.density"
+					:disabled="loadingProp"
+					:error="error"
+					:false-icon="settings.falseIcon"
+					:false-value="settings.falseValue"
+					:hide-details="settings.hideDetails"
+					:label="settings.label"
+					:loading="loadingProp"
+					:model-value="truthyModelValue"
+					:true-value="settings.trueValue"
+					@update:model-value="saveValue"
 				>
-					<slot
-						:name="slot"
-						v-bind="{ ...scope }"
-					/>
-				</template>
-
-				<template
-					v-if="!slots.append"
-					#append
-				>
-					<v-btn
-						v-if="!settings.fieldOnly"
-						class="ms-3"
-						:color="settings.cancelButtonColor"
-						icon
-						:size="settings.cancelButtonSize"
-						:title="settings.cancelButtonTitle"
-						:variant="settings.cancelButtonVariant"
-						@click="toggleField"
+					<!-- Pass on all scoped slots -->
+					<template
+						v-for="(_, slot) in slots"
+						#[slot]="scope"
 					>
-						<v-icon
-							:color="settings.cancelIconColor"
-							:icon="theCancelIcon"
+						<slot
+							:name="slot"
+							v-bind="{ ...scope }"
 						/>
-					</v-btn>
-				</template>
-			</v-switch>
+					</template>
+
+					<template
+						v-if="!slots.append"
+						#append
+					>
+						<v-btn
+							v-if="!settings.fieldOnly"
+							class="ms-3"
+							:color="settings.cancelButtonColor"
+							icon
+							:size="settings.cancelButtonSize"
+							:title="settings.cancelButtonTitle"
+							:variant="settings.cancelButtonVariant"
+							@click="toggleField"
+						>
+							<v-icon
+								:color="settings.cancelIconColor"
+								:icon="theCancelIcon"
+							/>
+						</v-btn>
+					</template>
+				</v-switch>
+			</Teleport>
 		</div>
+
+		<!-- Floating Field -->
+		<Teleport
+			v-if="settings.floatingCardField"
+			to="body"
+		>
+			<div
+				class="v-inline-fields--card-container"
+				:class="!showField ? 'd-none' : ''"
+				:style="floatingCardContainerStyle"
+			>
+				<v-card v-bind="bindingCard">
+					<v-card-text>
+						<div ref="floatingCard"></div>
+					</v-card-text>
+				</v-card>
+			</div>
+		</Teleport>
 	</div>
 </template>
 
@@ -116,6 +140,7 @@ import {
 } from './composables/classes';
 import {
 	useDisplayValueStyles,
+	useFloatingCardContainerStyle,
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
@@ -142,6 +167,7 @@ const timeOpened = ref<TimeOpened>(null);
 
 // ------------------------------------------------ Binding Events & Props //
 const bindingSettings = computed(() => useBindingSettings(settings));
+const bindingCard = computed(() => settings.floatingCardProps);
 
 
 // ------------------------------------------------ Loading //
@@ -217,12 +243,26 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 	underlined: settings.underlined,
 }));
 
+const floatingCardContainerStyle = computed(() => fieldCoordinates.value);
+
+
+// ----------------------------------------------- Floating Field //
+const fieldCoordinates = ref<CSSProperties>();
+const inlineFieldsContainer = ref<HTMLElement | null>(null);
+const floatingCard = ref<HTMLElement | null>(null);
+
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
 	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
+
+	fieldCoordinates.value = useFloatingCardContainerStyle({
+		cardMinWidth: settings.floatingCardProps?.minWidth,
+		cardWidth: settings.floatingCardProps?.width,
+		field: inlineFieldsContainer.value,
+	});
 
 	const response = useToggleField({
 		attrs,

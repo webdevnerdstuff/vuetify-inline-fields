@@ -5,6 +5,7 @@
 	--v-inline-fields-input-height: 24px;
 	--v-inline-fields-density-compact-height: 32px;
 	--v-inline-fields-density-comfortable-height: 40px;
+	--v-inline-fields-grey: #909090;
 }
 
 %clearable-icons {
@@ -34,7 +35,7 @@
 			letter-spacing: 0.009375em !important;
 
 			&-empty {
-				color: #909090;
+				color: var(--v-inline-fields-grey);
 				font-style: italic;
 			}
 
@@ -287,6 +288,21 @@
 
 			.v-inline-fields--save-fields-container {
 				align-items: flex-end !important;
+			}
+		}
+	}
+
+	&--card-container {
+		.v-card {
+			border: 1px solid hsla(0, 0%, 50%, 50%);
+
+			.v-card-text {
+				padding: 10px;
+
+				> div {
+					align-items: center;
+					display: flex;
+				}
 			}
 		}
 	}

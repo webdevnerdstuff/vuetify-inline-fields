@@ -1,9 +1,11 @@
 import { CSSProperties } from 'vue';
 import {
 	UseDisplayValueStyles,
+	UseFloatingCardContainerStyle,
 	UsePrependAppendIconStyles,
 } from '@/types';
 import { useGetColor } from './colors';
+import { useGetFieldCoordinates } from './helpers';
 
 
 export const useInlineFieldsContainerStyle = () => {
@@ -47,5 +49,26 @@ export const usePrependAppendIconStyles: UsePrependAppendIconStyles = (options) 
 		borderBottom: `${width} solid transparent`,
 	};
 
+	return styles as CSSProperties;
+};
+
+
+// -------------------------------------------------- Floating Cards //
+export const useFloatingCardContainerStyle: UseFloatingCardContainerStyle = (options) => {
+	const { cardMinWidth, cardWidth, field } = options;
+	const coords = useGetFieldCoordinates({ field });
+
+	const width = cardWidth || coords.width;
+	const minWidth = cardMinWidth || coords.width;
+
+	const styles = {
+		height: 'fit-content',
+		left: coords.left,
+		minWidth,
+		position: 'absolute',
+		top: coords.top,
+		width,
+		zIndex: 10,
+	};
 	return styles as CSSProperties;
 };

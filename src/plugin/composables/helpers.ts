@@ -22,6 +22,26 @@ export const useConvertToUnit: UseConvertToUnit = (options) => {
 };
 
 
+export const useGetFieldCoordinates = (options) => {
+	const { field } = options;
+	const { x, y } = field.getBoundingClientRect();
+	const { width, height } = field.getBoundingClientRect();
+	const { left, top } = field.getBoundingClientRect();
+	const { right, bottom } = field.getBoundingClientRect();
+
+	return {
+		bottom: useConvertToUnit({ str: bottom }) as string,
+		height,
+		left: useConvertToUnit({ str: left }) as string,
+		right,
+		top: useConvertToUnit({ str: top }) as string,
+		width: useConvertToUnit({ str: width }) as string,
+		x,
+		y,
+	};
+};
+
+
 export const useTruthyModelValue: UseTruthyModelValue = (options) => {
 	const { modelValue, trueValue } = options;
 

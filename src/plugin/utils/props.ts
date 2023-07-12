@@ -24,6 +24,10 @@ export const sharedProps = {
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
+	floatingCardField: false,
+	floatingCardProps: () => ({
+		elevation: 5,
+	}),
 	hideDetails: true,
 	label: '',
 	loading: false,

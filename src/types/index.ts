@@ -16,7 +16,14 @@ import type {
 	VTextarea,
 } from 'vuetify/components';
 import type { IconOptions, ThemeInstance } from 'vuetify';
+import type { VCard } from 'vuetify/components';
 import type { EventBusKey } from '@vueuse/core';
+
+
+// -------------------------------------------------- Misc //
+export interface KeyStringAny<T = any> {
+	[key: string]: T;
+};
 
 
 // -------------------------------------------------- Types //
@@ -70,6 +77,8 @@ export interface SharedProps {
 	error?: boolean;
 	falseValue?: boolean | string | undefined;
 	fieldOnly?: boolean;
+	floatingCardField?: boolean;
+	floatingCardProps?: VCard['$props'];
 	hideDetails?: boolean;
 	hideSaveIcon?: boolean;
 	iconFalse?: string | undefined;
@@ -153,6 +162,18 @@ export interface VInlineTextFieldProps extends Omit<SharedProps,
 	density?: VTextField['$props']['density'];
 	rules?: VTextField['$props']['rules'];
 	variant?: VTextField['$props']['variant'];
+}
+
+
+// -------------------------------------------------- Components //
+export interface UseFloatingCardContainerStyle {
+	(
+		options: {
+			field: unknown;
+			cardMinWidth: VCard['$props']['minWidth'];
+			cardWidth: VCard['$props']['width'];
+		},
+	): CSSProperties;
 }
 
 
@@ -343,7 +364,6 @@ export interface UseCheckForErrors {
 		results: string[];
 	};
 }
-
 
 
 export interface UseToggleField {
