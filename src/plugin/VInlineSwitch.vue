@@ -5,7 +5,7 @@
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="!showField && !settings.fieldOnly"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 		>
 			<div :class="displaySelectionControlClasses">
@@ -41,7 +41,7 @@
 		</div>
 
 		<div
-			v-else
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			:class="fieldContainerClass"
 		>
 			<Teleport
@@ -79,7 +79,7 @@
 						#append
 					>
 						<v-btn
-							v-if="!settings.fieldOnly"
+							v-if="!settings.fieldOnly || settings.cardField"
 							class="ms-3"
 							:color="settings.cancelButtonColor"
 							icon
@@ -104,8 +104,7 @@
 			to="body"
 		>
 			<div
-				class="v-inline-fields--card-container"
-				:class="!showField ? 'd-none' : ''"
+				:class="cardContainerClass"
 				:style="cardContainerStyle"
 			>
 				<v-card v-bind="bindingCard">
@@ -122,16 +121,21 @@
 import {
 	CloseSiblingsBus,
 	FieldValue,
+	SharedProps,
 	TimeOpened,
 	VInlineSwitchProps,
 } from '@/types';
 import { IconOptions, useTheme } from 'vuetify';
-import { switchProps } from './utils/props';
+import {
+	defaultCardProps,
+	switchProps,
+} from './utils/props';
 import { BooleanIcons } from './components/index';
 import { useTruthyModelValue } from './composables/helpers';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
+	useCardContainerClass,
 	useDisplayContainerClass,
 	useDisplaySelectionControlClasses,
 	useDisplayValueClass,
@@ -167,7 +171,10 @@ const timeOpened = ref<TimeOpened>(null);
 
 // ------------------------------------------------ Binding Events & Props //
 const bindingSettings = computed(() => useBindingSettings(settings));
-const bindingCard = computed(() => settings.cardProps);
+const bindingCard = computed(() => ({
+	...defaultCardProps,
+	...props.cardProps,
+}) as SharedProps['cardProps']);
 
 
 // ------------------------------------------------ Loading //
@@ -231,6 +238,11 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	}
 ));
 
+const cardContainerClass = computed(() => useCardContainerClass({
+	name: 'switch',
+	showField: showField.value,
+}));
+
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
@@ -249,7 +261,7 @@ const cardContainerStyle = computed(() => fieldCoordinates.value);
 // ----------------------------------------------- Card Field//
 const fieldCoordinates = ref<CSSProperties>();
 const inlineFieldsContainer = ref<HTMLElement | null>(null);
-const cardFieldRef = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | string | null>('body');
 
 
 // ------------------------------------------------ Toggle the field //
@@ -260,6 +272,8 @@ function toggleField() {
 
 	fieldCoordinates.value = useCardContainerStyle({
 		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
 		cardWidth: settings.cardProps?.width,
 		field: inlineFieldsContainer.value,
 	});

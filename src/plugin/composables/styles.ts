@@ -14,7 +14,7 @@ export const useInlineFieldsContainerStyle = () => {
 	return styles as CSSProperties;
 };
 
-// -------------------------------------------------- Value Styles //
+// ------------------------------------------------ Value Styles //
 export const useDisplayValueStyles: UseDisplayValueStyles = (options) => {
 	const { underlineStyle, underlineWidth, color, error, theme, underlined } = options;
 	let { underlineColor } = options;
@@ -39,7 +39,6 @@ export const useDisplayValueStyles: UseDisplayValueStyles = (options) => {
 	return styles as CSSProperties;
 };
 
-
 export const usePrependAppendIconStyles: UsePrependAppendIconStyles = (options) => {
 	const { underlineWidth } = options;
 
@@ -53,22 +52,29 @@ export const usePrependAppendIconStyles: UsePrependAppendIconStyles = (options) 
 };
 
 
-// -------------------------------------------------- Floating Cards //
+// ------------------------------------------------ Card Field //
 export const useCardContainerStyle: UseCardContainerStyle = (options) => {
-	const { cardMinWidth, cardWidth, field } = options;
-	const coords = useGetFieldCoordinates({ field });
+	const { cardMinWidth, cardOffsetX, cardOffsetY, cardWidth, field, name = '' } = options;
+	const coords = useGetFieldCoordinates({ cardOffsetX, cardOffsetY, field });
 
-	const width = cardWidth || coords.width;
-	const minWidth = cardMinWidth || coords.width;
+	let minWidth = cardMinWidth;
+	let width = cardWidth;
+
+	if (!width) {
+		width = name === 'checkbox' ? 'fit-content' : coords.width;
+	}
+
+	if (!minWidth) {
+		minWidth = name === 'checkbox' ? 'fit-content' : coords.width;
+	}
 
 	const styles = {
-		height: 'fit-content',
 		left: coords.left,
 		minWidth,
-		position: 'absolute',
 		top: coords.top,
 		width,
 		zIndex: 10,
 	};
+
 	return styles as CSSProperties;
 };

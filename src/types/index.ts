@@ -8,6 +8,7 @@ import type {
 } from 'vue';
 import type {
 	VBtn,
+	VCard,
 	VCheckbox,
 	VIcon,
 	VSelect,
@@ -16,7 +17,6 @@ import type {
 	VTextarea,
 } from 'vuetify/components';
 import type { IconOptions, ThemeInstance } from 'vuetify';
-import type { VCard } from 'vuetify/components';
 import type { EventBusKey } from '@vueuse/core';
 
 
@@ -59,6 +59,8 @@ export interface SharedProps {
 	cancelIcon?: string | undefined;
 	cancelIconColor?: string;
 	cardField?: boolean;
+	cardOffsetX?: number;
+	cardOffsetY?: number;
 	cardProps?: VCard['$props'];
 	closeSiblings?: boolean;
 	color?: string;
@@ -169,9 +171,12 @@ export interface VInlineTextFieldProps extends Omit<SharedProps,
 export interface UseCardContainerStyle {
 	(
 		options: {
-			field: unknown;
+			field: HTMLElement | null;
+			cardOffsetX: SharedProps['cardOffsetX'];
+			cardOffsetY: SharedProps['cardOffsetY'];
 			cardMinWidth: VCard['$props']['minWidth'];
 			cardWidth: VCard['$props']['width'];
+			name?: string;
 		},
 	): CSSProperties;
 }
@@ -235,7 +240,7 @@ export interface SaveFieldButtons extends
 export interface UseCancelButtonClass {
 	(
 		options: {
-			cancelButtonVariant?: SharedProps['cancelButtonVariant'];
+			cancelButtonVariant?: SharedProps['cancelButtonVariant'],
 		},
 	): object;
 }
@@ -247,14 +252,14 @@ export interface UseCancelButtonClass {
 export interface UseInlineFieldsContainerClass {
 	(
 		options: {
-			density?: GlobalDensity;
-			disabled?: Ref<boolean> | boolean;
-			field?: Ref<string> | string;
-			iconSet?: string;
-			loading?: Ref<boolean> | boolean;
-			loadingWait?: Ref<SharedProps['loadingWait']> | SharedProps['loadingWait'];
-			tableField?: SharedProps['tableField'];
-			variant?: GlobalVariant;
+			density?: GlobalDensity,
+			disabled?: Ref<boolean> | boolean,
+			field?: Ref<string> | string,
+			iconSet?: string,
+			loading?: Ref<boolean> | boolean,
+			loadingWait?: Ref<SharedProps['loadingWait']> | SharedProps['loadingWait'],
+			tableField?: SharedProps['tableField'],
+			variant?: GlobalVariant,
 		},
 	): object;
 }
@@ -263,8 +268,8 @@ export interface UseInlineFieldsContainerClass {
 export interface UseDisplayContainerClass {
 	(
 		options: {
-			density?: GlobalDensity;
-			field?: Ref<string> | string;
+			density?: GlobalDensity,
+			field?: Ref<string> | string,
 		},
 	): object;
 }
@@ -272,8 +277,8 @@ export interface UseDisplayContainerClass {
 export interface UseDisplayInputControlClass {
 	(
 		options: {
-			density?: GlobalDensity;
-			variant?: GlobalVariant;
+			density?: GlobalDensity,
+			variant?: GlobalVariant,
 		},
 	): object;
 }
@@ -281,7 +286,7 @@ export interface UseDisplayInputControlClass {
 export interface UseDisplaySelectionControlClass {
 	(
 		options: {
-			density?: GlobalDensity;
+			density?: GlobalDensity,
 		},
 	): object;
 }
@@ -291,8 +296,8 @@ export interface UseDisplayValueClass {
 		name: string,
 		valueColor: SharedProps['valueColor'],
 		options: {
-			empty?: Ref<boolean> | boolean;
-			error?: Ref<boolean> | boolean;
+			empty?: Ref<boolean> | boolean,
+			error?: Ref<boolean> | boolean,
 		},
 	): object;
 }
@@ -300,13 +305,13 @@ export interface UseDisplayValueClass {
 export interface UseDisplayValueStyles {
 	(
 		options: {
-			color: SharedProps['color'];
-			error: MaybeRef<boolean> | boolean | undefined;
-			theme: ThemeInstance;
-			underlineColor: SharedProps['underlineColor'];
-			underlineStyle: SharedProps['underlineStyle'];
-			underlineWidth: SharedProps['underlineWidth'];
-			underlined: SharedProps['underlined'];
+			color: SharedProps['color'],
+			error: MaybeRef<boolean> | boolean | undefined,
+			theme: ThemeInstance,
+			underlineColor: SharedProps['underlineColor'],
+			underlineStyle: SharedProps['underlineStyle'],
+			underlineWidth: SharedProps['underlineWidth'],
+			underlined: SharedProps['underlined'],
 		}
 	): CSSProperties;
 }
@@ -315,8 +320,8 @@ export interface UseDisplayValueStyles {
 export interface UsePrependAppendIconClasses {
 	(
 		options: {
-			inner?: Ref<boolean> | boolean;
-			position?: Ref<string> | string;
+			inner?: Ref<boolean> | boolean,
+			position?: Ref<string> | string,
 		},
 	): object;
 }
@@ -324,7 +329,7 @@ export interface UsePrependAppendIconClasses {
 export interface UsePrependAppendIconStyles {
 	(
 		options: {
-			underlineWidth: SharedProps['underlineWidth'];
+			underlineWidth: SharedProps['underlineWidth'],
 		}
 	): CSSProperties;
 }
@@ -333,23 +338,32 @@ export interface UsePrependAppendIconStyles {
 export interface UseFieldContainerClass {
 	(
 		options: {
-			active?: Ref<boolean> | boolean;
-			name?: Ref<string> | string;
+			active?: Ref<boolean> | boolean,
+			name?: string,
 		},
 	): object;
+}
+
+
+export interface UseCardContainerClass {
+	(
+		options: {
+			showField?: boolean;
+			name?: string;
+		}
+	);
 }
 
 // ------------------------ Icons //
 export interface UseGetIcon {
 	(
 		options: {
-			icon: string | undefined;
-			iconOptions: IconOptions | undefined;
-			name: string;
+			icon: string | undefined,
+			iconOptions: IconOptions | undefined,
+			name: string,
 		}
 	): string;
 }
-
 
 // ------------------------ Other //
 export interface UseCheckForErrors {
@@ -364,7 +378,6 @@ export interface UseCheckForErrors {
 		results: string[];
 	};
 }
-
 
 export interface UseToggleField {
 	(
@@ -385,11 +398,21 @@ export interface UseToggleField {
 	};
 }
 
+export interface UseGetFieldCoordinates {
+	(
+		options: {
+			cardOffsetX: SharedProps['cardOffsetX'],
+			cardOffsetY: SharedProps['cardOffsetY'],
+			field: HTMLElement | null,
+		}
+	);
+}
+
 export interface UseTruncateText {
 	(
 		options: {
-			length: SharedProps['truncateLength'];
-			suffix: SharedProps['truncateSuffix'];
+			length: SharedProps['truncateLength'],
+			suffix: SharedProps['truncateSuffix'],
 			text: string;
 		}
 	): FieldValue;

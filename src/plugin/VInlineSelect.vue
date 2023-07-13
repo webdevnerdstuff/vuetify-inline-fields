@@ -5,7 +5,7 @@
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="!showField && !settings.fieldOnly"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
@@ -17,7 +17,7 @@
 		</div>
 
 		<div
-			v-else
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			:class="fieldContainerClass"
 		>
 			<Teleport
@@ -42,7 +42,7 @@
 					:items="items"
 					:label="settings.label"
 					:loading="loadingProp"
-					:menu="settings.menu && !settings.fieldOnly"
+					:menu="settings.menu && !settings.fieldOnly && showField"
 					:variant="settings.variant"
 					width="100%"
 					@keyup.esc="closeField"
@@ -95,8 +95,7 @@
 			to="body"
 		>
 			<div
-				class="v-inline-fields--card-container"
-				:class="!showField ? 'd-none' : ''"
+				:class="cardContainerClass"
 				:style="cardContainerStyle"
 			>
 				<v-card v-bind="bindingCard">
@@ -113,18 +112,23 @@
 import {
 	CloseSiblingsBus,
 	FieldValue,
+	SharedProps,
 	TimeOpened,
 	VInlineSelectProps,
 } from '@/types';
 import { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
-import { selectProps } from './utils/props';
+import {
+	defaultCardProps,
+	selectProps,
+} from './utils/props';
 import { DisplayedValue, SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
 	useToggleField,
 } from './composables/methods';
 import {
+	useCardContainerClass,
 	useDisplayContainerClass,
 	useDisplayInputControlClasses,
 	useFieldContainerClass,
@@ -221,7 +225,10 @@ const bindingDisplay = computed(() => {
 	};
 });
 
-const bindingCard = computed(() => settings.cardProps);
+const bindingCard = computed(() => ({
+	...defaultCardProps,
+	...props.cardProps,
+}) as SharedProps['cardProps']);
 
 
 // ------------------------------------------------ Watch the items //
@@ -257,6 +264,11 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'select',
 }));
 
+const cardContainerClass = computed(() => useCardContainerClass({
+	name: 'select',
+	showField: showField.value,
+}));
+
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 const cardContainerStyle = computed(() => fieldCoordinates.value);
 
@@ -272,7 +284,7 @@ function closeField() {
 // ----------------------------------------------- Card Field//
 const fieldCoordinates = ref<CSSProperties>();
 const inlineFieldsContainer = ref<HTMLElement | null>(null);
-const cardFieldRef = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | string | null>('body');
 
 
 // ------------------------------------------------ Toggle the field //
@@ -283,6 +295,8 @@ function toggleField() {
 
 	fieldCoordinates.value = useCardContainerStyle({
 		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
 		cardWidth: settings.cardProps?.width,
 		field: inlineFieldsContainer.value,
 	});

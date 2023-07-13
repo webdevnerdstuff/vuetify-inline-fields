@@ -214,6 +214,7 @@
 				padding-bottom: 0;
 
 				&__append {
+					margin-inline-start: 0 !important;
 					margin-left: 0;
 					padding-bottom: 0 !important;
 				}
@@ -293,15 +294,30 @@
 	}
 
 	&--card-container {
+		height: fit-content;
+		position: absolute;
+
 		.v-card {
 			border: 1px solid hsla(0, 0%, 50%, 50%);
 
 			.v-card-text {
-				padding: 10px;
+				padding: 4px 10px;
 
 				> div {
 					align-items: center;
 					display: flex;
+				}
+			}
+		}
+
+		&-checkbox {
+			.v-card {
+				.v-card-text {
+					.v-input {
+						&__append {
+							margin-inline-start: 0;
+						}
+					}
 				}
 			}
 		}

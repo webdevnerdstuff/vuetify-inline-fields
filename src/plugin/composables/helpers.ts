@@ -1,5 +1,6 @@
 import {
 	UseConvertToUnit,
+	UseGetFieldCoordinates,
 	UseTruthyModelValue,
 } from '@/types';
 
@@ -22,19 +23,33 @@ export const useConvertToUnit: UseConvertToUnit = (options) => {
 };
 
 
-export const useGetFieldCoordinates = (options) => {
-	const { field } = options;
+export const useGetFieldCoordinates: UseGetFieldCoordinates = (options) => {
+	const { cardOffsetX, cardOffsetY, field } = options;
+
+	if (!field) {
+		return {
+			bottom: 0,
+			height: 0,
+			left: 0,
+			right: 0,
+			top: 0,
+			width: 0,
+			x: 0,
+			y: 0,
+		};
+	}
+
 	const { x, y } = field.getBoundingClientRect();
 	const { width, height } = field.getBoundingClientRect();
 	const { left, top } = field.getBoundingClientRect();
 	const { right, bottom } = field.getBoundingClientRect();
 
 	return {
-		bottom: useConvertToUnit({ str: bottom }) as string,
+		bottom: useConvertToUnit({ str: bottom + Number(cardOffsetY) }) as string,
 		height,
-		left: useConvertToUnit({ str: left }) as string,
-		right,
-		top: useConvertToUnit({ str: top }) as string,
+		left: useConvertToUnit({ str: left + Number(cardOffsetX) }) as string,
+		right: useConvertToUnit({ str: right + Number(cardOffsetX) }) as string,
+		top: useConvertToUnit({ str: top + Number(cardOffsetY) }) as string,
 		width: useConvertToUnit({ str: width }) as string,
 		x,
 		y,

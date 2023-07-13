@@ -5,7 +5,7 @@
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="!showField && !settings.fieldOnly"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
@@ -17,7 +17,7 @@
 		</div>
 
 		<div
-			v-else
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			class="d-flex align-center py-2"
 			:class="fieldContainerClass"
 		>
@@ -63,8 +63,7 @@
 			to="body"
 		>
 			<div
-				class="v-inline-fields--card-container"
-				:class="!showField ? 'd-none' : ''"
+				:class="cardContainerClass"
 				:style="cardContainerStyle"
 			>
 				<v-card v-bind="bindingCard">
@@ -81,11 +80,15 @@
 import {
 	CloseSiblingsBus,
 	FieldValue,
+	SharedProps,
 	TimeOpened,
 	VInlineTextFieldProps,
 } from '@/types';
 import { IconOptions } from 'vuetify';
-import { textFieldProps } from './utils/props';
+import {
+	defaultCardProps,
+	textFieldProps,
+} from './utils/props';
 import { DisplayedValue, SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
@@ -93,6 +96,7 @@ import {
 	useTruncateText,
 } from './composables/methods';
 import {
+	useCardContainerClass,
 	useDisplayContainerClass,
 	useDisplayInputControlClasses,
 	useFieldContainerClass,
@@ -189,7 +193,10 @@ const bindingDisplay = computed(() => {
 	};
 });
 
-const bindingCard = computed(() => settings.cardProps);
+const bindingCard = computed(() => ({
+	...defaultCardProps,
+	...props.cardProps,
+}) as SharedProps['cardProps']);
 
 
 // ------------------------------------------------ Class & Styles //
@@ -219,6 +226,11 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'text-field',
 }));
 
+const cardContainerClass = computed(() => useCardContainerClass({
+	name: 'custom-field',
+	showField: showField.value,
+}));
+
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 const cardContainerStyle = computed(() => fieldCoordinates.value);
 
@@ -234,7 +246,7 @@ function closeField() {
 // ----------------------------------------------- Card Field//
 const fieldCoordinates = ref<CSSProperties>();
 const inlineFieldsContainer = ref<HTMLElement | null>(null);
-const cardFieldRef = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | string | null>('body');
 
 
 // ------------------------------------------------ Toggle the field //
@@ -245,6 +257,8 @@ function toggleField() {
 
 	fieldCoordinates.value = useCardContainerStyle({
 		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
 		cardWidth: settings.cardProps?.width,
 		field: inlineFieldsContainer.value,
 	});
