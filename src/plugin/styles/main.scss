@@ -5,6 +5,7 @@
 	--v-inline-fields-input-height: 24px;
 	--v-inline-fields-density-compact-height: 32px;
 	--v-inline-fields-density-comfortable-height: 40px;
+	--v-inline-fields-grey: #909090;
 }
 
 %clearable-icons {
@@ -19,6 +20,8 @@
 }
 
 .v-inline-fields {
+	position: relative;
+
 	// ------------------------------------------------ The Display Value Container //
 	&--display {
 		&-container {
@@ -34,7 +37,7 @@
 			letter-spacing: 0.009375em !important;
 
 			&-empty {
-				color: #909090;
+				color: var(--v-inline-fields-grey);
 				font-style: italic;
 			}
 
@@ -86,6 +89,7 @@
 
 					&__append-inner {
 						align-items: flex-end;
+						padding-bottom: 0 !important;
 					}
 				}
 			}
@@ -213,6 +217,7 @@
 				padding-bottom: 0;
 
 				&__append {
+					margin-inline-start: 0 !important;
 					margin-left: 0;
 					padding-bottom: 0 !important;
 				}
@@ -278,7 +283,7 @@
 			.v-field__append-inner,
 			.v-field__prepend-inner {
 				align-items: flex-end !important;
-				padding-bottom: 6px !important;
+				padding-bottom: 0 !important;
 
 				.v-icon {
 					font-size: calc(var(--v-icon-size-multiplier) * 1.5em) !important;
@@ -287,6 +292,37 @@
 
 			.v-inline-fields--save-fields-container {
 				align-items: flex-end !important;
+			}
+		}
+	}
+
+	&--card-container {
+		height: fit-content;
+		min-width: fit-content !important;
+		position: absolute;
+
+		.v-card {
+			border: 1px solid hsla(0, 0%, 50%, 50%);
+
+			.v-card-text {
+				padding: 5px 10px;
+
+				> div {
+					align-items: center;
+					display: flex;
+				}
+			}
+		}
+
+		&-checkbox {
+			.v-card {
+				.v-card-text {
+					.v-input {
+						&__append {
+							margin-inline-start: 0;
+						}
+					}
+				}
 			}
 		}
 	}

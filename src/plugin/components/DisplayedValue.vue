@@ -3,11 +3,17 @@
 
 		<!-- Prepend Icon -->
 		<div
-			v-if="displayPrependIcon"
+			v-if="displayPrependIcon || slots['display.prepend']"
 			:class="prependAppendIconClasses('prepend')"
 			:style="prependAppendIconStyles"
 		>
+			<slot
+				v-if="slots['display.prepend']"
+				v-bind="slotBindings"
+				name="display.prepend"
+			/>
 			<v-icon
+				v-else
 				:color="displayPrependIconColor"
 				:icon="displayPrependIcon"
 				size="x-small"
@@ -21,10 +27,16 @@
 		>
 			<!-- Prepend Inner Icon -->
 			<div
-				v-if="displayPrependInnerIcon"
+				v-if="displayPrependInnerIcon || slots['display.prependInner']"
 				:class="prependAppendIconClasses('prepend', true)"
 			>
+				<slot
+					v-if="slots['display.prependInner']"
+					v-bind="slotBindings"
+					name="display.prependInner"
+				/>
 				<v-icon
+					v-else
 					:color="displayPrependInnerIconColor"
 					:icon="displayPrependInnerIcon"
 					size="x-small"
@@ -35,10 +47,16 @@
 
 			<!-- Append Inner Icon -->
 			<div
-				v-if="displayAppendInnerIcon"
+				v-if="displayAppendInnerIcon || slots['display.appendInner']"
 				:class="prependAppendIconClasses('append', true)"
 			>
+				<slot
+					v-if="slots['display.appendInner']"
+					v-bind="slotBindings"
+					name="display.appendInner"
+				/>
 				<v-icon
+					v-else
 					:color="displayAppendInnerIconColor"
 					:icon="displayAppendInnerIcon"
 					size="x-small"
@@ -48,11 +66,17 @@
 
 		<!-- Append Icon -->
 		<div
-			v-if="displayAppendIcon"
+			v-if="displayAppendIcon || slots['display.append']"
 			:class="prependAppendIconClasses('append')"
 			:style="prependAppendIconStyles"
 		>
+			<slot
+				v-if="slots['display.append']"
+				v-bind="slotBindings"
+				name="display.append"
+			/>
 			<v-icon
+				v-else
 				:color="displayAppendIconColor"
 				:icon="displayAppendIcon"
 				size="x-small"
@@ -77,7 +101,14 @@ import {
 
 const emit = defineEmits(['toggleField']);
 const props = defineProps<DisplayValueProps>();
+const slots = useSlots();
 const theme = useTheme();
+
+const slotBindings = {
+	displayValue: props.displayValue,
+	empty: props.empty,
+	error: props.error,
+};
 
 const displayValueClass = computed(() => useDisplayValueClass(
 	props.field,

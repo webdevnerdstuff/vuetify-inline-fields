@@ -1,10 +1,11 @@
 <template>
 	<div
+		ref="inlineFieldsContainer"
 		:class="inlineFieldsContainerClass"
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="!showField && !settings.fieldOnly"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 		>
 			<div :class="displaySelectionControlClasses">
@@ -40,56 +41,74 @@
 		</div>
 
 		<div
-			v-else
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			:class="fieldContainerClass"
 		>
-			<v-switch
-				v-bind="bindingSettings"
-				:color="settings.color"
-				:density="settings.density"
-				:disabled="loadingProp"
-				:error="error"
-				:false-icon="settings.falseIcon"
-				:false-value="settings.falseValue"
-				:hide-details="settings.hideDetails"
-				:label="settings.label"
-				:loading="loadingProp"
-				:model-value="truthyModelValue"
-				:true-value="settings.trueValue"
-				@update:model-value="saveValue"
+			<Teleport
+				:disabled="!settings.cardField"
+				:to="cardFieldRef"
 			>
-				<!-- Pass on all scoped slots -->
-				<template
-					v-for="(_, slot) in slots"
-					#[slot]="scope"
+				<v-switch
+					v-bind="bindingSettings"
+					:color="settings.color"
+					:density="settings.density"
+					:disabled="loadingProp"
+					:error="error"
+					:false-icon="settings.falseIcon"
+					:false-value="settings.falseValue"
+					:hide-details="settings.hideDetails"
+					:label="settings.label"
+					:loading="loadingProp"
+					:model-value="truthyModelValue"
+					:true-value="settings.trueValue"
+					@update:model-value="saveValue"
 				>
-					<slot
-						:name="slot"
-						v-bind="{ ...scope }"
-					/>
-				</template>
-
-				<template
-					v-if="!slots.append"
-					#append
-				>
-					<v-btn
-						v-if="!settings.fieldOnly"
-						class="ms-3"
-						:color="settings.cancelButtonColor"
-						icon
-						:size="settings.cancelButtonSize"
-						:title="settings.cancelButtonTitle"
-						:variant="settings.cancelButtonVariant"
-						@click="toggleField"
+					<!-- Pass on all scoped slots -->
+					<template
+						v-for="(_, slot) in slots"
+						#[slot]="scope"
 					>
-						<v-icon
-							:color="settings.cancelIconColor"
-							:icon="theCancelIcon"
+						<slot
+							:name="slot"
+							v-bind="{ ...scope }"
 						/>
-					</v-btn>
-				</template>
-			</v-switch>
+					</template>
+
+					<template
+						v-if="!slots.append"
+						#append
+					>
+						<v-btn
+							v-if="!settings.fieldOnly || settings.cardField"
+							class="ms-3"
+							:color="settings.cancelButtonColor"
+							icon
+							:size="settings.cancelButtonSize"
+							:title="settings.cancelButtonTitle"
+							:variant="settings.cancelButtonVariant"
+							@click="toggleField"
+						>
+							<v-icon
+								:color="settings.cancelIconColor"
+								:icon="theCancelIcon"
+							/>
+						</v-btn>
+					</template>
+				</v-switch>
+			</Teleport>
+		</div>
+
+		<!-- Card Field-->
+		<div
+			v-if="settings.cardField"
+			:class="cardContainerClass"
+			:style="cardContainerStyle"
+		>
+			<v-card v-bind="bindingCard">
+				<v-card-text>
+					<div ref="cardFieldRef"></div>
+				</v-card-text>
+			</v-card>
 		</div>
 	</div>
 </template>
@@ -98,16 +117,21 @@
 import {
 	CloseSiblingsBus,
 	FieldValue,
+	SharedProps,
 	TimeOpened,
 	VInlineSwitchProps,
 } from '@/types';
 import { IconOptions, useTheme } from 'vuetify';
-import { switchProps } from './utils/props';
+import {
+	defaultCardProps,
+	switchProps,
+} from './utils/props';
 import { BooleanIcons } from './components/index';
 import { useTruthyModelValue } from './composables/helpers';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
+	useCardContainerClass,
 	useDisplayContainerClass,
 	useDisplaySelectionControlClasses,
 	useDisplayValueClass,
@@ -116,6 +140,7 @@ import {
 } from './composables/classes';
 import {
 	useDisplayValueStyles,
+	useCardContainerStyle,
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
@@ -142,6 +167,10 @@ const timeOpened = ref<TimeOpened>(null);
 
 // ------------------------------------------------ Binding Events & Props //
 const bindingSettings = computed(() => useBindingSettings(settings));
+const bindingCard = computed(() => ({
+	...defaultCardProps,
+	...props.cardProps,
+}) as SharedProps['cardProps']);
 
 
 // ------------------------------------------------ Loading //
@@ -205,6 +234,11 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	}
 ));
 
+const cardContainerClass = computed(() => useCardContainerClass({
+	name: 'switch',
+	showField: showField.value,
+}));
+
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
@@ -217,12 +251,28 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 	underlined: settings.underlined,
 }));
 
+const cardContainerStyle = computed(() => fieldCoordinates.value);
+
+
+// ----------------------------------------------- Card Field//
+const fieldCoordinates = ref<CSSProperties>();
+const inlineFieldsContainer = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | string | null>('body');
+
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
 	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
+
+	fieldCoordinates.value = useCardContainerStyle({
+		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
+		cardWidth: settings.cardProps?.width,
+		field: inlineFieldsContainer.value,
+	});
 
 	const response = useToggleField({
 		attrs,

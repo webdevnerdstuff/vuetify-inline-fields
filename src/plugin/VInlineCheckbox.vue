@@ -1,10 +1,11 @@
 <template>
 	<div
+		ref="inlineFieldsContainer"
 		:class="inlineFieldsContainerClass"
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="!showField && !settings.fieldOnly"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 		>
 			<div :class="displaySelectionControlClasses">
@@ -40,63 +41,81 @@
 		</div>
 
 		<div
-			v-else
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			:class="fieldContainerClass"
 		>
-			<v-checkbox
-				v-bind="bindingSettings"
-				:color="settings.color"
-				:density="settings.density"
-				:disabled="loadingProp"
-				:error="error"
-				:false-icon="theFalseIcon"
-				:false-value="settings.falseValue"
-				:hide-details="settings.hideDetails"
-				:label="settings.label"
-				:model-value="truthyModelValue"
-				:true-icon="theTrueIcon"
-				:true-value="settings.trueValue"
-				@update:model-value="saveValue"
+			<Teleport
+				:disabled="!settings.cardField"
+				:to="cardFieldRef"
 			>
-				<!-- Pass on all scoped slots -->
-				<template
-					v-for="(_, slot) in slots"
-					#[slot]="scope"
+				<v-checkbox
+					v-bind="bindingSettings"
+					:color="settings.color"
+					:density="settings.density"
+					:disabled="loadingProp"
+					:error="error"
+					:false-icon="theFalseIcon"
+					:false-value="settings.falseValue"
+					:hide-details="settings.hideDetails"
+					:label="settings.label"
+					:model-value="truthyModelValue"
+					:true-icon="theTrueIcon"
+					:true-value="settings.trueValue"
+					@update:model-value="saveValue"
 				>
-					<slot
-						:name="slot"
-						v-bind="{ ...scope }"
-					/>
-				</template>
+					<!-- Pass on all scoped slots -->
+					<template
+						v-for="(_, slot) in slots"
+						#[slot]="scope"
+					>
+						<slot
+							:name="slot"
+							v-bind="{ ...scope }"
+						/>
+					</template>
 
-				<template
-					v-if="!slots.append"
-					#append
-				>
-					<SaveFieldButtons
-						:cancel-button-color="settings.cancelButtonColor"
-						:cancel-button-size="settings.cancelButtonSize"
-						:cancel-button-title="settings.cancelButtonTitle"
-						:cancel-button-variant="settings.cancelButtonVariant"
-						:cancel-icon="settings.cancelIcon"
-						:cancel-icon-color="settings.cancelIconColor"
-						:error="error"
-						:field-only="settings.fieldOnly"
-						:hide-save-icon="true"
-						:loading="loadingProp"
-						:loading-icon="settings.loadingIcon"
-						:loading-icon-color="settings.loadingIconColor"
-						:save-button-color="settings.saveButtonColor"
-						:save-button-size="settings.saveButtonSize"
-						:save-button-title="settings.saveButtonTitle"
-						:save-button-variant="settings.saveButtonVariant"
-						:save-icon="settings.saveIcon"
-						:save-icon-color="settings.saveIconColor"
-						@close="closeField"
-						@save="saveValue"
-					/>
-				</template>
-			</v-checkbox>
+					<template
+						v-if="!slots.append"
+						#append
+					>
+						<SaveFieldButtons
+							:cancel-button-color="settings.cancelButtonColor"
+							:cancel-button-size="settings.cancelButtonSize"
+							:cancel-button-title="settings.cancelButtonTitle"
+							:cancel-button-variant="settings.cancelButtonVariant"
+							:cancel-icon="settings.cancelIcon"
+							:cancel-icon-color="settings.cancelIconColor"
+							:error="error"
+							:field-only="settings.fieldOnly"
+							:hide-save-icon="true"
+							:loading="loadingProp"
+							:loading-icon="settings.loadingIcon"
+							:loading-icon-color="settings.loadingIconColor"
+							:save-button-color="settings.saveButtonColor"
+							:save-button-size="settings.saveButtonSize"
+							:save-button-title="settings.saveButtonTitle"
+							:save-button-variant="settings.saveButtonVariant"
+							:save-icon="settings.saveIcon"
+							:save-icon-color="settings.saveIconColor"
+							@close="closeField"
+							@save="saveValue"
+						/>
+					</template>
+				</v-checkbox>
+			</Teleport>
+		</div>
+
+		<!-- Card Field-->
+		<div
+			v-if="settings.cardField"
+			:class="cardContainerClass"
+			:style="cardContainerStyle"
+		>
+			<v-card v-bind="bindingCard">
+				<v-card-text>
+					<div ref="cardFieldRef"></div>
+				</v-card-text>
+			</v-card>
 		</div>
 	</div>
 </template>
@@ -105,11 +124,15 @@
 import {
 	CloseSiblingsBus,
 	FieldValue,
+	SharedProps,
 	TimeOpened,
 	VInlineCheckboxProps,
 } from '@/types';
 import { IconOptions, useTheme } from 'vuetify';
-import { checkboxProps } from './utils/props';
+import {
+	checkboxProps,
+	defaultCardProps,
+} from './utils/props';
 import {
 	BooleanIcons,
 	SaveFieldButtons,
@@ -118,6 +141,7 @@ import { useTruthyModelValue } from './composables/helpers';
 import { useToggleField } from './composables/methods';
 import { useGetIcon } from './composables/icons';
 import {
+	useCardContainerClass,
 	useDisplayContainerClass,
 	useDisplaySelectionControlClasses,
 	useDisplayValueClass,
@@ -126,10 +150,12 @@ import {
 } from './composables/classes';
 import {
 	useDisplayValueStyles,
+	useCardContainerStyle,
 	useInlineFieldsContainerStyle,
 } from './composables/styles';
 import inlineEmits from './utils/emits';
 import { useBindingSettings } from './composables/bindings';
+import { useWindowSize } from '@vueuse/core';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -152,6 +178,10 @@ const timeOpened = ref<TimeOpened>(null);
 
 // ------------------------------------------------ Binding Events & Props //
 const bindingSettings = computed(() => useBindingSettings(settings));
+const bindingCard = computed(() => ({
+	...defaultCardProps,
+	...props.cardProps,
+}) as SharedProps['cardProps']);
 
 
 // ------------------------------------------------ Loading //
@@ -222,6 +252,11 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	}
 ));
 
+const cardContainerClass = computed(() => useCardContainerClass({
+	name: 'checkbox',
+	showField: showField.value,
+}));
+
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
@@ -234,6 +269,8 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 	underlined: settings.underlined,
 }));
 
+const cardContainerStyle = computed(() => fieldCoordinates.value);
+
 
 // ------------------------------------------------ Key event to cancel/close field //
 function closeField() {
@@ -242,11 +279,40 @@ function closeField() {
 }
 
 
+// ----------------------------------------------- Card Field//
+const fieldCoordinates = ref<CSSProperties>();
+const inlineFieldsContainer = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | string | null>('body');
+
+const windowSize = useWindowSize();
+
+watch(() => windowSize, () => {
+	fieldCoordinates.value = useCardContainerStyle({
+		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
+		cardWidth: settings.cardProps?.width,
+		field: inlineFieldsContainer.value,
+		name: 'checkbox',
+	});
+}, { deep: true });
+
+
+
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
 	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
+
+	fieldCoordinates.value = useCardContainerStyle({
+		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
+		cardWidth: settings.cardProps?.width,
+		field: inlineFieldsContainer.value,
+		name: 'checkbox',
+	});
 
 	const response = useToggleField({
 		attrs,

@@ -1,5 +1,6 @@
 import {
 	UseCancelButtonClass,
+	UseCardContainerClass,
 	UseDisplayContainerClass,
 	UseDisplayInputControlClass,
 	UseDisplaySelectionControlClass,
@@ -11,7 +12,7 @@ import {
 import { componentName } from '../utils/globals';
 
 
-// ------------------------------------------------ Main Container //
+// -------------------------------------------------- Main Container //
 export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (options) => {
 	const { field = '', density = '', disabled = false, iconSet = 'mdi', loading = false, loadingWait, tableField = false, variant } = options;
 
@@ -44,7 +45,7 @@ export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (opt
 };
 
 
-// ------------------------------------------------ Display Value Container //
+// -------------------------------------------------- Display Value Container //
 export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
 	const { field = '', density = '' } = options;
 
@@ -92,7 +93,6 @@ export const useDisplayValueClass: UseDisplayValueClass = (name, valueColor, opt
 	};
 };
 
-
 // ------------------------ Prepend/Append Icons //
 export const usePrependAppendIconClasses: UsePrependAppendIconClasses = (options) => {
 	const { inner = false, position } = options;
@@ -107,7 +107,7 @@ export const usePrependAppendIconClasses: UsePrependAppendIconClasses = (options
 };
 
 
-// ------------------------------------------------ Field Container //
+// -------------------------------------------------- Field Container //
 export const useFieldContainerClass: UseFieldContainerClass = (options) => {
 	const { name, active = false } = options;
 
@@ -120,12 +120,10 @@ export const useFieldContainerClass: UseFieldContainerClass = (options) => {
 };
 
 
-// ------------------------------------------------ Save Field Buttons //
+// -------------------------------------------------- Save Field Buttons //
 export const useSaveFieldsContainerClass = (): object => {
 	return {
 		[`${componentName}--save-fields-container`]: true,
-		// 'align-center': true,
-		// 'd-flex': true,
 	};
 };
 
@@ -135,5 +133,17 @@ export const useCancelButtonClass: UseCancelButtonClass = (options) => {
 	return {
 		'me-1': cancelButtonVariant === 'elevated',
 		'ms-1': true,
+	};
+};
+
+
+// -------------------------------------------------- Card Field //
+export const useCardContainerClass: UseCardContainerClass = (options) => {
+	const { name, showField } = options;
+
+	return {
+		[`${componentName}--card-container`]: true,
+		[`${componentName}--card-container-${name}`]: true,
+		'd-none': !showField,
 	};
 };

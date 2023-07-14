@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<{
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     [x: string]: {
         type: globalThis.PropType<any>;
     };
@@ -132,5 +132,31 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onToggleField?: ((...args: any[]) => any) | undefined;
-}, {}, {}>;
+}, {}, {}>, {
+    "display.prepend"?(_: {
+        displayValue: any;
+        empty: boolean | globalThis.Ref<boolean> | undefined;
+        error: import("vue").MaybeRef<boolean> | undefined;
+    }): any;
+    "display.prependInner"?(_: {
+        displayValue: any;
+        empty: boolean | globalThis.Ref<boolean> | undefined;
+        error: import("vue").MaybeRef<boolean> | undefined;
+    }): any;
+    "display.appendInner"?(_: {
+        displayValue: any;
+        empty: boolean | globalThis.Ref<boolean> | undefined;
+        error: import("vue").MaybeRef<boolean> | undefined;
+    }): any;
+    "display.append"?(_: {
+        displayValue: any;
+        empty: boolean | globalThis.Ref<boolean> | undefined;
+        error: import("vue").MaybeRef<boolean> | undefined;
+    }): any;
+}>;
 export default _default;
+type __VLS_WithTemplateSlots<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};

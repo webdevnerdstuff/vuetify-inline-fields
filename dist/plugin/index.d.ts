@@ -23,6 +23,10 @@ declare const _default: {
                 cancelButtonVariant?: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal"> | undefined;
                 cancelIcon?: string | undefined;
                 cancelIconColor?: string | undefined;
+                cardField?: boolean | undefined;
+                cardOffsetX?: number | undefined;
+                cardOffsetY?: number | undefined;
+                cardProps?: any;
                 closeSiblings?: boolean | undefined;
                 displayAppendIcon?: import("../types").VIconValue | undefined;
                 displayAppendIconColor?: string | undefined;
@@ -167,6 +171,22 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
+                cardField: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cardOffsetX: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardOffsetY: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardProps: {
+                    type: globalThis.PropType<any>;
+                    default: () => {};
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -177,7 +197,7 @@ declare const _default: {
                 };
                 displayAppendIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -189,7 +209,7 @@ declare const _default: {
                 };
                 displayAppendInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -201,7 +221,7 @@ declare const _default: {
                 };
                 displayPrependIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -213,7 +233,7 @@ declare const _default: {
                 };
                 displayPrependInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -336,6 +356,10 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -476,6 +500,22 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
+            cardField: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cardOffsetX: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardOffsetY: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardProps: {
+                type: globalThis.PropType<any>;
+                default: () => {};
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -486,7 +526,7 @@ declare const _default: {
             };
             displayAppendIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -498,7 +538,7 @@ declare const _default: {
             };
             displayAppendInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -510,7 +550,7 @@ declare const _default: {
             };
             displayPrependIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -522,7 +562,7 @@ declare const _default: {
             };
             displayPrependInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -713,6 +753,22 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
+        cardField: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cardOffsetX: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardOffsetY: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardProps: {
+            type: globalThis.PropType<any>;
+            default: () => {};
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -723,7 +779,7 @@ declare const _default: {
         };
         displayAppendIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendIconSize: {
             type: globalThis.PropType<string | number>;
@@ -735,7 +791,7 @@ declare const _default: {
         };
         displayAppendInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -747,7 +803,7 @@ declare const _default: {
         };
         displayPrependIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependIconSize: {
             type: globalThis.PropType<string | number>;
@@ -759,7 +815,7 @@ declare const _default: {
         };
         displayPrependInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -882,6 +938,10 @@ declare const _default: {
         cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
         cancelIcon: string;
         cancelIconColor: string;
+        cardField: boolean;
+        cardOffsetX: number;
+        cardOffsetY: number;
+        cardProps: any;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -946,6 +1006,10 @@ declare const _default: {
                 cancelButtonVariant?: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal"> | undefined;
                 cancelIcon?: string | undefined;
                 cancelIconColor?: string | undefined;
+                cardField?: boolean | undefined;
+                cardOffsetX?: number | undefined;
+                cardOffsetY?: number | undefined;
+                cardProps?: any;
                 closeSiblings?: boolean | undefined;
                 displayAppendIcon?: import("../types").VIconValue | undefined;
                 displayAppendIconColor?: string | undefined;
@@ -1091,6 +1155,22 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
+                cardField: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cardOffsetX: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardOffsetY: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardProps: {
+                    type: globalThis.PropType<any>;
+                    default: () => {};
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -1101,7 +1181,7 @@ declare const _default: {
                 };
                 displayAppendIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -1113,7 +1193,7 @@ declare const _default: {
                 };
                 displayAppendInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -1125,7 +1205,7 @@ declare const _default: {
                 };
                 displayPrependIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -1137,7 +1217,7 @@ declare const _default: {
                 };
                 displayPrependInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -1232,6 +1312,10 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -1371,6 +1455,22 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
+            cardField: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cardOffsetX: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardOffsetY: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardProps: {
+                type: globalThis.PropType<any>;
+                default: () => {};
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -1381,7 +1481,7 @@ declare const _default: {
             };
             displayAppendIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -1393,7 +1493,7 @@ declare const _default: {
             };
             displayAppendInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -1405,7 +1505,7 @@ declare const _default: {
             };
             displayPrependIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -1417,7 +1517,7 @@ declare const _default: {
             };
             displayPrependInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -1586,6 +1686,22 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
+        cardField: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cardOffsetX: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardOffsetY: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardProps: {
+            type: globalThis.PropType<any>;
+            default: () => {};
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -1596,7 +1712,7 @@ declare const _default: {
         };
         displayAppendIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendIconSize: {
             type: globalThis.PropType<string | number>;
@@ -1608,7 +1724,7 @@ declare const _default: {
         };
         displayAppendInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -1620,7 +1736,7 @@ declare const _default: {
         };
         displayPrependIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependIconSize: {
             type: globalThis.PropType<string | number>;
@@ -1632,7 +1748,7 @@ declare const _default: {
         };
         displayPrependInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -1727,6 +1843,10 @@ declare const _default: {
         cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
         cancelIcon: string;
         cancelIconColor: string;
+        cardField: boolean;
+        cardOffsetX: number;
+        cardOffsetY: number;
+        cardProps: any;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -1758,7 +1878,7 @@ declare const _default: {
         underlineWidth: string;
         valueColor: string;
     }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
-        $slots: {
+        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>> & {
             default?(_: {
                 loading: boolean;
                 modelValue: any;
@@ -1789,21 +1909,25 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string | undefined;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 color: string;
                 density: "default" | "comfortable" | "compact" | null;
                 disabled: boolean;
                 displayAppendIcon: import("../types").VIconValue | undefined;
-                displayAppendIconColor: string;
+                displayAppendIconColor: string | undefined;
                 displayAppendIconSize: string | number;
                 displayAppendInnerIcon: import("../types").VIconValue | undefined;
-                displayAppendInnerIconColor: string;
+                displayAppendInnerIconColor: string | undefined;
                 displayAppendInnerIconSize: string | number;
                 displayPrependIcon: import("../types").VIconValue | undefined;
-                displayPrependIconColor: string;
+                displayPrependIconColor: string | undefined;
                 displayPrependIconSize: string | number;
                 displayPrependInnerIcon: import("../types").VIconValue | undefined;
-                displayPrependInnerIconColor: string;
+                displayPrependInnerIconColor: string | undefined;
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
@@ -1849,6 +1973,10 @@ declare const _default: {
                 cancelButtonVariant?: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal"> | undefined;
                 cancelIcon?: string | undefined;
                 cancelIconColor?: string | undefined;
+                cardField?: boolean | undefined;
+                cardOffsetX?: number | undefined;
+                cardOffsetY?: number | undefined;
+                cardProps?: any;
                 closeSiblings?: boolean | undefined;
                 displayAppendIcon?: import("../types").VIconValue | undefined;
                 displayAppendIconColor?: string | undefined;
@@ -2010,6 +2138,22 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
+                cardField: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cardOffsetX: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardOffsetY: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardProps: {
+                    type: globalThis.PropType<any>;
+                    default: () => {};
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -2020,7 +2164,7 @@ declare const _default: {
                 };
                 displayAppendIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2032,7 +2176,7 @@ declare const _default: {
                 };
                 displayAppendInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2044,7 +2188,7 @@ declare const _default: {
                 };
                 displayPrependIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2056,7 +2200,7 @@ declare const _default: {
                 };
                 displayPrependInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2156,6 +2300,10 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -2312,6 +2460,22 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
+            cardField: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cardOffsetX: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardOffsetY: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardProps: {
+                type: globalThis.PropType<any>;
+                default: () => {};
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -2322,7 +2486,7 @@ declare const _default: {
             };
             displayAppendIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -2334,7 +2498,7 @@ declare const _default: {
             };
             displayAppendInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -2346,7 +2510,7 @@ declare const _default: {
             };
             displayPrependIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -2358,7 +2522,7 @@ declare const _default: {
             };
             displayPrependInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -2544,6 +2708,22 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
+        cardField: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cardOffsetX: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardOffsetY: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardProps: {
+            type: globalThis.PropType<any>;
+            default: () => {};
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -2554,7 +2734,7 @@ declare const _default: {
         };
         displayAppendIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendIconSize: {
             type: globalThis.PropType<string | number>;
@@ -2566,7 +2746,7 @@ declare const _default: {
         };
         displayAppendInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -2578,7 +2758,7 @@ declare const _default: {
         };
         displayPrependIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependIconSize: {
             type: globalThis.PropType<string | number>;
@@ -2590,7 +2770,7 @@ declare const _default: {
         };
         displayPrependInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -2690,6 +2870,10 @@ declare const _default: {
         cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
         cancelIcon: string;
         cancelIconColor: string;
+        cardField: boolean;
+        cardOffsetX: number;
+        cardOffsetY: number;
+        cardProps: any;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -2721,7 +2905,7 @@ declare const _default: {
         underlineWidth: string;
         valueColor: string;
     }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
-        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>>;
+        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
     });
     VInlineSwitch: {
         new (...args: any[]): {
@@ -2746,6 +2930,10 @@ declare const _default: {
                 cancelButtonVariant?: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal"> | undefined;
                 cancelIcon?: string | undefined;
                 cancelIconColor?: string | undefined;
+                cardField?: boolean | undefined;
+                cardOffsetX?: number | undefined;
+                cardOffsetY?: number | undefined;
+                cardProps?: any;
                 closeSiblings?: boolean | undefined;
                 displayAppendIcon?: import("../types").VIconValue | undefined;
                 displayAppendIconColor?: string | undefined;
@@ -2877,6 +3065,22 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
+                cardField: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cardOffsetX: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardOffsetY: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardProps: {
+                    type: globalThis.PropType<any>;
+                    default: () => {};
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -2887,7 +3091,7 @@ declare const _default: {
                 };
                 displayAppendIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2899,7 +3103,7 @@ declare const _default: {
                 };
                 displayAppendInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2911,7 +3115,7 @@ declare const _default: {
                 };
                 displayPrependIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -2923,7 +3127,7 @@ declare const _default: {
                 };
                 displayPrependInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -3009,6 +3213,10 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -3136,6 +3344,22 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
+            cardField: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cardOffsetX: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardOffsetY: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardProps: {
+                type: globalThis.PropType<any>;
+                default: () => {};
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -3146,7 +3370,7 @@ declare const _default: {
             };
             displayAppendIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3158,7 +3382,7 @@ declare const _default: {
             };
             displayAppendInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3170,7 +3394,7 @@ declare const _default: {
             };
             displayPrependIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3182,7 +3406,7 @@ declare const _default: {
             };
             displayPrependInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3333,6 +3557,22 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
+        cardField: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cardOffsetX: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardOffsetY: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardProps: {
+            type: globalThis.PropType<any>;
+            default: () => {};
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -3343,7 +3583,7 @@ declare const _default: {
         };
         displayAppendIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendIconSize: {
             type: globalThis.PropType<string | number>;
@@ -3355,7 +3595,7 @@ declare const _default: {
         };
         displayAppendInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -3367,7 +3607,7 @@ declare const _default: {
         };
         displayPrependIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependIconSize: {
             type: globalThis.PropType<string | number>;
@@ -3379,7 +3619,7 @@ declare const _default: {
         };
         displayPrependInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -3465,6 +3705,10 @@ declare const _default: {
         cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
         cancelIcon: string;
         cancelIconColor: string;
+        cardField: boolean;
+        cardOffsetX: number;
+        cardOffsetY: number;
+        cardProps: any;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -3520,6 +3764,10 @@ declare const _default: {
                 cancelButtonVariant?: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal"> | undefined;
                 cancelIcon?: string | undefined;
                 cancelIconColor?: string | undefined;
+                cardField?: boolean | undefined;
+                cardOffsetX?: number | undefined;
+                cardOffsetY?: number | undefined;
+                cardProps?: any;
                 closeSiblings?: boolean | undefined;
                 displayAppendIcon?: import("../types").VIconValue | undefined;
                 displayAppendIconColor?: string | undefined;
@@ -3665,6 +3913,22 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
+                cardField: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cardOffsetX: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardOffsetY: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardProps: {
+                    type: globalThis.PropType<any>;
+                    default: () => {};
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -3675,7 +3939,7 @@ declare const _default: {
                 };
                 displayAppendIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -3687,7 +3951,7 @@ declare const _default: {
                 };
                 displayAppendInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -3699,7 +3963,7 @@ declare const _default: {
                 };
                 displayPrependIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -3711,7 +3975,7 @@ declare const _default: {
                 };
                 displayPrependInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -3806,6 +4070,10 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -3945,6 +4213,22 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
+            cardField: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cardOffsetX: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardOffsetY: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardProps: {
+                type: globalThis.PropType<any>;
+                default: () => {};
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -3955,7 +4239,7 @@ declare const _default: {
             };
             displayAppendIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3967,7 +4251,7 @@ declare const _default: {
             };
             displayAppendInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3979,7 +4263,7 @@ declare const _default: {
             };
             displayPrependIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -3991,7 +4275,7 @@ declare const _default: {
             };
             displayPrependInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -4160,6 +4444,22 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
+        cardField: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cardOffsetX: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardOffsetY: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardProps: {
+            type: globalThis.PropType<any>;
+            default: () => {};
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -4170,7 +4470,7 @@ declare const _default: {
         };
         displayAppendIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendIconSize: {
             type: globalThis.PropType<string | number>;
@@ -4182,7 +4482,7 @@ declare const _default: {
         };
         displayAppendInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -4194,7 +4494,7 @@ declare const _default: {
         };
         displayPrependIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependIconSize: {
             type: globalThis.PropType<string | number>;
@@ -4206,7 +4506,7 @@ declare const _default: {
         };
         displayPrependInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -4301,6 +4601,10 @@ declare const _default: {
         cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
         cancelIcon: string;
         cancelIconColor: string;
+        cardField: boolean;
+        cardOffsetX: number;
+        cardOffsetY: number;
+        cardProps: any;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -4332,7 +4636,7 @@ declare const _default: {
         underlineWidth: string;
         valueColor: string;
     }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
-        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>>;
+        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
     });
     VInlineTextarea: {
         new (...args: any[]): {
@@ -4360,6 +4664,10 @@ declare const _default: {
                 cancelButtonVariant?: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal"> | undefined;
                 cancelIcon?: string | undefined;
                 cancelIconColor?: string | undefined;
+                cardField?: boolean | undefined;
+                cardOffsetX?: number | undefined;
+                cardOffsetY?: number | undefined;
+                cardProps?: any;
                 closeSiblings?: boolean | undefined;
                 displayAppendIcon?: import("../types").VIconValue | undefined;
                 displayAppendIconColor?: string | undefined;
@@ -4513,6 +4821,22 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
+                cardField: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cardOffsetX: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardOffsetY: {
+                    type: globalThis.PropType<number>;
+                    default: number;
+                };
+                cardProps: {
+                    type: globalThis.PropType<any>;
+                    default: () => {};
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -4523,7 +4847,7 @@ declare const _default: {
                 };
                 displayAppendIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -4535,7 +4859,7 @@ declare const _default: {
                 };
                 displayAppendInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayAppendInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -4547,7 +4871,7 @@ declare const _default: {
                 };
                 displayPrependIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -4559,7 +4883,7 @@ declare const _default: {
                 };
                 displayPrependInnerIconColor: {
                     type: globalThis.PropType<string>;
-                    default: string;
+                    default: undefined;
                 };
                 displayPrependInnerIconSize: {
                     type: globalThis.PropType<string | number>;
@@ -4656,6 +4980,10 @@ declare const _default: {
                 cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
                 cancelIcon: string;
                 cancelIconColor: string;
+                cardField: boolean;
+                cardOffsetX: number;
+                cardOffsetY: number;
+                cardProps: any;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -4803,6 +5131,22 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
+            cardField: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cardOffsetX: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardOffsetY: {
+                type: globalThis.PropType<number>;
+                default: number;
+            };
+            cardProps: {
+                type: globalThis.PropType<any>;
+                default: () => {};
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -4813,7 +5157,7 @@ declare const _default: {
             };
             displayAppendIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -4825,7 +5169,7 @@ declare const _default: {
             };
             displayAppendInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayAppendInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -4837,7 +5181,7 @@ declare const _default: {
             };
             displayPrependIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -4849,7 +5193,7 @@ declare const _default: {
             };
             displayPrependInnerIconColor: {
                 type: globalThis.PropType<string>;
-                default: string;
+                default: undefined;
             };
             displayPrependInnerIconSize: {
                 type: globalThis.PropType<string | number>;
@@ -5026,6 +5370,22 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
+        cardField: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cardOffsetX: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardOffsetY: {
+            type: globalThis.PropType<number>;
+            default: number;
+        };
+        cardProps: {
+            type: globalThis.PropType<any>;
+            default: () => {};
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -5036,7 +5396,7 @@ declare const _default: {
         };
         displayAppendIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendIconSize: {
             type: globalThis.PropType<string | number>;
@@ -5048,7 +5408,7 @@ declare const _default: {
         };
         displayAppendInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayAppendInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -5060,7 +5420,7 @@ declare const _default: {
         };
         displayPrependIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependIconSize: {
             type: globalThis.PropType<string | number>;
@@ -5072,7 +5432,7 @@ declare const _default: {
         };
         displayPrependInnerIconColor: {
             type: globalThis.PropType<string>;
-            default: string;
+            default: undefined;
         };
         displayPrependInnerIconSize: {
             type: globalThis.PropType<string | number>;
@@ -5169,6 +5529,10 @@ declare const _default: {
         cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
         cancelIcon: string;
         cancelIconColor: string;
+        cardField: boolean;
+        cardOffsetX: number;
+        cardOffsetY: number;
+        cardProps: any;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -5200,7 +5564,7 @@ declare const _default: {
         underlineWidth: string;
         valueColor: string;
     }, {}, string, {}> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & (new () => {
-        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>>;
+        $slots: Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
     });
 };
 export default _default;

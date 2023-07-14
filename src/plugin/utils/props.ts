@@ -1,3 +1,9 @@
+export const defaultCardProps = {
+	elevation: 5,
+	variant: 'flat',
+};
+
+
 // * ---------------------------------------- The shared props for all inline fields //
 export const sharedProps = {
 	cancelButtonColor: 'default',
@@ -6,21 +12,25 @@ export const sharedProps = {
 	cancelButtonVariant: 'text' as const,
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
+	cardField: false,
+	cardOffsetX: 0,
+	cardOffsetY: 0,
+	cardProps: () => ({}) as const,
 	closeSiblings: false,
 	color: 'primary',
 	density: 'compact' as const,
 	disabled: false,
 	displayAppendIcon: undefined,
-	displayAppendIconColor: 'primary',
+	displayAppendIconColor: undefined,
 	displayAppendIconSize: 'x-small',
 	displayAppendInnerIcon: undefined,
-	displayAppendInnerIconColor: 'secondary',
+	displayAppendInnerIconColor: undefined,
 	displayAppendInnerIconSize: 'x-small',
 	displayPrependIcon: undefined,
-	displayPrependIconColor: 'danger',
+	displayPrependIconColor: undefined,
 	displayPrependIconSize: 'x-small',
 	displayPrependInnerIcon: undefined,
-	displayPrependInnerIconColor: 'success',
+	displayPrependInnerIconColor: undefined,
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,

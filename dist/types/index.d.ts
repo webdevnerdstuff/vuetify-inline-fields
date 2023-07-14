@@ -1,7 +1,10 @@
 import type { CSSProperties, JSXComponent, MaybeRef, Ref } from 'vue';
-import type { VBtn, VCheckbox, VIcon, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
+import type { VBtn, VCard, VCheckbox, VIcon, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
 import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
+export interface KeyStringAny<T = any> {
+    [key: string]: T;
+}
 export type FieldValue = any;
 export type TimeOpened = Date | null;
 export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['density'] | VSwitch['$props']['density'] | VTextField['$props']['density'] | VTextarea['$props']['density'];
@@ -23,8 +26,13 @@ export interface SharedProps {
     cancelButtonVariant?: VBtnVariant;
     cancelIcon?: string | undefined;
     cancelIconColor?: string;
+    cardField?: boolean;
+    cardOffsetX?: number;
+    cardOffsetY?: number;
+    cardProps?: (typeof VCard)['$props'];
     closeSiblings?: boolean;
     color?: string;
+    disabled?: boolean;
     displayAppendIcon?: VIconValue;
     displayAppendIconColor?: VIconColor;
     displayAppendIconSize?: VIconSize;
@@ -37,7 +45,6 @@ export interface SharedProps {
     displayPrependInnerIcon?: VIconValue;
     displayPrependInnerIconColor?: VIconColor;
     displayPrependInnerIconSize?: VIconSize;
-    disabled?: boolean;
     emptyText?: string;
     error?: boolean;
     falseValue?: boolean | string | undefined;
@@ -109,6 +116,16 @@ export interface VInlineTextFieldProps extends Omit<SharedProps, 'falseValue' | 
     density?: VTextField['$props']['density'];
     rules?: VTextField['$props']['rules'];
     variant?: VTextField['$props']['variant'];
+}
+export interface UseCardContainerStyle {
+    (options: {
+        field: HTMLElement | null;
+        cardOffsetX: SharedProps['cardOffsetX'];
+        cardOffsetY: SharedProps['cardOffsetY'];
+        cardMinWidth: VCard['$props']['minWidth'];
+        cardWidth: VCard['$props']['width'];
+        name?: string;
+    }): CSSProperties;
 }
 export interface BooleanIcons extends Required<Pick<SharedProps, 'iconFalseColor' | 'iconFalseTitle' | 'iconTrueColor' | 'iconTrueTitle'>>, Pick<SharedProps, 'iconFalse' | 'iconTrue'> {
 }
@@ -200,8 +217,14 @@ export interface UsePrependAppendIconStyles {
 export interface UseFieldContainerClass {
     (options: {
         active?: Ref<boolean> | boolean;
-        name?: Ref<string> | string;
+        name?: string;
     }): object;
+}
+export interface UseCardContainerClass {
+    (options: {
+        showField?: boolean;
+        name?: string;
+    }): any;
 }
 export interface UseGetIcon {
     (options: {
@@ -235,6 +258,13 @@ export interface UseToggleField {
         showField: boolean;
         timeOpened: TimeOpened;
     };
+}
+export interface UseGetFieldCoordinates {
+    (options: {
+        cardOffsetX: SharedProps['cardOffsetX'];
+        cardOffsetY: SharedProps['cardOffsetY'];
+        field: HTMLElement | null;
+    }): any;
 }
 export interface UseTruncateText {
     (options: {

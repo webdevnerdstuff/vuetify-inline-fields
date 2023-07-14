@@ -1,55 +1,85 @@
 <template>
 	<div
+		ref="inlineFieldsContainer"
 		:class="inlineFieldsContainerClass"
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="!showField && !settings.fieldOnly"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 		>
 			<div :class="displayInputControlClasses">
 				<DisplayedValue
 					v-bind="bindingDisplay"
 					@toggleField="toggleField"
-				/>
+				>
+
+					<!-- Pass on all scoped slots -->
+					<template
+						v-for="(_, slot) in slots"
+						#[slot]="scope"
+					>
+						<slot
+							:name="slot"
+							v-bind="{ ...scope }"
+						/>
+					</template>
+				</DisplayedValue>
 			</div>
 		</div>
 
 		<div
-			v-else
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			class="d-flex align-center py-2"
 			:class="fieldContainerClass"
 		>
+			<Teleport
+				:disabled="!settings.cardField"
+				:to="cardFieldRef"
+			>
+				<slot
+					name="default"
+					v-bind="slotBindings"
+				/>
 
-			<slot
-				name="default"
-				v-bind="slotBindings"
-			/>
+				<SaveFieldButtons
+					v-model="modelValue"
+					:cancel-button-color="settings.cancelButtonColor"
+					:cancel-button-size="settings.cancelButtonSize"
+					:cancel-button-title="settings.cancelButtonTitle"
+					:cancel-button-variant="settings.cancelButtonVariant"
+					:cancel-icon="settings.cancelIcon"
+					:cancel-icon-color="settings.cancelIconColor"
+					:error="error"
+					:field-only="settings.fieldOnly"
+					:hide-save-icon="settings.hideSaveIcon"
+					:loading="loadingProp"
+					:loading-icon="settings.loadingIcon"
+					:loading-icon-color="settings.loadingIconColor"
+					:required="settings.required"
+					:save-button-color="settings.saveButtonColor"
+					:save-button-size="settings.saveButtonSize"
+					:save-button-title="settings.saveButtonTitle"
+					:save-button-variant="settings.saveButtonVariant"
+					:save-icon="settings.saveIcon"
+					:save-icon-color="settings.saveIconColor"
+					@close="closeField"
+					@save="saveValue"
+				/>
+			</Teleport>
+		</div>
 
-			<SaveFieldButtons
-				v-model="modelValue"
-				:cancel-button-color="settings.cancelButtonColor"
-				:cancel-button-size="settings.cancelButtonSize"
-				:cancel-button-title="settings.cancelButtonTitle"
-				:cancel-button-variant="settings.cancelButtonVariant"
-				:cancel-icon="settings.cancelIcon"
-				:cancel-icon-color="settings.cancelIconColor"
-				:error="error"
-				:field-only="settings.fieldOnly"
-				:hide-save-icon="settings.hideSaveIcon"
-				:loading="loadingProp"
-				:loading-icon="settings.loadingIcon"
-				:loading-icon-color="settings.loadingIconColor"
-				:required="settings.required"
-				:save-button-color="settings.saveButtonColor"
-				:save-button-size="settings.saveButtonSize"
-				:save-button-title="settings.saveButtonTitle"
-				:save-button-variant="settings.saveButtonVariant"
-				:save-icon="settings.saveIcon"
-				:save-icon-color="settings.saveIconColor"
-				@close="closeField"
-				@save="saveValue"
-			/>
+		<!-- Card Field-->
+		<div
+			v-if="settings.cardField"
+			:class="cardContainerClass"
+			:style="cardContainerStyle"
+		>
+			<v-card v-bind="bindingCard">
+				<v-card-text>
+					<div ref="cardFieldRef"></div>
+				</v-card-text>
+			</v-card>
 		</div>
 	</div>
 </template>
@@ -58,11 +88,15 @@
 import {
 	CloseSiblingsBus,
 	FieldValue,
+	SharedProps,
 	TimeOpened,
 	VInlineTextFieldProps,
 } from '@/types';
 import { IconOptions } from 'vuetify';
-import { textFieldProps } from './utils/props';
+import {
+	defaultCardProps,
+	textFieldProps,
+} from './utils/props';
 import { DisplayedValue, SaveFieldButtons } from './components/index';
 import {
 	useCheckForErrors,
@@ -70,18 +104,23 @@ import {
 	useTruncateText,
 } from './composables/methods';
 import {
+	useCardContainerClass,
 	useDisplayContainerClass,
 	useDisplayInputControlClasses,
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from './composables/classes';
-import { useInlineFieldsContainerStyle } from './composables/styles';
+import {
+	useCardContainerStyle,
+	useInlineFieldsContainerStyle,
+} from './composables/styles';
 import inlineEmits from './utils/emits';
 
 
 const modelValue = defineModel<FieldValue>();
 
 const attrs = useAttrs();
+const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
@@ -163,6 +202,11 @@ const bindingDisplay = computed(() => {
 	};
 });
 
+const bindingCard = computed(() => ({
+	...defaultCardProps,
+	...props.cardProps,
+}) as SharedProps['cardProps']);
+
 
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
@@ -191,7 +235,13 @@ const fieldContainerClass = computed(() => useFieldContainerClass({
 	name: 'text-field',
 }));
 
+const cardContainerClass = computed(() => useCardContainerClass({
+	name: 'custom-field',
+	showField: showField.value,
+}));
+
 const inlineFieldsContainerStyle = computed(() => useInlineFieldsContainerStyle());
+const cardContainerStyle = computed(() => fieldCoordinates.value);
 
 
 // ------------------------------------------------ Key event to cancel/close field //
@@ -202,11 +252,25 @@ function closeField() {
 }
 
 
+// ----------------------------------------------- Card Field//
+const fieldCoordinates = ref<CSSProperties>();
+const inlineFieldsContainer = ref<HTMLElement | null>(null);
+const cardFieldRef = ref<HTMLElement | string | null>('body');
+
+
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
 	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
+
+	fieldCoordinates.value = useCardContainerStyle({
+		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
+		cardWidth: settings.cardProps?.width,
+		field: inlineFieldsContainer.value,
+	});
 
 	const response = useToggleField({
 		attrs,

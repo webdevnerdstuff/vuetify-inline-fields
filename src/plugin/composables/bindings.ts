@@ -1,6 +1,3 @@
-
-
-
 const excludedSettings: string[] = [
 	'cancelButtonColor',
 	'cancelButtonSize',

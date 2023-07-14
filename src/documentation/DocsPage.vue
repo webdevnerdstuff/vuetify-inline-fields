@@ -86,7 +86,7 @@
 	<EventsSection :codeBlockOptions="codeBlockOptions" />
 
 	<!-- Slots -->
-	<SlotsSection />
+	<SlotsSection :codeBlockOptions="codeBlockOptions" />
 
 	<!-- Playground -->
 	<PlaygroundSection :codeBlockOptions="codeBlockOptions" />

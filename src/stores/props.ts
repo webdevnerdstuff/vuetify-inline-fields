@@ -9,7 +9,7 @@ const propsSupported = {
 			key: 'name',
 			sortable: true,
 			title: 'Name',
-			width: '15%',
+			width: '20%',
 		},
 		{
 			align: 'start',
@@ -86,6 +86,30 @@ const sharedProps = [
 		type: 'string',
 	},
 	{
+		default: 'false',
+		desc: 'Displays the field as a card instead of inline. <code class="ic">card-field</code> overrides the <code class="ic">field-only</code> prop',
+		name: 'card-field',
+		type: 'boolean',
+	},
+	{
+		default: '0',
+		desc: 'Offsets the card field horizontally',
+		name: 'card-offset-x',
+		type: 'number',
+	},
+	{
+		default: '0',
+		desc: 'Offsets the card field vertically',
+		name: 'card-offset-y',
+		type: 'number',
+	},
+	{
+		default: undefined,
+		desc: 'Prop to pass to the card component',
+		name: 'card-props',
+		type: 'number',
+	},
+	{
 		default: false,
 		desc: 'If <code class="ic">true</code>, the field will close when the user opens another inline form element',
 		name: 'close-siblings',
@@ -109,6 +133,7 @@ const sharedProps = [
 		name: 'disabled',
 		type: 'boolean',
 	},
+
 	{
 		default: 'empty',
 		desc: 'Text to display when the field is empty',
@@ -138,6 +163,12 @@ const sharedProps = [
 		desc: 'Label is not fully supported as the fields are intended for use in tables and the column header signifies what that column is for. You can set this prop to show the label but styling will not be ideal',
 		name: 'label',
 		type: 'string',
+	},
+	{
+		default: 'true',
+		desc: 'The loading state of the component. This is what is used to determine when to close the field. If the <code class="ic">loading-wait</code> prop is set to <code class="ic">true</code> the field will close without waiting for the loading process to complete',
+		name: 'loading',
+		type: 'boolean',
 	},
 	{
 		default: 'true',
@@ -264,6 +295,81 @@ const saveAndLoadingIconProps = [
 	},
 ];
 
+const prependAppendIcons = [
+	{
+		default: undefined,
+		desc: 'Creates a <code class="ic">v-icon</code> component after displayed value in the <a href="#slots-display-append"><code class="ic">display.append</code></a> slot',
+		name: 'display-append-icon',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: `${colorDesc} <code class="ic">display-append-icon</code>`,
+		name: 'display-append-icon-color',
+		type: 'string | undefined',
+	},
+	{
+		default: 'x-small',
+		desc: 'Sets the height and width of the <code class="ic">display-append-icon</code> component. Can use the following predefined sizes: x-small, small, default, large, and x-large.',
+		name: 'display-append-icon-size',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: 'Creates a <code class="ic">v-icon</code> component after displayed value in the <a href="#slots-display-append-inner"><code class="ic">display.appendInner</code></a> slot',
+		name: 'display-append-inner-icon',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: `${colorDesc} <code class="ic">display-append-inner-icon</code>`,
+		name: 'display-append-inner-icon-color',
+		type: 'string | undefined',
+	},
+	{
+		default: 'x-small',
+		desc: 'Sets the height and width of the <code class="ic">display-append-inner-icon</code> component. Can use the following predefined sizes: x-small, small, default, large, and x-large.',
+		name: 'display-append-inner-icon-size',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: 'Creates a <code class="ic">v-icon</code> component before displayed value in the <a href="#slots-display-prepend"><code class="ic">display.prepend</code></a> slot',
+		name: 'display-prepend-icon',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: `${colorDesc} <code class="ic">display-prepend-icon</code>`,
+		name: 'display-prepend-icon-color',
+		type: 'string | undefined',
+	},
+	{
+		default: 'x-small',
+		desc: 'Sets the height and width of the <code class="ic">display-prepend-icon</code> component. Can use the following predefined sizes: x-small, small, default, large, and x-large.',
+		name: 'display-prepend-icon-size',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: 'Creates a <code class="ic">v-icon</code> component before displayed value in the <a href="#slots-display-prepend-inner"><code class="ic">display.prependInner</code></a> slot',
+		name: 'display-prepend-inner-icon',
+		type: 'string',
+	},
+	{
+		default: undefined,
+		desc: `${colorDesc} <code class="ic">display-prepend-inner-icon</code>`,
+		name: 'display-prepend-inner-icon-color',
+		type: 'string | undefined',
+	},
+	{
+		default: 'x-small',
+		desc: 'Sets the height and width of the <code class="ic">display-prepend-inner-icon</code> component. Can use the following predefined sizes: x-small, small, default, large, and x-large.',
+		name: 'display-prepend-inner-icon-size',
+		type: 'string',
+	},
+];
+
 const trueFalseIconProps = [
 	{
 		default: false,
@@ -360,6 +466,7 @@ const vInlineSelectProps = [
 	...sharedProps,
 	...autofocusProp,
 	...clearIconProp,
+	...prependAppendIcons,
 	...saveAndLoadingIconProps,
 	...[
 		{
@@ -418,6 +525,7 @@ const vInlineTextareaProps = [
 	...sharedProps,
 	...autofocusProp,
 	...clearIconProp,
+	...prependAppendIcons,
 	...saveAndLoadingIconProps,
 	...truncateProps,
 	...[
@@ -446,6 +554,7 @@ const vInlineTextFieldProps = [
 	...sharedProps,
 	...autofocusProp,
 	...clearIconProp,
+	...prependAppendIcons,
 	...saveAndLoadingIconProps,
 	...truncateProps,
 	...[
@@ -462,6 +571,7 @@ export const usePropsStore = defineStore('props', {
 	state: () => {
 		return {
 			autofocusProp,
+			prependAppendIcons,
 			propsSupported,
 			saveAndLoadingIconProps,
 			sharedProps,
