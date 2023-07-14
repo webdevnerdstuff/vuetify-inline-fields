@@ -129,6 +129,12 @@ export const useMenuStore = defineStore('menu', () => {
 					title: 'Save &amp; Loading',
 				},
 				{
+					href: '#props-prepend-append-icons',
+					icon: 'mdi:mdi-arrow-left-right',
+					key: 'props-prepend-append-icons',
+					title: 'Prepend &amp; Append Icons',
+				},
+				{
 					href: '#props-true-false-icon',
 					icon: 'mdi:mdi-content-save',
 					key: 'props-true-false-icon',
