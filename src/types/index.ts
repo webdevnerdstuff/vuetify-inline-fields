@@ -61,7 +61,7 @@ export interface SharedProps {
 	cardField?: boolean;
 	cardOffsetX?: number;
 	cardOffsetY?: number;
-	cardProps?: VCard['$props'];
+	cardProps?: (typeof VCard)['$props'];
 	closeSiblings?: boolean;
 	color?: string;
 	disabled?: boolean;
