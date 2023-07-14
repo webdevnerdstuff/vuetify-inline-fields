@@ -39,7 +39,15 @@
 				:items="propsStore.saveAndLoadingIconProps"
 				section-id="props-save-and-loading-icon"
 				section-title="Save &amp; Loading Props"
-				subtitle="These are all props for the for the <code class='ic'>VInlineSelect</code>, <code class='ic'>VInlineTextarea</code>, and <code class='ic'>VInlineTextField</code> components"
+				subtitle="These are Save &amp; Loading props for the for the <code class='ic'>VInlineSelect</code>, <code class='ic'>VInlineTextarea</code>, and <code class='ic'>VInlineTextField</code> components"
+			/>
+
+			<PropsTable
+				:headers="propsStore.propsSupported.headers"
+				:items="propsStore.prependAppendIcons"
+				section-id="props-prepend-append-icons"
+				section-title="Prepend &amp; Append Icon Props"
+				subtitle="These are Prepend &amp; Append Icon props for the for the <code class='ic'>VInlineSelect</code>, <code class='ic'>VInlineTextarea</code>, and <code class='ic'>VInlineTextField</code> components"
 			/>
 
 			<PropsTable

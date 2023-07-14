@@ -73,7 +73,8 @@
 	<v-col cols="12">
 		Most of the <a href="#props-shared">shared props</a> can be used with this component. The <a
 			href="#props-save-and-loading-icon"
-		>Save &amp; Loading Icon</a> props will most likely be the most useful if you need them.
+		>Save &amp; Loading Icon</a> as well as the <a href="#props-prepend-append-icons">Prepend &amp; Append Icon</a> Props
+		props will most likely be the most useful if you need them.
 	</v-col>
 
 	<v-col cols="12">
