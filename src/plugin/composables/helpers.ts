@@ -41,19 +41,20 @@ export const useGetFieldCoordinates: UseGetFieldCoordinates = (options) => {
 
 	const { x, y } = field.getBoundingClientRect();
 	const { width, height } = field.getBoundingClientRect();
-	const { left, top } = field.getBoundingClientRect();
 	const { right, bottom } = field.getBoundingClientRect();
 
-	return {
+	const results = {
 		bottom: useConvertToUnit({ str: bottom + Number(cardOffsetY) }) as string,
 		height,
-		left: useConvertToUnit({ str: left + Number(cardOffsetX) }) as string,
+		left: useConvertToUnit({ str: 0 + Number(cardOffsetX) }) as string,
 		right: useConvertToUnit({ str: right + Number(cardOffsetX) }) as string,
-		top: useConvertToUnit({ str: top + Number(cardOffsetY) }) as string,
+		top: useConvertToUnit({ str: 2 + Number(cardOffsetY) }) as string,
 		width: useConvertToUnit({ str: width }) as string,
 		x,
 		y,
 	};
+
+	return results;
 };
 
 

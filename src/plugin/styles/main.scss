@@ -20,6 +20,8 @@
 }
 
 .v-inline-fields {
+	position: relative;
+
 	// ------------------------------------------------ The Display Value Container //
 	&--display {
 		&-container {
@@ -87,6 +89,7 @@
 
 					&__append-inner {
 						align-items: flex-end;
+						padding-bottom: 0 !important;
 					}
 				}
 			}
@@ -280,7 +283,7 @@
 			.v-field__append-inner,
 			.v-field__prepend-inner {
 				align-items: flex-end !important;
-				padding-bottom: 6px !important;
+				padding-bottom: 0 !important;
 
 				.v-icon {
 					font-size: calc(var(--v-icon-size-multiplier) * 1.5em) !important;
@@ -295,13 +298,14 @@
 
 	&--card-container {
 		height: fit-content;
+		min-width: fit-content !important;
 		position: absolute;
 
 		.v-card {
 			border: 1px solid hsla(0, 0%, 50%, 50%);
 
 			.v-card-text {
-				padding: 4px 10px;
+				padding: 5px 10px;
 
 				> div {
 					align-items: center;

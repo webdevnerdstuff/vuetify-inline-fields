@@ -99,21 +99,17 @@
 		</div>
 
 		<!-- Card Field-->
-		<Teleport
+		<div
 			v-if="settings.cardField"
-			to="body"
+			:class="cardContainerClass"
+			:style="cardContainerStyle"
 		>
-			<div
-				:class="cardContainerClass"
-				:style="cardContainerStyle"
-			>
-				<v-card v-bind="bindingCard">
-					<v-card-text>
-						<div ref="cardFieldRef"></div>
-					</v-card-text>
-				</v-card>
-			</div>
-		</Teleport>
+			<v-card v-bind="bindingCard">
+				<v-card-text>
+					<div ref="cardFieldRef"></div>
+				</v-card-text>
+			</v-card>
+		</div>
 	</div>
 </template>
 

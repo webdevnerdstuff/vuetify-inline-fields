@@ -18,6 +18,8 @@
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:cancel-icon-text="componentOptions.cancelIconText"
 						:card-field="componentOptions.cardField"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
@@ -50,6 +52,8 @@
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:card-field="componentOptions.cardField"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
@@ -99,6 +103,8 @@
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:card-field="componentOptions.cardField"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
@@ -150,6 +156,8 @@
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:card-field="componentOptions.cardField"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
@@ -186,6 +194,8 @@
 					<VInlineCustomField
 						v-model="item.raw.range"
 						:card-field="componentOptions.cardField"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
 						:loading="item.raw.loading"
 						@update="updatedValue(item.raw, 'range')"
@@ -209,6 +219,8 @@
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:card-field="componentOptions.cardField"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
@@ -259,15 +271,17 @@ const componentOptions = reactive({
 	cancelButtonVariant: 'text',
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
-	cardField: true,
+	cardField: false,
+	cardOffsetX: 0,
+	cardOffsetY: 0,
 	cardProps: {
-		color: '--v-theme-primary',
-		elevation: 0,
-		variant: 'flat',
+		// color: 'primary',
+		// elevation: 5,
+		// variant: 'flat',
 		width: undefined,
 	},
 	clearable: false,
-	closeSiblings: false,
+	closeSiblings: true,
 	color: 'primary',
 	density: 'compact',
 	disabled: false,
@@ -391,7 +405,8 @@ function getUsers() {
  * @param {object} item The item being updated.
  * @param {string} field The field being updated.
  */
-function updatedValue(item) {
+function updatedValue(item, field) {
+	console.log('PlaygroundPage.vue: updatedValue', field, item);
 	item.loading = true;
 
 	// ? Simulate a delay while item is saving.

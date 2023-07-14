@@ -1,5 +1,5 @@
 export const defaultCardProps = {
-	elevation: 2,
+	elevation: 5,
 	variant: 'flat',
 };
 

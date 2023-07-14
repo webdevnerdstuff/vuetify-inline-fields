@@ -106,21 +106,17 @@
 		</div>
 
 		<!-- Card Field-->
-		<Teleport
+		<div
 			v-if="settings.cardField"
-			to="body"
+			:class="cardContainerClass"
+			:style="cardContainerStyle"
 		>
-			<div
-				:class="cardContainerClass"
-				:style="cardContainerStyle"
-			>
-				<v-card v-bind="bindingCard">
-					<v-card-text>
-						<div ref="cardFieldRef"></div>
-					</v-card-text>
-				</v-card>
-			</div>
-		</Teleport>
+			<v-card v-bind="bindingCard">
+				<v-card-text>
+					<div ref="cardFieldRef"></div>
+				</v-card-text>
+			</v-card>
+		</div>
 	</div>
 </template>
 
@@ -159,6 +155,7 @@ import {
 } from './composables/styles';
 import inlineEmits from './utils/emits';
 import { useBindingSettings } from './composables/bindings';
+import { useWindowSize } from '@vueuse/core';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -286,6 +283,20 @@ function closeField() {
 const fieldCoordinates = ref<CSSProperties>();
 const inlineFieldsContainer = ref<HTMLElement | null>(null);
 const cardFieldRef = ref<HTMLElement | string | null>('body');
+
+const windowSize = useWindowSize();
+
+watch(() => windowSize, () => {
+	fieldCoordinates.value = useCardContainerStyle({
+		cardMinWidth: settings.cardProps?.minWidth,
+		cardOffsetX: settings.cardOffsetX,
+		cardOffsetY: settings.cardOffsetY,
+		cardWidth: settings.cardProps?.width,
+		field: inlineFieldsContainer.value,
+		name: 'checkbox',
+	});
+}, { deep: true });
+
 
 
 // ------------------------------------------------ Toggle the field //
