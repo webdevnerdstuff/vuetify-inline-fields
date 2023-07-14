@@ -81,6 +81,22 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
+    cardField: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cardOffsetX: {
+        type: globalThis.PropType<number>;
+        default: number;
+    };
+    cardOffsetY: {
+        type: globalThis.PropType<number>;
+        default: number;
+    };
+    cardProps: {
+        type: globalThis.PropType<any>;
+        default: () => {};
+    };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -91,7 +107,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayAppendIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayAppendIconSize: {
         type: globalThis.PropType<string | number>;
@@ -103,7 +119,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayAppendInnerIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayAppendInnerIconSize: {
         type: globalThis.PropType<string | number>;
@@ -115,7 +131,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayPrependIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayPrependIconSize: {
         type: globalThis.PropType<string | number>;
@@ -127,7 +143,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayPrependInnerIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayPrependInnerIconSize: {
         type: globalThis.PropType<string | number>;
@@ -312,6 +328,22 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
+    cardField: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cardOffsetX: {
+        type: globalThis.PropType<number>;
+        default: number;
+    };
+    cardOffsetY: {
+        type: globalThis.PropType<number>;
+        default: number;
+    };
+    cardProps: {
+        type: globalThis.PropType<any>;
+        default: () => {};
+    };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -322,7 +354,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayAppendIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayAppendIconSize: {
         type: globalThis.PropType<string | number>;
@@ -334,7 +366,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayAppendInnerIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayAppendInnerIconSize: {
         type: globalThis.PropType<string | number>;
@@ -346,7 +378,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayPrependIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayPrependIconSize: {
         type: globalThis.PropType<string | number>;
@@ -358,7 +390,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     displayPrependInnerIconColor: {
         type: globalThis.PropType<string>;
-        default: string;
+        default: undefined;
     };
     displayPrependInnerIconSize: {
         type: globalThis.PropType<string | number>;
@@ -481,6 +513,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cancelButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
     cancelIcon: string;
     cancelIconColor: string;
+    cardField: boolean;
+    cardOffsetX: number;
+    cardOffsetY: number;
+    cardProps: any;
     closeSiblings: boolean;
     displayAppendIcon: import('../types').VIconValue;
     displayAppendIconColor: string;
