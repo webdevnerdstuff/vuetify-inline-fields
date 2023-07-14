@@ -2,6 +2,7 @@
 	<v-col cols="12">
 		<v-card elevation="5">
 			<v-data-table
+				:key="tableOptions.tableKey"
 				density="default"
 				:headers="headers"
 				:items="posts"
@@ -17,7 +18,7 @@
 						:cancel-icon="componentOptions.cancelIcon"
 						:cancel-icon-color="componentOptions.cancelIconColor"
 						:cancel-icon-text="componentOptions.cancelIconText"
-						:card-field="componentOptions.cardField"
+						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
@@ -51,7 +52,7 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:card-field="componentOptions.cardField"
+						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
@@ -96,13 +97,11 @@
 				<template #[`item.title`]="{ item }">
 					<VInlineTextField
 						v-model="item.raw.title"
-						:append-icon="componentOptions.appendIcon"
-						:append-inner-icon="componentOptions.appendIcon"
 						:cancel-button-color="componentOptions.cancelButtonColor"
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:card-field="componentOptions.cardField"
+						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
@@ -111,14 +110,6 @@
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
-						:display-append-icon="componentOptions.displayAppendIcon"
-						:display-append-icon-color="componentOptions.displayAppendIconColor"
-						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
-						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
-						:display-prepend-icon="componentOptions.displayPrependIcon"
-						:display-prepend-iconColor="componentOptions.displayPrependIconColor"
-						:display-prepend-inner-icon="componentOptions.displayPrependInnerIcon"
-						:display-prepend-inner-icon-color="componentOptions.displayPrependInnerIconColor"
 						:field-only="componentOptions.fieldOnly"
 						:hide-details="componentOptions.hideDetails"
 						:item="item"
@@ -126,8 +117,6 @@
 						:loading="item.raw.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="title"
-						:prepend-icon="componentOptions.appendIcon"
-						:prepend-inner-icon="componentOptions.appendIcon"
 						required
 						:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
 						:save-button-color="componentOptions.saveButtonColor"
@@ -144,7 +133,6 @@
 						@error="showError = $event"
 						@update="updatedValue(item.raw, 'title')"
 					>
-						<template #[`display-append-icon`]>foo</template>
 					</VInlineTextField>
 				</template>
 
@@ -155,7 +143,7 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:card-field="componentOptions.cardField"
+						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
@@ -187,13 +175,14 @@
 						:variant="componentOptions.variant"
 						@error="showError = $event"
 						@update="updatedValue(item.raw, 'body')"
-					/>
+					>
+					</VInlineTextarea>
 				</template>
 
 				<template #[`item.range`]="{ item }">
 					<VInlineCustomField
 						v-model="item.raw.range"
-						:card-field="componentOptions.cardField"
+						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
@@ -218,7 +207,7 @@
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:card-field="componentOptions.cardField"
+						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
@@ -245,12 +234,37 @@
 			</v-data-table>
 		</v-card>
 	</v-col>
+
+	<v-col
+		class="mb-4"
+		cols="12"
+	>
+		<v-switch
+			v-model="isCardField"
+			class="ms-2 align-center d-flex"
+			color="primary"
+			density="compact"
+		>
+			<template #label>
+				<div class="switch-label">
+					<div
+						class="d-inline"
+						:class="!isCardField ? 'text-primary' : ''"
+					>Inline</div>
+					/
+					<div
+						class="d-inline"
+						:class="isCardField ? 'text-primary' : ''"
+					>Card</div> Field
+				</div>
+			</template>
+		</v-switch>
+	</v-col>
 </template>
 
 
 <script setup>
 // ? Components are already loaded via the configs/playground.ts file //
-
 onMounted(() => {
 	getPosts();
 });
@@ -262,24 +276,29 @@ onBeforeMount(() => {
 const tableOptions = reactive({
 	itemsPerPage: 10,
 	sortBy: [{ key: 'title', order: 'asc' }],
+	tableKey: new Date().getUTCMilliseconds(),
 });
 
+
+// ? Changes the type of field the table uses //
+const isCardField = ref(false);
+const cardFieldState = computed(() => isCardField.value);
+
+watch(() => isCardField.value, () => {
+	tableOptions.tableKey = new Date().getUTCMilliseconds();
+});
+
+
+// ? Use these options to play around with the component props //
 const componentOptions = reactive({
-	// appendIcon: 'mdi:mdi-cog',
 	cancelButtonColor: 'default',
 	cancelButtonTitle: 'Cancel',
 	cancelButtonVariant: 'text',
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
-	cardField: false,
 	cardOffsetX: 0,
 	cardOffsetY: 0,
-	cardProps: {
-		// color: 'primary',
-		// elevation: 5,
-		// variant: 'flat',
-		width: undefined,
-	},
+	cardProps: {},
 	clearable: false,
 	closeSiblings: true,
 	color: 'primary',
@@ -371,6 +390,23 @@ const headers = [
 	},
 ];
 
+
+/**
+ * ? This is where you would save the item in the database.
+ * @param {object} item The item being updated.
+ * @param {string} field The field being updated.
+ */
+function updatedValue(item) {
+	item.loading = true;
+
+	// ? Simulate a delay while item is saving.
+	setTimeout(() => {
+		item.loading = false;
+	}, 1500);
+}
+
+
+// ? Data loading section. You can ignore this part. //
 let posts = ref();
 const users = ref(null);
 const showError = ref(false);
@@ -398,26 +434,14 @@ function getUsers() {
 			}));
 		});
 };
-
-
-/**
- * ? This is where you would save the item in the database.
- * @param {object} item The item being updated.
- * @param {string} field The field being updated.
- */
-function updatedValue(item, field) {
-	console.log('PlaygroundPage.vue: updatedValue', field, item);
-	item.loading = true;
-
-	// ? Simulate a delay while item is saving.
-	setTimeout(() => {
-		item.loading = false;
-	}, 1500);
-}
 </script>
 
 <style lang="scss" scoped>
 :deep(.v-data-table__td) {
 	align-items: center;
+}
+
+:deep(.v-label) {
+	opacity: 1;
 }
 </style>
