@@ -57,8 +57,6 @@ export const useCardContainerStyle: UseCardContainerStyle = (options) => {
 	const { cardMinWidth, cardOffsetX, cardOffsetY, cardWidth, field, name = '' } = options;
 	const coords = useGetFieldCoordinates({ cardOffsetX, cardOffsetY, field });
 
-	console.log({ coords });
-
 	let minWidth = cardMinWidth;
 	let width = cardWidth;
 

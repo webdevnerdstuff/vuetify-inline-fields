@@ -12,7 +12,19 @@
 				<DisplayedValue
 					v-bind="bindingDisplay"
 					@toggleField="toggleField"
-				/>
+				>
+
+					<!-- Pass on all scoped slots -->
+					<template
+						v-for="(_, slot) in slots"
+						#[slot]="scope"
+					>
+						<slot
+							:name="slot"
+							v-bind="{ ...scope }"
+						/>
+					</template>
+				</DisplayedValue>
 			</div>
 		</div>
 
@@ -108,6 +120,7 @@ import inlineEmits from './utils/emits';
 const modelValue = defineModel<FieldValue>();
 
 const attrs = useAttrs();
+const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));

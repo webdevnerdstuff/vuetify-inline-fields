@@ -12,7 +12,19 @@
 				<DisplayedValue
 					v-bind="bindingDisplay"
 					@toggleField="toggleField"
-				/>
+				>
+
+					<!-- Pass on all scoped slots -->
+					<template
+						v-for="(_, slot) in slots"
+						#[slot]="scope"
+					>
+						<slot
+							:name="slot"
+							v-bind="{ ...scope }"
+						/>
+					</template>
+				</DisplayedValue>
 			</div>
 		</div>
 
