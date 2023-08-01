@@ -30,6 +30,13 @@ body:
       label: Relevant log output
       description: If applicable, please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction link
+      description: Please only use Codepen, [Playground](https://play.vuetifyjs.com/), [JSFiddle](https://www.jsfiddle.net/), [CodeSandbox](https://codesandbox.io/s/vue) or a github repo.
+    validations:
+      required: fatruelse
   - type: textarea
     id: additional-context
     attributes:
