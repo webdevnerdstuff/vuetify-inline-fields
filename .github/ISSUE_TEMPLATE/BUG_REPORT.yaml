@@ -36,7 +36,7 @@ body:
       label: Reproduction link
       description: Please only use Codepen, [Vuetify Playground](https://play.vuetifyjs.com/), [JSFiddle](https://www.jsfiddle.net/), [CodeSandbox](https://codesandbox.io/s/vue) or a github repo.
     validations:
-      required: fatruelse
+      required: true
   - type: textarea
     id: additional-context
     attributes:
