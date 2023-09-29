@@ -43,21 +43,21 @@
 								<tr>
 									<td>
 										<span
-											:id="`events-${item.raw.name}`"
+											:id="`events-${item.name}`"
 											class="name-item text-mono ml-n2"
 										>
 											<span class="text-primary">#</span>
 											<a
 												class="text-primary"
 												:class="classes.appLink"
-												:href="`#events-${item.raw.name}`"
+												:href="`#events-${item.name}`"
 											>
-												{{ item.raw.name }}
+												{{ item.name }}
 											</a>
 										</span>
 									</td>
 
-									<td><span v-html="item.raw.desc"></span></td>
+									<td><span v-html="item.desc"></span></td>
 								</tr>
 							</template>
 						</v-data-table>

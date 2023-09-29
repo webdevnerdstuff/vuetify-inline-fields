@@ -44,10 +44,10 @@
 				<v-list-item
 					:key="item.key"
 					density="compact"
-					:href="item.raw.link"
-					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
+					:href="item.link"
+					:prepend-icon="item.icon ? item.icon : '$vuetify'"
 					target="_blank"
-					:title="item.raw?.topTitle || item.title"
+					:title="item?.topTitle || item.title"
 				>
 				</v-list-item>
 			</template>
