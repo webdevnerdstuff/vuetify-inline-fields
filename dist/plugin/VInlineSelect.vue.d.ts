@@ -55,11 +55,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     itemTitle: {
-        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
         default: string;
     };
     itemValue: {
-        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
         default: string;
     };
     hideSelected: {
@@ -240,7 +240,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    [x: string]: (...args: any[]) => void;
+}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: globalThis.PropType<any>;
     error: {
         type: globalThis.PropType<boolean>;
@@ -297,11 +299,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     itemTitle: {
-        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
         default: string;
     };
     itemValue: {
-        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+        type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
         default: string;
     };
     hideSelected: {
@@ -482,9 +484,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
-}>> & {
-    [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-}, {
+}>>, {
     name: string;
     color: string;
     label: string;
@@ -497,8 +497,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
     clearIcon: string;
     clearable: boolean;
-    itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any);
-    itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any);
+    itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+    itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
     hideSelected: boolean;
     menu: boolean;
     underlined: boolean;

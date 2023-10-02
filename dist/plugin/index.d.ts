@@ -4,7 +4,6 @@ declare const _default: {
             $: import("vue").ComponentInternalInstance;
             $data: {};
             $props: {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
                 name?: string | undefined;
                 color?: string | undefined;
                 label?: string | undefined;
@@ -73,6 +72,44 @@ declare const _default: {
                 ref?: import("vue").VNodeRef | undefined;
                 ref_for?: boolean | undefined;
                 ref_key?: string | undefined;
+                onVnodeBeforeMount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeMounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUpdate?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUpdated?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUnmount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUnmounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
                 readonly required?: boolean | undefined;
             };
             $attrs: {
@@ -335,9 +372,9 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>> & {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+            }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                [x: string]: (...args: any[]) => void;
+            }, string, {
                 name: string;
                 color: string;
                 label: string;
@@ -664,9 +701,7 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
-        }>> & {
-            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-        } & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
+        }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
         __isFragment?: undefined;
         __isTeleport?: undefined;
         __isSuspense?: undefined;
@@ -917,9 +952,9 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
-    }>> & {
-        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-    }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+    }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        [x: string]: (...args: any[]) => void;
+    }, string, {
         name: string;
         color: string;
         label: string;
@@ -987,7 +1022,6 @@ declare const _default: {
             $: import("vue").ComponentInternalInstance;
             $data: {};
             $props: {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
                 name?: string | undefined;
                 color?: string | undefined;
                 label?: string | undefined;
@@ -1051,6 +1085,44 @@ declare const _default: {
                 ref?: import("vue").VNodeRef | undefined;
                 ref_for?: boolean | undefined;
                 ref_key?: string | undefined;
+                onVnodeBeforeMount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeMounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUpdate?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUpdated?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUnmount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUnmounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
                 readonly required?: boolean | undefined;
             };
             $attrs: {
@@ -1291,9 +1363,9 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>> & {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+            }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                [x: string]: (...args: any[]) => void;
+            }, string, {
                 name: string;
                 color: string;
                 label: string;
@@ -1591,9 +1663,7 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
-        }>> & {
-            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-        } & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
+        }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
         __isFragment?: undefined;
         __isTeleport?: undefined;
         __isSuspense?: undefined;
@@ -1822,9 +1892,9 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
-    }>> & {
-        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-    }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+    }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        [x: string]: (...args: any[]) => void;
+    }, string, {
         name: string;
         color: string;
         label: string;
@@ -1949,7 +2019,6 @@ declare const _default: {
             $: import("vue").ComponentInternalInstance;
             $data: {};
             $props: {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
                 name?: string | undefined;
                 color?: string | undefined;
                 label?: string | undefined;
@@ -1962,8 +2031,8 @@ declare const _default: {
                 variant?: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled" | undefined;
                 clearIcon?: string | undefined;
                 clearable?: boolean | undefined;
-                itemTitle?: (string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)) | undefined;
-                itemValue?: (string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)) | undefined;
+                itemTitle?: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null | undefined;
+                itemValue?: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null | undefined;
                 hideSelected?: boolean | undefined;
                 menu?: boolean | undefined;
                 underlined?: boolean | undefined;
@@ -2017,6 +2086,44 @@ declare const _default: {
                 ref?: import("vue").VNodeRef | undefined;
                 ref_for?: boolean | undefined;
                 ref_key?: string | undefined;
+                onVnodeBeforeMount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeMounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUpdate?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUpdated?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUnmount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUnmounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
                 readonly required?: boolean | undefined;
             };
             $attrs: {
@@ -2089,11 +2196,11 @@ declare const _default: {
                     default: boolean;
                 };
                 itemTitle: {
-                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                     default: string;
                 };
                 itemValue: {
-                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                     default: string;
                 };
                 hideSelected: {
@@ -2274,9 +2381,9 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>> & {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+            }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                [x: string]: (...args: any[]) => void;
+            }, string, {
                 name: string;
                 color: string;
                 label: string;
@@ -2289,8 +2396,8 @@ declare const _default: {
                 variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 clearIcon: string;
                 clearable: boolean;
-                itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any);
-                itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any);
+                itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 hideSelected: boolean;
                 menu: boolean;
                 underlined: boolean;
@@ -2411,11 +2518,11 @@ declare const _default: {
                 default: boolean;
             };
             itemTitle: {
-                type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+                type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                 default: string;
             };
             itemValue: {
-                type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+                type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                 default: string;
             };
             hideSelected: {
@@ -2596,9 +2703,7 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
-        }>> & {
-            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-        } & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
+        }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
         __isFragment?: undefined;
         __isTeleport?: undefined;
         __isSuspense?: undefined;
@@ -2659,11 +2764,11 @@ declare const _default: {
             default: boolean;
         };
         itemTitle: {
-            type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+            type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
             default: string;
         };
         itemValue: {
-            type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any)>;
+            type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
             default: string;
         };
         hideSelected: {
@@ -2844,9 +2949,9 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
-    }>> & {
-        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-    }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+    }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        [x: string]: (...args: any[]) => void;
+    }, string, {
         name: string;
         color: string;
         label: string;
@@ -2859,8 +2964,8 @@ declare const _default: {
         variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
         clearIcon: string;
         clearable: boolean;
-        itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any);
-        itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any);
+        itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+        itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
         hideSelected: boolean;
         menu: boolean;
         underlined: boolean;
@@ -2912,7 +3017,6 @@ declare const _default: {
             $: import("vue").ComponentInternalInstance;
             $data: {};
             $props: {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
                 name?: string | undefined;
                 color?: string | undefined;
                 label?: string | undefined;
@@ -2971,6 +3075,44 @@ declare const _default: {
                 ref?: import("vue").VNodeRef | undefined;
                 ref_for?: boolean | undefined;
                 ref_key?: string | undefined;
+                onVnodeBeforeMount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeMounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUpdate?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUpdated?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUnmount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUnmounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
                 readonly required?: boolean | undefined;
             };
             $attrs: {
@@ -3193,9 +3335,9 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>> & {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+            }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                [x: string]: (...args: any[]) => void;
+            }, string, {
                 name: string;
                 color: string;
                 label: string;
@@ -3472,9 +3614,7 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
-        }>> & {
-            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-        } & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
+        }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
         __isFragment?: undefined;
         __isTeleport?: undefined;
         __isSuspense?: undefined;
@@ -3685,9 +3825,9 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
-    }>> & {
-        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-    }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+    }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        [x: string]: (...args: any[]) => void;
+    }, string, {
         name: string;
         color: string;
         label: string;
@@ -3745,7 +3885,6 @@ declare const _default: {
             $: import("vue").ComponentInternalInstance;
             $data: {};
             $props: {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
                 name?: string | undefined;
                 color?: string | undefined;
                 label?: string | undefined;
@@ -3809,6 +3948,44 @@ declare const _default: {
                 ref?: import("vue").VNodeRef | undefined;
                 ref_for?: boolean | undefined;
                 ref_key?: string | undefined;
+                onVnodeBeforeMount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeMounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUpdate?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUpdated?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUnmount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUnmounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
                 readonly required?: boolean | undefined;
             };
             $attrs: {
@@ -4049,9 +4226,9 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>> & {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+            }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                [x: string]: (...args: any[]) => void;
+            }, string, {
                 name: string;
                 color: string;
                 label: string;
@@ -4349,9 +4526,7 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
-        }>> & {
-            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-        } & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
+        }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
         __isFragment?: undefined;
         __isTeleport?: undefined;
         __isSuspense?: undefined;
@@ -4580,9 +4755,9 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
-    }>> & {
-        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-    }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+    }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        [x: string]: (...args: any[]) => void;
+    }, string, {
         name: string;
         color: string;
         label: string;
@@ -4643,7 +4818,6 @@ declare const _default: {
             $: import("vue").ComponentInternalInstance;
             $data: {};
             $props: {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
                 name?: string | undefined;
                 color?: string | undefined;
                 label?: string | undefined;
@@ -4709,6 +4883,44 @@ declare const _default: {
                 ref?: import("vue").VNodeRef | undefined;
                 ref_for?: boolean | undefined;
                 ref_key?: string | undefined;
+                onVnodeBeforeMount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeMounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUpdate?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUpdated?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>, oldVNode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeBeforeUnmount?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
+                onVnodeUnmounted?: ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void) | ((vnode: globalThis.VNode<import("vue").RendererNode, import("vue").RendererElement, {
+                    [key: string]: any;
+                }>) => void)[] | undefined;
                 readonly required?: boolean | undefined;
             };
             $attrs: {
@@ -4957,9 +5169,9 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>> & {
-                [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-            }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+            }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+                [x: string]: (...args: any[]) => void;
+            }, string, {
                 name: string;
                 color: string;
                 label: string;
@@ -5267,9 +5479,7 @@ declare const _default: {
                 type: globalThis.PropType<string>;
                 default: string;
             };
-        }>> & {
-            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-        } & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
+        }>> & import("vue").ShallowUnwrapRef<{}> & {} & import("vue").ComponentCustomProperties & {};
         __isFragment?: undefined;
         __isTeleport?: undefined;
         __isSuspense?: undefined;
@@ -5506,9 +5716,9 @@ declare const _default: {
             type: globalThis.PropType<string>;
             default: string;
         };
-    }>> & {
-        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
-    }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, string[], string, {
+    }>>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+        [x: string]: (...args: any[]) => void;
+    }, string, {
         name: string;
         color: string;
         label: string;
