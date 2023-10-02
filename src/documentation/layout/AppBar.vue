@@ -42,12 +42,12 @@
 		>
 			<template #item="{ item }">
 				<v-list-item
-					:key="item.key"
+					:key="item.raw.key"
 					density="compact"
-					:href="item.link"
-					:prepend-icon="item.icon ? item.icon : '$vuetify'"
+					:href="item.raw.link"
+					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
 					target="_blank"
-					:title="item?.topTitle || item.title"
+					:title="item.raw?.topTitle || item.title"
 				>
 				</v-list-item>
 			</template>
