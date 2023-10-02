@@ -98,4 +98,10 @@ function smoothScroll() {
 		margin-right: 1em !important;
 	}
 }
+
+:deep(.v-list-group__items) {
+	.v-list-item__spacer {
+		display: none;
+	}
+}
 </style>

@@ -40,34 +40,34 @@
 					<template #[`item.name`]="{ item }">
 						<td>
 							<span
-								:id="`props-${sectionId ? `${sectionId}-${item.raw.name}` : item.raw.name}`"
+								:id="`props-${sectionId ? `${sectionId}-${item.name}` : item.name}`"
 								class="name-item text-mono ml-n2"
 							>
 								<span class="text-primary">#</span>
 								<a
 									class="text-primary"
 									:class="classes.appLink"
-									:href="`#props-${sectionId ? `${sectionId}-${item.raw.name}` : item.raw.name}`"
-								>{{ item.raw.name }}</a>
+									:href="`#props-${sectionId ? `${sectionId}-${item.name}` : item.name}`"
+								>{{ item.name }}</a>
 							</span>
 						</td>
 					</template>
 
 					<template #[`item.type`]="{ item }">
 						<td class="text-success">
-							{{ item.raw.type }}
+							{{ item.type }}
 						</td>
 					</template>
 
 					<template #[`item.default`]="{ item }">
 						<td
 							class="text-accent"
-							v-html="item.raw.default"
+							v-html="item.default"
 						></td>
 					</template>
 
 					<template #[`item.desc`]="{ item }">
-						<td v-html="item.raw.desc"></td>
+						<td v-html="item.desc"></td>
 					</template>
 				</v-data-table>
 			</v-card>

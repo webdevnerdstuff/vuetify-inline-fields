@@ -11,7 +11,7 @@
 			>
 				<template #[`item.active`]="{ item }">
 					<VInlineSwitch
-						v-model="item.raw.active"
+						v-model="item.active"
 						:cancel-button-color="componentOptions.cancelButtonColor"
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -33,7 +33,7 @@
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:item="item"
 						:label="componentOptions.label"
-						:loading="item.raw.loading"
+						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="active"
 						:underline-color="componentOptions.underlineColor"
@@ -41,13 +41,13 @@
 						:underline-width="componentOptions.underlineWidth"
 						:underlined="componentOptions.underlined"
 						@error="showError = $event"
-						@update="updatedValue(item.raw, 'reviewed')"
+						@update="updatedValue(item, 'reviewed')"
 					/>
 				</template>
 
 				<template #[`item.userId`]="{ item }">
 					<VInlineSelect
-						v-model="item.raw.user"
+						v-model="item.user"
 						:cancel-button-color="componentOptions.cancelButtonColor"
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -74,7 +74,7 @@
 						item-value="id"
 						:items="users"
 						:label="componentOptions.label"
-						:loading="item.raw.loading"
+						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
 						:menu="componentOptions.menu"
 						name="userId"
@@ -89,14 +89,14 @@
 						:underlined="componentOptions.underlined"
 						:variant="componentOptions.variant"
 						@error="showError = $event"
-						@update="updatedValue(item.raw, 'userId')"
+						@update="updatedValue(item, 'userId')"
 					>
 					</VInlineSelect>
 				</template>
 
 				<template #[`item.title`]="{ item }">
 					<VInlineTextField
-						v-model="item.raw.title"
+						v-model="item.title"
 						:cancel-button-color="componentOptions.cancelButtonColor"
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -114,7 +114,7 @@
 						:hide-details="componentOptions.hideDetails"
 						:item="item"
 						:label="componentOptions.label"
-						:loading="item.raw.loading"
+						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="title"
 						required
@@ -131,14 +131,14 @@
 						:underlined="componentOptions.underlined"
 						:variant="componentOptions.variant"
 						@error="showError = $event"
-						@update="updatedValue(item.raw, 'title')"
+						@update="updatedValue(item, 'title')"
 					>
 					</VInlineTextField>
 				</template>
 
 				<template #[`item.body`]="{ item }">
 					<VInlineTextarea
-						v-model="item.raw.body"
+						v-model="item.body"
 						:cancel-button-color="componentOptions.cancelButtonColor"
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -159,7 +159,7 @@
 						:hide-details="componentOptions.hideDetails"
 						:item="item"
 						:label="componentOptions.label"
-						:loading="item.raw.loading"
+						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="body"
 						:rules="[componentOptions.rules.required, componentOptions.rules.minLength]"
@@ -174,24 +174,24 @@
 						:underlined="componentOptions.underlined"
 						:variant="componentOptions.variant"
 						@error="showError = $event"
-						@update="updatedValue(item.raw, 'body')"
+						@update="updatedValue(item, 'body')"
 					>
 					</VInlineTextarea>
 				</template>
 
 				<template #[`item.range`]="{ item }">
 					<VInlineCustomField
-						v-model="item.raw.range"
+						v-model="item.range"
 						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
-						:loading="item.raw.loading"
-						@update="updatedValue(item.raw, 'range')"
+						:loading="item.loading"
+						@update="updatedValue(item, 'range')"
 					>
 						<template #default="">
 							<v-slider
-								v-model="item.raw.range"
+								v-model="item.range"
 								hide-details
 								show-ticks
 								step="10"
@@ -202,7 +202,7 @@
 
 				<template #[`item.reviewed`]="{ item }">
 					<VInlineCheckbox
-						v-model="item.raw.reviewed"
+						v-model="item.reviewed"
 						:cancel-button-color="componentOptions.cancelButtonColor"
 						:cancel-button-title="componentOptions.cancelButtonTitle"
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
@@ -220,7 +220,7 @@
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:item="item"
 						:label="componentOptions.label"
-						:loading="item.raw.loading"
+						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
 						name="reviewed"
 						:underline-color="componentOptions.underlineColor"
@@ -228,7 +228,7 @@
 						:underline-width="componentOptions.underlineWidth"
 						:underlined="componentOptions.underlined"
 						@error="showError = $event"
-						@update="updatedValue(item.raw, 'reviewed')"
+						@update="updatedValue(item, 'reviewed')"
 					/>
 				</template>
 			</v-data-table>
