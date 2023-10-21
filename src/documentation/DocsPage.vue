@@ -11,7 +11,7 @@
 
 		<v-col class="mb-4">
 			<h1 class="v-heading text-h3 text-sm-h3 mb-4">
-				Vuetify Inline Fields Table
+				Vuetify Inline Fields
 			</h1>
 			<v-chip
 				color="primary"
