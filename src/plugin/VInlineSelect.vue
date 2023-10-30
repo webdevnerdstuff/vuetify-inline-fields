@@ -44,7 +44,7 @@
 					:clearable="settings.clearable"
 					:color="settings.color"
 					:density="settings.density"
-					:disabled="loadingProp"
+					:disabled="loadingProp || disabledProp"
 					:error="error"
 					:error-messages="internalErrorMessages"
 					:hide-details="settings.hideDetails"
@@ -162,6 +162,7 @@ const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
 let settings = reactive({ ...attrs, ...props });
 const loadingProp = computed(() => props.loading);
+const disabledProp = computed(() => props.disabled);
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
@@ -248,7 +249,7 @@ watchEffect(() => {
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
-	disabled: settings.disabled,
+	disabled: disabledProp.value,
 	field: 'v-select',
 	iconSet: iconOptions?.defaultSet,
 	loading: loadingProp.value,
@@ -297,7 +298,7 @@ const cardFieldRef = ref<HTMLElement | string | null>('body');
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
+	if (disabledProp.value || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
 

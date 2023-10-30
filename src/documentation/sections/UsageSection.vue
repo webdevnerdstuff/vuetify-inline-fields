@@ -57,7 +57,7 @@ const classes = inject('classes');
 
 const usageAll = `import { createApp } from 'vue';
 import App from './App.vue';
-import * as VInlineFields from 'vuetify-inline-fields';
+import * as VInlineFields from '@wdns/vuetify-inline-fields';
 
 const app = createApp(App);
 
@@ -75,7 +75,7 @@ import {
   VInlineSwitch,
   VInlineTextField,
   VInlineTextarea,
-} from 'vuetify-inline-fields';
+} from '@wdns/vuetify-inline-fields';
 
 const app = createApp(App);
 
