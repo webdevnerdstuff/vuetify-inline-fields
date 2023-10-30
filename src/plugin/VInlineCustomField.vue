@@ -128,6 +128,7 @@ const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const props = withDefaults(defineProps<VInlineTextFieldProps>(), { ...textFieldProps });
 let settings = reactive({ ...attrs, ...props });
 const loadingProp = computed(() => props.loading);
+const disabledProp = computed(() => props.disabled);
 
 const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
@@ -211,7 +212,7 @@ const bindingCard = computed(() => ({
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
-	disabled: settings.disabled,
+	disabled: disabledProp.value,
 	field: 'v-text-field',
 	iconSet: iconOptions?.defaultSet,
 	loading: loadingProp.value,
@@ -260,7 +261,7 @@ const cardFieldRef = ref<HTMLElement | string | null>('body');
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
+	if (disabledProp.value || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
 

@@ -52,7 +52,7 @@
 					v-bind="bindingSettings"
 					:color="settings.color"
 					:density="settings.density"
-					:disabled="loadingProp"
+					:disabled="loadingProp || disabledProp"
 					:error="error"
 					:false-icon="settings.falseIcon"
 					:false-value="settings.falseValue"
@@ -159,6 +159,7 @@ const theme = useTheme();
 const props = withDefaults(defineProps<VInlineSwitchProps>(), { ...switchProps });
 let settings = reactive({ ...attrs, ...props });
 const loadingProp = computed(() => props.loading);
+const disabledProp = computed(() => props.disabled);
 
 const error = ref<boolean>(false);
 const showField = ref<boolean>(false);
@@ -205,7 +206,7 @@ const truthyModelValue = computed(() => useTruthyModelValue({
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
 	density: settings.density,
-	disabled: settings.disabled,
+	disabled: disabledProp.value,
 	field: 'v-switch',
 	loading: loadingProp.value,
 	loadingWait: settings.loadingWait,
@@ -262,7 +263,7 @@ const cardFieldRef = ref<HTMLElement | string | null>('body');
 
 // ------------------------------------------------ Toggle the field //
 function toggleField() {
-	if (settings.disabled || (settings.loadingWait && loadingProp.value)) {
+	if (disabledProp.value || (settings.loadingWait && loadingProp.value)) {
 		return;
 	}
 
