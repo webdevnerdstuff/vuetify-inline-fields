@@ -25,14 +25,16 @@ const banner = `/**
  */
 `;
 
+const pkgName = 'vuetify-inline-fields';
+
 export default defineConfig({
 	publicDir: false,
 	build: {
 		lib: {
 			entry: './src/plugin/index.ts',
-			name: pkg.name,
+			name: pkgName,
 			formats: ['es', 'cjs'],
-			fileName: format => `${pkg.name}.${format}.js`,
+			fileName: format => `${pkgName}.${format}.js`,
 		},
 		rollupOptions: {
 			input: {
