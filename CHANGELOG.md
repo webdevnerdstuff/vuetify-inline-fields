@@ -10,3 +10,4 @@ TBD
 10-30-2023
 [main] (@webdevnerdstuff)
 * Fix disabled prop to be reactive
+* Change npm package name to `@wdns/vuetify-inline-fields`

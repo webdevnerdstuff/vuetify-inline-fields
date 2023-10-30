@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vuetify-inline-fields">
-    <img src="https://img.shields.io/npm/v/vuetify-inline-fields?color=1867c0&logo=npm" alt="NPM Package">
+  <a href="https://www.npmjs.com/package/@wdns/vuetify-inline-fields">
+    <img src="https://img.shields.io/npm/v/@wdns/vuetify-inline-fields?color=1867c0&logo=npm" alt="NPM Package">
   </a>
   &nbsp;
   <a href="https://github.com/webdevnerdstuff/vuetify-inline-fields">
@@ -37,12 +37,12 @@ This will open up a Playground page that loads the file `./src/playground/Playgr
  
 Using [pnpm](https://pnpm.io/):
 ```
-pnpm add vuetify-inline-fields
+pnpm add @wdns/vuetify-inline-fields
 ```
 
 Using npm:
 ```
-npm i vuetify-inline-fields
+npm i @wdns/vuetify-inline-fields
 ```
  
 ## Documentation

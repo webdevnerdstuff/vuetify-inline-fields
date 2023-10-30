@@ -2,7 +2,7 @@ import { Fragment as fe, reactive as ze, computed as v, watchEffect as Ue, toRef
 import { useTheme as Sl } from "vuetify";
 import { useWindowSize as oi } from "@vueuse/core";
 /**
- * @name vuetify-inline-fields
+ * @name @wdns/vuetify-inline-fields
  * @version 1.0.0-beta-1.10
  * @description Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)

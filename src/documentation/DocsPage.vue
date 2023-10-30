@@ -40,7 +40,7 @@
 			<v-row>
 				<v-col cols="12">
 					<CodeBlock
-						code="pnpm add vuetify-inline-fields"
+						code="pnpm add @wdns/vuetify-inline-fields"
 						:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
 						lang="plain"
 						:prismjs="codeBlockSettings.plugin === 'prismjs'"
@@ -56,7 +56,7 @@
 				</v-col>
 				<v-col cols="12">
 					<CodeBlock
-						code="npm i vuetify-inline-fields"
+						code="npm i @wdns/vuetify-inline-fields"
 						highlightjs
 						lang="plain"
 					>
