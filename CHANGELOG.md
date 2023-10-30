@@ -6,6 +6,11 @@ TBD
 [main] (@webdevnerdstuff)
 * Official release depends on when the Vue team decides if they are going to keep experimental `defineModel` feature. [Blog](https://blog.vuejs.org/posts/vue-3-3#definemodel)
 
+## v1.0.0-beta-1.12
+10-30-2023
+[main] (@webdevnerdstuff)
+* Fix VTextField missing some props
+
 ## v1.0.0-beta-1.11
 10-30-2023
 [main] (@webdevnerdstuff)
