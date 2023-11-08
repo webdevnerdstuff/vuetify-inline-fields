@@ -55,7 +55,7 @@ export const useCoreStore = defineStore('core', () => {
 		...getters,
 		links,
 		package: packageJson,
-		pluginVersion: packageJson.version,
 		packageName,
+		pluginVersion: packageJson.version,
 	};
 });
