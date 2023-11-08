@@ -4,10 +4,10 @@ import packageJson from '@root/package.json';
 
 export const useCoreStore = defineStore('core', () => {
 	const packageName = packageJson.name;
-	const storageName = 'vuetify-inline-fields';
+	const storageName = packageName.split('/')[1];
 
 	// Links //
-	const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
+	const repoBaseUrl = `https://github.com/webdevnerdstuff/${storageName}`;
 	const links = {
 		changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
 		discord: 'https://discord.com/users/979453275369783346',
