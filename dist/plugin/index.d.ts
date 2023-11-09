@@ -176,12 +176,12 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -437,12 +437,12 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -766,12 +766,12 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
-            item: {
-                type: globalThis.PropType<Record<string, unknown>>;
-            };
             underlined: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            item: {
+                type: globalThis.PropType<Record<string, unknown>>;
             };
             required: {
                 type: globalThis.PropType<boolean>;
@@ -1017,12 +1017,12 @@ declare const _default: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
-        item: {
-            type: globalThis.PropType<Record<string, unknown>>;
-        };
         underlined: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        item: {
+            type: globalThis.PropType<Record<string, unknown>>;
         };
         required: {
             type: globalThis.PropType<boolean>;
@@ -1443,12 +1443,12 @@ declare const _default: {
                 clearIcon: {
                     type: globalThis.PropType<string>;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -1682,12 +1682,12 @@ declare const _default: {
                 clearIcon: {
                     type: globalThis.PropType<string>;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -1982,12 +1982,12 @@ declare const _default: {
             clearIcon: {
                 type: globalThis.PropType<string>;
             };
-            item: {
-                type: globalThis.PropType<Record<string, unknown>>;
-            };
             underlined: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            item: {
+                type: globalThis.PropType<Record<string, unknown>>;
             };
             required: {
                 type: globalThis.PropType<boolean>;
@@ -2211,12 +2211,12 @@ declare const _default: {
         clearIcon: {
             type: globalThis.PropType<string>;
         };
-        item: {
-            type: globalThis.PropType<Record<string, unknown>>;
-        };
         underlined: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        item: {
+            type: globalThis.PropType<Record<string, unknown>>;
         };
         required: {
             type: globalThis.PropType<boolean>;
@@ -2528,8 +2528,8 @@ declare const _default: {
                 variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 clearIcon: string;
                 clearable: boolean;
-                itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-                itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 hideSelected: boolean;
                 menu: boolean;
                 underlined: boolean;
@@ -2585,8 +2585,8 @@ declare const _default: {
                 readonly autofocus: boolean;
                 readonly variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 readonly clearable: boolean;
-                readonly itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-                readonly itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                readonly itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                readonly itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 readonly hideSelected: boolean;
                 readonly menu: boolean;
                 readonly underlined: boolean;
@@ -2693,11 +2693,11 @@ declare const _default: {
                     default: boolean;
                 };
                 itemTitle: {
-                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                     default: string;
                 };
                 itemValue: {
-                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                     default: string;
                 };
                 hideSelected: {
@@ -2708,12 +2708,12 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -2949,11 +2949,11 @@ declare const _default: {
                     default: boolean;
                 };
                 itemTitle: {
-                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                     default: string;
                 };
                 itemValue: {
-                    type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                     default: string;
                 };
                 hideSelected: {
@@ -2964,12 +2964,12 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -3149,8 +3149,8 @@ declare const _default: {
                 variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 clearIcon: string;
                 clearable: boolean;
-                itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-                itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+                itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 hideSelected: boolean;
                 menu: boolean;
                 underlined: boolean;
@@ -3271,11 +3271,11 @@ declare const _default: {
                 default: boolean;
             };
             itemTitle: {
-                type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+                type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                 default: string;
             };
             itemValue: {
-                type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+                type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
                 default: string;
             };
             hideSelected: {
@@ -3286,12 +3286,12 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
-            item: {
-                type: globalThis.PropType<Record<string, unknown>>;
-            };
             underlined: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            item: {
+                type: globalThis.PropType<Record<string, unknown>>;
             };
             required: {
                 type: globalThis.PropType<boolean>;
@@ -3517,11 +3517,11 @@ declare const _default: {
             default: boolean;
         };
         itemTitle: {
-            type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+            type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
             default: string;
         };
         itemValue: {
-            type: globalThis.PropType<string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
+            type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
             default: string;
         };
         hideSelected: {
@@ -3532,12 +3532,12 @@ declare const _default: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
-        item: {
-            type: globalThis.PropType<Record<string, unknown>>;
-        };
         underlined: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        item: {
+            type: globalThis.PropType<Record<string, unknown>>;
         };
         required: {
             type: globalThis.PropType<boolean>;
@@ -3717,8 +3717,8 @@ declare const _default: {
         variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
         clearIcon: string;
         clearable: boolean;
-        itemTitle: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-        itemValue: string | boolean | (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+        itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
+        itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
         hideSelected: boolean;
         menu: boolean;
         underlined: boolean;
@@ -3918,12 +3918,12 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -4139,12 +4139,12 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -4418,12 +4418,12 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
-            item: {
-                type: globalThis.PropType<Record<string, unknown>>;
-            };
             underlined: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            item: {
+                type: globalThis.PropType<Record<string, unknown>>;
             };
             required: {
                 type: globalThis.PropType<boolean>;
@@ -4629,12 +4629,12 @@ declare const _default: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
-        item: {
-            type: globalThis.PropType<Record<string, unknown>>;
-        };
         underlined: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        item: {
+            type: globalThis.PropType<Record<string, unknown>>;
         };
         required: {
             type: globalThis.PropType<boolean>;
@@ -5009,12 +5009,12 @@ declare const _default: {
                 clearIcon: {
                     type: globalThis.PropType<string>;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -5248,12 +5248,12 @@ declare const _default: {
                 clearIcon: {
                     type: globalThis.PropType<string>;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -5548,12 +5548,12 @@ declare const _default: {
             clearIcon: {
                 type: globalThis.PropType<string>;
             };
-            item: {
-                type: globalThis.PropType<Record<string, unknown>>;
-            };
             underlined: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            item: {
+                type: globalThis.PropType<Record<string, unknown>>;
             };
             required: {
                 type: globalThis.PropType<boolean>;
@@ -5777,12 +5777,12 @@ declare const _default: {
         clearIcon: {
             type: globalThis.PropType<string>;
         };
-        item: {
-            type: globalThis.PropType<Record<string, unknown>>;
-        };
         underlined: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        item: {
+            type: globalThis.PropType<Record<string, unknown>>;
         };
         required: {
             type: globalThis.PropType<boolean>;
@@ -6180,12 +6180,12 @@ declare const _default: {
                 clearIcon: {
                     type: globalThis.PropType<string>;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -6427,12 +6427,12 @@ declare const _default: {
                 clearIcon: {
                     type: globalThis.PropType<string>;
                 };
-                item: {
-                    type: globalThis.PropType<Record<string, unknown>>;
-                };
                 underlined: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
+                };
+                item: {
+                    type: globalThis.PropType<Record<string, unknown>>;
                 };
                 required: {
                     type: globalThis.PropType<boolean>;
@@ -6737,12 +6737,12 @@ declare const _default: {
             clearIcon: {
                 type: globalThis.PropType<string>;
             };
-            item: {
-                type: globalThis.PropType<Record<string, unknown>>;
-            };
             underlined: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            item: {
+                type: globalThis.PropType<Record<string, unknown>>;
             };
             required: {
                 type: globalThis.PropType<boolean>;
@@ -6974,12 +6974,12 @@ declare const _default: {
         clearIcon: {
             type: globalThis.PropType<string>;
         };
-        item: {
-            type: globalThis.PropType<Record<string, unknown>>;
-        };
         underlined: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        item: {
+            type: globalThis.PropType<Record<string, unknown>>;
         };
         required: {
             type: globalThis.PropType<boolean>;

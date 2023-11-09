@@ -43,12 +43,12 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    item: {
-        type: globalThis.PropType<Record<string, unknown>>;
-    };
     underlined: {
         type: globalThis.PropType<boolean>;
         default: boolean;
+    };
+    item: {
+        type: globalThis.PropType<Record<string, unknown>>;
     };
     required: {
         type: globalThis.PropType<boolean>;
@@ -252,12 +252,12 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    item: {
-        type: globalThis.PropType<Record<string, unknown>>;
-    };
     underlined: {
         type: globalThis.PropType<boolean>;
         default: boolean;
+    };
+    item: {
+        type: globalThis.PropType<Record<string, unknown>>;
     };
     required: {
         type: globalThis.PropType<boolean>;
