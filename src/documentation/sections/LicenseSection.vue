@@ -22,7 +22,7 @@
 			<br />
 			Licensed under the
 			<a
-				:href="`${links.repo}/blob/master/LICENSE.md`"
+				:href="`${links.github}/blob/main/LICENSE.md`"
 				target="_blank"
 			>
 				MIT License
