@@ -81,6 +81,7 @@ export interface SharedProps {
 	error?: boolean;
 	falseValue?: boolean | string | undefined;
 	fieldOnly?: boolean;
+	hideCancelIcon?: boolean;
 	hideDetails?: boolean;
 	hideSaveIcon?: boolean;
 	iconFalse?: string | undefined;
@@ -116,6 +117,21 @@ export interface SharedProps {
 }
 
 // Component Props //
+export interface VInlineAutocompleteProps extends Omit<SharedProps,
+	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'
+> {
+	clearIcon?: string | undefined;
+	clearable?: VSelect['$props']['clearable'];
+	density?: VSelect['$props']['density'];
+	hideSelected?: VSelect['$props']['hideSelected'];
+	itemTitle?: VSelect['$props']['itemTitle'];
+	itemValue?: VSelect['$props']['itemValue'];
+	items?: VSelect['$props']['items'];
+	menu?: VSelect['$props']['menu'];
+	rules?: VSelect['$props']['rules'];
+	variant?: VSelect['$props']['variant'];
+}
+
 export interface VInlineCheckboxProps extends Omit<SharedProps,
 	'autofocus' | 'truncateLength' | 'truncateSuffix'
 > {
@@ -221,6 +237,7 @@ export interface SaveFieldButtons extends
 		'cancelIconColor' |
 		'error' |
 		'fieldOnly' |
+		'hideCancelIcon' |
 		'hideSaveIcon' |
 		'loadingIconColor' |
 		'saveButtonColor' |
