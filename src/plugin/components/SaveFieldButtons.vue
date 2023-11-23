@@ -28,6 +28,7 @@
 		</v-btn>
 
 		<v-btn
+			v-if="!settings.hideCancelIcon"
 			:class="cancelButtonClasses"
 			:color="settings.cancelButtonColor"
 			icon

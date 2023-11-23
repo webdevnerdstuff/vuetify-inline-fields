@@ -34,6 +34,7 @@ export const sharedProps = {
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
+	hideCancelIcon: true,
 	hideDetails: true,
 	label: '',
 	loading: false,
@@ -54,6 +55,7 @@ const autofocus = {
 
 // * ------------------------------ Save & Loading Icon //
 const saveAndLoadingIconProps = {
+	hideCancelIcon: false,
 	hideSaveIcon: false,
 	loadingIcon: undefined,
 	loadingIconColor: 'primary',

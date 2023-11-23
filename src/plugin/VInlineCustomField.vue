@@ -52,6 +52,7 @@
 					:cancel-icon-color="settings.cancelIconColor"
 					:error="error"
 					:field-only="settings.fieldOnly"
+					:hide-cancel-icon="settings.hideCancelIcon"
 					:hide-save-icon="settings.hideSaveIcon"
 					:loading="loadingProp"
 					:loading-icon="settings.loadingIcon"
