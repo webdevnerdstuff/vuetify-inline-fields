@@ -1,3 +1,4 @@
+import VInlineAutocomplete from './VInlineAutocomplete.vue';
 import VInlineCheckbox from './VInlineCheckbox.vue';
 import VInlineCustomField from './VInlineCustomField.vue';
 import VInlineSelect from './VInlineSelect.vue';
@@ -7,6 +8,7 @@ import VInlineTextarea from './VInlineTextarea.vue';
 
 
 export default {
+	VInlineAutocomplete,
 	VInlineCheckbox,
 	VInlineCustomField,
 	VInlineSelect,

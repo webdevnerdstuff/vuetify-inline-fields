@@ -14,6 +14,7 @@ for (const prop in VInlineFields) {
 	component.install = install;
 }
 
+export const VInlineAutocomplete = VInlineFields.VInlineAutocomplete;
 export const VInlineCheckbox = VInlineFields.VInlineCheckbox;
 export const VInlineCustomField = VInlineFields.VInlineCustomField;
 export const VInlineSelect = VInlineFields.VInlineSelect;
