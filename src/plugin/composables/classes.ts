@@ -52,7 +52,7 @@ export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
 
 	return {
 		[`${componentName}--display-container-cell`]: cell,
-		[`${componentName}--display-container-cell-underline-full-width`]: cellUnderlineFullWidth,
+		[`${componentName}--display-container-cell-underline-full-width`]: cell && cellUnderlineFullWidth,
 		[`${componentName}--display-container`]: true,
 		[`${componentName}--display-wrapper-value`]: true,
 		[`${field}`]: true,
