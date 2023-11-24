@@ -104,6 +104,58 @@
 					</VInlineSelect>
 				</template>
 
+				<template #[`item.userIdAutocomplete`]="{ item }">
+					<VInlineAutocomplete
+						v-model="item.user"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:card-field="cardFieldState"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
+						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:clearable="componentOptions.clearable"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:display-append-icon="componentOptions.displayAppendIcon"
+						:display-append-icon-color="componentOptions.displayAppendIconColor"
+						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
+						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
+						:empty-text="componentOptions.emptyText"
+						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
+						:hide-details="componentOptions.hideDetails"
+						:hide-selected="componentOptions.hideSelected"
+						:item="item"
+						item-title="name"
+						item-value="id"
+						:items="users"
+						:label="componentOptions.label"
+						:loading="item.loading"
+						:loading-wait="componentOptions.loadingWait"
+						:menu="componentOptions.menu"
+						name="userId"
+						return-object
+						:save-button-color="componentOptions.saveButtonColor"
+						:save-button-title="componentOptions.saveButtonTitle"
+						:save-icon="componentOptions.saveIcon"
+						:save-icon-color="componentOptions.saveIconColor"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						:variant="componentOptions.variant"
+						@error="showError = $event"
+						@update="updatedValue(item, 'userId')"
+						@update:search="console.log(`searching: ${$event}`)"
+					>
+					</VInlineAutocomplete>
+				</template>
+
 				<template #[`item.title`]="{ item }">
 					<VInlineTextField
 						v-model="item.title"
@@ -162,6 +214,7 @@
 						:card-props="componentOptions.cardProps"
 						:cell="componentOptions.cell"
 						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
+						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -390,6 +443,12 @@ const headers = [
 		title: 'User ID',
 		width: 325,
 	},
+	// {
+	// 	align: 'start',
+	// 	key: 'userIdAutocomplete',
+	// 	title: 'User ID',
+	// 	width: 325,
+	// },
 	{
 		align: 'start',
 		key: 'title',
