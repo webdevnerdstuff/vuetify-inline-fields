@@ -1,5 +1,8 @@
 <template>
-	<div class="v-inline-fields--display-wrapper">
+	<div
+		class="v-inline-fields--display-wrapper"
+		@click="toggleField"
+	>
 
 		<!-- Prepend Icon -->
 		<div
@@ -23,7 +26,6 @@
 			class="d-inline-flex"
 			:class="displayValueClass"
 			:style="displayValueStyle"
-			@click="toggleField"
 		>
 			<!-- Prepend Inner Icon -->
 			<div

@@ -57,6 +57,34 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     required: {
         type: globalThis.PropType<boolean>;
     };
+    iconFalse: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconFalseColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconFalseTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrue: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconTrueColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrueTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    icons: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     cancelButtonColor: {
         type: globalThis.PropType<string>;
         default: string;
@@ -96,6 +124,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cardProps: {
         type: globalThis.PropType<any>;
         default: () => {};
+    };
+    cell: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cellUnderlineFullWidth: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
     };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
@@ -157,35 +193,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    hideSaveIcon: {
+    hideCancelIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    iconFalse: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconFalseColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconFalseTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrue: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconTrueColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrueTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    icons: {
+    hideSaveIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -306,6 +318,34 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     required: {
         type: globalThis.PropType<boolean>;
     };
+    iconFalse: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconFalseColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconFalseTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrue: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconTrueColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrueTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    icons: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     cancelButtonColor: {
         type: globalThis.PropType<string>;
         default: string;
@@ -345,6 +385,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cardProps: {
         type: globalThis.PropType<any>;
         default: () => {};
+    };
+    cell: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cellUnderlineFullWidth: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
     };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
@@ -406,35 +454,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    hideSaveIcon: {
+    hideCancelIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    iconFalse: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconFalseColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconFalseTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrue: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconTrueColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrueTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    icons: {
+    hideSaveIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -507,6 +531,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     hideDetails: boolean;
     loading: boolean;
     underlined: boolean;
+    iconFalse: string;
+    iconFalseColor: string;
+    iconFalseTitle: string;
+    iconTrue: string;
+    iconTrueColor: string;
+    iconTrueTitle: string;
+    icons: boolean;
     cancelButtonColor: string;
     cancelButtonSize: string | number;
     cancelButtonTitle: string;
@@ -517,6 +548,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: any;
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     displayAppendIcon: import('../types').VIconValue;
     displayAppendIconColor: string;
@@ -532,14 +565,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     displayPrependInnerIconSize: string | number;
     emptyText: string;
     fieldOnly: boolean;
+    hideCancelIcon: boolean;
     hideSaveIcon: boolean;
-    iconFalse: string;
-    iconFalseColor: string;
-    iconFalseTitle: string;
-    iconTrue: string;
-    iconTrueColor: string;
-    iconTrueTitle: string;
-    icons: boolean;
     loadingIcon: string;
     loadingIconColor: string;
     loadingWait: boolean;

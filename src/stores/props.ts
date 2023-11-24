@@ -111,6 +111,18 @@ const sharedProps = [
 	},
 	{
 		default: false,
+		desc: 'If <code class="ic">true</code>, the table cell will be used as the trigger to display the field',
+		name: 'cell',
+		type: 'boolean',
+	},
+	{
+		default: true,
+		desc: 'If <code class="ic">true</code>, the underline will span the full width of the table cell. (used with the <code class="ic">cell</code> prop)',
+		name: 'cell-underline-full-width',
+		type: 'boolean',
+	},
+	{
+		default: false,
 		desc: 'If <code class="ic">true</code>, the field will close when the user opens another inline form element',
 		name: 'close-siblings',
 		type: 'boolean',
@@ -145,6 +157,12 @@ const sharedProps = [
 		desc: 'If set to <code class="ic">true</code> will only show the field',
 		name: 'field-only',
 		type: 'boolean',
+	},
+	{
+		default: false,
+		desc: 'Hides the cancel icon',
+		name: 'hide-cancel-icon',
+		type: 'boolean'
 	},
 	{
 		default: true,

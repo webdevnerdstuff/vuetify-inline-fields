@@ -7,14 +7,18 @@
 		<div
 			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
+			@click="settings.cell ? toggleField() : undefined"
 		>
-			<div :class="displaySelectionControlClasses">
+			<div
+				:class="displaySelectionControlClasses"
+				@click="!settings.cell ? toggleField() : undefined"
+			>
 				<div class="v-selection-control__wrapper">
 					<div
 						v-if="icons"
+						class="v-inline-fields--boolean-icons-container"
 						:class="displayValueClass"
 						:style="displayValueStyle"
-						@click="toggleField"
 					>
 						<BooleanIcons
 							v-model="truthyModelValue"
@@ -32,7 +36,6 @@
 						class="d-inline-flex align-center justify-center"
 						:class="displayValueClass"
 						:style="displayValueStyle"
-						@click="toggleField"
 					>
 						{{ displayValue }}
 					</div>
@@ -79,7 +82,7 @@
 						#append
 					>
 						<v-btn
-							v-if="!settings.fieldOnly || settings.cardField"
+							v-if="(!settings.fieldOnly || settings.cardField) && !settings.hideCancelIcon"
 							class="ms-3"
 							:color="settings.cancelButtonColor"
 							icon
@@ -205,6 +208,7 @@ const truthyModelValue = computed(() => useTruthyModelValue({
 
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
+	cell: settings.cell && !showField.value,
 	density: settings.density,
 	disabled: disabledProp.value,
 	field: 'v-switch',
@@ -214,6 +218,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 }));
 
 const displayContainerClass = computed(() => useDisplayContainerClass({
+	cell: settings.cell,
+	cellUnderlineFullWidth: settings.cellUnderlineFullWidth,
 	density: settings.density,
 	field: 'v-switch',
 }));

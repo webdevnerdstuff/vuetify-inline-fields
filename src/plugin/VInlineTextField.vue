@@ -246,6 +246,7 @@ const bindingCard = computed(() => ({
 
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
+	cell: settings.cell && !showField.value,
 	density: settings.density,
 	disabled: disabledProp.value,
 	field: 'v-text-field',
@@ -257,6 +258,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 }));
 
 const displayContainerClass = computed(() => useDisplayContainerClass({
+	cell: settings.cell,
+	cellUnderlineFullWidth: settings.cellUnderlineFullWidth,
 	density: settings.density,
 	field: 'v-text-field',
 }));

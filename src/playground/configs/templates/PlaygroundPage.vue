@@ -1,5 +1,9 @@
 <template>
 	<v-col cols="12">
+		<v-btn @click="componentOptions.disabled = !componentOptions.disabled">Toggle Disabled: {{ componentOptions.disabled
+		}}</v-btn>
+	</v-col>
+	<v-col cols="12">
 		<v-card elevation="5">
 			<v-data-table
 				:key="tableOptions.tableKey"
@@ -22,11 +26,14 @@
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
 						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:icon-false="componentOptions.iconFalse"
 						:icon-false-title="componentOptions.iconFalseTitle"
 						:icon-true="componentOptions.iconTrue"
@@ -56,6 +63,8 @@
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
@@ -67,6 +76,7 @@
 						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:empty-text="componentOptions.emptyText"
 						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:hide-details="componentOptions.hideDetails"
 						:hide-selected="componentOptions.hideSelected"
 						:item="item"
@@ -105,12 +115,15 @@
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
 						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
 						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:hide-details="componentOptions.hideDetails"
 						:item="item"
 						:label="componentOptions.label"
@@ -147,6 +160,8 @@
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -156,6 +171,7 @@
 						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
 						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:hide-details="componentOptions.hideDetails"
 						:item="item"
 						:label="componentOptions.label"
@@ -186,6 +202,8 @@
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
 						:loading="item.loading"
 						@update="updatedValue(item, 'range')"
 					>
@@ -211,11 +229,14 @@
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
 						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
 						:disabled="componentOptions.disabled"
 						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:icon-false-title="componentOptions.iconFalseTitle"
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:item="item"
@@ -299,6 +320,8 @@ const componentOptions = reactive({
 	cardOffsetX: 0,
 	cardOffsetY: 0,
 	cardProps: {},
+	cell: false,
+	cellUnderlineFullWidth: true,
 	clearable: false,
 	closeSiblings: true,
 	color: 'primary',
@@ -318,6 +341,7 @@ const componentOptions = reactive({
 	// displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
+	hideCancelIcon: false,
 	hideDetails: true,
 	hideSelected: false,
 	iconFalse: undefined,
