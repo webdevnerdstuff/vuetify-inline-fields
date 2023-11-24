@@ -8,13 +8,20 @@ export const useMenuStore = defineStore('menu', () => {
 
 	const componentItems = [
 		{
+			href: '#components-v-inline-autocomplete',
+			icon: 'mdi:mdi-format-list-bulleted',
+			key: 'v-inline-autocomplete',
+			link: `${links.vuetify}en/api/v-autocomplete/`,
+			title: 'VInlineAutocomplete',
+			topTitle: 'VAutocomplete',
+		},
+		{
 			href: '#components-v-inline-checkbox',
 			icon: 'mdi:mdi-checkbox-outline',
 			key: 'v-inline-checkbox',
 			link: `${links.vuetify}en/api/v-checkbox/`,
 			title: 'VInlineCheckbox',
 			topTitle: 'VCheckbox',
-
 		},
 		{
 			href: '#components-v-inline-select',

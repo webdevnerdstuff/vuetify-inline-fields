@@ -21,6 +21,7 @@
 			</div>
 		</v-col>
 
+		<AutocompleteComponent :codeBlockOptions="codeBlockOptions" />
 		<CheckboxComponent :codeBlockOptions="codeBlockOptions" />
 		<SelectComponent :codeBlockOptions="codeBlockOptions" />
 		<SwitchComponent :codeBlockOptions="codeBlockOptions" />
@@ -35,6 +36,7 @@ import { inject } from 'vue';
 import { useCoreStore } from '@/stores/index';
 
 import {
+	AutocompleteComponent,
 	CheckboxComponent,
 	CustomComponent,
 	SelectComponent,

@@ -1,3 +1,4 @@
+import AutocompleteComponent from './AutocompleteComponent';
 import CheckboxComponent from './CheckboxComponent';
 import CustomComponent from './CustomComponent';
 import PropsTable from './PropsTable';
@@ -7,6 +8,7 @@ import TextFieldComponent from './TextFieldComponent';
 import TextareaComponent from './TextareaComponent';
 
 export {
+	AutocompleteComponent,
 	CheckboxComponent,
 	CustomComponent,
 	PropsTable,
