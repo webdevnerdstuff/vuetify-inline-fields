@@ -159,6 +159,12 @@ const sharedProps = [
 		type: 'boolean',
 	},
 	{
+		default: false,
+		desc: 'Hides the cancel icon',
+		name: 'hide-cancel-icon',
+		type: 'boolean'
+	},
+	{
 		default: true,
 		desc: 'Hide details is not fully supported as the fields are intended for use in tables. You can set this prop to <code class="ic">false</code> to show the details but styling will not be ideal',
 		name: 'hide-details',
