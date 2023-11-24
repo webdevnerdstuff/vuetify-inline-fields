@@ -3,7 +3,7 @@ import { useTheme as Sl } from "vuetify";
 import { useWindowSize as ui } from "@vueuse/core";
 /**
  * @name @wdns/vuetify-inline-fields
- * @version 1.0.0-beta-2
+ * @version 1.0.0-beta-3
  * @description Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
