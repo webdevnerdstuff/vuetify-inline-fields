@@ -16,6 +16,8 @@ export const sharedProps = {
 	cardOffsetX: 0,
 	cardOffsetY: 0,
 	cardProps: () => ({}) as const,
+	cell: false,
+	cellUnderlineFullWidth: true,
 	closeSiblings: false,
 	color: 'primary',
 	density: 'compact' as const,
