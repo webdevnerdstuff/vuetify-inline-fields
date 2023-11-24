@@ -13,6 +13,8 @@ export declare const sharedProps: {
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: () => {};
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     color: string;
     density: "compact";
@@ -31,6 +33,7 @@ export declare const sharedProps: {
     displayPrependInnerIconSize: string;
     emptyText: string;
     fieldOnly: boolean;
+    hideCancelIcon: boolean;
     hideDetails: boolean;
     label: string;
     loading: boolean;
@@ -47,6 +50,7 @@ declare const checkboxProps: {
     falseIcon: undefined;
     icons: boolean;
     trueIcon: undefined;
+    hideCancelIcon: boolean;
     hideSaveIcon: boolean;
     loadingIcon: undefined;
     loadingIconColor: string;
@@ -74,6 +78,8 @@ declare const checkboxProps: {
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: () => {};
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     color: string;
     density: "compact";
@@ -113,6 +119,7 @@ declare const selectProps: {
     items: () => never[];
     menu: boolean;
     variant: "underlined";
+    hideCancelIcon: boolean;
     hideSaveIcon: boolean;
     loadingIcon: undefined;
     loadingIconColor: string;
@@ -133,6 +140,8 @@ declare const selectProps: {
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: () => {};
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     color: string;
     density: "compact";
@@ -184,6 +193,8 @@ declare const switchProps: {
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: () => {};
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     color: string;
     density: "compact";
@@ -202,6 +213,7 @@ declare const switchProps: {
     displayPrependInnerIconSize: string;
     emptyText: string;
     fieldOnly: boolean;
+    hideCancelIcon: boolean;
     hideDetails: boolean;
     label: string;
     loading: boolean;
@@ -230,6 +242,8 @@ declare const textareaProps: {
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: () => {};
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     color: string;
     density: "compact";
@@ -248,6 +262,7 @@ declare const textareaProps: {
     displayPrependInnerIconSize: string;
     emptyText: string;
     fieldOnly: boolean;
+    hideCancelIcon: boolean;
     hideDetails: boolean;
     label: string;
     loading: boolean;
@@ -274,6 +289,7 @@ declare const textFieldProps: {
     truncateLength: undefined;
     truncateSuffix: string;
     variant: "underlined";
+    hideCancelIcon: boolean;
     hideSaveIcon: boolean;
     loadingIcon: undefined;
     loadingIconColor: string;
@@ -294,6 +310,8 @@ declare const textFieldProps: {
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: () => {};
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     color: string;
     density: "compact";

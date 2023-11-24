@@ -34,6 +34,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<readonly any[]>;
         default: () => never[];
     };
+    itemTitle: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    itemValue: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
     loading: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -53,14 +61,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     clearable: {
         type: globalThis.PropType<boolean>;
         default: boolean;
-    };
-    itemTitle: {
-        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-        default: string;
-    };
-    itemValue: {
-        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-        default: string;
     };
     hideSelected: {
         type: globalThis.PropType<boolean>;
@@ -120,6 +120,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<any>;
         default: () => {};
     };
+    cell: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cellUnderlineFullWidth: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -177,6 +185,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     fieldOnly: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    hideCancelIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -278,6 +290,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<readonly any[]>;
         default: () => never[];
     };
+    itemTitle: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    itemValue: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
     loading: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -297,14 +317,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     clearable: {
         type: globalThis.PropType<boolean>;
         default: boolean;
-    };
-    itemTitle: {
-        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-        default: string;
-    };
-    itemValue: {
-        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-        default: string;
     };
     hideSelected: {
         type: globalThis.PropType<boolean>;
@@ -364,6 +376,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<any>;
         default: () => {};
     };
+    cell: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cellUnderlineFullWidth: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -421,6 +441,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     fieldOnly: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    hideCancelIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -492,13 +516,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     density: "default" | "comfortable" | "compact" | null;
     hideDetails: boolean;
     items: readonly any[];
+    itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+    itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
     loading: boolean;
     autofocus: boolean;
     variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
     clearIcon: string;
     clearable: boolean;
-    itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-    itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
     hideSelected: boolean;
     menu: boolean;
     underlined: boolean;
@@ -512,6 +536,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: any;
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     displayAppendIcon: import('../types').VIconValue;
     displayAppendIconColor: string;
@@ -527,6 +553,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     displayPrependInnerIconSize: string | number;
     emptyText: string;
     fieldOnly: boolean;
+    hideCancelIcon: boolean;
     hideSaveIcon: boolean;
     loadingIcon: string;
     loadingIconColor: string;
