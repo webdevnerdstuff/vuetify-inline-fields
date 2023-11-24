@@ -6,12 +6,13 @@
 	--v-inline-fields-density-compact-height: 32px;
 	--v-inline-fields-density-comfortable-height: 40px;
 	--v-inline-fields-grey: #909090;
+	--v-inline-fields-clearable-top-padding: 3px;
 }
 
 %clearable-icons {
 	.v-field__clearable,
 	.v-input__append {
-		padding-top: 0 !important;
+		padding-top: var(--v-inline-fields-clearable-top-padding) !important;
 
 		.v-icon {
 			font-size: 1rem !important;
@@ -154,7 +155,7 @@
 							padding-bottom: 4px;
 						}
 
-						> div {
+						> div:not(.v-input__details) {
 							height: inherit !important;
 							max-height: inherit !important;
 						}
@@ -186,10 +187,15 @@
 						&__control {
 							@extend %clearable-icons;
 
+							.v-field__clearable,
+							.v-input__append {
+								--v-inline-fields-clearable-top-padding: 8px;
+							}
+
 							padding-bottom: 8px;
 						}
 
-						> div {
+						> div:not(.v-input__details) {
 							height: inherit !important;
 							max-height: inherit !important;
 						}
@@ -239,6 +245,44 @@
 			.v-inline-fields--save-fields-container {
 				align-items: flex-end;
 			}
+
+			// ----------- Compact //
+			&-compact {
+				&-plain,
+				&-underlined {
+					.v-input {
+						&__control {
+							@extend %clearable-icons;
+
+							.v-field__clearable,
+							.v-input__append {
+								--v-inline-fields-clearable-top-padding: 8px;
+							}
+
+							padding-bottom: 4px;
+						}
+					}
+				}
+			}
+
+			// ----------- Comfortable //
+			&-comfortable {
+				&-plain,
+				&-underlined {
+					.v-input {
+						&__control {
+							@extend %clearable-icons;
+
+							.v-field__clearable,
+							.v-input__append {
+								--v-inline-fields-clearable-top-padding: 16px;
+							}
+
+							padding-bottom: 8px;
+						}
+					}
+				}
+			}
 		}
 
 		// ------------------------ VSelect, VTextarea, VTextField //
@@ -287,6 +331,11 @@
 		.v-field__append-inner,
 		.v-field__prepend-inner {
 			padding-bottom: 10px !important;
+		}
+
+		.v-input__details {
+			height: fit-content !important;
+			min-height: unset;
 		}
 
 		&-compact {
