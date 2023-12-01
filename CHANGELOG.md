@@ -2,12 +2,12 @@
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
 ## v1.0.0
-TBD
+12-01-2023
 [main] (@webdevnerdstuff)
-* Official release depends on when the Vue team decides if they are going to keep experimental `defineModel` feature. [Blog](https://blog.vuejs.org/posts/vue-3-3#definemodel)
+Official Release
 
 ## v1.0.0-beta-2
-11-09-23
+11-09-2023
 [main] (@webdevnerdstuff)
 * Update lab components to regular components due to Vuetify official releases
 * Update packages

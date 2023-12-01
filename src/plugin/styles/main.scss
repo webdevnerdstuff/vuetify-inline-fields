@@ -29,6 +29,41 @@
 				align-items: center;
 				display: flex;
 			}
+
+			// ------------------------ Clickable Cell Displayed Value //
+			&-cell {
+				cursor: pointer;
+				display: block;
+				max-height: unset !important;
+
+				> div {
+					width: 100%;
+				}
+
+				&-underline-full-width {
+					.v-inline-fields {
+						&--display-value {
+							width: 100%;
+						}
+					}
+				}
+
+				.v-inline-fields {
+					&--selection-control {
+						.v-inline-fields--display-value {
+							justify-content: center;
+						}
+					}
+				}
+
+				&,
+				.v-input,
+				.v-inline-fields--display-wrapper,
+				.v-selection-control__wrapper {
+					height: 100% !important;
+					width: 100%;
+				}
+			}
 		}
 
 		// ------------------------ Displayed Value //
@@ -64,6 +99,11 @@
 	}
 
 	&--container {
+		&-cell {
+			height: 100%;
+			width: 100%;
+		}
+
 		// ------------------------------------------------ Disabled //
 		&-disabled {
 			.v-inline-fields--display-value {

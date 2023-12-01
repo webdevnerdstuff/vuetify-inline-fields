@@ -14,13 +14,14 @@ import { componentName } from '../utils/globals';
 
 // -------------------------------------------------- Main Container //
 export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (options) => {
-	const { field = '', density = '', disabled = false, iconSet = 'mdi', loading = false, loadingWait, tableField = false, variant } = options;
+	const { cell = false, field = '', density = '', disabled = false, iconSet = 'mdi', loading = false, loadingWait, tableField = false, variant } = options;
 
 	const hasDensityAndVariant = density && variant;
 
 	return {
 		[`${componentName}`]: true,
 		[`${componentName}--container`]: true,
+		[`${componentName}--container-cell`]: cell,
 		[`${componentName}--container-disabled`]: unref(disabled),
 		[`${componentName}--container-table`]: tableField,
 		[`${componentName}--container-icon-set-${iconSet}`]: true,
@@ -47,9 +48,11 @@ export const useInlineFieldsContainerClass: UseInlineFieldsContainerClass = (opt
 
 // -------------------------------------------------- Display Value Container //
 export const useDisplayContainerClass: UseDisplayContainerClass = (options) => {
-	const { field = '', density = '' } = options;
+	const { cell = false, cellUnderlineFullWidth = true, field = '', density = '' } = options;
 
 	return {
+		[`${componentName}--display-container-cell`]: cell,
+		[`${componentName}--display-container-cell-underline-full-width`]: cell && cellUnderlineFullWidth,
 		[`${componentName}--display-container`]: true,
 		[`${componentName}--display-wrapper-value`]: true,
 		[`${field}`]: true,
@@ -76,6 +79,7 @@ export const useDisplaySelectionControlClasses: UseDisplaySelectionControlClass 
 	const { density = '' } = options;
 
 	return {
+		[`${componentName}--selection-control`]: true,
 		[`v-selection-control--density-${density}`]: true,
 	};
 };

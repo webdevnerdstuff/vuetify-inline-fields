@@ -16,6 +16,13 @@ declare const _default: {
                 hideDetails: boolean;
                 loading: boolean;
                 underlined: boolean;
+                iconFalse: string;
+                iconFalseColor: string;
+                iconFalseTitle: string;
+                iconTrue: string;
+                iconTrueColor: string;
+                iconTrueTitle: string;
+                icons: boolean;
                 cancelButtonColor: string;
                 cancelButtonSize: string | number;
                 cancelButtonTitle: string;
@@ -26,6 +33,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -41,14 +50,8 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
-                iconFalse: string;
-                iconFalseColor: string;
-                iconFalseTitle: string;
-                iconTrue: string;
-                iconTrueColor: string;
-                iconTrueTitle: string;
-                icons: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
                 loadingWait: boolean;
@@ -74,6 +77,11 @@ declare const _default: {
                 readonly hideDetails: boolean;
                 readonly loading: boolean;
                 readonly underlined: boolean;
+                readonly iconFalseColor: string;
+                readonly iconFalseTitle: string;
+                readonly iconTrueColor: string;
+                readonly iconTrueTitle: string;
+                readonly icons: boolean;
                 readonly cancelButtonColor: string;
                 readonly cancelButtonSize: string | number;
                 readonly cancelButtonTitle: string;
@@ -83,6 +91,8 @@ declare const _default: {
                 readonly cardOffsetX: number;
                 readonly cardOffsetY: number;
                 readonly cardProps: any;
+                readonly cell: boolean;
+                readonly cellUnderlineFullWidth: boolean;
                 readonly closeSiblings: boolean;
                 readonly displayAppendIconSize: string | number;
                 readonly displayAppendInnerIconSize: string | number;
@@ -90,12 +100,8 @@ declare const _default: {
                 readonly displayPrependInnerIconSize: string | number;
                 readonly emptyText: string;
                 readonly fieldOnly: boolean;
+                readonly hideCancelIcon: boolean;
                 readonly hideSaveIcon: boolean;
-                readonly iconFalseColor: string;
-                readonly iconFalseTitle: string;
-                readonly iconTrueColor: string;
-                readonly iconTrueTitle: string;
-                readonly icons: boolean;
                 readonly loadingIconColor: string;
                 readonly loadingWait: boolean;
                 readonly saveButtonColor: string;
@@ -108,12 +114,14 @@ declare const _default: {
                 readonly underlineStyle: string;
                 readonly underlineWidth: string;
                 readonly valueColor: string;
-                readonly error?: boolean | undefined;
                 readonly modelValue?: any;
+                readonly error?: boolean | undefined;
                 readonly falseIcon?: string | undefined;
                 readonly trueIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
                 readonly required?: boolean | undefined;
+                readonly iconFalse?: string | undefined;
+                readonly iconTrue?: string | undefined;
                 readonly cancelIcon?: string | undefined;
                 readonly displayAppendIcon?: import("../types").VIconValue | undefined;
                 readonly displayAppendIconColor?: string | undefined;
@@ -123,8 +131,6 @@ declare const _default: {
                 readonly displayPrependIconColor?: string | undefined;
                 readonly displayPrependInnerIcon?: import("../types").VIconValue | undefined;
                 readonly displayPrependInnerIconColor?: string | undefined;
-                readonly iconFalse?: string | undefined;
-                readonly iconTrue?: string | undefined;
                 readonly loadingIcon?: string | undefined;
                 readonly saveIcon?: string | undefined;
             } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Readonly<import("vue").ExtractPropTypes<{
@@ -186,6 +192,34 @@ declare const _default: {
                 required: {
                     type: globalThis.PropType<boolean>;
                 };
+                iconFalse: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconFalseColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconFalseTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrue: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconTrueColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrueTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                icons: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 cancelButtonColor: {
                     type: globalThis.PropType<string>;
                     default: string;
@@ -225,6 +259,14 @@ declare const _default: {
                 cardProps: {
                     type: globalThis.PropType<any>;
                     default: () => {};
+                };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
                 };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
@@ -286,35 +328,11 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                hideSaveIcon: {
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                iconFalse: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconFalseColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconFalseTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrue: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconTrueColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrueTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                icons: {
+                hideSaveIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -374,7 +392,7 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>>, "name" | "color" | "label" | "disabled" | "density" | "falseIcon" | "trueIcon" | "trueValue" | "falseValue" | "hideDetails" | "loading" | "underlined" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideSaveIcon" | "iconFalse" | "iconFalseColor" | "iconFalseTitle" | "iconTrue" | "iconTrueColor" | "iconTrueTitle" | "icons" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
+            }>>, "name" | "color" | "label" | "disabled" | "density" | "falseIcon" | "trueIcon" | "trueValue" | "falseValue" | "hideDetails" | "loading" | "underlined" | "iconFalse" | "iconFalseColor" | "iconFalseTitle" | "iconTrue" | "iconTrueColor" | "iconTrueTitle" | "icons" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "cell" | "cellUnderlineFullWidth" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideCancelIcon" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
             $attrs: {
                 [x: string]: unknown;
             };
@@ -447,6 +465,34 @@ declare const _default: {
                 required: {
                     type: globalThis.PropType<boolean>;
                 };
+                iconFalse: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconFalseColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconFalseTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrue: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconTrueColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrueTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                icons: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 cancelButtonColor: {
                     type: globalThis.PropType<string>;
                     default: string;
@@ -486,6 +532,14 @@ declare const _default: {
                 cardProps: {
                     type: globalThis.PropType<any>;
                     default: () => {};
+                };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
                 };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
@@ -547,35 +601,11 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                hideSaveIcon: {
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                iconFalse: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconFalseColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconFalseTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrue: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconTrueColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrueTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                icons: {
+                hideSaveIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -650,6 +680,13 @@ declare const _default: {
                 hideDetails: boolean;
                 loading: boolean;
                 underlined: boolean;
+                iconFalse: string;
+                iconFalseColor: string;
+                iconFalseTitle: string;
+                iconTrue: string;
+                iconTrueColor: string;
+                iconTrueTitle: string;
+                icons: boolean;
                 cancelButtonColor: string;
                 cancelButtonSize: string | number;
                 cancelButtonTitle: string;
@@ -660,6 +697,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -675,14 +714,8 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
-                iconFalse: string;
-                iconFalseColor: string;
-                iconFalseTitle: string;
-                iconTrue: string;
-                iconTrueColor: string;
-                iconTrueTitle: string;
-                icons: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
                 loadingWait: boolean;
@@ -776,6 +809,34 @@ declare const _default: {
             required: {
                 type: globalThis.PropType<boolean>;
             };
+            iconFalse: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            iconFalseColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            iconFalseTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            iconTrue: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            iconTrueColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            iconTrueTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            icons: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
             cancelButtonColor: {
                 type: globalThis.PropType<string>;
                 default: string;
@@ -815,6 +876,14 @@ declare const _default: {
             cardProps: {
                 type: globalThis.PropType<any>;
                 default: () => {};
+            };
+            cell: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cellUnderlineFullWidth: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
             };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
@@ -876,35 +945,11 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
-            hideSaveIcon: {
+            hideCancelIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
-            iconFalse: {
-                type: globalThis.PropType<string>;
-                default: undefined;
-            };
-            iconFalseColor: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            iconFalseTitle: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            iconTrue: {
-                type: globalThis.PropType<string>;
-                default: undefined;
-            };
-            iconTrueColor: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            iconTrueTitle: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            icons: {
+            hideSaveIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
@@ -1027,6 +1072,34 @@ declare const _default: {
         required: {
             type: globalThis.PropType<boolean>;
         };
+        iconFalse: {
+            type: globalThis.PropType<string>;
+            default: undefined;
+        };
+        iconFalseColor: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        iconFalseTitle: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        iconTrue: {
+            type: globalThis.PropType<string>;
+            default: undefined;
+        };
+        iconTrueColor: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        iconTrueTitle: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        icons: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
         cancelButtonColor: {
             type: globalThis.PropType<string>;
             default: string;
@@ -1066,6 +1139,14 @@ declare const _default: {
         cardProps: {
             type: globalThis.PropType<any>;
             default: () => {};
+        };
+        cell: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cellUnderlineFullWidth: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
         };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
@@ -1127,35 +1208,11 @@ declare const _default: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
-        hideSaveIcon: {
+        hideCancelIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
-        iconFalse: {
-            type: globalThis.PropType<string>;
-            default: undefined;
-        };
-        iconFalseColor: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        iconFalseTitle: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        iconTrue: {
-            type: globalThis.PropType<string>;
-            default: undefined;
-        };
-        iconTrueColor: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        iconTrueTitle: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        icons: {
+        hideSaveIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
@@ -1230,6 +1287,13 @@ declare const _default: {
         hideDetails: boolean;
         loading: boolean;
         underlined: boolean;
+        iconFalse: string;
+        iconFalseColor: string;
+        iconFalseTitle: string;
+        iconTrue: string;
+        iconTrueColor: string;
+        iconTrueTitle: string;
+        icons: boolean;
         cancelButtonColor: string;
         cancelButtonSize: string | number;
         cancelButtonTitle: string;
@@ -1240,6 +1304,8 @@ declare const _default: {
         cardOffsetX: number;
         cardOffsetY: number;
         cardProps: any;
+        cell: boolean;
+        cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -1255,14 +1321,8 @@ declare const _default: {
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
+        hideCancelIcon: boolean;
         hideSaveIcon: boolean;
-        iconFalse: string;
-        iconFalseColor: string;
-        iconFalseTitle: string;
-        iconTrue: string;
-        iconTrueColor: string;
-        iconTrueTitle: string;
-        icons: boolean;
         loadingIcon: string;
         loadingIconColor: string;
         loadingWait: boolean;
@@ -1307,6 +1367,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -1322,6 +1384,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -1358,6 +1421,8 @@ declare const _default: {
                 readonly cardOffsetX: number;
                 readonly cardOffsetY: number;
                 readonly cardProps: any;
+                readonly cell: boolean;
+                readonly cellUnderlineFullWidth: boolean;
                 readonly closeSiblings: boolean;
                 readonly displayAppendIconSize: string | number;
                 readonly displayAppendInnerIconSize: string | number;
@@ -1365,6 +1430,7 @@ declare const _default: {
                 readonly displayPrependInnerIconSize: string | number;
                 readonly emptyText: string;
                 readonly fieldOnly: boolean;
+                readonly hideCancelIcon: boolean;
                 readonly hideSaveIcon: boolean;
                 readonly loadingIconColor: string;
                 readonly loadingWait: boolean;
@@ -1378,8 +1444,8 @@ declare const _default: {
                 readonly underlineStyle: string;
                 readonly underlineWidth: string;
                 readonly valueColor: string;
-                readonly error?: boolean | undefined;
                 readonly modelValue?: any;
+                readonly error?: boolean | undefined;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -1501,6 +1567,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -1558,6 +1632,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -1621,7 +1699,7 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "loading" | "autofocus" | "variant" | "underlined" | "truncateLength" | "truncateSuffix" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
+            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "loading" | "autofocus" | "variant" | "underlined" | "truncateLength" | "truncateSuffix" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "cell" | "cellUnderlineFullWidth" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideCancelIcon" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
             $attrs: {
                 [x: string]: unknown;
             };
@@ -1740,6 +1818,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -1797,6 +1883,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -1885,6 +1975,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -1900,6 +1992,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -2040,6 +2133,14 @@ declare const _default: {
                 type: globalThis.PropType<any>;
                 default: () => {};
             };
+            cell: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cellUnderlineFullWidth: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -2097,6 +2198,10 @@ declare const _default: {
                 default: string;
             };
             fieldOnly: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            hideCancelIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
@@ -2269,6 +2374,14 @@ declare const _default: {
             type: globalThis.PropType<any>;
             default: () => {};
         };
+        cell: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cellUnderlineFullWidth: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -2326,6 +2439,10 @@ declare const _default: {
             default: string;
         };
         fieldOnly: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        hideCancelIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
@@ -2414,6 +2531,8 @@ declare const _default: {
         cardOffsetX: number;
         cardOffsetY: number;
         cardProps: any;
+        cell: boolean;
+        cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -2429,6 +2548,7 @@ declare const _default: {
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
+        hideCancelIcon: boolean;
         hideSaveIcon: boolean;
         loadingIcon: string;
         loadingIconColor: string;
@@ -2460,6 +2580,7 @@ declare const _default: {
                 truncateLength: number | undefined;
                 truncateSuffix: string;
                 variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string | undefined;
                 loadingIconColor: string;
@@ -2480,6 +2601,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 color: string;
                 density: "default" | "comfortable" | "compact" | null;
@@ -2523,13 +2646,13 @@ declare const _default: {
                 density: "default" | "comfortable" | "compact" | null;
                 hideDetails: boolean;
                 items: readonly any[];
+                itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+                itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
                 loading: boolean;
                 autofocus: boolean;
                 variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 clearIcon: string;
                 clearable: boolean;
-                itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-                itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 hideSelected: boolean;
                 menu: boolean;
                 underlined: boolean;
@@ -2543,6 +2666,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -2558,6 +2683,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -2581,12 +2707,12 @@ declare const _default: {
                 readonly density: "default" | "comfortable" | "compact" | null;
                 readonly hideDetails: boolean;
                 readonly items: readonly any[];
+                readonly itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+                readonly itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
                 readonly loading: boolean;
                 readonly autofocus: boolean;
                 readonly variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 readonly clearable: boolean;
-                readonly itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-                readonly itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 readonly hideSelected: boolean;
                 readonly menu: boolean;
                 readonly underlined: boolean;
@@ -2599,6 +2725,8 @@ declare const _default: {
                 readonly cardOffsetX: number;
                 readonly cardOffsetY: number;
                 readonly cardProps: any;
+                readonly cell: boolean;
+                readonly cellUnderlineFullWidth: boolean;
                 readonly closeSiblings: boolean;
                 readonly displayAppendIconSize: string | number;
                 readonly displayAppendInnerIconSize: string | number;
@@ -2606,6 +2734,7 @@ declare const _default: {
                 readonly displayPrependInnerIconSize: string | number;
                 readonly emptyText: string;
                 readonly fieldOnly: boolean;
+                readonly hideCancelIcon: boolean;
                 readonly hideSaveIcon: boolean;
                 readonly loadingIconColor: string;
                 readonly loadingWait: boolean;
@@ -2619,8 +2748,8 @@ declare const _default: {
                 readonly underlineStyle: string;
                 readonly underlineWidth: string;
                 readonly valueColor: string;
-                readonly error?: boolean | undefined;
                 readonly modelValue?: any;
+                readonly error?: boolean | undefined;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -2672,6 +2801,14 @@ declare const _default: {
                     type: globalThis.PropType<readonly any[]>;
                     default: () => never[];
                 };
+                itemTitle: {
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+                    default: string;
+                };
+                itemValue: {
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+                    default: string;
+                };
                 loading: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -2691,14 +2828,6 @@ declare const _default: {
                 clearable: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
-                };
-                itemTitle: {
-                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-                    default: string;
-                };
-                itemValue: {
-                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-                    default: string;
                 };
                 hideSelected: {
                     type: globalThis.PropType<boolean>;
@@ -2758,6 +2887,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -2815,6 +2952,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -2878,7 +3019,7 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "items" | "loading" | "autofocus" | "variant" | "clearIcon" | "clearable" | "itemTitle" | "itemValue" | "hideSelected" | "menu" | "underlined" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
+            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "items" | "itemTitle" | "itemValue" | "loading" | "autofocus" | "variant" | "clearIcon" | "clearable" | "hideSelected" | "menu" | "underlined" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "cell" | "cellUnderlineFullWidth" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideCancelIcon" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
             $attrs: {
                 [x: string]: unknown;
             };
@@ -2928,6 +3069,14 @@ declare const _default: {
                     type: globalThis.PropType<readonly any[]>;
                     default: () => never[];
                 };
+                itemTitle: {
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+                    default: string;
+                };
+                itemValue: {
+                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+                    default: string;
+                };
                 loading: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -2947,14 +3096,6 @@ declare const _default: {
                 clearable: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
-                };
-                itemTitle: {
-                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-                    default: string;
-                };
-                itemValue: {
-                    type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-                    default: string;
                 };
                 hideSelected: {
                     type: globalThis.PropType<boolean>;
@@ -3014,6 +3155,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -3071,6 +3220,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -3144,13 +3297,13 @@ declare const _default: {
                 density: "default" | "comfortable" | "compact" | null;
                 hideDetails: boolean;
                 items: readonly any[];
+                itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+                itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
                 loading: boolean;
                 autofocus: boolean;
                 variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
                 clearIcon: string;
                 clearable: boolean;
-                itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-                itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
                 hideSelected: boolean;
                 menu: boolean;
                 underlined: boolean;
@@ -3164,6 +3317,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -3179,6 +3334,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -3250,6 +3406,14 @@ declare const _default: {
                 type: globalThis.PropType<readonly any[]>;
                 default: () => never[];
             };
+            itemTitle: {
+                type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+                default: string;
+            };
+            itemValue: {
+                type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+                default: string;
+            };
             loading: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -3269,14 +3433,6 @@ declare const _default: {
             clearable: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
-            };
-            itemTitle: {
-                type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-                default: string;
-            };
-            itemValue: {
-                type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-                default: string;
             };
             hideSelected: {
                 type: globalThis.PropType<boolean>;
@@ -3336,6 +3492,14 @@ declare const _default: {
                 type: globalThis.PropType<any>;
                 default: () => {};
             };
+            cell: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cellUnderlineFullWidth: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -3393,6 +3557,10 @@ declare const _default: {
                 default: string;
             };
             fieldOnly: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            hideCancelIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
@@ -3496,6 +3664,14 @@ declare const _default: {
             type: globalThis.PropType<readonly any[]>;
             default: () => never[];
         };
+        itemTitle: {
+            type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+            default: string;
+        };
+        itemValue: {
+            type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+            default: string;
+        };
         loading: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -3515,14 +3691,6 @@ declare const _default: {
         clearable: {
             type: globalThis.PropType<boolean>;
             default: boolean;
-        };
-        itemTitle: {
-            type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-            default: string;
-        };
-        itemValue: {
-            type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null>;
-            default: string;
         };
         hideSelected: {
             type: globalThis.PropType<boolean>;
@@ -3582,6 +3750,14 @@ declare const _default: {
             type: globalThis.PropType<any>;
             default: () => {};
         };
+        cell: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cellUnderlineFullWidth: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -3639,6 +3815,10 @@ declare const _default: {
             default: string;
         };
         fieldOnly: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        hideCancelIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
@@ -3712,13 +3892,13 @@ declare const _default: {
         density: "default" | "comfortable" | "compact" | null;
         hideDetails: boolean;
         items: readonly any[];
+        itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+        itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
         loading: boolean;
         autofocus: boolean;
         variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
         clearIcon: string;
         clearable: boolean;
-        itemTitle: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
-        itemValue: string | boolean | readonly (string | number)[] | ((item: Record<string, any>, fallback?: any) => any) | null;
         hideSelected: boolean;
         menu: boolean;
         underlined: boolean;
@@ -3732,6 +3912,8 @@ declare const _default: {
         cardOffsetX: number;
         cardOffsetY: number;
         cardProps: any;
+        cell: boolean;
+        cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -3747,6 +3929,7 @@ declare const _default: {
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
+        hideCancelIcon: boolean;
         hideSaveIcon: boolean;
         loadingIcon: string;
         loadingIconColor: string;
@@ -3781,6 +3964,13 @@ declare const _default: {
                 hideDetails: boolean;
                 loading: boolean;
                 underlined: boolean;
+                iconFalse: string;
+                iconFalseColor: string;
+                iconFalseTitle: string;
+                iconTrue: string;
+                iconTrueColor: string;
+                iconTrueTitle: string;
+                icons: boolean;
                 cancelButtonColor: string;
                 cancelButtonSize: string | number;
                 cancelButtonTitle: string;
@@ -3791,6 +3981,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -3806,13 +3998,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
-                iconFalse: string;
-                iconFalseColor: string;
-                iconFalseTitle: string;
-                iconTrue: string;
-                iconTrueColor: string;
-                iconTrueTitle: string;
-                icons: boolean;
+                hideCancelIcon: boolean;
                 loadingWait: boolean;
                 tableField: boolean;
                 underlineColor: string;
@@ -3831,6 +4017,11 @@ declare const _default: {
                 readonly hideDetails: boolean;
                 readonly loading: boolean;
                 readonly underlined: boolean;
+                readonly iconFalseColor: string;
+                readonly iconFalseTitle: string;
+                readonly iconTrueColor: string;
+                readonly iconTrueTitle: string;
+                readonly icons: boolean;
                 readonly cancelButtonColor: string;
                 readonly cancelButtonSize: string | number;
                 readonly cancelButtonTitle: string;
@@ -3840,6 +4031,8 @@ declare const _default: {
                 readonly cardOffsetX: number;
                 readonly cardOffsetY: number;
                 readonly cardProps: any;
+                readonly cell: boolean;
+                readonly cellUnderlineFullWidth: boolean;
                 readonly closeSiblings: boolean;
                 readonly displayAppendIconSize: string | number;
                 readonly displayAppendInnerIconSize: string | number;
@@ -3847,21 +4040,19 @@ declare const _default: {
                 readonly displayPrependInnerIconSize: string | number;
                 readonly emptyText: string;
                 readonly fieldOnly: boolean;
-                readonly iconFalseColor: string;
-                readonly iconFalseTitle: string;
-                readonly iconTrueColor: string;
-                readonly iconTrueTitle: string;
-                readonly icons: boolean;
+                readonly hideCancelIcon: boolean;
                 readonly loadingWait: boolean;
                 readonly tableField: boolean;
                 readonly underlineColor: string;
                 readonly underlineStyle: string;
                 readonly underlineWidth: string;
                 readonly valueColor: string;
-                readonly error?: boolean | undefined;
                 readonly modelValue?: any;
+                readonly error?: boolean | undefined;
                 readonly item?: Record<string, unknown> | undefined;
                 readonly required?: boolean | undefined;
+                readonly iconFalse?: string | undefined;
+                readonly iconTrue?: string | undefined;
                 readonly cancelIcon?: string | undefined;
                 readonly displayAppendIcon?: import("../types").VIconValue | undefined;
                 readonly displayAppendIconColor?: string | undefined;
@@ -3871,8 +4062,6 @@ declare const _default: {
                 readonly displayPrependIconColor?: string | undefined;
                 readonly displayPrependInnerIcon?: import("../types").VIconValue | undefined;
                 readonly displayPrependInnerIconColor?: string | undefined;
-                readonly iconFalse?: string | undefined;
-                readonly iconTrue?: string | undefined;
             } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Readonly<import("vue").ExtractPropTypes<{
                 modelValue: globalThis.PropType<any>;
                 error: {
@@ -3928,6 +4117,34 @@ declare const _default: {
                 required: {
                     type: globalThis.PropType<boolean>;
                 };
+                iconFalse: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconFalseColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconFalseTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrue: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconTrueColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrueTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                icons: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 cancelButtonColor: {
                     type: globalThis.PropType<string>;
                     default: string;
@@ -3967,6 +4184,14 @@ declare const _default: {
                 cardProps: {
                     type: globalThis.PropType<any>;
                     default: () => {};
+                };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
                 };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
@@ -4028,31 +4253,7 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                iconFalse: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconFalseColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconFalseTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrue: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconTrueColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrueTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                icons: {
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -4080,7 +4281,7 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>>, "name" | "color" | "label" | "disabled" | "density" | "falseIcon" | "trueValue" | "falseValue" | "hideDetails" | "loading" | "underlined" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "iconFalse" | "iconFalseColor" | "iconFalseTitle" | "iconTrue" | "iconTrueColor" | "iconTrueTitle" | "icons" | "loadingWait" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
+            }>>, "name" | "color" | "label" | "disabled" | "density" | "falseIcon" | "trueValue" | "falseValue" | "hideDetails" | "loading" | "underlined" | "iconFalse" | "iconFalseColor" | "iconFalseTitle" | "iconTrue" | "iconTrueColor" | "iconTrueTitle" | "icons" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "cell" | "cellUnderlineFullWidth" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideCancelIcon" | "loadingWait" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
             $attrs: {
                 [x: string]: unknown;
             };
@@ -4149,6 +4350,34 @@ declare const _default: {
                 required: {
                     type: globalThis.PropType<boolean>;
                 };
+                iconFalse: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconFalseColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconFalseTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrue: {
+                    type: globalThis.PropType<string>;
+                    default: undefined;
+                };
+                iconTrueColor: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                iconTrueTitle: {
+                    type: globalThis.PropType<string>;
+                    default: string;
+                };
+                icons: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 cancelButtonColor: {
                     type: globalThis.PropType<string>;
                     default: string;
@@ -4188,6 +4417,14 @@ declare const _default: {
                 cardProps: {
                     type: globalThis.PropType<any>;
                     default: () => {};
+                };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
                 };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
@@ -4249,31 +4486,7 @@ declare const _default: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
-                iconFalse: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconFalseColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconFalseTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrue: {
-                    type: globalThis.PropType<string>;
-                    default: undefined;
-                };
-                iconTrueColor: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                iconTrueTitle: {
-                    type: globalThis.PropType<string>;
-                    default: string;
-                };
-                icons: {
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -4315,6 +4528,13 @@ declare const _default: {
                 hideDetails: boolean;
                 loading: boolean;
                 underlined: boolean;
+                iconFalse: string;
+                iconFalseColor: string;
+                iconFalseTitle: string;
+                iconTrue: string;
+                iconTrueColor: string;
+                iconTrueTitle: string;
+                icons: boolean;
                 cancelButtonColor: string;
                 cancelButtonSize: string | number;
                 cancelButtonTitle: string;
@@ -4325,6 +4545,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -4340,13 +4562,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
-                iconFalse: string;
-                iconFalseColor: string;
-                iconFalseTitle: string;
-                iconTrue: string;
-                iconTrueColor: string;
-                iconTrueTitle: string;
-                icons: boolean;
+                hideCancelIcon: boolean;
                 loadingWait: boolean;
                 tableField: boolean;
                 underlineColor: string;
@@ -4428,6 +4644,34 @@ declare const _default: {
             required: {
                 type: globalThis.PropType<boolean>;
             };
+            iconFalse: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            iconFalseColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            iconFalseTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            iconTrue: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            iconTrueColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            iconTrueTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            icons: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
             cancelButtonColor: {
                 type: globalThis.PropType<string>;
                 default: string;
@@ -4467,6 +4711,14 @@ declare const _default: {
             cardProps: {
                 type: globalThis.PropType<any>;
                 default: () => {};
+            };
+            cell: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cellUnderlineFullWidth: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
             };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
@@ -4528,31 +4780,7 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
-            iconFalse: {
-                type: globalThis.PropType<string>;
-                default: undefined;
-            };
-            iconFalseColor: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            iconFalseTitle: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            iconTrue: {
-                type: globalThis.PropType<string>;
-                default: undefined;
-            };
-            iconTrueColor: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            iconTrueTitle: {
-                type: globalThis.PropType<string>;
-                default: string;
-            };
-            icons: {
+            hideCancelIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
@@ -4639,6 +4867,34 @@ declare const _default: {
         required: {
             type: globalThis.PropType<boolean>;
         };
+        iconFalse: {
+            type: globalThis.PropType<string>;
+            default: undefined;
+        };
+        iconFalseColor: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        iconFalseTitle: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        iconTrue: {
+            type: globalThis.PropType<string>;
+            default: undefined;
+        };
+        iconTrueColor: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        iconTrueTitle: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        icons: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
         cancelButtonColor: {
             type: globalThis.PropType<string>;
             default: string;
@@ -4678,6 +4934,14 @@ declare const _default: {
         cardProps: {
             type: globalThis.PropType<any>;
             default: () => {};
+        };
+        cell: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cellUnderlineFullWidth: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
         };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
@@ -4739,31 +5003,7 @@ declare const _default: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
-        iconFalse: {
-            type: globalThis.PropType<string>;
-            default: undefined;
-        };
-        iconFalseColor: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        iconFalseTitle: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        iconTrue: {
-            type: globalThis.PropType<string>;
-            default: undefined;
-        };
-        iconTrueColor: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        iconTrueTitle: {
-            type: globalThis.PropType<string>;
-            default: string;
-        };
-        icons: {
+        hideCancelIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
@@ -4805,6 +5045,13 @@ declare const _default: {
         hideDetails: boolean;
         loading: boolean;
         underlined: boolean;
+        iconFalse: string;
+        iconFalseColor: string;
+        iconFalseTitle: string;
+        iconTrue: string;
+        iconTrueColor: string;
+        iconTrueTitle: string;
+        icons: boolean;
         cancelButtonColor: string;
         cancelButtonSize: string | number;
         cancelButtonTitle: string;
@@ -4815,6 +5062,8 @@ declare const _default: {
         cardOffsetX: number;
         cardOffsetY: number;
         cardProps: any;
+        cell: boolean;
+        cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -4830,13 +5079,7 @@ declare const _default: {
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
-        iconFalse: string;
-        iconFalseColor: string;
-        iconFalseTitle: string;
-        iconTrue: string;
-        iconTrueColor: string;
-        iconTrueTitle: string;
-        icons: boolean;
+        hideCancelIcon: boolean;
         loadingWait: boolean;
         tableField: boolean;
         underlineColor: string;
@@ -4873,6 +5116,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -4888,6 +5133,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -4924,6 +5170,8 @@ declare const _default: {
                 readonly cardOffsetX: number;
                 readonly cardOffsetY: number;
                 readonly cardProps: any;
+                readonly cell: boolean;
+                readonly cellUnderlineFullWidth: boolean;
                 readonly closeSiblings: boolean;
                 readonly displayAppendIconSize: string | number;
                 readonly displayAppendInnerIconSize: string | number;
@@ -4931,6 +5179,7 @@ declare const _default: {
                 readonly displayPrependInnerIconSize: string | number;
                 readonly emptyText: string;
                 readonly fieldOnly: boolean;
+                readonly hideCancelIcon: boolean;
                 readonly hideSaveIcon: boolean;
                 readonly loadingIconColor: string;
                 readonly loadingWait: boolean;
@@ -4944,8 +5193,8 @@ declare const _default: {
                 readonly underlineStyle: string;
                 readonly underlineWidth: string;
                 readonly valueColor: string;
-                readonly error?: boolean | undefined;
                 readonly modelValue?: any;
+                readonly error?: boolean | undefined;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -5067,6 +5316,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -5124,6 +5381,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -5187,7 +5448,7 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "loading" | "autofocus" | "variant" | "underlined" | "truncateLength" | "truncateSuffix" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
+            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "loading" | "autofocus" | "variant" | "underlined" | "truncateLength" | "truncateSuffix" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "cell" | "cellUnderlineFullWidth" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideCancelIcon" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
             $attrs: {
                 [x: string]: unknown;
             };
@@ -5306,6 +5567,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -5363,6 +5632,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -5451,6 +5724,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -5466,6 +5741,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -5606,6 +5882,14 @@ declare const _default: {
                 type: globalThis.PropType<any>;
                 default: () => {};
             };
+            cell: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cellUnderlineFullWidth: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -5663,6 +5947,10 @@ declare const _default: {
                 default: string;
             };
             fieldOnly: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            hideCancelIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
@@ -5835,6 +6123,14 @@ declare const _default: {
             type: globalThis.PropType<any>;
             default: () => {};
         };
+        cell: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cellUnderlineFullWidth: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -5892,6 +6188,10 @@ declare const _default: {
             default: string;
         };
         fieldOnly: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        hideCancelIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
@@ -5980,6 +6280,8 @@ declare const _default: {
         cardOffsetX: number;
         cardOffsetY: number;
         cardProps: any;
+        cell: boolean;
+        cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -5995,6 +6297,7 @@ declare const _default: {
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
+        hideCancelIcon: boolean;
         hideSaveIcon: boolean;
         loadingIcon: string;
         loadingIconColor: string;
@@ -6042,6 +6345,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -6057,6 +6362,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -6095,6 +6401,8 @@ declare const _default: {
                 readonly cardOffsetX: number;
                 readonly cardOffsetY: number;
                 readonly cardProps: any;
+                readonly cell: boolean;
+                readonly cellUnderlineFullWidth: boolean;
                 readonly closeSiblings: boolean;
                 readonly displayAppendIconSize: string | number;
                 readonly displayAppendInnerIconSize: string | number;
@@ -6102,6 +6410,7 @@ declare const _default: {
                 readonly displayPrependInnerIconSize: string | number;
                 readonly emptyText: string;
                 readonly fieldOnly: boolean;
+                readonly hideCancelIcon: boolean;
                 readonly hideSaveIcon: boolean;
                 readonly loadingIconColor: string;
                 readonly loadingWait: boolean;
@@ -6115,8 +6424,8 @@ declare const _default: {
                 readonly underlineStyle: string;
                 readonly underlineWidth: string;
                 readonly valueColor: string;
-                readonly error?: boolean | undefined;
                 readonly modelValue?: any;
+                readonly error?: boolean | undefined;
                 readonly rules?: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[] | undefined;
                 readonly clearIcon?: string | undefined;
                 readonly item?: Record<string, unknown> | undefined;
@@ -6246,6 +6555,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -6303,6 +6620,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -6366,7 +6687,7 @@ declare const _default: {
                     type: globalThis.PropType<string>;
                     default: string;
                 };
-            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "loading" | "autofocus" | "variant" | "underlined" | "autoGrow" | "rows" | "truncateLength" | "truncateSuffix" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
+            }>>, "name" | "color" | "label" | "disabled" | "density" | "hideDetails" | "loading" | "autofocus" | "variant" | "underlined" | "autoGrow" | "rows" | "truncateLength" | "truncateSuffix" | "cancelButtonColor" | "cancelButtonSize" | "cancelButtonTitle" | "cancelButtonVariant" | "cancelIcon" | "cancelIconColor" | "cardField" | "cardOffsetX" | "cardOffsetY" | "cardProps" | "cell" | "cellUnderlineFullWidth" | "closeSiblings" | "displayAppendIcon" | "displayAppendIconColor" | "displayAppendIconSize" | "displayAppendInnerIcon" | "displayAppendInnerIconColor" | "displayAppendInnerIconSize" | "displayPrependIcon" | "displayPrependIconColor" | "displayPrependIconSize" | "displayPrependInnerIcon" | "displayPrependInnerIconColor" | "displayPrependInnerIconSize" | "emptyText" | "fieldOnly" | "hideCancelIcon" | "hideSaveIcon" | "loadingIcon" | "loadingIconColor" | "loadingWait" | "saveButtonColor" | "saveButtonSize" | "saveButtonTitle" | "saveButtonVariant" | "saveIcon" | "saveIconColor" | "tableField" | "underlineColor" | "underlineStyle" | "underlineWidth" | "valueColor">;
             $attrs: {
                 [x: string]: unknown;
             };
@@ -6493,6 +6814,14 @@ declare const _default: {
                     type: globalThis.PropType<any>;
                     default: () => {};
                 };
+                cell: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                cellUnderlineFullWidth: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
                 closeSiblings: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
@@ -6550,6 +6879,10 @@ declare const _default: {
                     default: string;
                 };
                 fieldOnly: {
+                    type: globalThis.PropType<boolean>;
+                    default: boolean;
+                };
+                hideCancelIcon: {
                     type: globalThis.PropType<boolean>;
                     default: boolean;
                 };
@@ -6640,6 +6973,8 @@ declare const _default: {
                 cardOffsetX: number;
                 cardOffsetY: number;
                 cardProps: any;
+                cell: boolean;
+                cellUnderlineFullWidth: boolean;
                 closeSiblings: boolean;
                 displayAppendIcon: import("../types").VIconValue;
                 displayAppendIconColor: string;
@@ -6655,6 +6990,7 @@ declare const _default: {
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
                 fieldOnly: boolean;
+                hideCancelIcon: boolean;
                 hideSaveIcon: boolean;
                 loadingIcon: string;
                 loadingIconColor: string;
@@ -6803,6 +7139,14 @@ declare const _default: {
                 type: globalThis.PropType<any>;
                 default: () => {};
             };
+            cell: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            cellUnderlineFullWidth: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
             closeSiblings: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
@@ -6860,6 +7204,10 @@ declare const _default: {
                 default: string;
             };
             fieldOnly: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            hideCancelIcon: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
@@ -7040,6 +7388,14 @@ declare const _default: {
             type: globalThis.PropType<any>;
             default: () => {};
         };
+        cell: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        cellUnderlineFullWidth: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
         closeSiblings: {
             type: globalThis.PropType<boolean>;
             default: boolean;
@@ -7097,6 +7453,10 @@ declare const _default: {
             default: string;
         };
         fieldOnly: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        hideCancelIcon: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
@@ -7187,6 +7547,8 @@ declare const _default: {
         cardOffsetX: number;
         cardOffsetY: number;
         cardProps: any;
+        cell: boolean;
+        cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
         displayAppendIcon: import("../types").VIconValue;
         displayAppendIconColor: string;
@@ -7202,6 +7564,7 @@ declare const _default: {
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
+        hideCancelIcon: boolean;
         hideSaveIcon: boolean;
         loadingIcon: string;
         loadingIconColor: string;

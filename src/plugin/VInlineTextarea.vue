@@ -79,6 +79,7 @@
 							:cancel-icon-color="settings.cancelIconColor"
 							:error="error"
 							:field-only="settings.fieldOnly"
+							:hide-cancel-icon="settings.hideCancelIcon"
 							:hide-save-icon="settings.hideSaveIcon"
 							:loading="loadingProp"
 							:loading-icon="settings.loadingIcon"
@@ -243,6 +244,7 @@ const bindingCard = computed(() => ({
 
 // ------------------------------------------------ Class & Styles //
 const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass({
+	cell: settings.cell && !showField.value,
 	density: settings.density,
 	disabled: disabledProp.value,
 	field: 'v-textarea',
@@ -254,6 +256,8 @@ const inlineFieldsContainerClass = computed(() => useInlineFieldsContainerClass(
 }));
 
 const displayContainerClass = computed(() => useDisplayContainerClass({
+	cell: settings.cell,
+	cellUnderlineFullWidth: settings.cellUnderlineFullWidth,
 	density: settings.density,
 	field: 'v-textarea',
 }));

@@ -111,6 +111,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<any>;
         default: () => {};
     };
+    cell: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cellUnderlineFullWidth: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -168,6 +176,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     fieldOnly: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    hideCancelIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -346,6 +358,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<any>;
         default: () => {};
     };
+    cell: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    cellUnderlineFullWidth: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     closeSiblings: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -403,6 +423,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     fieldOnly: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    hideCancelIcon: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -491,6 +515,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cardOffsetX: number;
     cardOffsetY: number;
     cardProps: any;
+    cell: boolean;
+    cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
     displayAppendIcon: import('../types').VIconValue;
     displayAppendIconColor: string;
@@ -506,6 +532,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     displayPrependInnerIconSize: string | number;
     emptyText: string;
     fieldOnly: boolean;
+    hideCancelIcon: boolean;
     hideSaveIcon: boolean;
     loadingIcon: string;
     loadingIconColor: string;

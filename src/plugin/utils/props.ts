@@ -16,6 +16,8 @@ export const sharedProps = {
 	cardOffsetX: 0,
 	cardOffsetY: 0,
 	cardProps: () => ({}) as const,
+	cell: false,
+	cellUnderlineFullWidth: true,
 	closeSiblings: false,
 	color: 'primary',
 	density: 'compact' as const,
@@ -34,6 +36,7 @@ export const sharedProps = {
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
+	hideCancelIcon: true,
 	hideDetails: true,
 	label: '',
 	loading: false,
@@ -54,6 +57,7 @@ const autofocus = {
 
 // * ------------------------------ Save & Loading Icon //
 const saveAndLoadingIconProps = {
+	hideCancelIcon: false,
 	hideSaveIcon: false,
 	loadingIcon: undefined,
 	loadingIconColor: 'primary',
