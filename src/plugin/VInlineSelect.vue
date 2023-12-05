@@ -198,9 +198,11 @@ const displayValue = computed(() => {
 		return modelValue.value[settings.itemTitle as string];
 	}
 
-	modelValue.value = '';
-	empty.value = true;
+	if (modelValue.value) {
+		return modelValue.value;
+	}
 
+	empty.value = true;
 	return settings.emptyText;
 });
 
