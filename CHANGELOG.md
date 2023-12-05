@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
+## v1.0.1
+12-05-2023
+[main] (@webdevnerdstuff)
+* Fix `VInlineSelect` modelValue getting set when no value, causing @update:modelValue to trigger
+
 ## v1.0.0
 12-01-2023
 [main] (@webdevnerdstuff)
