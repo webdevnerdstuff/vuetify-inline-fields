@@ -171,12 +171,6 @@ const sharedProps = [
 		type: 'boolean'
 	},
 	{
-		default: () => ({}),
-		desc: 'The item object',
-		name: 'item',
-		type: 'Record<string, unknown>',
-	},
-	{
 		default: undefined,
 		desc: 'Label is not fully supported as the fields are intended for use in tables and the column header signifies what that column is for. You can set this prop to show the label but styling will not be ideal',
 		name: 'label',
