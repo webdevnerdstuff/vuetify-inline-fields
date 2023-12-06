@@ -124,7 +124,7 @@ import {
 	SharedProps,
 	TimeOpened,
 	VInlineSelectProps,
-} from '@/types';
+} from '@/plugin/types';
 import { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import {
@@ -150,6 +150,7 @@ import {
 import inlineEmits from './utils/emits';
 import { useBindingSettings } from './composables/bindings';
 import { useGetIcon } from './composables/icons';
+import { globalOptions } from './';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -157,11 +158,12 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const injectedOptions = inject(globalOptions, {});
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
 const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
-let settings = reactive({ ...attrs, ...props });
+let settings = reactive({ ...attrs, ...props, ...injectedOptions });
 const loadingProp = computed(() => props.loading);
 const disabledProp = computed(() => props.disabled);
 

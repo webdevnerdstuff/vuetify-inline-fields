@@ -5,20 +5,17 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { registerPlugins } from './plugins';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import * as VInlineFields from './index';
 import { makeServer } from './server';
+import { createVInlineFields } from './plugin/index';
 
 makeServer({ environment: 'demo' });
 
 const app = createApp(App);
 app.component('CodeBlock', CodeBlock);
+app.use(createVInlineFields());
 app.use(createPinia());
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.component('FaIcon', FontAwesomeIcon);
-
-for (const prop in VInlineFields) {
-	app.component(prop, VInlineFields[prop]);
-}
 
 registerPlugins(app);
 

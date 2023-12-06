@@ -8,7 +8,7 @@ import {
 	UseFieldContainerClass,
 	UseInlineFieldsContainerClass,
 	UsePrependAppendIconClasses,
-} from '@/types';
+} from '@/plugin/types';
 import { componentName } from '../utils/globals';
 
 

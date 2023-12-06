@@ -1,4 +1,4 @@
-import { UseGetIcon } from '../../types';
+import { UseGetIcon } from '@/plugin/types';
 
 const defaultIcons = {
 	fa: {

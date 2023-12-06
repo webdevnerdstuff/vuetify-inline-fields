@@ -2,7 +2,7 @@ import {
 	UseConvertToUnit,
 	UseGetFieldCoordinates,
 	UseTruthyModelValue,
-} from '@/types';
+} from '@/plugin/types';
 
 
 /**

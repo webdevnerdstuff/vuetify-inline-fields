@@ -131,7 +131,7 @@ import {
 	SharedProps,
 	TimeOpened,
 	VInlineCheckboxProps,
-} from '@/types';
+} from '@/plugin/types';
 import { IconOptions, useTheme } from 'vuetify';
 import {
 	checkboxProps,
@@ -160,6 +160,7 @@ import {
 import inlineEmits from './utils/emits';
 import { useBindingSettings } from './composables/bindings';
 import { useWindowSize } from '@vueuse/core';
+import { globalOptions } from './';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -167,12 +168,13 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const injectedOptions = inject(globalOptions, {});
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
-let settings = reactive({ ...attrs, ...props });
+let settings = reactive({ ...attrs, ...props, ...injectedOptions });
 const loadingProp = computed(() => props.loading);
 const disabledProp = computed(() => props.disabled);
 

@@ -3,7 +3,7 @@ import {
 	HEXColor,
 	HSLColor,
 	RGBColor,
-} from '@/types';
+} from '@/plugin/types';
 
 
 /**

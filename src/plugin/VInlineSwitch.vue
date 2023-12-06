@@ -123,7 +123,7 @@ import {
 	SharedProps,
 	TimeOpened,
 	VInlineSwitchProps,
-} from '@/types';
+} from '@/plugin/types';
 import { IconOptions, useTheme } from 'vuetify';
 import {
 	defaultCardProps,
@@ -148,6 +148,7 @@ import {
 } from './composables/styles';
 import inlineEmits from './utils/emits';
 import { useBindingSettings } from './composables/bindings';
+import { globalOptions } from './';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -155,12 +156,13 @@ const modelValue = defineModel<FieldValue>();
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...inlineEmits]);
+const injectedOptions = inject(globalOptions, {});
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineSwitchProps>(), { ...switchProps });
-let settings = reactive({ ...attrs, ...props });
+let settings = reactive({ ...attrs, ...props, ...injectedOptions });
 const loadingProp = computed(() => props.loading);
 const disabledProp = computed(() => props.disabled);
 

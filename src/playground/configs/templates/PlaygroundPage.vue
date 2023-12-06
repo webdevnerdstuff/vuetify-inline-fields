@@ -1,8 +1,20 @@
 <template>
 	<v-col cols="12">
-		<v-btn @click="componentOptions.disabled = !componentOptions.disabled">Toggle Disabled: {{ componentOptions.disabled
-		}}</v-btn>
+		<v-btn
+			class="me-2"
+			@click="componentOptions.disabled = !componentOptions.disabled"
+		>
+			Toggle Disabled: {{ componentOptions.disabled }}
+		</v-btn>
+
+		<v-btn
+			class="me-2"
+			@click="componentOptions.open = !componentOptions.open"
+		>
+			Toggle Open: {{ componentOptions.open }}
+		</v-btn>
 	</v-col>
+
 	<v-col cols="12">
 		<v-card elevation="5">
 			<v-data-table
@@ -21,7 +33,6 @@
 						:cancel-button-variant="componentOptions.cancelButtonVariant"
 						:cancel-icon="componentOptions.cancelIcon"
 						:cancel-icon-color="componentOptions.cancelIconColor"
-						:cancel-icon-text="componentOptions.cancelIconText"
 						:card-field="cardFieldState"
 						:card-offset-x="componentOptions.cardOffsetX"
 						:card-offset-y="componentOptions.cardOffsetY"
@@ -102,6 +113,61 @@
 					</VInlineSelect>
 				</template>
 
+				<!-- <template #[`item.userIdAutocomplete`]="{ item }">
+					<VInlineAutocomplete
+						v-model="item.user"
+						:auto-select-first="componentOptions.autoSelectFirst"
+						:cancel-button-color="componentOptions.cancelButtonColor"
+						:cancel-button-title="componentOptions.cancelButtonTitle"
+						:cancel-button-variant="componentOptions.cancelButtonVariant"
+						:cancel-icon-color="componentOptions.cancelIconColor"
+						:card-field="cardFieldState"
+						:card-offset-x="componentOptions.cardOffsetX"
+						:card-offset-y="componentOptions.cardOffsetY"
+						:card-props="componentOptions.cardProps"
+						:cell="componentOptions.cell"
+						:clearable="componentOptions.clearable"
+						:close-siblings="componentOptions.closeSiblings"
+						:color="componentOptions.color"
+						:density="componentOptions.density"
+						:disabled="componentOptions.disabled"
+						:display-append-icon="componentOptions.displayAppendIcon"
+						:display-append-icon-color="componentOptions.displayAppendIconColor"
+						:display-append-inner-icon="componentOptions.displayAppendInnerIcon"
+						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
+						:empty-text="componentOptions.emptyText"
+						:field-only="componentOptions.fieldOnly"
+						:hide-cancel-icon="componentOptions.hideCancelIcon"
+						:hide-details="componentOptions.hideDetails"
+						:hide-selected="componentOptions.hideSelected"
+						item-title="name"
+						item-value="id"
+						:items="users"
+						:label="componentOptions.label"
+						:loading="item.loading"
+						:loading-wait="componentOptions.loadingWait"
+						:menu="componentOptions.menu"
+						name="userId"
+						:open="componentOptions.open"
+						return-object
+						:save-button-color="componentOptions.saveButtonColor"
+						:save-button-title="componentOptions.saveButtonTitle"
+						:save-icon="componentOptions.saveIcon"
+						:save-icon-color="componentOptions.saveIconColor"
+						:save-on-select="componentOptions.saveOnSelect"
+						:underline-color="componentOptions.underlineColor"
+						:underline-style="componentOptions.underlineStyle"
+						:underline-width="componentOptions.underlineWidth"
+						:underlined="componentOptions.underlined"
+						:variant="componentOptions.variant"
+						@error="showError = $event"
+						@update="updatedValue(item, 'userId')"
+						@update:model-value="foobar"
+						@update:search="console.log(`searching: ${$event}`)"
+					>
+					</VInlineAutocomplete>
+				</template> -->
+
 				<template #[`item.title`]="{ item }">
 					<VInlineTextField
 						v-model="item.title"
@@ -133,7 +199,6 @@
 						:save-button-title="componentOptions.saveButtonTitle"
 						:save-button-variant="componentOptions.saveButtonVariant"
 						:save-icon-color="componentOptions.saveIconColor"
-						:save-icon-text="componentOptions.saveIconText"
 						:truncate-length="componentOptions.truncateTextFieldLength"
 						:underline-color="componentOptions.underlineColor"
 						:underline-style="componentOptions.underlineStyle"
@@ -159,6 +224,7 @@
 						:card-props="componentOptions.cardProps"
 						:cell="componentOptions.cell"
 						:cell-underline-full-width="componentOptions.cellUnderlineFullWidth"
+						:clearable="componentOptions.clearable"
 						:close-siblings="componentOptions.closeSiblings"
 						:color="componentOptions.color"
 						:density="componentOptions.density"
@@ -178,7 +244,6 @@
 						:save-button-color="componentOptions.saveButtonColor"
 						:save-button-title="componentOptions.saveButtonTitle"
 						:save-icon-color="componentOptions.saveIconColor"
-						:save-icon-text="componentOptions.saveIconText"
 						:truncate-length="componentOptions.truncateTextareaLength"
 						:underline-color="componentOptions.underlineColor"
 						:underline-style="componentOptions.underlineStyle"
@@ -279,7 +344,30 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { onMounted, onBeforeMount, reactive, ref, computed, watch } from 'vue';
+import type { VDataTable, VDataTableRow } from 'vuetify/components';
+import type {
+	GlobalDensity,
+	GlobalVariant,
+	SharedProps,
+	// VIconColor,
+	VBtnVariant,
+	// VIconValue,
+} from '../plugin/types';
+
+
+type Headers = VDataTable['$props']['headers'];
+type Item = (typeof VDataTableRow)['$props']['item'];
+type Items = VDataTable['$props']['items'];
+interface Props extends SharedProps {
+	[key: string]: any;
+}
+
+
 // ? Components are already loaded via the configs/playground.ts file //
 onMounted(() => {
 	getPosts();
@@ -291,6 +379,7 @@ onBeforeMount(() => {
 
 const tableOptions = reactive({
 	itemsPerPage: 10,
+	loading: false,
 	sortBy: [{ key: 'title', order: 'asc' }],
 	tableKey: new Date().getUTCMilliseconds(),
 });
@@ -306,10 +395,11 @@ watch(() => isCardField.value, () => {
 
 
 // ? Use these options to play around with the component props //
-const componentOptions = reactive({
+const componentOptions = reactive<Props>({
+	autoSelectFirst: true,
 	cancelButtonColor: 'default',
 	cancelButtonTitle: 'Cancel',
-	cancelButtonVariant: 'text',
+	cancelButtonVariant: 'text' as VBtnVariant,
 	cancelIcon: undefined,
 	cancelIconColor: 'default',
 	cardOffsetX: 0,
@@ -320,19 +410,19 @@ const componentOptions = reactive({
 	clearable: false,
 	closeSiblings: true,
 	color: 'primary',
-	density: 'compact',
+	density: 'compact' as GlobalDensity,
 	disabled: false,
-	// displayAppendIcon: 'mdi:mdi-pencil',
-	// displayAppendIconColor: 'primary',
+	// displayAppendIcon: '' as VIconValue,
+	// displayAppendIconColor: '' as VIconColor,
 	// displayAppendIconSize: 'x-small',
-	// displayAppendInnerIcon: 'mdi:mdi-pencil',
-	// displayAppendInnerIconColor: 'secondary',
-	// displayAppendInnerIconSize: 'x-small',
-	// displayPrependIcon: 'mdi:mdi-pencil',
-	// displayPrependIconColor: 'danger',
+	// displayAppendInnerIcon: '' as VIconValue,
+	// displayAppendInnerIconColor: '' as VIconColor,
+	// displayAppendInnerIconSize: 'x-large',
+	// displayPrependIcon: 'mdi:mdi-pencil' as VIconValue,
+	// displayPrependIconColor: 'danger' as VIconColor,
 	// displayPrependIconSize: 'x-small',
-	// displayPrependInnerIcon: 'mdi:mdi-pencil',
-	// displayPrependInnerIconColor: 'success',
+	// displayPrependInnerIcon: 'mdi:mdi-pencil' as VIconValue,
+	// displayPrependInnerIconColor: 'success' as VIconColor,
 	// displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
@@ -346,27 +436,29 @@ const componentOptions = reactive({
 	label: undefined,
 	loadingWait: true,
 	menu: true,
+	open: false,
 	rules: {
-		minLength(value) {
+		minLength(value: any) {
 			return value?.length >= 5 || 'Min 5 characters';
 		},
-		required: value => !!value || 'Field is required',
+		required: (value: any) => !!value || 'Field is required',
 	},
 	saveButtonColor: 'default',
 	saveButtonTitle: 'Save',
-	saveButtonVariant: 'text',
+	saveButtonVariant: 'text' as VBtnVariant,
 	saveIcon: undefined,
 	saveIconColor: 'primary',
+	saveOnSelect: true,
 	truncateTextFieldLength: 25,
 	truncateTextareaLength: 75,
 	underlineColor: 'primary',
 	underlineStyle: 'dotted',
 	underlineWidth: '2px',
 	underlined: true,
-	variant: 'underlined',
+	variant: 'underlined' as GlobalVariant,
 });
 
-const headers = [
+const headers = ref<Headers>([
 	{
 		align: 'start',
 		key: 'id',
@@ -385,6 +477,12 @@ const headers = [
 		title: 'User ID',
 		width: 325,
 	},
+	// {
+	// 	align: 'start',
+	// 	key: 'userIdAutocomplete',
+	// 	title: 'User ID',
+	// 	width: 325,
+	// },
 	{
 		align: 'start',
 		key: 'title',
@@ -407,15 +505,11 @@ const headers = [
 		key: 'reviewed',
 		title: 'Reviewed',
 	},
-];
+]);
 
 
-/**
- * ? This is where you would save the item in the database.
- * @param {object} item The item being updated.
- * @param {string} field The field being updated.
- */
-function updatedValue(item) {
+// ? This is where you would save the item in the database. //
+function updatedValue(item: Item, _field?: string): void {
 	item.loading = true;
 
 	// ? Simulate a delay while item is saving.
@@ -426,28 +520,28 @@ function updatedValue(item) {
 
 
 // ? Data loading section. You can ignore this part. //
-let posts = ref();
-const users = ref(null);
-const showError = ref(false);
-const apiPostsRoute = 'api/posts';
-const apiUsersRoute = 'api/users';
+const posts = ref<Items>();
+const users = ref<Items>();
+const showError = ref<boolean>(false);
+const apiPostsRoute: string = 'api/posts';
+const apiUsersRoute: string = 'api/users';
 
-function getPosts() {
+function getPosts(): void {
 	tableOptions.loading = true;
 
 	fetch(apiPostsRoute)
 		.then((response) => response.json())
 		.then((json) => {
-			posts = [...json.posts];
+			posts.value = [...json.posts];
 			tableOptions.loading = false;
 		});
 };
 
-function getUsers() {
+function getUsers(): void {
 	fetch(apiUsersRoute)
 		.then((response) => response.json())
 		.then((json) => {
-			users.value = json.users.map((user) => ({
+			users.value = json.users.map((user: { id: number, name: string; }) => ({
 				id: user.id,
 				name: user.name,
 			}));

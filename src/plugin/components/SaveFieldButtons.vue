@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { SaveFieldButtons } from '@/types';
+import { SaveFieldButtons } from '@/plugin/types';
 import type { IconOptions } from 'vuetify';
 import {
 	useCancelButtonClass,
