@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
+## v1.0.2
+12-06-2023
+[main] (@webdevnerdstuff)
+* Improve/Fix TypeScript support
+* Add createVInlineFields for global registration and global options
+
 ## v1.0.1
 12-05-2023
 [main] (@webdevnerdstuff)
