@@ -42,6 +42,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
         default: string;
     };
+    variant: {
+        type: globalThis.PropType<"filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled">;
+        default: "underlined";
+    };
     loading: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -49,10 +53,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     autofocus: {
         type: globalThis.PropType<boolean>;
         default: boolean;
-    };
-    variant: {
-        type: globalThis.PropType<"filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled">;
-        default: "underlined";
     };
     clearIcon: {
         type: globalThis.PropType<string>;
@@ -133,7 +133,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -145,7 +145,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -157,7 +157,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -169,7 +169,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -298,6 +298,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
         default: string;
     };
+    variant: {
+        type: globalThis.PropType<"filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled">;
+        default: "underlined";
+    };
     loading: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -305,10 +309,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     autofocus: {
         type: globalThis.PropType<boolean>;
         default: boolean;
-    };
-    variant: {
-        type: globalThis.PropType<"filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled">;
-        default: "underlined";
     };
     clearIcon: {
         type: globalThis.PropType<string>;
@@ -389,7 +389,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -401,7 +401,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -413,7 +413,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -425,7 +425,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -518,9 +518,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     items: readonly any[];
     itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
     itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+    variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
     loading: boolean;
     autofocus: boolean;
-    variant: "filled" | "outlined" | "plain" | "underlined" | "solo" | "solo-inverted" | "solo-filled";
     clearIcon: string;
     clearable: boolean;
     hideSelected: boolean;
@@ -539,16 +539,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cell: boolean;
     cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
-    displayAppendIcon: import('../types').VIconValue;
+    displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayAppendIconColor: string;
     displayAppendIconSize: string | number;
-    displayAppendInnerIcon: import('../types').VIconValue;
+    displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayAppendInnerIconColor: string;
     displayAppendInnerIconSize: string | number;
-    displayPrependIcon: import('../types').VIconValue;
+    displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayPrependIconColor: string;
     displayPrependIconSize: string | number;
-    displayPrependInnerIcon: import('../types').VIconValue;
+    displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayPrependInnerIconColor: string;
     displayPrependInnerIconSize: string | number;
     emptyText: string;

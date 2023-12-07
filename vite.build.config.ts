@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import * as path from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
-import babel from 'vite-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
@@ -12,9 +11,12 @@ import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
+const scopedPackageName = pkg.name;
+const packageName = scopedPackageName.split('/')[1];
+
 
 const banner = `/**
- * @name ${pkg.name}
+ * @name ${scopedPackageName}
  * @version ${pkg.version}
  * @description ${pkg.description}
  * @author ${pkg.author}
@@ -25,20 +27,18 @@ const banner = `/**
  */
 `;
 
-const pkgName = 'vuetify-inline-fields';
-
 export default defineConfig({
 	publicDir: false,
 	build: {
 		lib: {
 			entry: './src/plugin/index.ts',
-			name: pkgName,
+			name: packageName,
 			formats: ['es', 'cjs'],
-			fileName: format => `${pkgName}.${format}.js`,
+			fileName: format => `${packageName}.${format}.js`,
 		},
 		rollupOptions: {
 			input: {
-				main: path.resolve(__dirname, './src/index.ts')
+				main: path.resolve(__dirname, './src/plugin/index.ts')
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
@@ -49,7 +49,6 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-		babel(),
 		commonjs(),
 		AutoImport({
 			dts: false,

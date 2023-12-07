@@ -1,4 +1,4 @@
-import { UseConvertToUnit, UseGetFieldCoordinates, UseTruthyModelValue } from '../../types';
+import { UseConvertToUnit, UseGetFieldCoordinates, UseTruthyModelValue } from '../../plugin/types';
 /**
 * Converts a string to a number with a unit.
 */

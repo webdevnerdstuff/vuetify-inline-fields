@@ -1,4 +1,4 @@
-import { SaveFieldButtons } from '../../types';
+import { SaveFieldButtons } from '../../plugin/types';
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<SaveFieldButtons>, {}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     close: (...args: any[]) => void;
     save: (...args: any[]) => void;

@@ -40,11 +40,6 @@ module.exports = {
 		'vue',
 	],
 	root: true,
-	settings: {
-		'import/resolver': {
-			'babel-module': {},
-		},
-	},
 	rules: {
 		'@typescript-eslint/ban-ts-comment': 0,
 		'@typescript-eslint/ban-types': [

@@ -1,4 +1,4 @@
-import { DisplayValueProps } from '../../types';
+import { DisplayValueProps } from '../../plugin/types';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DisplayValueProps>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     toggleField: (...args: any[]) => void;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DisplayValueProps>>> & {

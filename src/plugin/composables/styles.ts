@@ -3,7 +3,7 @@ import {
 	UseDisplayValueStyles,
 	UseCardContainerStyle,
 	UsePrependAppendIconStyles,
-} from '@/types';
+} from '@/plugin/types';
 import { useGetColor } from './colors';
 import { useGetFieldCoordinates } from './helpers';
 

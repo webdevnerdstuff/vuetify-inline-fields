@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import type {
 	CSSProperties,
-	JSXComponent,
 	MaybeRef,
 	Ref,
 } from 'vue';
@@ -35,7 +34,7 @@ export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props'][
 
 export type VIconColor = VIcon['$props']['color'];
 export type VIconSize = VIcon['$props']['size'];
-export type VIconValue = string | (string | [path: string, opacity: number])[] | JSXComponent;
+export type VIconValue = VIcon['$props']['icon'];
 
 export type VBtnColor = VBtn['$props']['color'];
 export type VBtnSize = VBtn['$props']['size'];
@@ -158,7 +157,7 @@ export interface VInlineSelectProps extends Omit<SharedProps,
 }
 
 export interface VInlineSwitchProps extends Omit<SharedProps,
-	'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'
+	'autofocus' | 'truncateLength' | 'truncateSuffix'
 > {
 	density?: VSwitch['$props']['density'];
 	falseIcon?: VSwitch['$props']['falseIcon'];
@@ -228,6 +227,7 @@ export interface DisplayValueProps {
 	underlineStyle?: SharedProps['underlineStyle'];
 	underlineWidth?: SharedProps['underlineWidth'];
 	underlined?: SharedProps['underlined'];
+	valueColor?: SharedProps['valueColor'];
 }
 
 export interface SaveFieldButtons extends
@@ -240,18 +240,18 @@ export interface SaveFieldButtons extends
 		'error' |
 		'fieldOnly' |
 		'hideCancelIcon' |
-		'hideSaveIcon' |
+		'hideSaveIcon'
+	>>,
+	Pick<SharedProps,
+		'cancelIcon' |
+		'loadingIcon' |
 		'loadingIconColor' |
 		'saveButtonColor' |
 		'saveButtonSize' |
 		'saveButtonTitle' |
 		'saveButtonVariant' |
 		'saveIconColor' |
-		'saveButtonVariant'
-	>>,
-	Pick<SharedProps,
-		'cancelIcon' |
-		'loadingIcon' |
+		'saveButtonVariant' |
 		'saveIcon'
 	> { loading: boolean; };
 

@@ -175,6 +175,16 @@ declare const selectProps: {
 declare const switchProps: {
     falseIcon: string;
     icons: boolean;
+    hideCancelIcon: boolean;
+    hideSaveIcon: boolean;
+    loadingIcon: undefined;
+    loadingIconColor: string;
+    saveButtonColor: string;
+    saveButtonSize: string;
+    saveButtonTitle: string;
+    saveButtonVariant: "text";
+    saveIcon: undefined;
+    saveIconColor: string;
     falseValue: boolean;
     iconFalse: undefined;
     iconFalseColor: string;
@@ -213,7 +223,6 @@ declare const switchProps: {
     displayPrependInnerIconSize: string;
     emptyText: string;
     fieldOnly: boolean;
-    hideCancelIcon: boolean;
     hideDetails: boolean;
     label: string;
     loading: boolean;

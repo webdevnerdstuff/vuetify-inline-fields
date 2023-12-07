@@ -2,7 +2,7 @@ import {
 	UseCheckForErrors,
 	UseToggleField,
 	UseTruncateText
-} from '@/types';
+} from '@/plugin/types';
 
 
 // ------------------------------------------------ Composables //

@@ -89,7 +89,7 @@
 
 
 <script setup lang="ts">
-import { DisplayValueProps } from '@/types';
+import { DisplayValueProps } from '@/plugin/types';
 import { useTheme } from 'vuetify';
 import {
 	useDisplayValueClass,

@@ -1,4 +1,4 @@
-import type { CSSProperties, JSXComponent, MaybeRef, Ref } from 'vue';
+import type { CSSProperties, MaybeRef, Ref } from 'vue';
 import type { VBtn, VCard, VCheckbox, VIcon, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
 import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
@@ -11,7 +11,7 @@ export type GlobalDensity = VCheckbox['$props']['density'] | VSelect['$props']['
 export type GlobalVariant = VSelect['$props']['variant'] | VTextField['$props']['variant'] | VTextarea['$props']['variant'];
 export type VIconColor = VIcon['$props']['color'];
 export type VIconSize = VIcon['$props']['size'];
-export type VIconValue = string | (string | [path: string, opacity: number])[] | JSXComponent;
+export type VIconValue = VIcon['$props']['icon'];
 export type VBtnColor = VBtn['$props']['color'];
 export type VBtnSize = VBtn['$props']['size'];
 export type VBtnVariant = VBtn['$props']['variant'];
@@ -114,7 +114,7 @@ export interface VInlineSelectProps extends Omit<SharedProps, 'falseValue' | 'ic
     rules?: VSelect['$props']['rules'];
     variant?: VSelect['$props']['variant'];
 }
-export interface VInlineSwitchProps extends Omit<SharedProps, 'autofocus' | 'hideSaveIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveIcon' | 'saveIconColor' | 'saveButtonTitle' | 'saveButtonVariant' | 'truncateLength' | 'truncateSuffix'> {
+export interface VInlineSwitchProps extends Omit<SharedProps, 'autofocus' | 'truncateLength' | 'truncateSuffix'> {
     density?: VSwitch['$props']['density'];
     falseIcon?: VSwitch['$props']['falseIcon'];
 }
@@ -163,8 +163,9 @@ export interface DisplayValueProps {
     underlineStyle?: SharedProps['underlineStyle'];
     underlineWidth?: SharedProps['underlineWidth'];
     underlined?: SharedProps['underlined'];
+    valueColor?: SharedProps['valueColor'];
 }
-export interface SaveFieldButtons extends Required<Pick<SharedProps, 'cancelButtonColor' | 'cancelButtonSize' | 'cancelButtonVariant' | 'cancelButtonTitle' | 'cancelIconColor' | 'error' | 'fieldOnly' | 'hideCancelIcon' | 'hideSaveIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveButtonTitle' | 'saveButtonVariant' | 'saveIconColor' | 'saveButtonVariant'>>, Pick<SharedProps, 'cancelIcon' | 'loadingIcon' | 'saveIcon'> {
+export interface SaveFieldButtons extends Required<Pick<SharedProps, 'cancelButtonColor' | 'cancelButtonSize' | 'cancelButtonVariant' | 'cancelButtonTitle' | 'cancelIconColor' | 'error' | 'fieldOnly' | 'hideCancelIcon' | 'hideSaveIcon'>>, Pick<SharedProps, 'cancelIcon' | 'loadingIcon' | 'loadingIconColor' | 'saveButtonColor' | 'saveButtonSize' | 'saveButtonTitle' | 'saveButtonVariant' | 'saveIconColor' | 'saveButtonVariant' | 'saveIcon'> {
     loading: boolean;
 }
 export interface UseCancelButtonClass {

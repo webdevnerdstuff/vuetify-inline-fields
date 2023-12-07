@@ -19,7 +19,7 @@
 
 
 <script setup lang="ts">
-import { BooleanIcons } from '@/types';
+import { BooleanIcons } from '@/plugin/types';
 import { useGetIcon } from '../composables/icons';
 import type { IconOptions } from 'vuetify';
 

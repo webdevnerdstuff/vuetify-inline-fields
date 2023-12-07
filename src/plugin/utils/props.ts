@@ -36,7 +36,7 @@ export const sharedProps = {
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
-	hideCancelIcon: true,
+	hideCancelIcon: false,
 	hideDetails: true,
 	label: '',
 	loading: false,
@@ -122,6 +122,7 @@ const selectProps = {
 const switchProps = {
 	...sharedProps,
 	...trueFalseIcons,
+	...saveAndLoadingIconProps,
 	...valueIcons,
 	...{
 		falseIcon: '',

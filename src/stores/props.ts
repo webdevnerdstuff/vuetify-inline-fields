@@ -45,7 +45,6 @@ const propsSupported = {
 };
 
 const colorDesc = 'Applies specified color to the';
-const densityDesc = 'Adjusts the vertical height used by the component';
 const variantDesc = 'Applies a distinct style to the';
 
 const sharedProps = [
@@ -131,12 +130,6 @@ const sharedProps = [
 		default: 'primary',
 		desc: `${colorDesc} control`,
 		name: 'color',
-		type: 'string',
-	},
-	{
-		default: 'compact',
-		desc: densityDesc,
-		name: 'density',
 		type: 'string',
 	},
 	{

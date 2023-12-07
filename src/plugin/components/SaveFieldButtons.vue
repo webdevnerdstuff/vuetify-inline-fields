@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { SaveFieldButtons } from '@/types';
+import { SaveFieldButtons } from '@/plugin/types';
 import type { IconOptions } from 'vuetify';
 import {
 	useCancelButtonClass,
@@ -76,6 +76,8 @@ const saveFieldsContainerClass = computed<object>(() => useSaveFieldsContainerCl
 const loading = computed(() => props.loading);
 
 const settings = reactive({ ...attrs, ...props });
+
+console.log({ settings });
 
 const loadingIconClasses = computed(() => {
 	if (iconOptions?.defaultSet === 'fa') {
