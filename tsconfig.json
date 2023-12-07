@@ -32,7 +32,7 @@
 		"strict": true,
 		"target": "ESNext",
 		"typeRoots": [
-			"./src/types",
+			"./src/plugin/types",
 			"./node_modules/@types",
 			"./node_modules/vuetify"
 		],
@@ -47,17 +47,15 @@
 		"src/main.ts",
 		"src/documentation/**/*.ts",
 		"src/documentation/**/*.vue",
-		"src/playground/**/*.vue",
-		"src/playground/**/*.ts",
 		"src/stores/**/*.ts",
+		"src/playground/**/*.ts",
 		"src/plugins/**/*.ts",
 		"node_modules"
 	],
 	"include": [
-		"src/plugin/types/auto-imports.d.ts",
-		"src/plugin/types/**/*.ts",
-		"src/plugin/types/**/*.d.ts",
+		"src/playground/PlaygroundPage.vue",
 		"src/plugin/**/*.ts",
+		"src/plugin/**/*.tsx",
 		"src/plugin/**/*.vue"
 	],
 	"references": [
