@@ -1,6 +1,6 @@
 "use strict";var Ba=Object.create;var ho=Object.defineProperty;var wa=Object.getOwnPropertyDescriptor;var ka=Object.getOwnPropertyNames;var xa=Object.getPrototypeOf,Fa=Object.prototype.hasOwnProperty;var Na=(n,o,t,l)=>{if(o&&typeof o=="object"||typeof o=="function")for(let a of ka(o))!Fa.call(n,a)&&a!==t&&ho(n,a,{get:()=>o[a],enumerable:!(l=wa(o,a))||l.enumerable});return n};var en=(n,o,t)=>(t=n!=null?Ba(xa(n)):{},Na(o||!n||!n.__esModule?ho(t,"default",{value:n,enumerable:!0}):t,n));/**
  * @name @wdns/vuetify-inline-fields
- * @version 1.0.2
+ * @version 1.0.3
  * @description Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
