@@ -11,7 +11,9 @@ import type { SharedProps } from './types';
 
 export const globalOptions = Symbol();
 
-export function createVInlineFields(options: SharedProps = {}) {
+export function createVInlineFields(options: Omit<SharedProps,
+	'disabled' | 'label' | 'loading' | 'name'
+> = {}) {
 	return (app: App) => {
 		app.provide(globalOptions, options);
 		app.component('VInlineCheckbox', VInlineCheckbox);

@@ -6,13 +6,6 @@
 		>
 			Toggle Disabled: {{ componentOptions.disabled }}
 		</v-btn>
-
-		<v-btn
-			class="me-2"
-			@click="componentOptions.open = !componentOptions.open"
-		>
-			Toggle Open: {{ componentOptions.open }}
-		</v-btn>
 	</v-col>
 
 	<v-col cols="12">
@@ -45,6 +38,7 @@
 						:disabled="componentOptions.disabled"
 						:field-only="componentOptions.fieldOnly"
 						:hide-cancel-icon="componentOptions.hideCancelIcon"
+						:hide-save-icon="componentOptions.hideSaveIcon"
 						:icon-false="componentOptions.iconFalse"
 						:icon-false-title="componentOptions.iconFalseTitle"
 						:icon-true="componentOptions.iconTrue"
@@ -88,6 +82,7 @@
 						:field-only="componentOptions.fieldOnly"
 						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:hide-details="componentOptions.hideDetails"
+						:hide-save-icon="componentOptions.hideSaveIcon"
 						:hide-selected="componentOptions.hideSelected"
 						item-title="name"
 						item-value="id"
@@ -137,7 +132,7 @@
 						:display-append-inner-icon-color="componentOptions.displayAppendInnerIconColor"
 						:empty-text="componentOptions.emptyText"
 						:field-only="componentOptions.fieldOnly"
-						:hide-cancel-icon="componentOptions.hideCancelIcon"
+
 						:hide-details="componentOptions.hideDetails"
 						:hide-selected="componentOptions.hideSelected"
 						item-title="name"
@@ -148,7 +143,6 @@
 						:loading-wait="componentOptions.loadingWait"
 						:menu="componentOptions.menu"
 						name="userId"
-						:open="componentOptions.open"
 						return-object
 						:save-button-color="componentOptions.saveButtonColor"
 						:save-button-title="componentOptions.saveButtonTitle"
@@ -189,6 +183,7 @@
 						:field-only="componentOptions.fieldOnly"
 						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:hide-details="componentOptions.hideDetails"
+						:hide-save-icon="componentOptions.hideSaveIcon"
 						:label="componentOptions.label"
 						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
@@ -236,6 +231,7 @@
 						:field-only="componentOptions.fieldOnly"
 						:hide-cancel-icon="componentOptions.hideCancelIcon"
 						:hide-details="componentOptions.hideDetails"
+						:hide-save-icon="componentOptions.hideSaveIcon"
 						:label="componentOptions.label"
 						:loading="item.loading"
 						:loading-wait="componentOptions.loadingWait"
@@ -298,6 +294,7 @@
 						:disabled="componentOptions.disabled"
 						:field-only="componentOptions.fieldOnly"
 						:hide-cancel-icon="componentOptions.hideCancelIcon"
+						:hide-save-icon="componentOptions.hideSaveIcon"
 						:icon-false-title="componentOptions.iconFalseTitle"
 						:icon-true-title="componentOptions.iconTrueTitle"
 						:label="componentOptions.label"
@@ -363,9 +360,7 @@ import type {
 type Headers = VDataTable['$props']['headers'];
 type Item = (typeof VDataTableRow)['$props']['item'];
 type Items = VDataTable['$props']['items'];
-interface Props extends SharedProps {
-	[key: string]: any;
-}
+interface Props extends SharedProps { [key: string]: any; }
 
 
 // ? Components are already loaded via the configs/playground.ts file //
@@ -382,15 +377,6 @@ const tableOptions = reactive({
 	loading: false,
 	sortBy: [{ key: 'title', order: 'asc' }],
 	tableKey: new Date().getUTCMilliseconds(),
-});
-
-
-// ? Changes the type of field the table uses //
-const isCardField = ref(false);
-const cardFieldState = computed(() => isCardField.value);
-
-watch(() => isCardField.value, () => {
-	tableOptions.tableKey = new Date().getUTCMilliseconds();
 });
 
 
@@ -426,8 +412,10 @@ const componentOptions = reactive<Props>({
 	// displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
 	fieldOnly: false,
+	// hideCancelIcon: true,
 	hideCancelIcon: false,
 	hideDetails: true,
+	hideSaveIcon: false,
 	hideSelected: false,
 	iconFalse: undefined,
 	iconFalseTitle: undefined,
@@ -436,7 +424,6 @@ const componentOptions = reactive<Props>({
 	label: undefined,
 	loadingWait: true,
 	menu: true,
-	open: false,
 	rules: {
 		minLength(value: any) {
 			return value?.length >= 5 || 'Min 5 characters';
@@ -506,6 +493,15 @@ const headers = ref<Headers>([
 		title: 'Reviewed',
 	},
 ]);
+
+
+// ? Changes the type of field the table uses //
+const isCardField = ref<boolean>(false);
+const cardFieldState = computed<boolean>(() => isCardField.value);
+
+watch(() => isCardField.value, () => {
+	tableOptions.tableKey = new Date().getUTCMilliseconds();
+});
 
 
 // ? This is where you would save the item in the database. //

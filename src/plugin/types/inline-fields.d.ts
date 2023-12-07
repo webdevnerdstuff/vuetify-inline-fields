@@ -5,11 +5,11 @@ import {
 	VInlineSwitch,
 	VInlineTextField,
 	VInlineTextarea,
-} from '../plugin';
+} from '../';
 
 export * from '../index';
 
-declare module "v-inline-fields" {
+declare module "vue" {
 	interface GlobalComponents {
 		VInlineCheckbox: typeof VInlineCheckbox;
 		VInlineCustomField: typeof VInlineCustomField;
