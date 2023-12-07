@@ -17,6 +17,16 @@ import type {
 } from 'vuetify/components';
 import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
+import type {
+	VInlineCheckbox,
+	VInlineCustomField,
+	VInlineSelect,
+	VInlineSwitch,
+	VInlineTextField,
+	VInlineTextarea,
+} from '../';
+
+export * from '../index';
 
 
 // -------------------------------------------------- Misc //
@@ -462,4 +472,16 @@ export interface UseTruthyModelValue {
 			trueValue?: any,
 		}
 	): boolean;
+}
+
+
+declare module 'vue' {
+	export interface GlobalComponents {
+		VInlineCheckbox: typeof VInlineCheckbox;
+		VInlineCustomField: typeof VInlineCustomField;
+		VInlineSelect: typeof VInlineSelect;
+		VInlineSwitch: typeof VInlineSwitch;
+		VInlineTextField: typeof VInlineTextField;
+		VInlineTextarea: typeof VInlineTextarea;
+	}
 }
