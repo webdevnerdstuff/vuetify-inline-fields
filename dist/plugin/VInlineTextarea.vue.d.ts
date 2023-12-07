@@ -124,7 +124,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -136,7 +136,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -148,7 +148,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -160,7 +160,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -371,7 +371,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     displayAppendIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -383,7 +383,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -395,7 +395,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -407,7 +407,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<import('../plugin/types').VIconValue>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -518,16 +518,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cell: boolean;
     cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
-    displayAppendIcon: import('../plugin/types').VIconValue;
+    displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayAppendIconColor: string;
     displayAppendIconSize: string | number;
-    displayAppendInnerIcon: import('../plugin/types').VIconValue;
+    displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayAppendInnerIconColor: string;
     displayAppendInnerIconSize: string | number;
-    displayPrependIcon: import('../plugin/types').VIconValue;
+    displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayPrependIconColor: string;
     displayPrependIconSize: string | number;
-    displayPrependInnerIcon: import('../plugin/types').VIconValue;
+    displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayPrependInnerIconColor: string;
     displayPrependInnerIconSize: string | number;
     emptyText: string;

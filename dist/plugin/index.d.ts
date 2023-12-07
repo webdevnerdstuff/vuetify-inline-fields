@@ -7,7 +7,7 @@ import VInlineTextField from './VInlineTextField.vue';
 import VInlineTextarea from './VInlineTextarea.vue';
 import type { SharedProps } from './types';
 export declare const globalOptions: unique symbol;
-export declare function createVInlineFields(options?: SharedProps): (app: App) => void;
+export declare function createVInlineFields(options?: Omit<SharedProps, 'disabled' | 'label' | 'loading' | 'name'>): (app: App) => void;
 declare const _default: {
     VInlineCheckbox: {
         new (...args: any[]): import("vue").CreateComponentPublicInstance<Readonly<import("vue").ExtractPropTypes<{
@@ -150,7 +150,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -162,7 +162,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -174,7 +174,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -186,7 +186,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -411,7 +411,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -423,7 +423,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -435,7 +435,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -447,7 +447,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -563,16 +563,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -740,7 +740,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -752,7 +752,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -764,7 +764,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -776,7 +776,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -892,16 +892,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -1066,7 +1066,7 @@ declare const _default: {
             default: boolean;
         };
         displayAppendIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendIconColor: {
@@ -1078,7 +1078,7 @@ declare const _default: {
             default: string;
         };
         displayAppendInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendInnerIconColor: {
@@ -1090,7 +1090,7 @@ declare const _default: {
             default: string;
         };
         displayPrependIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependIconColor: {
@@ -1102,7 +1102,7 @@ declare const _default: {
             default: string;
         };
         displayPrependInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependInnerIconColor: {
@@ -1220,16 +1220,16 @@ declare const _default: {
         cell: boolean;
         cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
-        displayAppendIcon: import("./types").VIconValue;
+        displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendIconColor: string;
         displayAppendIconSize: string | number;
-        displayAppendInnerIcon: import("./types").VIconValue;
+        displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendInnerIconColor: string;
         displayAppendInnerIconSize: string | number;
-        displayPrependIcon: import("./types").VIconValue;
+        displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependIconColor: string;
         displayPrependIconSize: string | number;
-        displayPrependInnerIcon: import("./types").VIconValue;
+        displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependInnerIconColor: string;
         displayPrependInnerIconSize: string | number;
         emptyText: string;
@@ -1372,7 +1372,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -1384,7 +1384,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -1396,7 +1396,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -1408,7 +1408,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -1611,7 +1611,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -1623,7 +1623,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -1635,7 +1635,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -1647,7 +1647,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -1756,16 +1756,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -1911,7 +1911,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -1923,7 +1923,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -1935,7 +1935,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -1947,7 +1947,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -2056,16 +2056,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -2208,7 +2208,7 @@ declare const _default: {
             default: boolean;
         };
         displayAppendIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendIconColor: {
@@ -2220,7 +2220,7 @@ declare const _default: {
             default: string;
         };
         displayAppendInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendInnerIconColor: {
@@ -2232,7 +2232,7 @@ declare const _default: {
             default: string;
         };
         displayPrependIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependIconColor: {
@@ -2244,7 +2244,7 @@ declare const _default: {
             default: string;
         };
         displayPrependInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependInnerIconColor: {
@@ -2355,16 +2355,16 @@ declare const _default: {
         cell: boolean;
         cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
-        displayAppendIcon: import("./types").VIconValue;
+        displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendIconColor: string;
         displayAppendIconSize: string | number;
-        displayAppendInnerIcon: import("./types").VIconValue;
+        displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendInnerIconColor: string;
         displayAppendInnerIconSize: string | number;
-        displayPrependIcon: import("./types").VIconValue;
+        displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependIconColor: string;
         displayPrependIconSize: string | number;
-        displayPrependInnerIcon: import("./types").VIconValue;
+        displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependInnerIconColor: string;
         displayPrependInnerIconSize: string | number;
         emptyText: string;
@@ -2428,16 +2428,16 @@ declare const _default: {
                 color: string;
                 density: "default" | "comfortable" | "compact" | null;
                 disabled: boolean;
-                displayAppendIcon: import("./types").VIconValue | undefined;
+                displayAppendIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
                 displayAppendIconColor: string | undefined;
                 displayAppendIconSize: string | number;
-                displayAppendInnerIcon: import("./types").VIconValue | undefined;
+                displayAppendInnerIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
                 displayAppendInnerIconColor: string | undefined;
                 displayAppendInnerIconSize: string | number;
-                displayPrependIcon: import("./types").VIconValue | undefined;
+                displayPrependIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
                 displayPrependIconColor: string | undefined;
                 displayPrependIconSize: string | number;
-                displayPrependInnerIcon: import("./types").VIconValue | undefined;
+                displayPrependInnerIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
                 displayPrependInnerIconColor: string | undefined;
                 displayPrependInnerIconSize: string | number;
                 emptyText: string;
@@ -2591,7 +2591,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -2603,7 +2603,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -2615,7 +2615,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -2627,7 +2627,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -2847,7 +2847,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -2859,7 +2859,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -2871,7 +2871,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -2883,7 +2883,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -2997,16 +2997,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -3169,7 +3169,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -3181,7 +3181,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -3193,7 +3193,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -3205,7 +3205,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -3319,16 +3319,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -3488,7 +3488,7 @@ declare const _default: {
             default: boolean;
         };
         displayAppendIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendIconColor: {
@@ -3500,7 +3500,7 @@ declare const _default: {
             default: string;
         };
         displayAppendInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendInnerIconColor: {
@@ -3512,7 +3512,7 @@ declare const _default: {
             default: string;
         };
         displayPrependIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependIconColor: {
@@ -3524,7 +3524,7 @@ declare const _default: {
             default: string;
         };
         displayPrependInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependInnerIconColor: {
@@ -3640,16 +3640,16 @@ declare const _default: {
         cell: boolean;
         cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
-        displayAppendIcon: import("./types").VIconValue;
+        displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendIconColor: string;
         displayAppendIconSize: string | number;
-        displayAppendInnerIcon: import("./types").VIconValue;
+        displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendInnerIconColor: string;
         displayAppendInnerIconSize: string | number;
-        displayPrependIcon: import("./types").VIconValue;
+        displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependIconColor: string;
         displayPrependIconSize: string | number;
-        displayPrependInnerIcon: import("./types").VIconValue;
+        displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependInnerIconColor: string;
         displayPrependInnerIconSize: string | number;
         emptyText: string;
@@ -3810,7 +3810,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -3822,7 +3822,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -3834,7 +3834,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -3846,7 +3846,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -3869,9 +3869,45 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
+            hideSaveIcon: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            loadingIcon: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            loadingIconColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
             loadingWait: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            saveButtonColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            saveButtonSize: {
+                type: globalThis.PropType<string | number>;
+                default: string;
+            };
+            saveButtonTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            saveButtonVariant: {
+                type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+                default: "text";
+            };
+            saveIcon: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            saveIconColor: {
+                type: globalThis.PropType<string>;
+                default: string;
             };
             tableField: {
                 type: globalThis.PropType<boolean>;
@@ -4031,7 +4067,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -4043,7 +4079,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -4055,7 +4091,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -4067,7 +4103,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -4090,9 +4126,45 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
+            hideSaveIcon: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            loadingIcon: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            loadingIconColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
             loadingWait: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            saveButtonColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            saveButtonSize: {
+                type: globalThis.PropType<string | number>;
+                default: string;
+            };
+            saveButtonTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            saveButtonVariant: {
+                type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+                default: "text";
+            };
+            saveIcon: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            saveIconColor: {
+                type: globalThis.PropType<string>;
+                default: string;
             };
             tableField: {
                 type: globalThis.PropType<boolean>;
@@ -4146,22 +4218,31 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
             fieldOnly: boolean;
             hideCancelIcon: boolean;
+            hideSaveIcon: boolean;
+            loadingIcon: string;
+            loadingIconColor: string;
             loadingWait: boolean;
+            saveButtonColor: string;
+            saveButtonSize: string | number;
+            saveButtonTitle: string;
+            saveButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
+            saveIcon: string;
+            saveIconColor: string;
             tableField: boolean;
             underlineColor: string;
             underlineStyle: string;
@@ -4310,7 +4391,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -4322,7 +4403,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -4334,7 +4415,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -4346,7 +4427,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -4369,9 +4450,45 @@ declare const _default: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
             };
+            hideSaveIcon: {
+                type: globalThis.PropType<boolean>;
+                default: boolean;
+            };
+            loadingIcon: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            loadingIconColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
             loadingWait: {
                 type: globalThis.PropType<boolean>;
                 default: boolean;
+            };
+            saveButtonColor: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            saveButtonSize: {
+                type: globalThis.PropType<string | number>;
+                default: string;
+            };
+            saveButtonTitle: {
+                type: globalThis.PropType<string>;
+                default: string;
+            };
+            saveButtonVariant: {
+                type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+                default: "text";
+            };
+            saveIcon: {
+                type: globalThis.PropType<string>;
+                default: undefined;
+            };
+            saveIconColor: {
+                type: globalThis.PropType<string>;
+                default: string;
             };
             tableField: {
                 type: globalThis.PropType<boolean>;
@@ -4425,22 +4542,31 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
             fieldOnly: boolean;
             hideCancelIcon: boolean;
+            hideSaveIcon: boolean;
+            loadingIcon: string;
+            loadingIconColor: string;
             loadingWait: boolean;
+            saveButtonColor: string;
+            saveButtonSize: string | number;
+            saveButtonTitle: string;
+            saveButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
+            saveIcon: string;
+            saveIconColor: string;
             tableField: boolean;
             underlineColor: string;
             underlineStyle: string;
@@ -4586,7 +4712,7 @@ declare const _default: {
             default: boolean;
         };
         displayAppendIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendIconColor: {
@@ -4598,7 +4724,7 @@ declare const _default: {
             default: string;
         };
         displayAppendInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendInnerIconColor: {
@@ -4610,7 +4736,7 @@ declare const _default: {
             default: string;
         };
         displayPrependIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependIconColor: {
@@ -4622,7 +4748,7 @@ declare const _default: {
             default: string;
         };
         displayPrependInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependInnerIconColor: {
@@ -4645,9 +4771,45 @@ declare const _default: {
             type: globalThis.PropType<boolean>;
             default: boolean;
         };
+        hideSaveIcon: {
+            type: globalThis.PropType<boolean>;
+            default: boolean;
+        };
+        loadingIcon: {
+            type: globalThis.PropType<string>;
+            default: undefined;
+        };
+        loadingIconColor: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
         loadingWait: {
             type: globalThis.PropType<boolean>;
             default: boolean;
+        };
+        saveButtonColor: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        saveButtonSize: {
+            type: globalThis.PropType<string | number>;
+            default: string;
+        };
+        saveButtonTitle: {
+            type: globalThis.PropType<string>;
+            default: string;
+        };
+        saveButtonVariant: {
+            type: globalThis.PropType<NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">>;
+            default: "text";
+        };
+        saveIcon: {
+            type: globalThis.PropType<string>;
+            default: undefined;
+        };
+        saveIconColor: {
+            type: globalThis.PropType<string>;
+            default: string;
         };
         tableField: {
             type: globalThis.PropType<boolean>;
@@ -4703,22 +4865,31 @@ declare const _default: {
         cell: boolean;
         cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
-        displayAppendIcon: import("./types").VIconValue;
+        displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendIconColor: string;
         displayAppendIconSize: string | number;
-        displayAppendInnerIcon: import("./types").VIconValue;
+        displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendInnerIconColor: string;
         displayAppendInnerIconSize: string | number;
-        displayPrependIcon: import("./types").VIconValue;
+        displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependIconColor: string;
         displayPrependIconSize: string | number;
-        displayPrependInnerIcon: import("./types").VIconValue;
+        displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependInnerIconColor: string;
         displayPrependInnerIconSize: string | number;
         emptyText: string;
         fieldOnly: boolean;
         hideCancelIcon: boolean;
+        hideSaveIcon: boolean;
+        loadingIcon: string;
+        loadingIconColor: string;
         loadingWait: boolean;
+        saveButtonColor: string;
+        saveButtonSize: string | number;
+        saveButtonTitle: string;
+        saveButtonVariant: NonNullable<"flat" | "outlined" | "plain" | "text" | "elevated" | "tonal">;
+        saveIcon: string;
+        saveIconColor: string;
         tableField: boolean;
         underlineColor: string;
         underlineStyle: string;
@@ -4846,7 +5017,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -4858,7 +5029,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -4870,7 +5041,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -4882,7 +5053,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -5085,7 +5256,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -5097,7 +5268,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -5109,7 +5280,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -5121,7 +5292,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -5230,16 +5401,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -5385,7 +5556,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -5397,7 +5568,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -5409,7 +5580,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -5421,7 +5592,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -5530,16 +5701,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -5682,7 +5853,7 @@ declare const _default: {
             default: boolean;
         };
         displayAppendIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendIconColor: {
@@ -5694,7 +5865,7 @@ declare const _default: {
             default: string;
         };
         displayAppendInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendInnerIconColor: {
@@ -5706,7 +5877,7 @@ declare const _default: {
             default: string;
         };
         displayPrependIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependIconColor: {
@@ -5718,7 +5889,7 @@ declare const _default: {
             default: string;
         };
         displayPrependInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependInnerIconColor: {
@@ -5829,16 +6000,16 @@ declare const _default: {
         cell: boolean;
         cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
-        displayAppendIcon: import("./types").VIconValue;
+        displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendIconColor: string;
         displayAppendIconSize: string | number;
-        displayAppendInnerIcon: import("./types").VIconValue;
+        displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendInnerIconColor: string;
         displayAppendInnerIconSize: string | number;
-        displayPrependIcon: import("./types").VIconValue;
+        displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependIconColor: string;
         displayPrependIconSize: string | number;
-        displayPrependInnerIcon: import("./types").VIconValue;
+        displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependInnerIconColor: string;
         displayPrependInnerIconSize: string | number;
         emptyText: string;
@@ -5989,7 +6160,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -6001,7 +6172,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -6013,7 +6184,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -6025,7 +6196,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -6236,7 +6407,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -6248,7 +6419,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -6260,7 +6431,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -6272,7 +6443,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -6383,16 +6554,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -6546,7 +6717,7 @@ declare const _default: {
                 default: boolean;
             };
             displayAppendIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendIconColor: {
@@ -6558,7 +6729,7 @@ declare const _default: {
                 default: string;
             };
             displayAppendInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayAppendInnerIconColor: {
@@ -6570,7 +6741,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependIconColor: {
@@ -6582,7 +6753,7 @@ declare const _default: {
                 default: string;
             };
             displayPrependInnerIcon: {
-                type: globalThis.PropType<import("./types").VIconValue>;
+                type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
                 default: undefined;
             };
             displayPrependInnerIconColor: {
@@ -6693,16 +6864,16 @@ declare const _default: {
             cell: boolean;
             cellUnderlineFullWidth: boolean;
             closeSiblings: boolean;
-            displayAppendIcon: import("./types").VIconValue;
+            displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendIconColor: string;
             displayAppendIconSize: string | number;
-            displayAppendInnerIcon: import("./types").VIconValue;
+            displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayAppendInnerIconColor: string;
             displayAppendInnerIconSize: string | number;
-            displayPrependIcon: import("./types").VIconValue;
+            displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependIconColor: string;
             displayPrependIconSize: string | number;
-            displayPrependInnerIcon: import("./types").VIconValue;
+            displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
             displayPrependInnerIconColor: string;
             displayPrependInnerIconSize: string | number;
             emptyText: string;
@@ -6853,7 +7024,7 @@ declare const _default: {
             default: boolean;
         };
         displayAppendIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendIconColor: {
@@ -6865,7 +7036,7 @@ declare const _default: {
             default: string;
         };
         displayAppendInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayAppendInnerIconColor: {
@@ -6877,7 +7048,7 @@ declare const _default: {
             default: string;
         };
         displayPrependIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependIconColor: {
@@ -6889,7 +7060,7 @@ declare const _default: {
             default: string;
         };
         displayPrependInnerIcon: {
-            type: globalThis.PropType<import("./types").VIconValue>;
+            type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
             default: undefined;
         };
         displayPrependInnerIconColor: {
@@ -7002,16 +7173,16 @@ declare const _default: {
         cell: boolean;
         cellUnderlineFullWidth: boolean;
         closeSiblings: boolean;
-        displayAppendIcon: import("./types").VIconValue;
+        displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendIconColor: string;
         displayAppendIconSize: string | number;
-        displayAppendInnerIcon: import("./types").VIconValue;
+        displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayAppendInnerIconColor: string;
         displayAppendInnerIconSize: string | number;
-        displayPrependIcon: import("./types").VIconValue;
+        displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependIconColor: string;
         displayPrependIconSize: string | number;
-        displayPrependInnerIcon: import("./types").VIconValue;
+        displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         displayPrependInnerIconColor: string;
         displayPrependInnerIconSize: string | number;
         emptyText: string;
