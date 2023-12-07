@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
+## v1.0.3
+12-06-2023
+[main] (@webdevnerdstuff)
+* Remove console.log from SaveFieldButtons component
+* Updated terser to remove console.log from build in case I forget to remove it in the future
+
 ## v1.0.2
 12-06-2023
 [main] (@webdevnerdstuff)

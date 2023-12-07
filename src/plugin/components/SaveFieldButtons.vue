@@ -77,8 +77,6 @@ const loading = computed(() => props.loading);
 
 const settings = reactive({ ...attrs, ...props });
 
-console.log({ settings });
-
 const loadingIconClasses = computed(() => {
 	if (iconOptions?.defaultSet === 'fa') {
 		return 'fa-spin';

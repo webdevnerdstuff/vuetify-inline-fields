@@ -86,7 +86,11 @@ export default defineConfig({
 				},
 			]
 		}),
-		terser(),
+		terser({
+			compress: {
+				drop_console: ['log'],
+			},
+		}),
 	],
 	resolve: {
 		alias: {

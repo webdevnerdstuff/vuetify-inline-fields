@@ -3,7 +3,7 @@ import { useTheme as Wl } from "vuetify";
 import { useWindowSize as _i } from "@vueuse/core";
 /**
  * @name @wdns/vuetify-inline-fields
- * @version 1.0.2
+ * @version 1.0.3
  * @description Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2023, WebDevNerdStuff
@@ -3168,9 +3168,7 @@ const xs = (e, t) => {
   }
   return (f, m) => (J(), ce("div", { class: "v-inline-fields--display-wrapper", onClick: y }, [f.displayPrependIcon || r(o)["display.prepend"] ? (J(), ce("div", { key: 0, class: le(p("prepend")), style: Te(r(i)) }, [r(o)["display.prepend"] ? Ye(f.$slots, "display.prepend", Pe(Z({ key: 0 }, c))) : (J(), ze(Se, { key: 1, color: f.displayPrependIconColor, icon: f.displayPrependIcon, size: "x-small" }, null, 8, ["color", "icon"]))], 6)) : xe("", !0), Ge("div", { class: le(["d-inline-flex", r(u)]), style: Te(r(s)) }, [f.displayPrependInnerIcon || r(o)["display.prependInner"] ? (J(), ce("div", { key: 0, class: le(p("prepend", !0)) }, [r(o)["display.prependInner"] ? Ye(f.$slots, "display.prependInner", Pe(Z({ key: 0 }, c))) : (J(), ze(Se, { key: 1, color: f.displayPrependInnerIconColor, icon: f.displayPrependInnerIcon, size: "x-small" }, null, 8, ["color", "icon"]))], 2)) : xe("", !0), ta(" " + Ll(f.displayValue) + " ", 1), f.displayAppendInnerIcon || r(o)["display.appendInner"] ? (J(), ce("div", { key: 1, class: le(p("append", !0)) }, [r(o)["display.appendInner"] ? Ye(f.$slots, "display.appendInner", Pe(Z({ key: 0 }, c))) : (J(), ze(Se, { key: 1, color: f.displayAppendInnerIconColor, icon: f.displayAppendInnerIcon, size: "x-small" }, null, 8, ["color", "icon"]))], 2)) : xe("", !0)], 6), f.displayAppendIcon || r(o)["display.append"] ? (J(), ce("div", { key: 1, class: le(p("append")), style: Te(r(i)) }, [r(o)["display.append"] ? Ye(f.$slots, "display.append", Pe(Z({ key: 0 }, c))) : (J(), ze(Se, { key: 1, color: f.displayAppendIconColor, icon: f.displayAppendIcon, size: "x-small" }, null, 8, ["color", "icon"]))], 6)) : xe("", !0)]));
 } }), ct = sn({ __name: "SaveFieldButtons", props: { loading: { type: Boolean }, cancelButtonColor: {}, cancelButtonSize: {}, cancelButtonVariant: {}, cancelButtonTitle: {}, cancelIconColor: {}, error: { type: Boolean }, fieldOnly: { type: Boolean }, hideCancelIcon: { type: Boolean }, hideSaveIcon: { type: Boolean }, cancelIcon: {}, loadingIcon: {}, loadingIconColor: {}, saveButtonColor: {}, saveButtonSize: {}, saveButtonTitle: {}, saveButtonVariant: {}, saveIconColor: {}, saveIcon: {} }, emits: ["close", "save"], setup(e, { emit: t }) {
-  const n = Tn(), l = t, o = e, a = me(Symbol.for("vuetify:icons")), c = v(() => o.error), u = v(() => ({ [`${ie}--save-fields-container`]: !0 })), s = v(() => o.loading), i = ln({ ...n, ...o });
-  console.log({ settings: i });
-  const p = v(() => (a == null ? void 0 : a.defaultSet) === "fa" ? "fa-spin" : (a == null ? void 0 : a.defaultSet) === "mdi" ? "mdi-spin" : ""), y = v(() => ((C) => {
+  const n = Tn(), l = t, o = e, a = me(Symbol.for("vuetify:icons")), c = v(() => o.error), u = v(() => ({ [`${ie}--save-fields-container`]: !0 })), s = v(() => o.loading), i = ln({ ...n, ...o }), p = v(() => (a == null ? void 0 : a.defaultSet) === "fa" ? "fa-spin" : (a == null ? void 0 : a.defaultSet) === "mdi" ? "mdi-spin" : ""), y = v(() => ((C) => {
     const { cancelButtonVariant: w } = C;
     return { "me-1": w === "elevated", "ms-1": !0 };
   })({ cancelButtonVariant: i.cancelButtonVariant })), f = v(() => on({ icon: o.cancelIcon, iconOptions: a, name: "false" })), m = v(() => on({ icon: o.loadingIcon, iconOptions: a, name: "loading" })), h = v(() => on({ icon: o.saveIcon, iconOptions: a, name: "save" }));
