@@ -24,6 +24,18 @@
 		"paths": {
 			"@/*": [
 				"./src/*"
+			],
+			"@types/*": [
+				"./src/plugin/types/*"
+			],
+			"@components/*": [
+				"./src/plugin/components/*"
+			],
+			"@composables/*": [
+				"./src/plugin/composables/*"
+			],
+			"@utils/*": [
+				"./src/plugin/utils/*"
 			]
 		},
 		"resolveJsonModule": true,
@@ -43,14 +55,17 @@
 	},
 	"exclude": [
 		"playground",
+		"src/**/*.spec.ts",
+		"src/**/*.test.ts",
 		"src/App.vue",
-		"src/main.ts",
 		"src/documentation/**/*.ts",
 		"src/documentation/**/*.vue",
-		"src/stores/**/*.ts",
+		"src/main.ts",
 		"src/playground/**/*.ts",
+		"src/plugin/components/VInlineAutocomplete/**/*.ts",
+		"src/plugin/components/VInlineAutocomplete/**/*.vue",
 		"src/plugins/**/*.ts",
-		"src/**/*.spec.ts",
+		"src/stores/**/*.ts",
 		"node_modules"
 	],
 	"include": [

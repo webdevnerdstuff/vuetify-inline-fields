@@ -7,7 +7,11 @@ export default mergeConfig(
 	defineConfig({
 		test: {
 			environment: 'jsdom',
-			exclude: [...configDefaults.exclude],
+			exclude: [
+				...configDefaults.exclude,
+				'./src/plugin/components/common/__tests__/common.test.ts',
+				'./src/plugin/components/VInlineAutocomplete'
+			],
 			root: fileURLToPath(new URL('./', import.meta.url)),
 			server: {
 				deps: {

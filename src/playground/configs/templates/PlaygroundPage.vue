@@ -354,7 +354,7 @@ import type {
 	// VIconColor,
 	VBtnVariant,
 	// VIconValue,
-} from '../plugin/types';
+} from '@/plugin/types';
 
 
 type Headers = VDataTable['$props']['headers'];

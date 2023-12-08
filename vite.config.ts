@@ -54,7 +54,12 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			'@components': fileURLToPath(new URL('./src/plugin/components', import.meta.url)),
+			'@composables': fileURLToPath(new URL('./src/plugin/composables', import.meta.url)),
+			'@plugin': fileURLToPath(new URL('./src/plugin', import.meta.url)),
 			'@root': fileURLToPath(new URL('.', import.meta.url)),
+			'@types': fileURLToPath(new URL('./src/plugin/types', import.meta.url)),
+			'@utils': fileURLToPath(new URL('./src/plugin/utils', import.meta.url)),
 		},
 		extensions: [
 			'.js',
