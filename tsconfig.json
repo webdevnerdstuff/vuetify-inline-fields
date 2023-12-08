@@ -50,6 +50,7 @@
 		"src/stores/**/*.ts",
 		"src/playground/**/*.ts",
 		"src/plugins/**/*.ts",
+		"src/**/*.spec.ts",
 		"node_modules"
 	],
 	"include": [
