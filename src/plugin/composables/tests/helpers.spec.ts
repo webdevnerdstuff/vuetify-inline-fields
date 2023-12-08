@@ -3,10 +3,9 @@ import {
 	useConvertToUnit,
 	useGetFieldCoordinates,
 	useTruthyModelValue,
-} from '../helpers';
+} from '@/plugin/composables/helpers';
 
-describe('helpers', () => {
-
+describe('Helpers Composable', () => {
 	describe('useConvertToUnit', () => {
 		it('should return string with a default px unit', () => {
 			const unit = useConvertToUnit({ str: '10' });
@@ -28,7 +27,6 @@ describe('helpers', () => {
 			expect(unit).toBe('10em');
 		});
 	});
-
 
 	describe('useGetFieldCoordinates', () => {
 		const div = document.createElement('div');

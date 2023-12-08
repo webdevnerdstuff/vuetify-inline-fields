@@ -1,7 +1,6 @@
-// Utilities
 import { describe, it, expect } from 'vitest';
-// import { mount } from '@vue/test-utils';
 import { createVInlineFields } from '@/plugin';
+
 
 describe('framework', () => {
 	describe('install', () => {

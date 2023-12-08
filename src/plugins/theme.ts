@@ -4,7 +4,7 @@ export const dark = {
 	colors: {
 		accent: '#d00274',
 		danger: colors.red.base,
-		error: colors.red.base,
+		error: '#ff0000',
 		info: colors.teal.base,
 		primary: colors.blue.darken2,
 		secondary: colors.purple.base,
@@ -18,7 +18,7 @@ export const light = {
 	colors: {
 		accent: '#905',
 		danger: colors.red.base,
-		error: colors.red.base,
+		error: '#ff0000',
 		info: colors.teal.darken1,
 		primary: colors.blue.base,
 		secondary: colors.purple.lighten1,

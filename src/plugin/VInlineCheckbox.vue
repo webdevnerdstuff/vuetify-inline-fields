@@ -5,7 +5,7 @@
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="(!showField && !settings.fieldOnly) || cardField"
+			v-if="(!showField && !fieldOnly) || cardField"
 			:class="displayContainerClass"
 			@click="settings.cell ? toggleField() : undefined"
 		>
@@ -22,12 +22,12 @@
 					>
 						<BooleanIcons
 							v-model="truthyModelValue"
-							:icon-false="settings.iconFalse"
-							:icon-false-color="settings.iconFalseColor"
-							:icon-false-title="settings.iconFalseTitle"
-							:icon-true="settings.iconTrue"
-							:icon-true-color="settings.iconTrueColor"
-							:icon-true-title="settings.iconTrueTitle"
+							:icon-false="iconFalse"
+							:icon-false-color="iconFalseColor"
+							:icon-false-title="iconFalseTitle"
+							:icon-true="iconTrue"
+							:icon-true-color="iconTrueColor"
+							:icon-true-title="iconTrueTitle"
 						/>
 					</div>
 

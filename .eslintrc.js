@@ -16,6 +16,7 @@ module.exports = {
 		'vite.build.config.ts',
 		'vite.config.ts',
 		'*.bk.vue',
+		'*.spec.ts',
 	],
 	overrides: [
 		{
