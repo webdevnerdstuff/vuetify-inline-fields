@@ -14,7 +14,7 @@ export const globalOptions = Symbol();
 export function createVInlineFields(options: Omit<SharedProps,
 	'disabled' | 'label' | 'loading' | 'name'
 > = {}) {
-	return (app: App) => {
+	const install = (app: App) => {
 		app.provide(globalOptions, options);
 		app.component('VInlineCheckbox', VInlineCheckbox);
 		app.component('VInlineCustomField', VInlineCustomField);
@@ -23,6 +23,8 @@ export function createVInlineFields(options: Omit<SharedProps,
 		app.component('VInlineTextField', VInlineTextField);
 		app.component('VInlineTextarea', VInlineTextarea);
 	};
+
+	return { install };
 }
 
 export default {
