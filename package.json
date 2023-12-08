@@ -13,7 +13,7 @@
 		"dev": "vite",
 		"watch": "pnpm dev",
 		"play": "sh src/playground/configs/build.sh && NODE_ENV=playground vite",
-		"build": "vue-tsc && vite build --config vite.build.config.ts",
+		"build": "vue-tsc && npm run test:deploy && vite build --config vite.build.config.ts",
 		"build:docs": "vite build",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d docs",
