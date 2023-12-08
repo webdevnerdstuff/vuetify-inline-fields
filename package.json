@@ -21,7 +21,8 @@
 		"lint": "eslint src/**/*.{ts,vue} --max-warnings 20",
 		"prepare": "husky install",
 		"test:dev": "vitest",
-		"test:all": "vitest --run"
+		"test:all": "vitest --run",
+		"test:deploy": "vitest --run --bail 1"
 	},
 	"lint-staged": {
 		"src/**/*.{js,ts,vue}": [
