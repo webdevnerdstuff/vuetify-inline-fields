@@ -13,8 +13,8 @@ module.exports = {
 	],
 	ignorePatterns: [
 		'.eslintrc.js',
-		'vite.build.config.ts',
-		'vite.config.ts',
+		'vite.build.config.mts',
+		'vite.config.mts',
 		'*.bk.vue',
 		'*.spec.ts',
 	],
