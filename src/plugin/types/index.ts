@@ -15,6 +15,14 @@ import type {
 	VTextField,
 	VTextarea,
 } from 'vuetify/components';
+import type {
+	VInlineCheckbox,
+	VInlineCustomField,
+	VInlineSelect,
+	VInlineSwitch,
+	VInlineTextField,
+	VInlineTextarea,
+} from '@components/index';
 import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
 
@@ -117,73 +125,6 @@ export interface SharedProps {
 	valueColor?: string;
 }
 
-// Component Props //
-export interface VInlineAutocompleteProps extends Omit<SharedProps,
-	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'
-> {
-	clearIcon?: string | undefined;
-	clearable?: VSelect['$props']['clearable'];
-	density?: VSelect['$props']['density'];
-	hideSelected?: VSelect['$props']['hideSelected'];
-	itemTitle?: VSelect['$props']['itemTitle'];
-	itemValue?: VSelect['$props']['itemValue'];
-	items?: VSelect['$props']['items'];
-	menu?: VSelect['$props']['menu'];
-	rules?: VSelect['$props']['rules'];
-	variant?: VSelect['$props']['variant'];
-}
-
-export interface VInlineCheckboxProps extends Omit<SharedProps,
-	'autofocus' | 'truncateLength' | 'truncateSuffix'
-> {
-	density?: VCheckbox['$props']['density'];
-	falseIcon?: string | undefined;
-	trueIcon?: string | undefined;
-}
-
-export interface VInlineSelectProps extends Omit<SharedProps,
-	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'
-> {
-	clearIcon?: string | undefined;
-	clearable?: VSelect['$props']['clearable'];
-	density?: VSelect['$props']['density'];
-	hideSelected?: VSelect['$props']['hideSelected'];
-	itemTitle?: VSelect['$props']['itemTitle'];
-	itemValue?: VSelect['$props']['itemValue'];
-	items?: VSelect['$props']['items'];
-	menu?: VSelect['$props']['menu'];
-	rules?: VSelect['$props']['rules'];
-	variant?: VSelect['$props']['variant'];
-}
-
-export interface VInlineSwitchProps extends Omit<SharedProps,
-	'autofocus' | 'truncateLength' | 'truncateSuffix'
-> {
-	density?: VSwitch['$props']['density'];
-	falseIcon?: VSwitch['$props']['falseIcon'];
-}
-
-export interface VInlineTextareaProps extends Omit<SharedProps,
-	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'
-> {
-	autoGrow?: VTextarea['$props']['autoGrow'];
-	clearIcon?: string | undefined;
-	density?: VTextarea['$props']['density'];
-	rows?: VTextarea['$props']['rows'];
-	rules?: VTextarea['$props']['rules'];
-	variant?: VTextarea['$props']['variant'];
-}
-
-export interface VInlineTextFieldProps extends Omit<SharedProps,
-	'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'
-> {
-	clearIcon?: string | undefined;
-	density?: VTextField['$props']['density'];
-	rules?: VTextField['$props']['rules'];
-	variant?: VTextField['$props']['variant'];
-}
-
-
 // -------------------------------------------------- Components //
 export interface UseCardContainerStyle {
 	(
@@ -200,61 +141,6 @@ export interface UseCardContainerStyle {
 
 
 // -------------------------------------------------- Components //
-export interface BooleanIcons extends
-	Required<Pick<SharedProps, 'iconFalseColor' | 'iconFalseTitle' | 'iconTrueColor' | 'iconTrueTitle'>>,
-	Pick<SharedProps,
-		'iconFalse' |
-		'iconTrue'
-	> { };
-
-
-export interface DisplayValueProps {
-	[key: string]: any;
-	color: SharedProps['color'];
-	displayAppendIcon: SharedProps['displayAppendIcon'];
-	displayAppendIconColor: SharedProps['displayAppendIconColor'];
-	displayAppendInnerIcon: SharedProps['displayAppendInnerIcon'];
-	displayAppendInnerIconColor: SharedProps['displayAppendInnerIconColor'];
-	displayPrependIcon: SharedProps['displayPrependIcon'];
-	displayPrependIconColor: SharedProps['displayPrependIconColor'];
-	displayPrependInnerIcon: SharedProps['displayPrependInnerIcon'];
-	displayPrependInnerIconColor: SharedProps['displayPrependInnerIconColor'];
-	displayValue: any;
-	empty?: Ref<boolean> | boolean;
-	error?: MaybeRef<boolean> | boolean | undefined;
-	field: string;
-	underlineColor?: SharedProps['underlineColor'];
-	underlineStyle?: SharedProps['underlineStyle'];
-	underlineWidth?: SharedProps['underlineWidth'];
-	underlined?: SharedProps['underlined'];
-	valueColor?: SharedProps['valueColor'];
-}
-
-export interface SaveFieldButtons extends
-	Required<Pick<SharedProps,
-		'cancelButtonColor' |
-		'cancelButtonSize' |
-		'cancelButtonVariant' |
-		'cancelButtonTitle' |
-		'cancelIconColor' |
-		'error' |
-		'fieldOnly' |
-		'hideCancelIcon' |
-		'hideSaveIcon'
-	>>,
-	Pick<SharedProps,
-		'cancelIcon' |
-		'loadingIcon' |
-		'loadingIconColor' |
-		'saveButtonColor' |
-		'saveButtonSize' |
-		'saveButtonTitle' |
-		'saveButtonVariant' |
-		'saveIconColor' |
-		'saveButtonVariant' |
-		'saveIcon'
-	> { loading: boolean; };
-
 
 export interface UseCancelButtonClass {
 	(
@@ -462,4 +348,19 @@ export interface UseTruthyModelValue {
 			trueValue?: any,
 		}
 	): boolean;
+}
+
+
+export * from '../index';
+export * from '@components/index';
+
+declare module 'vue' {
+	export interface GlobalComponents {
+		VInlineCheckbox: typeof VInlineCheckbox;
+		VInlineCustomField: typeof VInlineCustomField;
+		VInlineSelect: typeof VInlineSelect;
+		VInlineSwitch: typeof VInlineSwitch;
+		VInlineTextField: typeof VInlineTextField;
+		VInlineTextarea: typeof VInlineTextarea;
+	}
 }
