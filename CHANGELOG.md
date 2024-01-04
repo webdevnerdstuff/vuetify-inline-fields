@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
+## v1.0.4
+12-18-2023
+[main] (@webdevnerdstuff)
+* Add vitest
+* Fix typescript issues
+* Reorganizing
+
 ## v1.0.3
 12-06-2023
 [main] (@webdevnerdstuff)

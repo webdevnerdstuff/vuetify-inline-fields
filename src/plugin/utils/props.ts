@@ -35,6 +35,7 @@ export const sharedProps = {
 	displayPrependInnerIconColor: undefined,
 	displayPrependInnerIconSize: 'x-small',
 	emptyText: 'empty',
+	error: false,
 	fieldOnly: false,
 	hideCancelIcon: false,
 	hideDetails: true,

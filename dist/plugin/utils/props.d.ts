@@ -32,6 +32,7 @@ export declare const sharedProps: {
     displayPrependInnerIconColor: undefined;
     displayPrependInnerIconSize: string;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideCancelIcon: boolean;
     hideDetails: boolean;
@@ -97,6 +98,7 @@ declare const checkboxProps: {
     displayPrependInnerIconColor: undefined;
     displayPrependInnerIconSize: string;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideDetails: boolean;
     label: string;
@@ -159,6 +161,7 @@ declare const selectProps: {
     displayPrependInnerIconColor: undefined;
     displayPrependInnerIconSize: string;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideDetails: boolean;
     label: string;
@@ -222,6 +225,7 @@ declare const switchProps: {
     displayPrependInnerIconColor: undefined;
     displayPrependInnerIconSize: string;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideDetails: boolean;
     label: string;
@@ -270,6 +274,7 @@ declare const textareaProps: {
     displayPrependInnerIconColor: undefined;
     displayPrependInnerIconSize: string;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideCancelIcon: boolean;
     hideDetails: boolean;
@@ -338,6 +343,7 @@ declare const textFieldProps: {
     displayPrependInnerIconColor: undefined;
     displayPrependInnerIconSize: string;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideDetails: boolean;
     label: string;
