@@ -100,7 +100,6 @@ export interface SharedProps {
 	iconTrueColor?: string;
 	iconTrueTitle?: string | undefined;
 	icons?: boolean;
-	item?: Record<string, unknown>;
 	label?: string;
 	loading?: boolean;
 	loadingIcon?: string | undefined;
@@ -124,6 +123,7 @@ export interface SharedProps {
 	underlined?: boolean;
 	valueColor?: string;
 }
+
 
 // -------------------------------------------------- Components //
 export interface UseCardContainerStyle {
@@ -352,7 +352,6 @@ export interface UseTruthyModelValue {
 
 
 export * from '../index';
-export * from '@components/index';
 
 declare module 'vue' {
 	export interface GlobalComponents {

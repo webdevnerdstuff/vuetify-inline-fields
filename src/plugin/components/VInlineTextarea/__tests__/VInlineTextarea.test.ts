@@ -9,7 +9,6 @@ const vuetify = createVuetify();
 
 const componentProps = Object.assign(textareaProps, {
 	cardProps: {},
-	required: false,
 });
 
 describe('VInlineTextarea', () => {

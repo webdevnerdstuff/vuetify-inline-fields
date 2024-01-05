@@ -9,9 +9,7 @@ const vuetify = createVuetify();
 
 const componentProps = Object.assign(checkboxProps, {
 	cardProps: {},
-	item: undefined,
 	modelValue: undefined,
-	required: false,
 });
 
 describe('VInlineCheckbox', () => {

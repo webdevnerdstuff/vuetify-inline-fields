@@ -10,7 +10,6 @@ const vuetify = createVuetify();
 const componentProps = Object.assign(selectProps, {
 	cardProps: {},
 	items: [],
-	required: false,
 });
 
 describe('VInlineSelect', () => {

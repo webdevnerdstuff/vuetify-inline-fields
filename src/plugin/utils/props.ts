@@ -43,6 +43,7 @@ export const sharedProps = {
 	loading: false,
 	loadingWait: true,
 	name: '',
+	required: false,
 	tableField: true,
 	underlineColor: 'primary',
 	underlineStyle: 'dotted',
