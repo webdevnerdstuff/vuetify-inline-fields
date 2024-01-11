@@ -15,19 +15,19 @@
 			>
 				<div class="v-selection-control__wrapper">
 					<div
-						v-if="icons"
+						v-if="settings.icons"
 						class="v-inline-fields--boolean-icons-container"
 						:class="displayValueClass"
 						:style="displayValueStyle"
 					>
 						<BooleanIcons
 							v-model="truthyModelValue"
-							:icon-false="iconFalse"
+							:icon-false="settings.iconFalse"
 							:icon-false-color="settings.iconFalseColor"
-							:icon-false-title="iconFalseTitle"
-							:icon-true="iconTrue"
+							:icon-false-title="settings.iconFalseTitle"
+							:icon-true="settings.iconTrue"
 							:icon-true-color="settings.iconTrueColor"
-							:icon-true-title="iconTrueTitle"
+							:icon-true-title="settings.iconTrueTitle"
 						/>
 					</div>
 
@@ -82,7 +82,7 @@
 						#append
 					>
 						<SaveFieldButtons
-							:cancel-button-color="cancelButtonColor"
+							:cancel-button-color="settings.cancelButtonColor"
 							:cancel-button-size="settings.cancelButtonSize"
 							:cancel-button-title="settings.cancelButtonTitle"
 							:cancel-button-variant="settings.cancelButtonVariant"
@@ -177,8 +177,6 @@ const settings = reactive({ ...attrs, ...props, ...injectedOptions });
 watchEffect(() => {
 	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
 });
-
-const { cancelButtonColor } = toRefs(settings);
 
 const disabled = computed(() => props.disabled);
 const loadingProp = computed(() => props.loading);

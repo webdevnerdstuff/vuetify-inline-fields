@@ -15,7 +15,7 @@
 			>
 				<div class="v-selection-control__wrapper">
 					<div
-						v-if="icons"
+						v-if="settings.icons"
 						class="v-inline-fields--boolean-icons-container"
 						:class="displayValueClass"
 						:style="displayValueStyle"
