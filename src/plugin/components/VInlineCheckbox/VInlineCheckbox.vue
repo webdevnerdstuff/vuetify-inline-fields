@@ -23,10 +23,10 @@
 						<BooleanIcons
 							v-model="truthyModelValue"
 							:icon-false="iconFalse"
-							:icon-false-color="iconFalseColor"
+							:icon-false-color="settings.iconFalseColor"
 							:icon-false-title="iconFalseTitle"
 							:icon-true="iconTrue"
-							:icon-true-color="iconTrueColor"
+							:icon-true-color="settings.iconTrueColor"
 							:icon-true-title="iconTrueTitle"
 						/>
 					</div>
@@ -82,7 +82,7 @@
 						#append
 					>
 						<SaveFieldButtons
-							:cancel-button-color="settings.cancelButtonColor"
+							:cancel-button-color="cancelButtonColor"
 							:cancel-button-size="settings.cancelButtonSize"
 							:cancel-button-title="settings.cancelButtonTitle"
 							:cancel-button-variant="settings.cancelButtonVariant"
@@ -172,13 +172,13 @@ const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
-let settings = reactive({ ...props, ...injectedOptions });
-
+const settings = reactive({ ...attrs, ...props, ...injectedOptions });
 
 watchEffect(() => {
-	settings = reactive({ ...props, ...injectedOptions });
-	// console.log(settings.underlineColor);
+	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
 });
+
+const { cancelButtonColor } = toRefs(settings);
 
 const disabled = computed(() => props.disabled);
 const loadingProp = computed(() => props.loading);
@@ -338,9 +338,6 @@ function toggleField() {
 		showField,
 		timeOpened: timeOpened.value,
 	});
-
-	// ! This breaks reactivity stuff ! //
-	// settings = reactive({ ...settings, ...response.settings });
 
 	showField.value = response.showField;
 	timeOpened.value = response.timeOpened;

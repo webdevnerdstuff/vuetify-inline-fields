@@ -77,6 +77,10 @@ const loading = computed(() => props.loading);
 
 const settings = reactive({ ...attrs, ...props });
 
+watchEffect(() => {
+	Object.assign(settings, { ...attrs, ...props });
+});
+
 const loadingIconClasses = computed(() => {
 	if (iconOptions?.defaultSet === 'fa') {
 		return 'fa-spin';
