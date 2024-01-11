@@ -16,6 +16,7 @@ import type {
 	VTextarea,
 } from 'vuetify/components';
 import type {
+	VInlineAutocomplete,
 	VInlineCheckbox,
 	VInlineCustomField,
 	VInlineSelect,
@@ -355,6 +356,7 @@ export * from '../index';
 
 declare module 'vue' {
 	export interface GlobalComponents {
+		VInlineAutocomplete: typeof VInlineAutocomplete;
 		VInlineCheckbox: typeof VInlineCheckbox;
 		VInlineCustomField: typeof VInlineCustomField;
 		VInlineSelect: typeof VInlineSelect;
