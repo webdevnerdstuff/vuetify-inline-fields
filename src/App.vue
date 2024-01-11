@@ -101,13 +101,13 @@ html {
 		margin: 0 -0.7em;
 		position: absolute;
 
-		&:not(:hover):not(:focus) {
+		&:not(:hover, :focus) {
 			opacity: 0;
 		}
 	}
 }
 
-.name-item:not(:hover):not(:focus) span {
+.name-item:not(:hover, :focus) span {
 	opacity: 0;
 }
 

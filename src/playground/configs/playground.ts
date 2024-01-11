@@ -12,33 +12,32 @@ makeServer({ environment: 'playground' });
 
 const app = createApp(PlaygroundApp);
 app.use(createVInlineFields({
-	// cancelButtonColor: 'yellow',
-	// cancelButtonSize: 'x-small',
-	// cancelButtonTitle: 'xxxxxxxxxxx',
-	// cancelButtonVariant: 'outlined',
-	// cancelIcon: 'mdi:mdi-cog',
-	// cancelIconColor: 'purple',
-	// cardField: true,
-	// cardOffsetX: 100,
-	// cardOffsetY: 100,
-	// cell: true,
-	// cellUnderlineFullWidth: true,
-	// closeSiblings: false,
+	cancelButtonColor: 'yellow', // ! Fail
+	// cancelButtonSize: 'x-small', // ? CONFIRMED
+	// cancelButtonTitle: 'xxxxxxxxxxx', // ? CONFIRMED
+	// cancelButtonVariant: 'outlined', // ? CONFIRMED
+	// cancelIcon: 'mdi:mdi-cog', // ? CONFIRMED
+	// cancelIconColor: 'purple', // ? CONFIRMED
+	// cardField: true, // ? CONFIRMED
+	// cardOffsetX: 100, // ? CONFIRMED
+	// cardOffsetY: 100, // ? CONFIRMED
+	// cell: true, // ? CONFIRMED
+	// cellUnderlineFullWidth: false, // ? CONFIRMED
+	// closeSiblings: false, // ? CONFIRMED
 	// color: 'orange', // * CONFIRMED
-	// disabled: false,
-	// emptyText: 'xxxxxxxxxxxx',
-	// fieldOnly: true,
-	// hideCancelIcon: true,
+	// disabled: false, // & not allowed
+	// emptyText: 'foobar', // ? CONFIRMED
+	// fieldOnly: true, // ? CONFIRMED
+	// hideCancelIcon: true, // ? CONFIRMED
 	// hideDetails: true,
-	// hideSaveIcon: true,
-	// hideSaveIcon: true,
-	// loadingWait: true,
+	// hideSaveIcon: true, // ? CONFIRMED
+	// loadingWait: false,  // ? CONFIRMED
 	// tableField: false,
-	// underlineColor: 'red',
-	// underlineStyle: 'dashed',
-	// underlineWidth: '10px',
-	// underlined: false,
-	// valueColor: 'pink',
+	// underlineColor: 'red',  // ? CONFIRMED
+	// underlineStyle: 'dashed',  // ? CONFIRMED
+	// underlineWidth: '10px',  // ? CONFIRMED
+	// underlined: false,  // ? CONFIRMED
+	// valueColor: 'pink',  // ? CONFIRMED
 }));
 app.use(createPinia());
 app.component('font-awesome-icon', FontAwesomeIcon);

@@ -13,6 +13,7 @@ module.exports = {
 	],
 	ignorePatterns: [
 		'.eslintrc.js',
+		'stylelint.config.js',
 		'vite.build.config.mts',
 		'vite.config.mts',
 		'*.bk.vue',
