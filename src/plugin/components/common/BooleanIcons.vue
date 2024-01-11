@@ -28,11 +28,17 @@ import { VIcon } from 'vuetify/components';
 const props = withDefaults(defineProps<BooleanIcons>(), {});
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
+const settings = reactive({ ...props });
+
+watchEffect(() => {
+	Object.assign(settings, { ...props });
+});
+
 const modelValue = defineModel();
 
 const theFalseIcon = computed(() => {
 	return useGetIcon({
-		icon: props.iconFalse,
+		icon: settings.iconFalse,
 		iconOptions,
 		name: 'false',
 	});
@@ -40,7 +46,7 @@ const theFalseIcon = computed(() => {
 
 const theTrueIcon = computed(() => {
 	return useGetIcon({
-		icon: props.iconTrue,
+		icon: settings.iconTrue,
 		iconOptions,
 		name: 'true',
 	});

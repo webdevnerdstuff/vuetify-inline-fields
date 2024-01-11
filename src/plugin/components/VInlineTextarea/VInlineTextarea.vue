@@ -160,7 +160,11 @@ const injectedOptions = inject(globalOptions, {});
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
 const props = withDefaults(defineProps<VInlineTextareaProps>(), { ...textareaProps });
-let settings = reactive({ ...attrs, ...props, ...injectedOptions });
+const settings = reactive({ ...attrs, ...props, ...injectedOptions });
+
+watchEffect(() => {
+	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
+});
 
 const { cancelButtonColor,
 	cancelButtonSize,
@@ -239,18 +243,18 @@ const bindingSettings = computed(() => useBindingSettings(settings));
 const bindingDisplay = computed(() => {
 	return {
 		color: settings.color,
-		displayAppendIcon: props.displayAppendIcon,
-		displayAppendIconColor: props.displayAppendIconColor,
-		displayAppendIconSize: props.displayAppendIconSize,
-		displayAppendInnerIcon: props.displayAppendInnerIcon,
-		displayAppendInnerIconColor: props.displayAppendInnerIconColor,
-		displayAppendInnerIconSize: props.displayAppendInnerIconSize,
-		displayPrependIcon: props.displayPrependIcon,
-		displayPrependIconColor: props.displayPrependIconColor,
-		displayPrependIconSize: props.displayPrependIconSize,
-		displayPrependInnerIcon: props.displayPrependInnerIcon,
-		displayPrependInnerIconColor: props.displayPrependInnerIconColor,
-		displayPrependInnerIconSize: props.displayPrependInnerIconSize,
+		displayAppendIcon: settings.displayAppendIcon,
+		displayAppendIconColor: settings.displayAppendIconColor,
+		displayAppendIconSize: settings.displayAppendIconSize,
+		displayAppendInnerIcon: settings.displayAppendInnerIcon,
+		displayAppendInnerIconColor: settings.displayAppendInnerIconColor,
+		displayAppendInnerIconSize: settings.displayAppendInnerIconSize,
+		displayPrependIcon: settings.displayPrependIcon,
+		displayPrependIconColor: settings.displayPrependIconColor,
+		displayPrependIconSize: settings.displayPrependIconSize,
+		displayPrependInnerIcon: settings.displayPrependInnerIcon,
+		displayPrependInnerIconColor: settings.displayPrependInnerIconColor,
+		displayPrependInnerIconSize: settings.displayPrependInnerIconSize,
 		displayValue: displayValue.value,
 		empty: empty.value,
 		error: error.value,
@@ -344,7 +348,6 @@ function toggleField() {
 		timeOpened: timeOpened.value,
 	});
 
-	settings = { ...settings, ...response.settings };
 	showField.value = response.showField;
 	timeOpened.value = response.timeOpened;
 

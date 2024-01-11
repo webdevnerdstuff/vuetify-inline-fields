@@ -15,7 +15,7 @@
 			>
 				<div class="v-selection-control__wrapper">
 					<div
-						v-if="icons"
+						v-if="settings.icons"
 						class="v-inline-fields--boolean-icons-container"
 						:class="displayValueClass"
 						:style="displayValueStyle"
@@ -170,7 +170,11 @@ const injectedOptions = inject(globalOptions, {});
 const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineSwitchProps>(), { ...switchProps });
-let settings = reactive({ ...attrs, ...props, ...injectedOptions });
+const settings = reactive({ ...attrs, ...props, ...injectedOptions });
+
+watchEffect(() => {
+	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
+});
 
 const { cancelButtonColor,
 	cancelButtonSize,
@@ -319,7 +323,6 @@ function toggleField() {
 		timeOpened: timeOpened.value,
 	});
 
-	settings = { ...settings, ...response.settings };
 	showField.value = response.showField;
 	timeOpened.value = response.timeOpened;
 

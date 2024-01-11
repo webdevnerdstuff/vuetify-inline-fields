@@ -15,19 +15,19 @@
 			>
 				<div class="v-selection-control__wrapper">
 					<div
-						v-if="icons"
+						v-if="settings.icons"
 						class="v-inline-fields--boolean-icons-container"
 						:class="displayValueClass"
 						:style="displayValueStyle"
 					>
 						<BooleanIcons
 							v-model="truthyModelValue"
-							:icon-false="iconFalse"
-							:icon-false-color="iconFalseColor"
-							:icon-false-title="iconFalseTitle"
-							:icon-true="iconTrue"
-							:icon-true-color="iconTrueColor"
-							:icon-true-title="iconTrueTitle"
+							:icon-false="settings.iconFalse"
+							:icon-false-color="settings.iconFalseColor"
+							:icon-false-title="settings.iconFalseTitle"
+							:icon-true="settings.iconTrue"
+							:icon-true-color="settings.iconTrueColor"
+							:icon-true-title="settings.iconTrueTitle"
 						/>
 					</div>
 
@@ -172,12 +172,10 @@ const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
-let settings = reactive({ ...props, ...injectedOptions });
-
+const settings = reactive({ ...attrs, ...props, ...injectedOptions });
 
 watchEffect(() => {
-	settings = reactive({ ...props, ...injectedOptions });
-	// console.log(settings.underlineColor);
+	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
 });
 
 const disabled = computed(() => props.disabled);
@@ -338,9 +336,6 @@ function toggleField() {
 		showField,
 		timeOpened: timeOpened.value,
 	});
-
-	// ! This breaks reactivity stuff ! //
-	// settings = reactive({ ...settings, ...response.settings });
 
 	showField.value = response.showField;
 	timeOpened.value = response.timeOpened;
