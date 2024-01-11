@@ -221,8 +221,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     clearIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
     };
     clearable: {
         type: globalThis.PropType<boolean>;
@@ -476,8 +476,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     clearIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
     };
     clearable: {
         type: globalThis.PropType<boolean>;
@@ -562,7 +562,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
-    clearIcon: string;
+    clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     clearable: boolean;
     hideSelected: boolean;
     itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;

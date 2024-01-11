@@ -115,7 +115,7 @@ declare const checkboxProps: {
     valueColor: string;
 };
 declare const selectProps: {
-    clearIcon: undefined;
+    clearIcon: string;
     clearable: boolean;
     hideSelected: boolean;
     itemTitle: string;
@@ -305,6 +305,7 @@ declare const textareaProps: {
     autofocus: boolean;
 };
 declare const textFieldProps: {
+    clearIcon: string;
     truncateLength: undefined;
     truncateSuffix: string;
     variant: "underlined";

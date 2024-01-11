@@ -174,7 +174,7 @@ export interface UseCardContainerClass {
 }
 export interface UseGetIcon {
     (options: {
-        icon: string | undefined;
+        icon: VIconValue;
         iconOptions: IconOptions | undefined;
         name: string;
     }): string;

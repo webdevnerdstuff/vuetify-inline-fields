@@ -229,7 +229,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     clearIcon: {
-        type: globalThis.PropType<string>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
@@ -467,7 +468,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     clearIcon: {
-        type: globalThis.PropType<string>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
@@ -530,15 +532,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
+    clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
 }, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & {
     default?(_: {
         loading: boolean;
         modelValue: any;
         originalValue: any;
-        clearIcon: string | undefined;
         rules: readonly ((string | boolean) | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>) | {
             then: <TResult1 = string | boolean, TResult2 = never>(onfulfilled?: ((value: string | boolean) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => PromiseLike<TResult1 | TResult2>;
         })[] | undefined;
+        clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
         truncateLength: number | undefined;
         truncateSuffix: string;
         variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";

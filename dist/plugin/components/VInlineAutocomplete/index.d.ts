@@ -3,7 +3,7 @@ import type { SharedProps } from '../../types';
 import type VInlineAutocomplete from './VInlineAutocomplete.vue';
 export interface VInlineAutocompleteProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'> {
     autoSelectFirst?: VAutocomplete['$props']['autoSelectFirst'];
-    clearIcon?: string | undefined;
+    clearIcon?: VAutocomplete['$props']['clearIcon'];
     clearable?: VAutocomplete['$props']['clearable'];
     density?: VAutocomplete['$props']['density'];
     hideSelected?: VAutocomplete['$props']['hideSelected'];

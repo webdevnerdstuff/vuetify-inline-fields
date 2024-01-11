@@ -3,7 +3,7 @@ import type { SharedProps } from '../../types';
 import type VInlineTextarea from './VInlineTextarea.vue';
 export interface VInlineTextareaProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'> {
     autoGrow?: VTextarea['$props']['autoGrow'];
-    clearIcon?: string | undefined;
+    clearIcon?: VTextarea['$props']['clearIcon'];
     density?: VTextarea['$props']['density'];
     rows?: VTextarea['$props']['rows'];
     rules?: VTextarea['$props']['rules'];
