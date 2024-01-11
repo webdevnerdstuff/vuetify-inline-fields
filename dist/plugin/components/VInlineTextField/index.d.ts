@@ -1,5 +1,5 @@
 import type { VTextField } from 'vuetify/components';
-import type { SharedProps } from '../../../plugin/types';
+import type { SharedProps } from '../../types';
 import type VInlineTextField from './VInlineTextField.vue';
 export interface VInlineTextFieldProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue'> {
     clearIcon?: string | undefined;

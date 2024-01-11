@@ -1,5 +1,5 @@
 import type { VSwitch } from 'vuetify/components';
-import type { SharedProps } from '../../../plugin/types';
+import type { SharedProps } from '../../types';
 import type VInlineSwitch from './VInlineSwitch.vue';
 export interface VInlineSwitchProps extends Omit<SharedProps, 'autofocus' | 'truncateLength' | 'truncateSuffix'> {
     density?: VSwitch['$props']['density'];

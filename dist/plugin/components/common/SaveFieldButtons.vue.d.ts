@@ -2,7 +2,7 @@ import { SaveFieldButtons } from './';
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<SaveFieldButtons>, {}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     close: (...args: any[]) => void;
     save: (...args: any[]) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<SaveFieldButtons>, {}>>> & {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<SaveFieldButtons>, {}>>> & {
     onSave?: ((...args: any[]) => any) | undefined;
     onClose?: ((...args: any[]) => any) | undefined;
 }, {}, {}>;

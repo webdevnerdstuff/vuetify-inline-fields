@@ -1,2 +1,2 @@
-import { UseGetIcon } from '../../plugin/types';
+import { UseGetIcon } from '../types';
 export declare const useGetIcon: UseGetIcon;

@@ -1,6 +1,6 @@
 import type { CSSProperties, MaybeRef, Ref } from 'vue';
 import type { VBtn, VCard, VCheckbox, VIcon, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
-import type { VInlineCheckbox, VInlineCustomField, VInlineSelect, VInlineSwitch, VInlineTextField, VInlineTextarea } from '../components/index';
+import type { VInlineAutocomplete, VInlineCheckbox, VInlineCustomField, VInlineSelect, VInlineSwitch, VInlineTextField, VInlineTextarea } from '../components/index';
 import type { IconOptions, ThemeInstance } from 'vuetify';
 import type { EventBusKey } from '@vueuse/core';
 export interface KeyStringAny<T = any> {
@@ -62,7 +62,6 @@ export interface SharedProps {
     iconTrueColor?: string;
     iconTrueTitle?: string | undefined;
     icons?: boolean;
-    item?: Record<string, unknown>;
     label?: string;
     loading?: boolean;
     loadingIcon?: string | undefined;
@@ -234,9 +233,9 @@ export interface UseTruthyModelValue {
     }): boolean;
 }
 export * from '../index';
-export * from '../components/index';
 declare module 'vue' {
     interface GlobalComponents {
+        VInlineAutocomplete: typeof VInlineAutocomplete;
         VInlineCheckbox: typeof VInlineCheckbox;
         VInlineCustomField: typeof VInlineCustomField;
         VInlineSelect: typeof VInlineSelect;

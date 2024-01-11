@@ -40,6 +40,7 @@ export declare const sharedProps: {
     loading: boolean;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     tableField: boolean;
     underlineColor: string;
     underlineStyle: string;
@@ -105,6 +106,7 @@ declare const checkboxProps: {
     loading: boolean;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     tableField: boolean;
     underlineColor: string;
     underlineStyle: string;
@@ -168,6 +170,7 @@ declare const selectProps: {
     loading: boolean;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     tableField: boolean;
     underlineColor: string;
     underlineStyle: string;
@@ -232,6 +235,7 @@ declare const switchProps: {
     loading: boolean;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     tableField: boolean;
     underlineColor: string;
     underlineStyle: string;
@@ -282,6 +286,7 @@ declare const textareaProps: {
     loading: boolean;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     tableField: boolean;
     underlineColor: string;
     underlineStyle: string;
@@ -350,6 +355,7 @@ declare const textFieldProps: {
     loading: boolean;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     tableField: boolean;
     underlineColor: string;
     underlineStyle: string;

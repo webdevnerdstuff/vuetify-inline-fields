@@ -24,14 +24,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    truncateLength: {
-        type: globalThis.PropType<number>;
-        default: undefined;
-    };
-    truncateSuffix: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
     autofocus: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -228,19 +220,42 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
+    autoSelectFirst: {
+        type: globalThis.PropType<boolean | "exact">;
+    };
     clearIcon: {
         type: globalThis.PropType<string>;
+        default: undefined;
     };
-    rules: {
-        type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
-    };
-    autoGrow: {
+    clearable: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    rows: {
-        type: globalThis.PropType<string | number>;
-        default: number;
+    hideSelected: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    itemTitle: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    itemValue: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    items: {
+        type: globalThis.PropType<readonly any[]>;
+        default: () => never[];
+    };
+    menu: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    menuIcon: {
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+    };
+    rules: {
+        type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     [x: string]: (...args: any[]) => void;
@@ -270,14 +285,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    truncateLength: {
-        type: globalThis.PropType<number>;
-        default: undefined;
-    };
-    truncateSuffix: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
     autofocus: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -474,19 +481,42 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
+    autoSelectFirst: {
+        type: globalThis.PropType<boolean | "exact">;
+    };
     clearIcon: {
         type: globalThis.PropType<string>;
+        default: undefined;
     };
-    rules: {
-        type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
-    };
-    autoGrow: {
+    clearable: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    rows: {
-        type: globalThis.PropType<string | number>;
-        default: number;
+    hideSelected: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    itemTitle: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    itemValue: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    items: {
+        type: globalThis.PropType<readonly any[]>;
+        default: () => never[];
+    };
+    menu: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    menuIcon: {
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+    };
+    rules: {
+        type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
     };
 }>>, {
     error: boolean;
@@ -495,8 +525,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";
     density: "default" | "compact" | "comfortable" | null;
     loading: boolean;
-    truncateLength: number;
-    truncateSuffix: string;
     autofocus: boolean;
     cancelButtonColor: string;
     cancelButtonSize: string | number;
@@ -546,8 +574,13 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
-    autoGrow: boolean;
-    rows: string | number;
+    clearIcon: string;
+    clearable: boolean;
+    hideSelected: boolean;
+    itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+    itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+    items: readonly any[];
+    menu: boolean;
 }, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
