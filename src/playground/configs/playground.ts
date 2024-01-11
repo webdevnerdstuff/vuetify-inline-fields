@@ -24,7 +24,7 @@ app.use(createVInlineFields({
 	// cell: true,
 	// cellUnderlineFullWidth: true,
 	// closeSiblings: false,
-	// color: 'orange',
+	// color: 'orange', // * CONFIRMED
 	// disabled: false,
 	// emptyText: 'xxxxxxxxxxxx',
 	// fieldOnly: true,
