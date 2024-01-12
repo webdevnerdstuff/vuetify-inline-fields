@@ -8,21 +8,23 @@ import { selectProps } from '../../../utils/props';
 const vuetify = createVuetify();
 
 const componentProps = Object.assign(selectProps, {
-  cardProps: {},
-  items: [],
-  // isRequired: false,
+	autoSelectFirst: false,
+	cardProps: {},
+	items: [],
+	menuIcon: '$dropdown',
+	rules: [],
 });
 
 describe('VInlineSelect', () => {
-  const wrapper = mount(VInlineAutocomplete, {
-    global: {
-      plugins: [vuetify],
-    },
-  });
+	const wrapper = mount(VInlineAutocomplete, {
+		global: {
+			plugins: [vuetify],
+		},
+	});
 
-  it('testing default component props', () => {
-    const returnedProps = wrapper.getComponent(VInlineAutocomplete).props();
+	it('testing default component props', () => {
+		const returnedProps = wrapper.getComponent(VInlineAutocomplete).props();
 
-    expect(returnedProps).toEqual(componentProps);
-  });
+		expect(returnedProps).toEqual(componentProps);
+	});
 });

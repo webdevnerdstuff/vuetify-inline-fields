@@ -5,7 +5,7 @@ import SaveFieldButtons from '../SaveFieldButtons.vue';
 import { createVuetify } from 'vuetify';
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { selectProps } from '@/plugin/utils/props';
+import { selectProps } from '../../../utils/props';
 
 
 const vuetify = createVuetify();

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { createVuetify } from 'vuetify';
 import { useGetColor } from '../colors';
 import defaultThemes from '../../../plugins/theme';
@@ -34,6 +34,9 @@ describe('Colors Composable', () => {
 			});
 		});
 
+		// console.warn tests //
+		const logSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+
 		it('should return HSLA default value if color not found', () => {
 			const responseColor = useGetColor('foobar', theme);
 
@@ -44,6 +47,24 @@ describe('Colors Composable', () => {
 			const responseColor = useGetColor('--v-theme-primary', theme);
 
 			expect(responseColor).toMatchInlineSnapshot(`"rgb(var(--v-theme-primary))"`);
+		});
+
+		it('should console warn when color prop "foobar" doesn\'t exist in colors', () => {
+			logSpy.mockReset();
+
+			useGetColor('foobar', theme);
+
+			expect(logSpy).toHaveBeenCalled();
+			expect(logSpy).toHaveBeenCalledTimes(1);
+		});
+
+		it('should console warn when color prop "--v-foobar" doesn\'t exist in colors', () => {
+			logSpy.mockReset();
+
+			useGetColor('--v-foobar', theme);
+
+			expect(logSpy).toHaveBeenCalled();
+			expect(logSpy).toHaveBeenCalledTimes(1);
 		});
 	});
 });
