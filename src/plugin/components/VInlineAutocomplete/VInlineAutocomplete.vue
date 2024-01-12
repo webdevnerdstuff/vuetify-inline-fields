@@ -128,8 +128,8 @@ import type { VInlineAutocompleteProps } from './';
 import { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import {
+	autocompleteProps,
 	defaultCardProps,
-	selectProps,
 } from '@utils/props';
 import DisplayedValue from '@components/common/DisplayedValue.vue';
 import SaveFieldButtons from '@components/common/SaveFieldButtons.vue';
@@ -163,7 +163,7 @@ const injectedOptions = inject(globalOptions, {});
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
-const props = withDefaults(defineProps<VInlineAutocompleteProps>(), { ...selectProps });
+const props = withDefaults(defineProps<VInlineAutocompleteProps>(), { ...autocompleteProps });
 const settings = reactive({ ...attrs, ...props, ...injectedOptions });
 
 watchEffect(() => {
