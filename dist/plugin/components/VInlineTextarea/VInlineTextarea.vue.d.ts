@@ -230,6 +230,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     clearIcon: {
         type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
@@ -476,6 +477,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     clearIcon: {
         type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
@@ -546,6 +548,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
+    clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     autoGrow: boolean;
     rows: string | number;
 }, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>>;

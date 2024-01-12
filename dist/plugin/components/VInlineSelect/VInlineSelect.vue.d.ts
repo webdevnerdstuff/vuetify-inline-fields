@@ -250,6 +250,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
+        default: () => never[];
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     [x: string]: (...args: any[]) => void;
@@ -505,6 +506,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
+        default: () => never[];
     };
 }>>, {
     error: boolean;
@@ -569,6 +571,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
     items: readonly any[];
     menu: boolean;
+    rules: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[];
 }, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
