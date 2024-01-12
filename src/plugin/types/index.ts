@@ -16,6 +16,7 @@ import type {
 	VTextarea,
 } from 'vuetify/components';
 import type {
+	VInlineAutocomplete,
 	VInlineCheckbox,
 	VInlineCustomField,
 	VInlineSelect,
@@ -100,7 +101,6 @@ export interface SharedProps {
 	iconTrueColor?: string;
 	iconTrueTitle?: string | undefined;
 	icons?: boolean;
-	item?: Record<string, unknown>;
 	label?: string;
 	loading?: boolean;
 	loadingIcon?: string | undefined;
@@ -124,6 +124,7 @@ export interface SharedProps {
 	underlined?: boolean;
 	valueColor?: string;
 }
+
 
 // -------------------------------------------------- Components //
 export interface UseCardContainerStyle {
@@ -266,7 +267,7 @@ export interface UseCardContainerClass {
 export interface UseGetIcon {
 	(
 		options: {
-			icon: string | undefined,
+			icon: VIconValue,
 			iconOptions: IconOptions | undefined,
 			name: string,
 		}
@@ -352,10 +353,10 @@ export interface UseTruthyModelValue {
 
 
 export * from '../index';
-export * from '@components/index';
 
 declare module 'vue' {
 	export interface GlobalComponents {
+		VInlineAutocomplete: typeof VInlineAutocomplete;
 		VInlineCheckbox: typeof VInlineCheckbox;
 		VInlineCustomField: typeof VInlineCustomField;
 		VInlineSelect: typeof VInlineSelect;

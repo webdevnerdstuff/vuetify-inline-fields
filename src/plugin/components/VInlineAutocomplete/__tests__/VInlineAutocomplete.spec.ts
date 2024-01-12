@@ -1,4 +1,4 @@
-import VInlineSelect from '../VInlineSelect.vue';
+import VInlineAutocomplete from '../VInlineAutocomplete.vue';
 import { createVuetify } from 'vuetify';
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
@@ -8,20 +8,22 @@ import { selectProps } from '../../../utils/props';
 const vuetify = createVuetify();
 
 const componentProps = Object.assign(selectProps, {
+	autoSelectFirst: false,
 	cardProps: {},
 	items: [],
+	menuIcon: '$dropdown',
 	rules: [],
 });
 
 describe('VInlineSelect', () => {
-	const wrapper = mount(VInlineSelect, {
+	const wrapper = mount(VInlineAutocomplete, {
 		global: {
 			plugins: [vuetify],
 		},
 	});
 
 	it('testing default component props', () => {
-		const returnedProps = wrapper.getComponent(VInlineSelect).props();
+		const returnedProps = wrapper.getComponent(VInlineAutocomplete).props();
 
 		expect(returnedProps).toEqual(componentProps);
 	});

@@ -1,4 +1,4 @@
-import type { VInlineTextFieldProps } from '../VInlineTextField/';
+import type { VInlineTextFieldProps } from '../VInlineTextField';
 import type VInlineCustomField from './VInlineCustomField.vue';
 export interface VInlineCustomFieldProps extends VInlineTextFieldProps {
 }

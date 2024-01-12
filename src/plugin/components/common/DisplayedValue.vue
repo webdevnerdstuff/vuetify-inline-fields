@@ -17,9 +17,9 @@
 			/>
 			<v-icon
 				v-else
-				:color="displayPrependIconColor"
-				:icon="displayPrependIcon"
-				size="x-small"
+				:color="settings.displayPrependIconColor"
+				:icon="settings.displayPrependIcon"
+				:size="settings.displayPrependIconSize"
 			></v-icon>
 		</div>
 		<div
@@ -39,9 +39,9 @@
 				/>
 				<v-icon
 					v-else
-					:color="displayPrependInnerIconColor"
-					:icon="displayPrependInnerIcon"
-					size="x-small"
+					:color="settings.displayPrependInnerIconColor"
+					:icon="settings.displayPrependInnerIcon"
+					:size="settings.displayPrependInnerIconSize"
 				></v-icon>
 			</div>
 
@@ -59,9 +59,9 @@
 				/>
 				<v-icon
 					v-else
-					:color="displayAppendInnerIconColor"
-					:icon="displayAppendInnerIcon"
-					size="x-small"
+					:color="settings.displayAppendInnerIconColor"
+					:icon="settings.displayAppendInnerIcon"
+					:size="settings.displayAppendInnerIconSize"
 				></v-icon>
 			</div>
 		</div>
@@ -79,9 +79,9 @@
 			/>
 			<v-icon
 				v-else
-				:color="displayAppendIconColor"
-				:icon="displayAppendIcon"
-				size="x-small"
+				:color="settings.displayAppendIconColor"
+				:icon="settings.displayAppendIcon"
+				:size="settings.displayAppendIconSize"
 			></v-icon>
 		</div>
 	</div>
@@ -101,10 +101,17 @@ import {
 } from '@composables/styles';
 
 
+const attrs = useAttrs();
 const emit = defineEmits(['toggleField']);
 const props = defineProps<DisplayValueProps>();
 const slots = useSlots();
 const theme = useTheme();
+
+const settings = reactive({ ...attrs, ...props });
+
+watchEffect(() => {
+	Object.assign(settings, { ...attrs, ...props });
+});
 
 const slotBindings = {
 	displayValue: props.displayValue,

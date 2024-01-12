@@ -43,6 +43,7 @@ export const sharedProps = {
 	loading: false,
 	loadingWait: true,
 	name: '',
+	required: false,
 	tableField: true,
 	underlineColor: 'primary',
 	underlineStyle: 'dotted',
@@ -108,13 +109,34 @@ const selectProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
-		clearIcon: undefined,
+		clearIcon: '$clear',
 		clearable: false,
 		hideSelected: true,
 		itemTitle: 'title',
 		itemValue: 'value',
 		items: () => ([]),
 		menu: true,
+		rules: () => ([]),
+		variant: 'underlined' as const,
+	},
+};
+
+// v-autocomplete //
+const autocompleteProps = {
+	...sharedProps,
+	...autofocus,
+	...saveAndLoadingIconProps,
+	...{
+		autoSelectFirst: false,
+		clearIcon: '$clear',
+		clearable: false,
+		hideSelected: true,
+		itemTitle: 'title',
+		itemValue: 'value',
+		items: () => ([]),
+		menu: true,
+		menuIcon: '$dropdown',
+		rules: () => ([]),
 		variant: 'underlined' as const,
 	},
 };
@@ -137,6 +159,7 @@ const textareaProps = {
 	...sharedProps,
 	...{
 		autoGrow: true,
+		clearIcon: '$clear',
 		rows: 1,
 		truncateLength: undefined,
 		truncateSuffix: '...',
@@ -150,6 +173,7 @@ const textFieldProps = {
 	...autofocus,
 	...saveAndLoadingIconProps,
 	...{
+		clearIcon: '$clear',
 		truncateLength: undefined,
 		truncateSuffix: '...',
 		variant: 'underlined' as const,
@@ -159,6 +183,7 @@ const textFieldProps = {
 
 // Export //
 export {
+	autocompleteProps,
 	checkboxProps,
 	selectProps,
 	switchProps,

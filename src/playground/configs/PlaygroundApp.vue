@@ -22,7 +22,7 @@
 						<v-col class="v-col-12">
 							<v-container>
 								<v-row class="row mb-4">
-									<PlaygroundPage />
+									<PlaygroundPage is-playground />
 								</v-row>
 							</v-container>
 						</v-col>

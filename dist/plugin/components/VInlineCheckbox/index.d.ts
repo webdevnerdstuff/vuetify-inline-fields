@@ -1,5 +1,5 @@
 import type { VCheckbox } from 'vuetify/components';
-import type { SharedProps } from '../../../plugin/types';
+import type { SharedProps } from '../../types';
 import type VInlineCheckbox from './VInlineCheckbox.vue';
 export interface VInlineCheckboxProps extends Omit<SharedProps, 'autofocus' | 'truncateLength' | 'truncateSuffix'> {
     density?: VCheckbox['$props']['density'];

@@ -5,7 +5,7 @@
 		:style="inlineFieldsContainerStyle"
 	>
 		<div
-			v-if="(!showField && !fieldOnly) || cardField"
+			v-if="(!showField && !settings.fieldOnly) || settings.cardField"
 			:class="displayContainerClass"
 			@click="settings.cell ? toggleField() : undefined"
 		>
@@ -15,19 +15,19 @@
 			>
 				<div class="v-selection-control__wrapper">
 					<div
-						v-if="icons"
+						v-if="settings.icons"
 						class="v-inline-fields--boolean-icons-container"
 						:class="displayValueClass"
 						:style="displayValueStyle"
 					>
 						<BooleanIcons
 							v-model="truthyModelValue"
-							:icon-false="iconFalse"
-							:icon-false-color="iconFalseColor"
-							:icon-false-title="iconFalseTitle"
-							:icon-true="iconTrue"
-							:icon-true-color="iconTrueColor"
-							:icon-true-title="iconTrueTitle"
+							:icon-false="settings.iconFalse"
+							:icon-false-color="settings.iconFalseColor"
+							:icon-false-title="settings.iconFalseTitle"
+							:icon-true="settings.iconTrue"
+							:icon-true-color="settings.iconTrueColor"
+							:icon-true-title="settings.iconTrueTitle"
 						/>
 					</div>
 
@@ -44,22 +44,22 @@
 		</div>
 
 		<div
-			v-if="showField || fieldOnly || cardField"
+			v-if="showField || settings.fieldOnly || settings.cardField"
 			:class="fieldContainerClass"
 		>
 			<Teleport
-				:disabled="!cardField"
+				:disabled="!settings.cardField"
 				:to="cardFieldRef"
 			>
 				<v-checkbox
 					v-bind="bindingSettings"
-					:color="color"
+					:color="settings.color"
 					:density="settings.density"
 					:disabled="loadingProp || disabled"
 					:error="error"
 					:false-icon="theFalseIcon"
 					:false-value="settings.falseValue"
-					:hide-details="hideDetails"
+					:hide-details="settings.hideDetails"
 					:label="settings.label"
 					:model-value="truthyModelValue"
 					:true-icon="theTrueIcon"
@@ -82,25 +82,25 @@
 						#append
 					>
 						<SaveFieldButtons
-							:cancel-button-color="cancelButtonColor"
-							:cancel-button-size="cancelButtonSize"
-							:cancel-button-title="cancelButtonTitle"
-							:cancel-button-variant="cancelButtonVariant"
-							:cancel-icon="cancelIcon"
-							:cancel-icon-color="cancelIconColor"
+							:cancel-button-color="settings.cancelButtonColor"
+							:cancel-button-size="settings.cancelButtonSize"
+							:cancel-button-title="settings.cancelButtonTitle"
+							:cancel-button-variant="settings.cancelButtonVariant"
+							:cancel-icon="settings.cancelIcon"
+							:cancel-icon-color="settings.cancelIconColor"
 							:error="error"
-							:field-only="fieldOnly"
-							:hide-cancel-icon="hideCancelIcon"
+							:field-only="settings.fieldOnly"
+							:hide-cancel-icon="settings.hideCancelIcon"
 							:hide-save-icon="true"
 							:loading="loadingProp"
-							:loading-icon="loadingIcon"
-							:loading-icon-color="loadingIconColor"
-							:save-button-color="saveButtonColor"
-							:save-button-size="saveButtonSize"
-							:save-button-title="saveButtonTitle"
-							:save-button-variant="saveButtonVariant"
-							:save-icon="saveIcon"
-							:save-icon-color="saveIconColor"
+							:loading-icon="settings.loadingIcon"
+							:loading-icon-color="settings.loadingIconColor"
+							:save-button-color="settings.saveButtonColor"
+							:save-button-size="settings.saveButtonSize"
+							:save-button-title="settings.saveButtonTitle"
+							:save-button-variant="settings.saveButtonVariant"
+							:save-icon="settings.saveIcon"
+							:save-icon-color="settings.saveIconColor"
 							@close="closeField"
 							@save="saveValue"
 						/>
@@ -111,7 +111,7 @@
 
 		<!-- Card Field-->
 		<div
-			v-if="cardField"
+			v-if="settings.cardField"
 			:class="cardContainerClass"
 			:style="cardContainerStyle"
 		>
@@ -172,31 +172,15 @@ const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 const theme = useTheme();
 
 const props = withDefaults(defineProps<VInlineCheckboxProps>(), { ...checkboxProps });
-let settings = reactive({ ...attrs, ...props, ...injectedOptions });
+const settings = reactive({ ...attrs, ...props, ...injectedOptions });
 
-const { cancelButtonColor,
-	cancelButtonSize,
-	cancelButtonTitle,
-	cancelButtonVariant,
-	cancelIcon,
-	cancelIconColor,
-	cardField,
-	closeSiblings,
-	color,
-	fieldOnly,
-	hideCancelIcon,
-	hideDetails,
-	loadingIcon,
-	loadingIconColor,
-	saveButtonColor,
-	saveButtonSize,
-	saveButtonTitle,
-	saveButtonVariant,
-	saveIcon,
-	saveIconColor } = toRefs(settings);
+watchEffect(() => {
+	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
+});
 
 const disabled = computed(() => props.disabled);
 const loadingProp = computed(() => props.loading);
+const underlineColor = computed(() => settings.underlineColor);
 
 const error = ref<boolean>(false);
 const showField = ref<boolean>(false);
@@ -293,7 +277,7 @@ const displayValueStyle = computed(() => useDisplayValueStyles({
 	color: settings.color,
 	error,
 	theme,
-	underlineColor: settings.underlineColor,
+	underlineColor: underlineColor.value,
 	underlineStyle: settings.underlineStyle,
 	underlineWidth: settings.underlineWidth,
 	underlined: settings.underlined,
@@ -346,18 +330,17 @@ function toggleField() {
 
 	const response = useToggleField({
 		attrs,
-		closeSiblings: closeSiblings.value,
+		closeSiblings: settings.closeSiblings,
 		fieldOnly: settings.fieldOnly,
 		props,
 		showField,
 		timeOpened: timeOpened.value,
 	});
 
-	settings = { ...settings, ...response.settings };
 	showField.value = response.showField;
 	timeOpened.value = response.timeOpened;
 
-	if (closeSiblingsBus !== null && closeSiblings.value && showField.value && !settings.fieldOnly) {
+	if (closeSiblingsBus !== null && settings.closeSiblings && showField.value && !settings.fieldOnly) {
 		closeSiblingsBus.emit(response.timeOpened);
 	}
 }
@@ -381,7 +364,7 @@ function saveValue(value: any) {
 let closeSiblingsBus: unknown | any;
 let unsubscribeBus: () => void;
 
-if (closeSiblings.value) {
+if (settings.closeSiblings) {
 	import('@vueuse/core').then(({ useEventBus }) => {
 		closeSiblingsBus = useEventBus(CloseSiblingsBus);
 		unsubscribeBus = closeSiblingsBus.on(closeSiblingsListener);

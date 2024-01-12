@@ -10,7 +10,6 @@ export default mergeConfig(
 			exclude: [
 				...configDefaults.exclude,
 				'./src/plugin/components/common/__tests__/common.test.ts',
-				'./src/plugin/components/VInlineAutocomplete'
 			],
 			root: fileURLToPath(new URL('./', import.meta.url)),
 			server: {

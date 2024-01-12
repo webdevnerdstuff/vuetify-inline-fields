@@ -24,14 +24,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    truncateLength: {
-        type: globalThis.PropType<number>;
-        default: undefined;
-    };
-    truncateSuffix: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
     autofocus: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -228,12 +220,45 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
+    autoSelectFirst: {
+        type: globalThis.PropType<boolean | "exact">;
+        default: boolean;
+    };
     clearIcon: {
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
+    };
+    clearable: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    hideSelected: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    itemTitle: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    itemValue: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    items: {
+        type: globalThis.PropType<readonly any[]>;
+        default: () => never[];
+    };
+    menu: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    menuIcon: {
         type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: string;
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
+        default: () => never[];
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     [x: string]: (...args: any[]) => void;
@@ -263,14 +288,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    truncateLength: {
-        type: globalThis.PropType<number>;
-        default: undefined;
-    };
-    truncateSuffix: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
     autofocus: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -467,12 +484,45 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
+    autoSelectFirst: {
+        type: globalThis.PropType<boolean | "exact">;
+        default: boolean;
+    };
     clearIcon: {
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        default: string;
+    };
+    clearable: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    hideSelected: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    itemTitle: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    itemValue: {
+        type: globalThis.PropType<string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null>;
+        default: string;
+    };
+    items: {
+        type: globalThis.PropType<readonly any[]>;
+        default: () => never[];
+    };
+    menu: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    menuIcon: {
         type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: string;
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
+        default: () => never[];
     };
 }>>, {
     error: boolean;
@@ -481,8 +531,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";
     density: "default" | "compact" | "comfortable" | null;
     loading: boolean;
-    truncateLength: number;
-    truncateSuffix: string;
     autofocus: boolean;
     cancelButtonColor: string;
     cancelButtonSize: string | number;
@@ -532,74 +580,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
+    autoSelectFirst: boolean | "exact";
     clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
-}, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & {
-    default?(_: {
-        loading: boolean;
-        modelValue: any;
-        originalValue: any;
-        rules: readonly ((string | boolean) | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>) | {
-            then: <TResult1 = string | boolean, TResult2 = never>(onfulfilled?: ((value: string | boolean) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => PromiseLike<TResult1 | TResult2>;
-        })[] | undefined;
-        clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
-        truncateLength: number | undefined;
-        truncateSuffix: string;
-        variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";
-        hideCancelIcon: boolean;
-        hideSaveIcon: boolean;
-        loadingIcon: string | undefined;
-        loadingIconColor: string;
-        saveButtonColor: string;
-        saveButtonSize: string | number;
-        saveButtonTitle: string;
-        saveButtonVariant: NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">;
-        saveIcon: string | undefined;
-        saveIconColor: string;
-        autofocus: boolean;
-        cancelButtonColor: string;
-        cancelButtonSize: string | number;
-        cancelButtonTitle: string;
-        cancelButtonVariant: NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">;
-        cancelIcon: string | undefined;
-        cancelIconColor: string;
-        cardField: boolean;
-        cardOffsetX: number;
-        cardOffsetY: number;
-        cardProps: any;
-        cell: boolean;
-        cellUnderlineFullWidth: boolean;
-        closeSiblings: boolean;
-        color: string;
-        density: "default" | "compact" | "comfortable" | null;
-        disabled: boolean;
-        displayAppendIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayAppendIconColor: string | undefined;
-        displayAppendIconSize: string | number;
-        displayAppendInnerIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayAppendInnerIconColor: string | undefined;
-        displayAppendInnerIconSize: string | number;
-        displayPrependIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayPrependIconColor: string | undefined;
-        displayPrependIconSize: string | number;
-        displayPrependInnerIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayPrependInnerIconColor: string | undefined;
-        displayPrependInnerIconSize: string | number;
-        emptyText: string;
-        error: boolean;
-        fieldOnly: boolean;
-        hideDetails: boolean;
-        label: string;
-        loadingWait: boolean;
-        name: string;
-        required: boolean;
-        tableField: boolean;
-        underlineColor: string;
-        underlineStyle: string;
-        underlineWidth: string;
-        underlined: boolean;
-        valueColor: string;
-    }): any;
-}>;
+    clearable: boolean;
+    hideSelected: boolean;
+    itemTitle: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+    itemValue: string | boolean | readonly (string | number)[] | ((item: any, fallback?: any) => any) | null;
+    items: readonly any[];
+    menu: boolean;
+    menuIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    rules: readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[];
+}, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

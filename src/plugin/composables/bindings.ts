@@ -21,7 +21,6 @@ const excludedSettings: string[] = [
 	'emptyText',
 	'fieldOnly',
 	'hideSaveIcon',
-	'item',
 	'loadingIcon',
 	'loadingIconColor',
 	'loadingWait',

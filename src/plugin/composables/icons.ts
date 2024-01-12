@@ -31,13 +31,13 @@ export const useGetIcon: UseGetIcon = (options) => {
 	const iconSet = defaultIcons[iconOptions?.defaultSet as string];
 
 	if (!iconSet) {
-		throw new Error(`VInlineFields: No VInlineFields default ${iconOptions?.defaultSet} icon set found for ${name}. Please set the icon prop.`);
+		throw new Error(`[VInlineFields]: No default ${iconOptions?.defaultSet} icon set found.`);
 	}
 
 	const newIcon = iconSet[name];
 
 	if (!newIcon) {
-		throw new Error(`VInlineFields: No ${name} icon found. Please set the icon prop, or set the default icon set to 'mdi' or 'fa'`);
+		throw new Error(`[VInlineFields]: No ${name} icon found.`);
 	}
 
 	return newIcon;

@@ -62,8 +62,6 @@
 		"src/documentation/**/*.vue",
 		"src/main.ts",
 		"src/playground/**/*.ts",
-		"src/plugin/components/VInlineAutocomplete/**/*.ts",
-		"src/plugin/components/VInlineAutocomplete/**/*.vue",
 		"src/plugins/**/*.ts",
 		"src/stores/**/*.ts",
 		"node_modules"

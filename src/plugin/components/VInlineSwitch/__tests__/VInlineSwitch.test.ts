@@ -9,9 +9,7 @@ const vuetify = createVuetify();
 
 const componentProps = Object.assign(switchProps, {
 	cardProps: {},
-	item: undefined,
 	modelValue: undefined,
-	required: false,
 });
 
 describe('VInlineSwitch', () => {

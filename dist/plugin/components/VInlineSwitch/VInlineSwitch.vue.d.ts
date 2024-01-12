@@ -1,5 +1,61 @@
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     modelValue: globalThis.PropType<any>;
+    error: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    disabled: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    color: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    density: {
+        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
+        default: "compact";
+    };
+    loading: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    falseValue: {
+        type: globalThis.PropType<string | boolean>;
+        default: boolean;
+    };
+    iconFalse: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconFalseColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconFalseTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrue: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconTrueColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrueTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    icons: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    trueValue: {
+        type: globalThis.PropType<string | boolean>;
+        default: boolean;
+    };
     cancelButtonColor: {
         type: globalThis.PropType<string>;
         default: string;
@@ -49,14 +105,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     closeSiblings: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    color: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    disabled: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -112,14 +160,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
-    error: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    falseValue: {
-        type: globalThis.PropType<string | boolean>;
-        default: boolean;
-    };
     fieldOnly: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -136,44 +176,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    iconFalse: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconFalseColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconFalseTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrue: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconTrueColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrueTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    icons: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    item: {
-        type: globalThis.PropType<Record<string, unknown>>;
-    };
     label: {
         type: globalThis.PropType<string>;
         default: string;
-    };
-    loading: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
     };
     loadingIcon: {
         type: globalThis.PropType<string>;
@@ -193,6 +198,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     required: {
         type: globalThis.PropType<boolean>;
+        default: boolean;
     };
     saveButtonColor: {
         type: globalThis.PropType<string>;
@@ -222,10 +228,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    trueValue: {
-        type: globalThis.PropType<string | boolean>;
-        default: boolean;
-    };
     underlineColor: {
         type: globalThis.PropType<string>;
         default: string;
@@ -245,10 +247,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     valueColor: {
         type: globalThis.PropType<string>;
         default: string;
-    };
-    density: {
-        type: globalThis.PropType<"default" | "comfortable" | "compact" | null>;
-        default: "compact";
     };
     falseIcon: {
         type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
@@ -256,8 +254,64 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     [x: string]: (...args: any[]) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: globalThis.PropType<any>;
+    error: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    disabled: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    color: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    density: {
+        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
+        default: "compact";
+    };
+    loading: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    falseValue: {
+        type: globalThis.PropType<string | boolean>;
+        default: boolean;
+    };
+    iconFalse: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconFalseColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconFalseTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrue: {
+        type: globalThis.PropType<string>;
+        default: undefined;
+    };
+    iconTrueColor: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    iconTrueTitle: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    icons: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
+    trueValue: {
+        type: globalThis.PropType<string | boolean>;
+        default: boolean;
+    };
     cancelButtonColor: {
         type: globalThis.PropType<string>;
         default: string;
@@ -307,14 +361,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: boolean;
     };
     closeSiblings: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    color: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    disabled: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -370,14 +416,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
-    error: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    falseValue: {
-        type: globalThis.PropType<string | boolean>;
-        default: boolean;
-    };
     fieldOnly: {
         type: globalThis.PropType<boolean>;
         default: boolean;
@@ -394,44 +432,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    iconFalse: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconFalseColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconFalseTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrue: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    iconTrueColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    iconTrueTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    icons: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    item: {
-        type: globalThis.PropType<Record<string, unknown>>;
-    };
     label: {
         type: globalThis.PropType<string>;
         default: string;
-    };
-    loading: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
     };
     loadingIcon: {
         type: globalThis.PropType<string>;
@@ -451,6 +454,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     required: {
         type: globalThis.PropType<boolean>;
+        default: boolean;
     };
     saveButtonColor: {
         type: globalThis.PropType<string>;
@@ -480,10 +484,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
-    trueValue: {
-        type: globalThis.PropType<string | boolean>;
-        default: boolean;
-    };
     underlineColor: {
         type: globalThis.PropType<string>;
         default: string;
@@ -504,15 +504,25 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         default: string;
     };
-    density: {
-        type: globalThis.PropType<"default" | "comfortable" | "compact" | null>;
-        default: "compact";
-    };
     falseIcon: {
         type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
         default: string;
     };
 }>>, {
+    error: boolean;
+    disabled: boolean;
+    color: string;
+    density: "default" | "compact" | "comfortable" | null;
+    loading: boolean;
+    falseValue: string | boolean;
+    iconFalse: string;
+    iconFalseColor: string;
+    iconFalseTitle: string;
+    iconTrue: string;
+    iconTrueColor: string;
+    iconTrueTitle: string;
+    icons: boolean;
+    trueValue: string | boolean;
     cancelButtonColor: string;
     cancelButtonSize: string | number;
     cancelButtonTitle: string;
@@ -526,8 +536,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cell: boolean;
     cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
-    color: string;
-    disabled: boolean;
     displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
     displayAppendIconColor: string;
     displayAppendIconSize: string | number;
@@ -541,25 +549,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     displayPrependInnerIconColor: string;
     displayPrependInnerIconSize: string | number;
     emptyText: string;
-    error: boolean;
-    falseValue: string | boolean;
     fieldOnly: boolean;
     hideCancelIcon: boolean;
     hideDetails: boolean;
     hideSaveIcon: boolean;
-    iconFalse: string;
-    iconFalseColor: string;
-    iconFalseTitle: string;
-    iconTrue: string;
-    iconTrueColor: string;
-    iconTrueTitle: string;
-    icons: boolean;
     label: string;
-    loading: boolean;
     loadingIcon: string;
     loadingIconColor: string;
     loadingWait: boolean;
     name: string;
+    required: boolean;
     saveButtonColor: string;
     saveButtonSize: string | number;
     saveButtonTitle: string;
@@ -567,13 +566,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     saveIcon: string;
     saveIconColor: string;
     tableField: boolean;
-    trueValue: string | boolean;
     underlineColor: string;
     underlineStyle: string;
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
-    density: "default" | "comfortable" | "compact" | null;
     falseIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
 }, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>>>;
 export default _default;

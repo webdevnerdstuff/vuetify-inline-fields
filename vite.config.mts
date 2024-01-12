@@ -1,6 +1,5 @@
 import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
-import babel from 'vite-plugin-babel';
 import eslint from 'vite-plugin-eslint';
 import stylelint from 'vite-plugin-stylelint';
 import { defineConfig } from 'vite';
@@ -20,7 +19,6 @@ export default defineConfig({
 		eslint({
 			fix: true,
 		}),
-		babel(),
 		stylelint({
 			cache: false,
 			fix: true,
@@ -42,9 +40,6 @@ export default defineConfig({
 			vueTemplate: true,
 		}),
 		vue({
-			script: {
-				defineModel: true,
-			},
 			template: { transformAssetUrls }
 		}),
 		vuetify({

@@ -93,7 +93,7 @@ function convertToHSL(color: string): string {
 	if (max === null || !min === null || isNaN(max) || isNaN(min)) {
 		const defaultColor = '0 0% 100% / 12%';
 
-		console.warn(`[VuetifyInlineFields: The "color" prop value using "${newColor}" doesn't exist. Using the value "hsl(${defaultColor})" in it's place.`);
+		console.warn(`[VuetifyInlineFields]: The "color" prop value using "${newColor}" doesn't exist. Using the value "hsl(${defaultColor})" in it's place.`);
 		return defaultColor;
 	}
 

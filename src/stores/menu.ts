@@ -7,6 +7,14 @@ export const useMenuStore = defineStore('menu', () => {
 	const links = coreStore.links;
 
 	const componentItems = [
+		// {
+		// 	href: '#components-v-inline-autocomplete',
+		// 	icon: 'mdi:mdi-playlist-edit',
+		// 	key: 'v-inline-checkbox',
+		// 	link: `${links.vuetify}en/api/v-autocomplete/`,
+		// 	title: 'VInlineCheckbox',
+		// 	topTitle: 'VAutocomplete',
+		// },
 		{
 			href: '#components-v-inline-checkbox',
 			icon: 'mdi:mdi-checkbox-outline',
@@ -14,7 +22,6 @@ export const useMenuStore = defineStore('menu', () => {
 			link: `${links.vuetify}en/api/v-checkbox/`,
 			title: 'VInlineCheckbox',
 			topTitle: 'VCheckbox',
-
 		},
 		{
 			href: '#components-v-inline-select',

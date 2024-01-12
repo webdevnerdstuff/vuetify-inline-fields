@@ -26,4 +26,3 @@ dist-ssr
 
 
 src/plugin/**/*.bk.*
-src/plugin/components/VInlineAutocomplete

@@ -36,7 +36,7 @@
 				:disabled="!cardField"
 				:to="cardFieldRef"
 			>
-				<v-select
+				<v-autocomplete
 					v-bind="bindingSettings"
 					v-model="modelValue"
 					:autofocus="!settings.fieldOnly || settings.autofocus"
@@ -98,7 +98,7 @@
 							@save="saveValue"
 						/>
 					</template>
-				</v-select>
+				</v-autocomplete>
 			</Teleport>
 		</div>
 
@@ -124,12 +124,12 @@ import {
 	SharedProps,
 	TimeOpened,
 } from '@/plugin/types';
-import type { VInlineSelectProps } from './';
+import type { VInlineAutocompleteProps } from './';
 import { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import {
+	autocompleteProps,
 	defaultCardProps,
-	selectProps,
 } from '@utils/props';
 import DisplayedValue from '@components/common/DisplayedValue.vue';
 import SaveFieldButtons from '@components/common/SaveFieldButtons.vue';
@@ -163,7 +163,7 @@ const injectedOptions = inject(globalOptions, {});
 
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
-const props = withDefaults(defineProps<VInlineSelectProps>(), { ...selectProps });
+const props = withDefaults(defineProps<VInlineAutocompleteProps>(), { ...autocompleteProps });
 const settings = reactive({ ...attrs, ...props, ...injectedOptions });
 
 watchEffect(() => {
