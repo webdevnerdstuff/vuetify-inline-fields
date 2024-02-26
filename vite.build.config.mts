@@ -42,6 +42,7 @@ export default defineConfig({
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
+				/^vuetify($|\/.+)/,
 			],
 			output: {
 				banner,
