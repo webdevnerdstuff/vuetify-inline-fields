@@ -1,6 +1,6 @@
 {
 	"name": "@wdns/vuetify-inline-fields",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.",
 	"private": false,
 	"publishConfig": {
