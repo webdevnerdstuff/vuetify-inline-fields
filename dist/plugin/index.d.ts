@@ -1,4 +1,5 @@
 import { App } from 'vue';
+import './styles/main.scss';
 import type { SharedProps } from './types';
 import * as VInlineFields from './components/index';
 export declare const globalOptions: unique symbol;
