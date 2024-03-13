@@ -226,6 +226,7 @@ const theClearIcon = computed(() => {
 const displayValue = computed(() => {
 	if (modelValue.value && modelValue.value[settings.itemTitle as string]) {
 		setEmptyValue(false);
+
 		return modelValue.value[settings.itemTitle as string];
 	}
 
@@ -237,7 +238,7 @@ const displayValue = computed(() => {
 	return settings.emptyText;
 });
 
-function setEmptyValue(val) {
+function setEmptyValue(val: boolean) {
 	empty.value = val;
 }
 

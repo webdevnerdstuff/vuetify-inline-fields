@@ -5,6 +5,7 @@ All notable changes to the "vuetify-inline-fields" plugin will be documented in 
 2024-03-13
 [main] (@webdevnerdstuff)
 * Change component to use `defineAsyncComponent`
+* Fix unexpected side effect in computed function
 
 ## v1.0.6
 2024-02-26

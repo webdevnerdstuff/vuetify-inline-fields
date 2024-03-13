@@ -218,7 +218,7 @@ const theClearIcon = computed<string>(() => {
 // ------------------------------------------------ The displayed value //
 const displayValue = computed(() => {
 	if (modelValue.value) {
-		empty.value = false;
+		setEmptyValue(false);
 
 		if (settings.truncateLength) {
 			return useTruncateText({
@@ -231,9 +231,13 @@ const displayValue = computed(() => {
 		return modelValue.value;
 	}
 
-	empty.value = true;
+	setEmptyValue(true);
 	return settings.emptyText;
 });
+
+function setEmptyValue(val: boolean) {
+	empty.value = val;
+}
 
 
 // ------------------------------------------------ Binding Events & Props //
