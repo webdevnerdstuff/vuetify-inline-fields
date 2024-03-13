@@ -225,7 +225,7 @@ const theClearIcon = computed(() => {
 // ------------------------------------------------ The displayed value //
 const displayValue = computed(() => {
 	if (modelValue.value && modelValue.value[settings.itemTitle as string]) {
-		empty.value = false;
+		setEmptyValue(false);
 		return modelValue.value[settings.itemTitle as string];
 	}
 
@@ -233,9 +233,13 @@ const displayValue = computed(() => {
 		return modelValue.value;
 	}
 
-	empty.value = true;
+	setEmptyValue(true);
 	return settings.emptyText;
 });
+
+function setEmptyValue(val) {
+	empty.value = val;
+}
 
 
 // ------------------------------------------------ Binding Events & Props //
