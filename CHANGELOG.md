@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
+## v1.0.7
+2024-03-13
+[main] (@webdevnerdstuff)
+* Change component to use `defineAsyncComponent`
+
 ## v1.0.6
 2024-02-26
 [main] (@webdevnerdstuff)
