@@ -1,5 +1,5 @@
-declare const _default: import("vue").DefineComponent<{
-    modelValue: globalThis.PropType<any>;
+declare const _default: import('vue').DefineComponent<{
+    modelValue: import('vue').PropType<any>;
     iconFalse: {
         type: globalThis.PropType<string>;
     };
@@ -22,8 +22,8 @@ declare const _default: import("vue").DefineComponent<{
         type: globalThis.PropType<string>;
         required: true;
     };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
-    modelValue: globalThis.PropType<any>;
+}, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
+    modelValue: import('vue').PropType<any>;
     iconFalse: {
         type: globalThis.PropType<string>;
     };
