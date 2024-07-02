@@ -1,7 +1,7 @@
 import { App } from 'vue';
-import './styles/main.scss';
-import type { SharedProps } from './types';
-import * as VInlineFields from './components/index';
+import { SharedProps } from './types';
+
+import * as VInlineFields from '@components/index';
 export declare const globalOptions: unique symbol;
 export declare function createVInlineFields(options?: Omit<SharedProps, 'disabled' | 'label' | 'loading' | 'name'>): {
     install: (app: App) => void;

@@ -44,8 +44,7 @@ const en = Symbol("identifier"), nn = { elevation: 5, variant: "flat" }, un = { 
   return { [`${O}--card-container`]: !0, [`${O}--card-container-${t}`]: !0, "d-none": !l };
 };
 function Pn(c) {
-  if (!c)
-    return 100;
+  if (!c) return 100;
   if (c.toString().includes(".")) {
     const t = 100 * Number(c);
     return t >= 100 ? 100 : t;
@@ -60,25 +59,21 @@ function Vn(c) {
       A.toLowerCase() != F.toLowerCase() || (w = z);
     }), w;
   }(c), l = 0, a = 0, r = 0, u = 100, f = 0, s = 0, d = 0;
-  if (t.substring(0, 1) === "#")
-    t = function(A) {
-      let P = A.replace("#", "");
-      P.length === 3 && (P = P.split("").map((g) => g + g).join(""));
-      const w = parseInt(P.substring(0, 2), 16), F = parseInt(P.substring(2, 4), 16), z = parseInt(P.substring(4, 6), 16);
-      return [w, F, z, 100];
-    }(t);
-  else if (t.includes("rgb"))
-    t = [...t.matchAll(/[\d+.\d+]+/g)].map(Number);
-  else if (t.includes("hsl"))
-    return t = [...t.matchAll(/[\d+.\d+]+/g)].map(String), l = t[0], a = t[1], r = t[2], u = Pn(t[3]), `${l} ${a}% ${r}% / ${u}%`;
+  if (t.substring(0, 1) === "#") t = function(A) {
+    let P = A.replace("#", "");
+    P.length === 3 && (P = P.split("").map((g) => g + g).join(""));
+    const w = parseInt(P.substring(0, 2), 16), F = parseInt(P.substring(2, 4), 16), z = parseInt(P.substring(4, 6), 16);
+    return [w, F, z, 100];
+  }(t);
+  else if (t.includes("rgb")) t = [...t.matchAll(/[\d+.\d+]+/g)].map(Number);
+  else if (t.includes("hsl")) return t = [...t.matchAll(/[\d+.\d+]+/g)].map(String), l = t[0], a = t[1], r = t[2], u = Pn(t[3]), `${l} ${a}% ${r}% / ${u}%`;
   [f, s, d, u] = t, f /= 255, s /= 255, d /= 255, u = Pn(u);
   const n = Math.max(f, s, d), i = Math.min(f, s, d);
   if (n === null || !i === null || isNaN(n) || isNaN(i)) {
     const A = "0 0% 100% / 12%";
     return console.warn(`[VuetifyInlineFields]: The "color" prop value using "${t}" doesn't exist. Using the value "hsl(${A})" in it's place.`), A;
   }
-  if (l = (n + i) / 2, a = (n + i) / 2, r = (n + i) / 2, n == i)
-    l = a = 0;
+  if (l = (n + i) / 2, a = (n + i) / 2, r = (n + i) / 2, n == i) l = a = 0;
   else {
     const A = n - i;
     switch (a = r > 0.5 ? A / (2 - n - i) : A / (n + i), n) {
@@ -98,12 +93,10 @@ function Vn(c) {
 const Qn = (c, t) => {
   if (/* @__PURE__ */ function(a) {
     return a === "transparent" || a === "none" || a === "inherit" || a === "currentColor" || a === "initial" || a === "unset";
-  }(c))
-    return c;
+  }(c)) return c;
   if (function(a) {
     return a.includes("--v-theme");
-  }(c))
-    return `rgb(var(${c}))`;
+  }(c)) return `rgb(var(${c}))`;
   const l = function(a, r) {
     const u = r.global.current.value.colors;
     return Object.entries(u).find(([f]) => f === a);
@@ -111,8 +104,7 @@ const Qn = (c, t) => {
   return l ? `hsl(${Vn(l[1])})` : `hsl(${Vn(c)})`;
 }, yn = (c) => {
   const { str: t, unit: l = "px" } = c;
-  if (t != null && t !== "")
-    return +t ? `${Number(t)}${l}` : String(t);
+  if (t != null && t !== "") return +t ? `${Number(t)}${l}` : String(t);
 }, Tn = (c) => {
   var r;
   const { modelValue: t, trueValue: l } = c, a = e(t);
@@ -126,8 +118,7 @@ const Qn = (c, t) => {
 }, Ye = (c) => {
   const { cardMinWidth: t, cardOffsetX: l, cardOffsetY: a, cardWidth: r, field: u, name: f = "" } = c, s = ((i) => {
     const { cardOffsetX: A, cardOffsetY: P, field: w } = i;
-    if (!w)
-      return { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0, x: 0, y: 0 };
+    if (!w) return { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0, x: 0, y: 0 };
     const { x: F, y: z } = w.getBoundingClientRect(), { width: C, height: g } = w.getBoundingClientRect(), { right: U, bottom: ye } = w.getBoundingClientRect();
     return { bottom: yn({ str: ye + Number(P) }), height: g, left: yn({ str: 0 + Number(A) }), right: yn({ str: U + Number(A) }), top: yn({ str: 2 + Number(P) }), width: yn({ str: C }), x: F, y: z };
   })({ cardOffsetX: l, cardOffsetY: a, field: u });
@@ -151,14 +142,11 @@ const Qn = (c, t) => {
   return (F, z) => (p(), S("div", { class: "v-inline-fields--display-wrapper", onClick: w }, [F.displayPrependIcon || e(u)["display.prepend"] ? (p(), S("div", { key: 0, class: B(P("prepend")), style: Q(e(A)) }, [e(u)["display.prepend"] ? pe(F.$slots, "display.prepend", R(ve({ key: 0 }, d))) : (p(), oe(Ue, { key: 1, color: e(s).displayPrependIconColor, icon: e(s).displayPrependIcon, size: e(s).displayPrependIconSize }, null, 8, ["color", "icon", "size"]))], 6)) : _("", !0), ce("div", { class: B(["d-inline-flex", e(n)]), style: Q(e(i)) }, [F.displayPrependInnerIcon || e(u)["display.prependInner"] ? (p(), S("div", { key: 0, class: B(P("prepend", !0)) }, [e(u)["display.prependInner"] ? pe(F.$slots, "display.prependInner", R(ve({ key: 0 }, d))) : (p(), oe(Ue, { key: 1, color: e(s).displayPrependInnerIconColor, icon: e(s).displayPrependInnerIcon, size: e(s).displayPrependInnerIconSize }, null, 8, ["color", "icon", "size"]))], 2)) : _("", !0), En(" " + hn(F.displayValue) + " ", 1), F.displayAppendInnerIcon || e(u)["display.appendInner"] ? (p(), S("div", { key: 1, class: B(P("append", !0)) }, [e(u)["display.appendInner"] ? pe(F.$slots, "display.appendInner", R(ve({ key: 0 }, d))) : (p(), oe(Ue, { key: 1, color: e(s).displayAppendInnerIconColor, icon: e(s).displayAppendInnerIcon, size: e(s).displayAppendInnerIconSize }, null, 8, ["color", "icon", "size"]))], 2)) : _("", !0)], 6), F.displayAppendIcon || e(u)["display.append"] ? (p(), S("div", { key: 1, class: B(P("append")), style: Q(e(A)) }, [e(u)["display.append"] ? pe(F.$slots, "display.append", R(ve({ key: 0 }, d))) : (p(), oe(Ue, { key: 1, color: e(s).displayAppendIconColor, icon: e(s).displayAppendIcon, size: e(s).displayAppendIconSize }, null, 8, ["color", "icon", "size"]))], 6)) : _("", !0)]));
 } }), Zn = { fa: { checkboxFalse: "$checkboxOff", checkboxTrue: "far fa-square-check", clear: "$clear", false: "$close", loading: "fa-circle-notch", save: "fa-floppy-disk", true: "$complete" }, mdi: { checkboxFalse: "$checkboxOff", checkboxTrue: "mdi:mdi-checkbox-outline", clear: "$clear", false: "$close", loading: "mdi-loading", save: "mdi-content-save", true: "$complete" } }, we = (c) => {
   const { icon: t, iconOptions: l, name: a } = c;
-  if (t)
-    return t;
+  if (t) return t;
   const r = Zn[l == null ? void 0 : l.defaultSet];
-  if (!r)
-    throw new Error(`[VInlineFields]: No default ${l == null ? void 0 : l.defaultSet} icon set found.`);
+  if (!r) throw new Error(`[VInlineFields]: No default ${l == null ? void 0 : l.defaultSet} icon set found.`);
   const u = r[a];
-  if (!u)
-    throw new Error(`[VInlineFields]: No ${a} icon found.`);
+  if (!u) throw new Error(`[VInlineFields]: No ${a} icon found.`);
   return u;
 }, dn = Me({ __name: "SaveFieldButtons", props: { loading: { type: Boolean }, cancelButtonColor: {}, cancelButtonSize: {}, cancelButtonVariant: {}, cancelButtonTitle: {}, cancelIconColor: {}, error: { type: Boolean }, fieldOnly: { type: Boolean }, hideCancelIcon: { type: Boolean }, hideSaveIcon: { type: Boolean }, cancelIcon: {}, loadingIcon: {}, loadingIconColor: {}, saveButtonColor: {}, saveButtonSize: {}, saveButtonTitle: {}, saveButtonVariant: {}, saveIconColor: {}, saveIcon: {} }, emits: ["close", "save"], setup(c, { emit: t }) {
   const l = Ge(), a = t, r = c, u = Ie(Symbol.for("vuetify:icons")), f = o(() => r.error), s = o(() => ({ [`${O}--save-fields-container`]: !0 })), d = o(() => r.loading), n = Le({ ...l, ...r });
@@ -182,8 +170,7 @@ const Qn = (c, t) => {
   a = e(a);
   const r = [];
   let u = !1;
-  if (t && !a)
-    return r.push("Field is required."), { errors: !0, results: r };
+  if (t && !a) return r.push("Field is required."), { errors: !0, results: r };
   if (l) {
     for (const f of l) {
       const s = (typeof f == "function" ? f : () => f)(a);
@@ -205,8 +192,7 @@ const Qn = (c, t) => {
   return t = Object.entries(t).filter(([l]) => !Hn.includes(l)), Object.fromEntries(t);
 }, xn = (c, t) => {
   const l = c.__vccOpts || c;
-  for (const [a, r] of t)
-    l[a] = r;
+  for (const [a, r] of t) l[a] = r;
   return l;
 }, Dn = xn(Me({ __name: "VInlineAutocomplete", props: me(Je({ autoSelectFirst: {}, clearIcon: {}, clearable: {}, density: {}, hideSelected: {}, itemTitle: {}, itemValue: {}, items: {}, menu: {}, menuIcon: {}, rules: {}, variant: {}, autofocus: { type: Boolean }, cancelButtonColor: {}, cancelButtonSize: {}, cancelButtonTitle: {}, cancelButtonVariant: {}, cancelIcon: {}, cancelIconColor: {}, cardField: { type: Boolean }, cardOffsetX: {}, cardOffsetY: {}, cardProps: {}, cell: { type: Boolean }, cellUnderlineFullWidth: { type: Boolean }, closeSiblings: { type: Boolean }, color: {}, disabled: { type: Boolean }, displayAppendIcon: {}, displayAppendIconColor: {}, displayAppendIconSize: {}, displayAppendInnerIcon: {}, displayAppendInnerIconColor: {}, displayAppendInnerIconSize: {}, displayPrependIcon: {}, displayPrependIconColor: {}, displayPrependIconSize: {}, displayPrependInnerIcon: {}, displayPrependInnerIconColor: {}, displayPrependInnerIconSize: {}, emptyText: {}, error: { type: Boolean }, fieldOnly: { type: Boolean }, hideCancelIcon: { type: Boolean }, hideDetails: { type: Boolean }, hideSaveIcon: { type: Boolean }, label: {}, loading: { type: Boolean }, loadingIcon: {}, loadingIconColor: {}, loadingWait: { type: Boolean }, name: {}, required: { type: Boolean }, saveButtonColor: {}, saveButtonSize: {}, saveButtonTitle: {}, saveButtonVariant: {}, saveIcon: {}, saveIconColor: {}, tableField: { type: Boolean }, underlineColor: {}, underlineStyle: {}, underlineWidth: {}, underlined: { type: Boolean }, valueColor: {} }, { ...jn }), { modelValue: {}, modelModifiers: {} }), emits: me([...cn], ["update:modelValue"]), setup(c, { emit: t }) {
   const l = Re(c, "modelValue"), a = Ge(), r = qe(), u = t, f = Ie(Ne, {}), s = Ie(Symbol.for("vuetify:icons")), d = c, n = Le({ ...a, ...d, ...f });
@@ -233,8 +219,7 @@ const Qn = (c, t) => {
   const H = v(), ee = v(null), ne = v("body");
   function D() {
     var M, K;
-    if (V.value || n.loadingWait && m.value)
-      return;
+    if (V.value || n.loadingWait && m.value) return;
     H.value = Ye({ cardMinWidth: (M = n.cardProps) == null ? void 0 : M.minWidth, cardOffsetX: n.cardOffsetX, cardOffsetY: n.cardOffsetY, cardWidth: (K = n.cardProps) == null ? void 0 : K.width, field: ee.value });
     const y = rn({ attrs: a, closeSiblings: g.value, fieldOnly: n.fieldOnly, props: d, showField: I, timeOpened: q.value });
     I.value = y.showField, q.value = y.timeOpened, le !== null && g.value && I.value && !n.fieldOnly && le.emit(y.timeOpened), X = l.value;
@@ -283,8 +268,7 @@ const Qn = (c, t) => {
   const m = v(), W = v(null), b = v("body"), N = Ln();
   function I() {
     var E, ae;
-    if (A.value || i.loadingWait && P.value)
-      return;
+    if (A.value || i.loadingWait && P.value) return;
     m.value = Ye({ cardMinWidth: (E = i.cardProps) == null ? void 0 : E.minWidth, cardOffsetX: i.cardOffsetX, cardOffsetY: i.cardOffsetY, cardWidth: (ae = i.cardProps) == null ? void 0 : ae.width, field: W.value, name: "checkbox" });
     const $ = rn({ attrs: a, closeSiblings: i.closeSiblings, fieldOnly: i.fieldOnly, props: n, showField: z, timeOpened: C.value });
     z.value = $.showField, C.value = $.timeOpened, X !== null && i.closeSiblings && z.value && !i.fieldOnly && X.emit($.timeOpened);
@@ -325,8 +309,7 @@ const Qn = (c, t) => {
   const ke = v(), We = v(null), re = v("body");
   function j() {
     var G, fe;
-    if (Be.value || n.loadingWait && Z.value)
-      return;
+    if (Be.value || n.loadingWait && Z.value) return;
     ke.value = Ye({ cardMinWidth: (G = n.cardProps) == null ? void 0 : G.minWidth, cardOffsetX: n.cardOffsetX, cardOffsetY: n.cardOffsetY, cardWidth: (fe = n.cardProps) == null ? void 0 : fe.width, field: We.value });
     const k = rn({ attrs: a, closeSiblings: g.value, fieldOnly: n.fieldOnly, props: d, showField: m, timeOpened: W.value });
     m.value = k.showField, W.value = k.timeOpened, ne !== null && g.value && m.value && !n.fieldOnly && ne.emit(k.timeOpened);
@@ -377,8 +360,7 @@ const Qn = (c, t) => {
   const H = v(), ee = v(null), ne = v("body");
   function D() {
     var M, K;
-    if (V.value || n.loadingWait && m.value)
-      return;
+    if (V.value || n.loadingWait && m.value) return;
     H.value = Ye({ cardMinWidth: (M = n.cardProps) == null ? void 0 : M.minWidth, cardOffsetX: n.cardOffsetX, cardOffsetY: n.cardOffsetY, cardWidth: (K = n.cardProps) == null ? void 0 : K.width, field: ee.value });
     const y = rn({ attrs: a, closeSiblings: g.value, fieldOnly: n.fieldOnly, props: d, showField: I, timeOpened: q.value });
     I.value = y.showField, q.value = y.timeOpened, le !== null && g.value && I.value && !n.fieldOnly && le.emit(y.timeOpened), X = l.value;
@@ -420,8 +402,7 @@ const Qn = (c, t) => {
   const ke = v(), We = v(null), re = v("body");
   function j() {
     var L, k;
-    if (Z.value || n.loadingWait && Y.value)
-      return;
+    if (Z.value || n.loadingWait && Y.value) return;
     ke.value = Ye({ cardMinWidth: (L = n.cardProps) == null ? void 0 : L.minWidth, cardOffsetX: n.cardOffsetX, cardOffsetY: n.cardOffsetY, cardWidth: (k = n.cardProps) == null ? void 0 : k.width, field: We.value });
     const D = rn({ attrs: a, closeSiblings: g.value, fieldOnly: n.fieldOnly, props: d, showField: m.value, timeOpened: W.value });
     m.value = D.showField, W.value = D.timeOpened, H !== null && g.value && m.value && !n.fieldOnly && H.emit(D.timeOpened);
@@ -459,8 +440,7 @@ const Qn = (c, t) => {
   const j = v(), te = v(null), H = v("body");
   function ee() {
     var J, y;
-    if (Y.value || n.loadingWait && V.value)
-      return;
+    if (Y.value || n.loadingWait && V.value) return;
     j.value = Ye({ cardMinWidth: (J = n.cardProps) == null ? void 0 : J.minWidth, cardOffsetX: n.cardOffsetX, cardOffsetY: n.cardOffsetY, cardWidth: (y = n.cardProps) == null ? void 0 : y.width, field: te.value });
     const h = rn({ attrs: a, closeSiblings: g.value, fieldOnly: n.fieldOnly, props: d, showField: b, timeOpened: N.value });
     b.value = h.showField, N.value = h.timeOpened, G !== null && g.value && b.value && !n.fieldOnly && G.emit(h.timeOpened), I = l.value;
@@ -507,8 +487,7 @@ const Qn = (c, t) => {
   const j = v(), te = v(null), H = v("body");
   function ee() {
     var J, y;
-    if (Y.value || n.loadingWait && V.value)
-      return;
+    if (Y.value || n.loadingWait && V.value) return;
     j.value = Ye({ cardMinWidth: (J = n.cardProps) == null ? void 0 : J.minWidth, cardOffsetX: n.cardOffsetX, cardOffsetY: n.cardOffsetY, cardWidth: (y = n.cardProps) == null ? void 0 : y.width, field: te.value });
     const h = rn({ attrs: a, closeSiblings: g.value, fieldOnly: n.fieldOnly, props: d, showField: b, timeOpened: N.value });
     b.value = h.showField, N.value = h.timeOpened, G !== null && g.value && b.value && !n.fieldOnly && G.emit(h.timeOpened), I = l.value;

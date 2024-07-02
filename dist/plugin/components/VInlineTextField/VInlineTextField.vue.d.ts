@@ -1,26 +1,9 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    modelValue: globalThis.PropType<any>;
+import { FieldValue } from '../../types';
+
+declare function __VLS_template(): Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>;
+declare const __VLS_component: import('vue').DefineComponent<{
+    modelValue: import('vue').PropType<FieldValue>;
     error: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    disabled: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    color: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    variant: {
-        type: globalThis.PropType<"outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled">;
-        default: "underlined";
-    };
-    density: {
-        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
-        default: "compact";
-    };
-    loading: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -88,8 +71,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
+    color: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    disabled: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     displayAppendIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -101,7 +92,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -113,7 +104,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -125,7 +116,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -159,6 +150,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     label: {
         type: globalThis.PropType<string>;
         default: string;
+    };
+    loading: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
     };
     loadingIcon: {
         type: globalThis.PropType<string>;
@@ -229,37 +224,25 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     clearIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: string;
+    };
+    density: {
+        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
+        default: "compact";
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
     };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    variant: {
+        type: globalThis.PropType<"underlined" | "outlined" | "plain" | "filled" | "solo" | "solo-inverted" | "solo-filled">;
+        default: "underlined";
+    };
+}, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     [x: string]: (...args: any[]) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
-    modelValue: globalThis.PropType<any>;
+}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
+    modelValue: import('vue').PropType<FieldValue>;
     error: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    disabled: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    color: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    variant: {
-        type: globalThis.PropType<"outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled">;
-        default: "underlined";
-    };
-    density: {
-        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
-        default: "compact";
-    };
-    loading: {
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
@@ -327,8 +310,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: globalThis.PropType<boolean>;
         default: boolean;
     };
+    color: {
+        type: globalThis.PropType<string>;
+        default: string;
+    };
+    disabled: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
+    };
     displayAppendIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayAppendIconColor: {
@@ -340,7 +331,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayAppendInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayAppendInnerIconColor: {
@@ -352,7 +343,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayPrependIconColor: {
@@ -364,7 +355,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     displayPrependInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: undefined;
     };
     displayPrependInnerIconColor: {
@@ -398,6 +389,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     label: {
         type: globalThis.PropType<string>;
         default: string;
+    };
+    loading: {
+        type: globalThis.PropType<boolean>;
+        default: boolean;
     };
     loadingIcon: {
         type: globalThis.PropType<string>;
@@ -468,19 +463,22 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         default: string;
     };
     clearIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
+        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent>;
         default: string;
+    };
+    density: {
+        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
+        default: "compact";
     };
     rules: {
         type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
+    };
+    variant: {
+        type: globalThis.PropType<"underlined" | "outlined" | "plain" | "filled" | "solo" | "solo-inverted" | "solo-filled">;
+        default: "underlined";
     };
 }>>, {
     error: boolean;
-    disabled: boolean;
-    color: string;
-    variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";
-    density: "default" | "compact" | "comfortable" | null;
-    loading: boolean;
     truncateLength: number;
     truncateSuffix: string;
     autofocus: boolean;
@@ -493,20 +491,22 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     cardField: boolean;
     cardOffsetX: number;
     cardOffsetY: number;
-    cardProps: any;
+    cardProps: typeof import('vuetify/lib/components/index.mjs').VCard["$props"];
     cell: boolean;
     cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
-    displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    color: string;
+    disabled: boolean;
+    displayAppendIcon: string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent;
     displayAppendIconColor: string;
     displayAppendIconSize: string | number;
-    displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent;
     displayAppendInnerIconColor: string;
     displayAppendInnerIconSize: string | number;
-    displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    displayPrependIcon: string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent;
     displayPrependIconColor: string;
     displayPrependIconSize: string | number;
-    displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent;
     displayPrependInnerIconColor: string;
     displayPrependInnerIconSize: string | number;
     emptyText: string;
@@ -515,6 +515,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     hideDetails: boolean;
     hideSaveIcon: boolean;
     label: string;
+    loading: boolean;
     loadingIcon: string;
     loadingIconColor: string;
     loadingWait: boolean;
@@ -532,8 +533,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
-    clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
-}, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & Partial<Record<NonNullable<string | number>, (_: any) => any>>>;
+    clearIcon: string | (string | [path: string, opacity: number])[] | import('vue').JSXComponent;
+    density: "default" | "compact" | "comfortable" | null;
+    variant: "underlined" | "outlined" | "plain" | "filled" | "solo" | "solo-inverted" | "solo-filled";
+}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

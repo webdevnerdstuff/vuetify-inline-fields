@@ -1,4 +1,5 @@
 import { ThemeInstance } from 'vuetify';
+
 /**
      * Converts single color
      */
