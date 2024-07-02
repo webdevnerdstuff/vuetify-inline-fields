@@ -37,6 +37,7 @@
 				:to="cardFieldRef"
 			>
 				<v-autocomplete
+					v-if="showField || settings.fieldOnly"
 					v-bind="bindingSettings"
 					v-model="modelValue"
 					:autofocus="!settings.fieldOnly || settings.autofocus"
@@ -201,7 +202,7 @@ const error = ref<boolean>(false);
 const items = ref();
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
-let originalValue = modelValue.value;
+let originalValue = null;
 
 
 // ------------------------------------------------ Loading //
@@ -226,11 +227,11 @@ const theClearIcon = computed(() => {
 const displayValue = computed(() => {
 	if (modelValue.value && modelValue.value[settings.itemTitle as string]) {
 		setEmptyValue(false);
-
 		return modelValue.value[settings.itemTitle as string];
 	}
 
 	if (modelValue.value) {
+		setEmptyValue(false);
 		return modelValue.value;
 	}
 
@@ -367,6 +368,8 @@ function toggleField() {
 	if (closeSiblingsBus !== null && closeSiblings.value && showField.value && !settings.fieldOnly) {
 		closeSiblingsBus.emit(response.timeOpened);
 	}
+
+	originalValue = modelValue.value;
 }
 
 

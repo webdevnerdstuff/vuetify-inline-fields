@@ -194,7 +194,7 @@ const empty = ref<boolean>(false);
 const error = ref<boolean>(false);
 const showField = ref<boolean>(false);
 const timeOpened = ref<TimeOpened>(null);
-let originalValue = modelValue.value;
+let originalValue = null;
 
 
 // ------------------------------------------------ Loading //
@@ -358,6 +358,8 @@ function toggleField() {
 	if (closeSiblingsBus !== null && closeSiblings.value && showField.value && !settings.fieldOnly) {
 		closeSiblingsBus.emit(response.timeOpened);
 	}
+
+	originalValue = modelValue.value;
 }
 
 
@@ -434,5 +436,4 @@ onUnmounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
