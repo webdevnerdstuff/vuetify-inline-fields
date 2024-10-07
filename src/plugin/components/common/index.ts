@@ -11,7 +11,9 @@ export interface BooleanIcons extends
 	Required<Pick<SharedProps, 'iconFalseColor' | 'iconFalseTitle' | 'iconTrueColor' | 'iconTrueTitle'>>,
 	Pick<SharedProps,
 		'iconFalse' |
-		'iconTrue'
+		'iconTrue' |
+		'trueValue' |
+		'falseValue'
 	> { };
 
 

@@ -1,6 +1,6 @@
 <template>
 	<v-icon
-		v-if="modelValue"
+		v-if="truthyModelValue === true || modelValue === trueValue"
 		class="v-inline-fields--boolean-icons fa-fw"
 		:color="iconTrueColor"
 		:icon="theTrueIcon"
@@ -22,6 +22,7 @@
 import type { BooleanIcons } from './';
 import { useGetIcon } from '@composables/icons';
 import type { IconOptions } from 'vuetify';
+import { useTruthyModelValue } from '@composables/helpers';
 
 import { VIcon } from 'vuetify/components';
 
@@ -35,6 +36,20 @@ watchEffect(() => {
 });
 
 const modelValue = defineModel();
+
+const truthyModelValue = computed(() => useTruthyModelValue({
+	modelValue,
+	trueValue: settings.trueValue,
+}));
+
+
+const trueValue = computed(() => {
+	return settings.trueValue ?? true;
+});
+
+// const falseValue = computed(() => {
+// 	return settings.falseValue ?? false;
+// });
 
 const theFalseIcon = computed(() => {
 	return useGetIcon({
@@ -53,5 +68,4 @@ const theTrueIcon = computed(() => {
 });
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
