@@ -1,7 +1,6 @@
 import { VSelect } from 'vuetify/components';
 import { SharedProps } from '../../types';
 import { default as VInlineSelect } from './VInlineSelect.vue';
-
 export interface VInlineSelectProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'> {
     clearIcon?: VSelect['$props']['clearIcon'];
     clearable?: VSelect['$props']['clearable'];

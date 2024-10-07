@@ -6,8 +6,10 @@ import type VInlineSwitch from './VInlineSwitch.vue';
 export interface VInlineSwitchProps extends Omit<SharedProps,
 	'autofocus' | 'truncateLength' | 'truncateSuffix'
 > {
-	density?: VSwitch['$props']['density'];
-	falseIcon?: VSwitch['$props']['falseIcon'];
+	density?: VSwitch['density'];
+	falseIcon?: VSwitch['falseIcon'];
+	falseValue?: VSwitch['falseValue'];
+	trueValue?: VSwitch['trueValue'];
 }
 
 

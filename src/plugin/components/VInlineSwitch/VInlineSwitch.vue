@@ -22,12 +22,14 @@
 					>
 						<BooleanIcons
 							v-model="truthyModelValue"
+							:false-value="settings.falseValue"
 							:icon-false="settings.iconFalse"
 							:icon-false-color="settings.iconFalseColor"
 							:icon-false-title="settings.iconFalseTitle"
 							:icon-true="settings.iconTrue"
 							:icon-true-color="settings.iconTrueColor"
 							:icon-true-title="settings.iconTrueTitle"
+							:true-value="settings.trueValue"
 						/>
 					</div>
 
@@ -372,5 +374,4 @@ onUnmounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

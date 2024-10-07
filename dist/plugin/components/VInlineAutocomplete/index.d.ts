@@ -1,7 +1,6 @@
 import { VAutocomplete } from 'vuetify/components';
 import { SharedProps } from '../../types';
 import { default as VInlineAutocomplete } from './VInlineAutocomplete.vue';
-
 export interface VInlineAutocompleteProps extends Omit<SharedProps, 'falseValue' | 'iconFalse' | 'iconFalseColor' | 'iconFalseTitle' | 'iconTrue' | 'iconTrueColor' | 'iconTrueTitle' | 'icons' | 'trueValue' | 'truncateLength' | 'truncateSuffix'> {
     autoSelectFirst?: VAutocomplete['$props']['autoSelectFirst'];
     clearIcon?: VAutocomplete['$props']['clearIcon'];

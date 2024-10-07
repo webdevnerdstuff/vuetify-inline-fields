@@ -1,5 +1,4 @@
 import { UseCancelButtonClass, UseCardContainerClass, UseDisplayContainerClass, UseDisplayInputControlClass, UseDisplaySelectionControlClass, UseDisplayValueClass, UseFieldContainerClass, UseInlineFieldsContainerClass, UsePrependAppendIconClasses } from '../types';
-
 export declare const useInlineFieldsContainerClass: UseInlineFieldsContainerClass;
 export declare const useDisplayContainerClass: UseDisplayContainerClass;
 export declare const useDisplayInputControlClasses: UseDisplayInputControlClass;

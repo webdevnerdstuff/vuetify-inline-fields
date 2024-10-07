@@ -89,7 +89,7 @@ export interface SharedProps {
 	displayPrependInnerIconSize?: VIconSize;
 	emptyText?: string;
 	error?: boolean;
-	falseValue?: boolean | string | undefined;
+	falseValue?: any;
 	fieldOnly?: boolean;
 	hideCancelIcon?: boolean;
 	hideDetails?: boolean;
@@ -115,7 +115,7 @@ export interface SharedProps {
 	saveIcon?: string | undefined;
 	saveIconColor?: string;
 	tableField?: boolean;
-	trueValue?: boolean | string | undefined;
+	trueValue?: any;
 	truncateLength?: number | undefined;
 	truncateSuffix?: string | undefined;
 	underlineColor?: string;
