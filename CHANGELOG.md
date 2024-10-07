@@ -5,6 +5,8 @@ All notable changes to the "vuetify-inline-fields" plugin will be documented in 
 2024-10-07
 [main] (@webdevnerdstuff)
 * Fix issue with Switch and Checkbox `true-value` and `false-value` props not working with string values or numbers
+* Fix a couple typescript internal issues
+* Update packages
 
 ## v1.0.8
 2024-07-02
