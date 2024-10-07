@@ -29,7 +29,7 @@
 		>
 			<!-- Prepend Inner Icon -->
 			<div
-				v-if="displayPrependInnerIcon || slots['display.prependInner']"
+				v-if="settings.displayPrependInnerIcon != null || slots['display.prependInner']"
 				:class="prependAppendIconClasses('prepend', true)"
 			>
 				<slot
@@ -45,7 +45,7 @@
 				></v-icon>
 			</div>
 
-			{{ displayValue }}
+			{{ settings.displayValue }}
 
 			<!-- Append Inner Icon -->
 			<div
