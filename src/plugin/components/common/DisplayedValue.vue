@@ -6,7 +6,7 @@
 
 		<!-- Prepend Icon -->
 		<div
-			v-if="displayPrependIcon || slots['display.prepend']"
+			v-if="settings.displayPrependIcon != null || slots['display.prepend']"
 			:class="prependAppendIconClasses('prepend')"
 			:style="prependAppendIconStyles"
 		>
@@ -49,7 +49,7 @@
 
 			<!-- Append Inner Icon -->
 			<div
-				v-if="displayAppendInnerIcon || slots['display.appendInner']"
+				v-if="settings.displayAppendInnerIcon != null || slots['display.appendInner']"
 				:class="prependAppendIconClasses('append', true)"
 			>
 				<slot
@@ -68,7 +68,7 @@
 
 		<!-- Append Icon -->
 		<div
-			v-if="displayAppendIcon || slots['display.append']"
+			v-if="settings.displayAppendIcon != null || slots['display.append']"
 			:class="prependAppendIconClasses('append')"
 			:style="prependAppendIconStyles"
 		>
