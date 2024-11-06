@@ -1,6 +1,6 @@
-import type { MaybeRef, Ref } from 'vue';
-import type { SharedProps } from '../../types';
-export interface BooleanIcons extends Required<Pick<SharedProps, 'iconFalseColor' | 'iconFalseTitle' | 'iconTrueColor' | 'iconTrueTitle'>>, Pick<SharedProps, 'iconFalse' | 'iconTrue'> {
+import { MaybeRef, Ref } from 'vue';
+import { SharedProps } from '../../types';
+export interface BooleanIcons extends Required<Pick<SharedProps, 'iconFalseColor' | 'iconFalseTitle' | 'iconTrueColor' | 'iconTrueTitle'>>, Pick<SharedProps, 'iconFalse' | 'iconTrue' | 'trueValue' | 'falseValue'> {
 }
 export interface DisplayValueProps {
     [key: string]: any;

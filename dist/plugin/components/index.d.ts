@@ -1,10 +1,10 @@
-import VInlineAutocomplete from './VInlineAutocomplete/VInlineAutocomplete.vue';
-import VInlineCheckbox from './VInlineCheckbox/VInlineCheckbox.vue';
-import VInlineCustomField from './VInlineCustomField/VInlineCustomField.vue';
-import VInlineSelect from './VInlineSelect/VInlineSelect.vue';
-import VInlineSwitch from './VInlineSwitch/VInlineSwitch.vue';
-import VInlineTextField from './VInlineTextField/VInlineTextField.vue';
-import VInlineTextarea from './VInlineTextarea/VInlineTextarea.vue';
+import { default as VInlineAutocomplete } from './VInlineAutocomplete/VInlineAutocomplete.vue';
+import { default as VInlineCheckbox } from './VInlineCheckbox/VInlineCheckbox.vue';
+import { default as VInlineCustomField } from './VInlineCustomField/VInlineCustomField.vue';
+import { default as VInlineSelect } from './VInlineSelect/VInlineSelect.vue';
+import { default as VInlineSwitch } from './VInlineSwitch/VInlineSwitch.vue';
+import { default as VInlineTextField } from './VInlineTextField/VInlineTextField.vue';
+import { default as VInlineTextarea } from './VInlineTextarea/VInlineTextarea.vue';
 export { VInlineAutocomplete, VInlineCheckbox, VInlineCustomField, VInlineSelect, VInlineSwitch, VInlineTextField, VInlineTextarea, };
 export * from './VInlineAutocomplete';
 export * from './VInlineCheckbox';

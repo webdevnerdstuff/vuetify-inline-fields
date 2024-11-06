@@ -15,6 +15,14 @@ export default defineConfig({
 	build: {
 		outDir: 'docs',
 	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern-compiler', // or "modern", "legacy"
+				importers: [],
+			},
+		},
+	},
 	plugins: [
 		eslint({
 			fix: true,

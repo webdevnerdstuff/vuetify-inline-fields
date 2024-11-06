@@ -67,12 +67,24 @@ export const useTruthyModelValue: UseTruthyModelValue = (options) => {
 		return true;
 	}
 
+	if (typeof value === 'string') {
+		return value;
+	}
+
+	if (value === 1 || value === 0) {
+		return value;
+	}
+
+	if (value == 1 || value == 0) {
+		return value;
+	}
+
 	if (value === '1') {
-		return true;
+		return '1';
 	}
 
 	if (value == '1') {
-		return true;
+		return '1';
 	}
 
 	if (value === true) {

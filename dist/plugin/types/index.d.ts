@@ -1,8 +1,8 @@
-import type { CSSProperties, MaybeRef, Ref } from 'vue';
-import type { VBtn, VCard, VCheckbox, VIcon, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
-import type { VInlineAutocomplete, VInlineCheckbox, VInlineCustomField, VInlineSelect, VInlineSwitch, VInlineTextField, VInlineTextarea } from '../components/index';
-import type { IconOptions, ThemeInstance } from 'vuetify';
-import type { EventBusKey } from '@vueuse/core';
+import { CSSProperties, MaybeRef, Ref } from 'vue';
+import { VBtn, VCard, VCheckbox, VIcon, VSelect, VSwitch, VTextField, VTextarea } from 'vuetify/components';
+import { VInlineAutocomplete, VInlineCheckbox, VInlineCustomField, VInlineSelect, VInlineSwitch, VInlineTextField, VInlineTextarea } from '../components/index';
+import { IconOptions, ThemeInstance } from 'vuetify';
+import { EventBusKey } from '@vueuse/core';
 export interface KeyStringAny<T = any> {
     [key: string]: T;
 }
@@ -50,7 +50,7 @@ export interface SharedProps {
     displayPrependInnerIconSize?: VIconSize;
     emptyText?: string;
     error?: boolean;
-    falseValue?: boolean | string | undefined;
+    falseValue?: any;
     fieldOnly?: boolean;
     hideCancelIcon?: boolean;
     hideDetails?: boolean;
@@ -76,7 +76,7 @@ export interface SharedProps {
     saveIcon?: string | undefined;
     saveIconColor?: string;
     tableField?: boolean;
-    trueValue?: boolean | string | undefined;
+    trueValue?: any;
     truncateLength?: number | undefined;
     truncateSuffix?: string | undefined;
     underlineColor?: string;

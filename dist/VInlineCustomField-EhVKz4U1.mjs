@@ -1,7 +1,7 @@
-import { VInlineTextarea as a } from "./vuetify-inline-fields.es.js";
+import { VInlineCustomField as o } from "./vuetify-inline-fields.es.js";
 /**
  * @name @wdns/vuetify-inline-fields
- * @version 1.0.7
+ * @version 1.0.9
  * @description Vuetify Inline Fields Component Library offers a comprehensive collection of reusable UI components to create elegant and efficient inline form fields within your applications.
  * @author WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)
  * @copyright Copyright 2024, WebDevNerdStuff
@@ -10,5 +10,5 @@ import { VInlineTextarea as a } from "./vuetify-inline-fields.es.js";
  * @license MIT License
  */
 export {
-  a as default
+  o as default
 };

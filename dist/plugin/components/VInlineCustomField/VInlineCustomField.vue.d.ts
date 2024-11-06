@@ -1,520 +1,123 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    modelValue: globalThis.PropType<any>;
-    error: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    disabled: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    color: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    variant: {
-        type: globalThis.PropType<"outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled">;
-        default: "underlined";
-    };
-    density: {
-        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
-        default: "compact";
-    };
-    loading: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    truncateLength: {
-        type: globalThis.PropType<number>;
-        default: undefined;
-    };
-    truncateSuffix: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    autofocus: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    cancelButtonColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    cancelButtonSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    cancelButtonTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    cancelButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">>;
-        default: "text";
-    };
-    cancelIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    cancelIconColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    cardField: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    cardOffsetX: {
-        type: globalThis.PropType<number>;
-        default: number;
-    };
-    cardOffsetY: {
-        type: globalThis.PropType<number>;
-        default: number;
-    };
-    cardProps: {
-        type: globalThis.PropType<any>;
-        default: () => {};
-    };
-    cell: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    cellUnderlineFullWidth: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    closeSiblings: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    displayAppendIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayAppendIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayAppendIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    displayAppendInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayAppendInnerIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayAppendInnerIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    displayPrependIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayPrependIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayPrependIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    displayPrependInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayPrependInnerIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayPrependInnerIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    emptyText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    fieldOnly: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    hideCancelIcon: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    hideDetails: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    hideSaveIcon: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    label: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    loadingIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    loadingIconColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    loadingWait: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    name: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    required: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    saveButtonColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    saveButtonSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    saveButtonTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    saveButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">>;
-        default: "text";
-    };
-    saveIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    saveIconColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    tableField: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    underlineColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    underlineStyle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    underlineWidth: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    underlined: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    valueColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    clearIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: string;
-    };
-    rules: {
-        type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    [x: string]: (...args: any[]) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
-    modelValue: globalThis.PropType<any>;
-    error: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    disabled: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    color: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    variant: {
-        type: globalThis.PropType<"outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled">;
-        default: "underlined";
-    };
-    density: {
-        type: globalThis.PropType<"default" | "compact" | "comfortable" | null>;
-        default: "compact";
-    };
-    loading: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    truncateLength: {
-        type: globalThis.PropType<number>;
-        default: undefined;
-    };
-    truncateSuffix: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    autofocus: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    cancelButtonColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    cancelButtonSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    cancelButtonTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    cancelButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">>;
-        default: "text";
-    };
-    cancelIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    cancelIconColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    cardField: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    cardOffsetX: {
-        type: globalThis.PropType<number>;
-        default: number;
-    };
-    cardOffsetY: {
-        type: globalThis.PropType<number>;
-        default: number;
-    };
-    cardProps: {
-        type: globalThis.PropType<any>;
-        default: () => {};
-    };
-    cell: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    cellUnderlineFullWidth: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    closeSiblings: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    displayAppendIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayAppendIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayAppendIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    displayAppendInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayAppendInnerIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayAppendInnerIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    displayPrependIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayPrependIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayPrependIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    displayPrependInnerIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: undefined;
-    };
-    displayPrependInnerIconColor: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    displayPrependInnerIconSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    emptyText: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    fieldOnly: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    hideCancelIcon: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    hideDetails: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    hideSaveIcon: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    label: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    loadingIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    loadingIconColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    loadingWait: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    name: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    required: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    saveButtonColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    saveButtonSize: {
-        type: globalThis.PropType<string | number>;
-        default: string;
-    };
-    saveButtonTitle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    saveButtonVariant: {
-        type: globalThis.PropType<NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">>;
-        default: "text";
-    };
-    saveIcon: {
-        type: globalThis.PropType<string>;
-        default: undefined;
-    };
-    saveIconColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    tableField: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    underlineColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    underlineStyle: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    underlineWidth: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    underlined: {
-        type: globalThis.PropType<boolean>;
-        default: boolean;
-    };
-    valueColor: {
-        type: globalThis.PropType<string>;
-        default: string;
-    };
-    clearIcon: {
-        type: globalThis.PropType<string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent>;
-        default: string;
-    };
-    rules: {
-        type: globalThis.PropType<readonly ((string | boolean) | PromiseLike<string | boolean> | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>))[]>;
-    };
-}>>, {
-    error: boolean;
-    disabled: boolean;
-    color: string;
-    variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";
-    density: "default" | "compact" | "comfortable" | null;
-    loading: boolean;
+import { FieldValue } from '../../types';
+import { VInlineCustomFieldProps } from './';
+declare let __VLS_typeProps: VInlineCustomFieldProps;
+type __VLS_PublicProps = {
+    modelValue?: FieldValue;
+} & typeof __VLS_typeProps;
+declare function __VLS_template(): {
+    slots: Partial<Record<NonNullable<string | number>, (_: any) => any>> & {
+        default?(_: {
+            loading: boolean;
+            modelValue: any;
+            originalValue: any;
+            rules: readonly ((string | boolean) | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>) | {
+                then: <TResult1 = string | boolean, TResult2 = never>(onfulfilled?: ((value: string | boolean) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => PromiseLike<TResult1 | TResult2>;
+            })[] | undefined;
+            clearIcon: string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>);
+            truncateLength: number | undefined;
+            truncateSuffix: string;
+            variant: "underlined" | "outlined" | "plain" | "filled" | "solo" | "solo-inverted" | "solo-filled";
+            hideCancelIcon: boolean;
+            hideSaveIcon: boolean;
+            loadingIcon: string | undefined;
+            loadingIconColor: string;
+            saveButtonColor: string;
+            saveButtonSize: string | number;
+            saveButtonTitle: string;
+            saveButtonVariant: "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain";
+            saveIcon: string | undefined;
+            saveIconColor: string;
+            autofocus: boolean;
+            cancelButtonColor: string;
+            cancelButtonSize: string | number;
+            cancelButtonTitle: string;
+            cancelButtonVariant: "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain";
+            cancelIcon: string | undefined;
+            cancelIconColor: string;
+            cardField: boolean;
+            cardOffsetX: number;
+            cardOffsetY: number;
+            cardProps: any;
+            cell: boolean;
+            cellUnderlineFullWidth: boolean;
+            closeSiblings: boolean;
+            color: string;
+            density: "default" | "comfortable" | "compact" | null;
+            disabled: boolean;
+            displayAppendIcon: (string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>)) | undefined;
+            displayAppendIconColor: string | undefined;
+            displayAppendIconSize: string | number;
+            displayAppendInnerIcon: (string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>)) | undefined;
+            displayAppendInnerIconColor: string | undefined;
+            displayAppendInnerIconSize: string | number;
+            displayPrependIcon: (string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>)) | undefined;
+            displayPrependIconColor: string | undefined;
+            displayPrependIconSize: string | number;
+            displayPrependInnerIcon: (string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>)) | undefined;
+            displayPrependInnerIconColor: string | undefined;
+            displayPrependInnerIconSize: string | number;
+            emptyText: string;
+            error: boolean;
+            fieldOnly: boolean;
+            hideDetails: boolean;
+            label: string;
+            loadingWait: boolean;
+            name: string;
+            required: boolean;
+            tableField: boolean;
+            underlineColor: string;
+            underlineStyle: string;
+            underlineWidth: string;
+            underlined: boolean;
+            valueColor: string;
+        }): any;
+    };
+    refs: {
+        inlineFieldsContainer: HTMLDivElement;
+        cardFieldRef: HTMLDivElement;
+    };
+    attrs: Partial<{}>;
+};
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{}>, {
     truncateLength: number;
     truncateSuffix: string;
     autofocus: boolean;
     cancelButtonColor: string;
     cancelButtonSize: string | number;
     cancelButtonTitle: string;
-    cancelButtonVariant: NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">;
+    cancelButtonVariant: "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain";
     cancelIcon: string;
     cancelIconColor: string;
     cardField: boolean;
     cardOffsetX: number;
     cardOffsetY: number;
-    cardProps: any;
+    cardProps: typeof import('vuetify/lib/components/index.mjs').VCard["$props"];
     cell: boolean;
     cellUnderlineFullWidth: boolean;
     closeSiblings: boolean;
-    displayAppendIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    color: string;
+    disabled: boolean;
+    displayAppendIcon: string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>);
     displayAppendIconColor: string;
     displayAppendIconSize: string | number;
-    displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    displayAppendInnerIcon: string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>);
     displayAppendInnerIconColor: string;
     displayAppendInnerIconSize: string | number;
-    displayPrependIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    displayPrependIcon: string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>);
     displayPrependIconColor: string;
     displayPrependIconSize: string | number;
-    displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
+    displayPrependInnerIcon: string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>);
     displayPrependInnerIconColor: string;
     displayPrependInnerIconSize: string | number;
     emptyText: string;
+    error: boolean;
     fieldOnly: boolean;
     hideCancelIcon: boolean;
     hideDetails: boolean;
     hideSaveIcon: boolean;
     label: string;
+    loading: boolean;
     loadingIcon: string;
     loadingIconColor: string;
     loadingWait: boolean;
@@ -523,7 +126,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     saveButtonColor: string;
     saveButtonSize: string | number;
     saveButtonTitle: string;
-    saveButtonVariant: NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">;
+    saveButtonVariant: "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain";
     saveIcon: string;
     saveIconColor: string;
     tableField: boolean;
@@ -532,74 +135,11 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     underlineWidth: string;
     underlined: boolean;
     valueColor: string;
-    clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
-}, {}>, Partial<Record<NonNullable<string | number>, (_: any) => any>> & {
-    default?(_: {
-        loading: boolean;
-        modelValue: any;
-        originalValue: any;
-        rules: readonly ((string | boolean) | ((value: any) => string | boolean) | ((value: any) => PromiseLike<string | boolean>) | {
-            then: <TResult1 = string | boolean, TResult2 = never>(onfulfilled?: ((value: string | boolean) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => PromiseLike<TResult1 | TResult2>;
-        })[] | undefined;
-        clearIcon: string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent;
-        truncateLength: number | undefined;
-        truncateSuffix: string;
-        variant: "outlined" | "plain" | "underlined" | "filled" | "solo" | "solo-inverted" | "solo-filled";
-        hideCancelIcon: boolean;
-        hideSaveIcon: boolean;
-        loadingIcon: string | undefined;
-        loadingIconColor: string;
-        saveButtonColor: string;
-        saveButtonSize: string | number;
-        saveButtonTitle: string;
-        saveButtonVariant: NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">;
-        saveIcon: string | undefined;
-        saveIconColor: string;
-        autofocus: boolean;
-        cancelButtonColor: string;
-        cancelButtonSize: string | number;
-        cancelButtonTitle: string;
-        cancelButtonVariant: NonNullable<"flat" | "text" | "elevated" | "tonal" | "outlined" | "plain">;
-        cancelIcon: string | undefined;
-        cancelIconColor: string;
-        cardField: boolean;
-        cardOffsetX: number;
-        cardOffsetY: number;
-        cardProps: any;
-        cell: boolean;
-        cellUnderlineFullWidth: boolean;
-        closeSiblings: boolean;
-        color: string;
-        density: "default" | "compact" | "comfortable" | null;
-        disabled: boolean;
-        displayAppendIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayAppendIconColor: string | undefined;
-        displayAppendIconSize: string | number;
-        displayAppendInnerIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayAppendInnerIconColor: string | undefined;
-        displayAppendInnerIconSize: string | number;
-        displayPrependIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayPrependIconColor: string | undefined;
-        displayPrependIconSize: string | number;
-        displayPrependInnerIcon: (string | (string | [path: string, opacity: number])[] | import("vue").JSXComponent) | undefined;
-        displayPrependInnerIconColor: string | undefined;
-        displayPrependInnerIconSize: string | number;
-        emptyText: string;
-        error: boolean;
-        fieldOnly: boolean;
-        hideDetails: boolean;
-        label: string;
-        loadingWait: boolean;
-        name: string;
-        required: boolean;
-        tableField: boolean;
-        underlineColor: string;
-        underlineStyle: string;
-        underlineWidth: string;
-        underlined: boolean;
-        valueColor: string;
-    }): any;
-}>;
+    clearIcon: string | (string | [path: string, opacity: number])[] | ((new () => any) | import('vue').FunctionalComponent<any, {}, any, {}>);
+    density: "default" | "comfortable" | "compact" | null;
+    variant: "underlined" | "outlined" | "plain" | "filled" | "solo" | "solo-inverted" | "solo-filled";
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

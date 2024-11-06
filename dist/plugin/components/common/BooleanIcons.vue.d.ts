@@ -1,50 +1,11 @@
-declare const _default: import("vue").DefineComponent<{
-    modelValue: globalThis.PropType<any>;
-    iconFalse: {
-        type: globalThis.PropType<string>;
-    };
-    iconFalseColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    iconFalseTitle: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    iconTrue: {
-        type: globalThis.PropType<string>;
-    };
-    iconTrueColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    iconTrueTitle: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
-    modelValue: globalThis.PropType<any>;
-    iconFalse: {
-        type: globalThis.PropType<string>;
-    };
-    iconFalseColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    iconFalseTitle: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    iconTrue: {
-        type: globalThis.PropType<string>;
-    };
-    iconTrueColor: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-    iconTrueTitle: {
-        type: globalThis.PropType<string>;
-        required: true;
-    };
-}>>, {}, {}>;
+import { BooleanIcons } from './';
+declare let __VLS_typeProps: BooleanIcons;
+type __VLS_PublicProps = {
+    modelValue?: any;
+} & typeof __VLS_typeProps;
+declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    "update:modelValue": (modelValue: any) => any;
+}, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
+    "onUpdate:modelValue"?: ((modelValue: any) => any) | undefined;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

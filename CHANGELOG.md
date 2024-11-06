@@ -1,6 +1,19 @@
 # Change Log
 All notable changes to the "vuetify-inline-fields" plugin will be documented in this file.
 
+## v1.0.9
+2024-10-07
+[main] (@webdevnerdstuff)
+* Fix issue with Switch and Checkbox `true-value` and `false-value` props not working with string values or numbers
+* Fix a couple typescript internal issues
+* Update packages
+
+## v1.0.8
+2024-07-02
+[main] (@webdevnerdstuff)
+* Fix for originalValue not resetting if table rows change and components are not keyed or mounted/unmounted
+* Update packages
+
 ## v1.0.7
 2024-03-13
 [main] (@webdevnerdstuff)

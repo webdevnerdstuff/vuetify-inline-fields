@@ -6,9 +6,11 @@ import type VInlineCheckbox from './VInlineCheckbox.vue';
 export interface VInlineCheckboxProps extends Omit<SharedProps,
 	'autofocus' | 'truncateLength' | 'truncateSuffix'
 > {
-	density?: VCheckbox['$props']['density'];
+	density?: VCheckbox['density'];
 	falseIcon?: string | undefined;
 	trueIcon?: string | undefined;
+	falseValue?: VCheckbox['falseValue'];
+	trueValue?: VCheckbox['trueValue'];
 }
 
 
