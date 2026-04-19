@@ -197,13 +197,12 @@ function setEmptyValue(val: boolean) {
 
 
 // ------------------------------------------------ Binding Events & Props //
-const slotBindings = computed(() => ({
-	...settings,
-	...{
-		loading: loadingProp.value,
-		modelValue: modelValue.value,
-		originalValue: originalValue,
-	}
+const settingsRecord = settings as unknown as Record<string, unknown>;
+const slotBindings = computed<Record<string, unknown>>(() => ({
+	...settingsRecord,
+	loading: loadingProp.value,
+	modelValue: modelValue.value,
+	originalValue: originalValue,
 }));
 
 const bindingDisplay = computed(() => {

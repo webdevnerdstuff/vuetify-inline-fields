@@ -329,7 +329,7 @@ export const useGetColor = (color: string, theme: ThemeInstance): string => {
 	const isThemeColor = checkIfThemeColor(color, theme);
 
 	if (isThemeColor) {
-		return `hsl(${convertToHSL(isThemeColor[1])})`;
+		return `hsl(${convertToHSL(String(isThemeColor[1]))})`;
 	}
 
 	return `hsl(${convertToHSL(color)})`;

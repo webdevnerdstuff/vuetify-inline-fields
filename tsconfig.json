@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
-		"baseUrl": "./",
 		"declaration": true,
 		"declarationDir": "./dist",
 		"esModuleInterop": true,
@@ -13,7 +12,7 @@
 			"DOM"
 		],
 		"module": "ESNext",
-		"moduleResolution": "Node",
+		"moduleResolution": "Bundler",
 		"noEmit": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": false,
