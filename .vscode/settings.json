@@ -1,0 +1,13 @@
+{
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.js, ${capture}.js.map, ${capture}.d.ts",
+		".env": ".env.*, .envrc",
+		".prettierrc.js": ".prettierrc.*, .prettier*",
+		".eslintrc.js": ".eslintrc-auto-import.json, .prettierrc.*, .prettier*",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .npmrc, .nvmrc, .node-version",
+		"stylelint.config.js": "postcss.config.js",
+		"tsconfig.json": "tsconfig.*.json",
+		"vite.config.mts": "vite.build.config.mts",
+	}
+}

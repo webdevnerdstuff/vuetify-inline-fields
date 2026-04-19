@@ -1,3 +1,22 @@
+/bootstrap/ssr
+/node_modules
+/node_server/node_modules
+/node_server/logs/*
+
+/docs
+
+/auth.json
+/.claude
+/.history
+/.fleet
+/.idea
+/.nova
+/.knit
+/.zed
+/.worktrees
+knit.lock
+.stylelintcache
+
 # Logs
 logs
 *.log
@@ -7,13 +26,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-docs
+
+
 dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
 .history/*
 !.vscode/extensions.json
 .idea
@@ -23,6 +41,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.claude/*
 
 
 src/plugin/**/*.bk.*
+
+# Temp files and directories
+*__TEMP.*
+*.TEMP.*
+*__TEMP/
