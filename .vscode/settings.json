@@ -8,6 +8,6 @@
 		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .npmrc, .nvmrc, .node-version",
 		"stylelint.config.js": "postcss.config.js",
 		"tsconfig.json": "tsconfig.*.json",
-		"vite.config.mts": "vite.build.config.mts",
+		"vite.config.mts": "vite.build.config.mts, vitest.config.mts",
 	}
 }
