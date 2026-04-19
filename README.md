@@ -42,7 +42,7 @@ npm i @wdns/vuetify-inline-fields
 
 ## Dependencies
  
-[Vuetify v3](https://vuetifyjs.com/)  
+[Vuetify v4](https://vuetifyjs.com/)  
 [Vue 3](https://vuejs.org/)  
 [VueUse](https://vueuse.org/)
 
@@ -54,7 +54,7 @@ npm i @wdns/vuetify-inline-fields
 
 ## License
 
-Copyright (c) 2023 WebDevNerdStuff  
+Copyright (c) 2026 WebDevNerdStuff  
 Licensed under the [MIT license](https://github.com/webdevnerdstuff/vuetify-inline-fields/blob/main/LICENSE.md).
 
 

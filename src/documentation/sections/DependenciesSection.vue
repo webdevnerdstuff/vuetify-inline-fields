@@ -18,7 +18,7 @@
 				:href="store.links.vuetify"
 				target="_blank"
 			>
-				Vuetify v3
+				Vuetify v4
 			</a>
 			<br />
 			<a

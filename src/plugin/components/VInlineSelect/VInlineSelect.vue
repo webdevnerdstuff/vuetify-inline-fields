@@ -125,7 +125,7 @@ import {
 	TimeOpened,
 } from '@/plugin/types';
 import type { VInlineSelectProps } from './';
-import { IconOptions } from 'vuetify';
+import type { IconOptions } from 'vuetify';
 import type { VSelect } from 'vuetify/components';
 import {
 	defaultCardProps,
@@ -443,6 +443,6 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 :deep(.v-field__field) {
-	align-items: flex-end !important;
+	align-items: flex-end;
 }
 </style>

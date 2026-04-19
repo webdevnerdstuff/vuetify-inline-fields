@@ -3,7 +3,6 @@
 		<v-col cols="12">
 			<v-img
 				class="my-3"
-				contain
 				height="200"
 				src="../assets/vuetify-logo.svg"
 			/>

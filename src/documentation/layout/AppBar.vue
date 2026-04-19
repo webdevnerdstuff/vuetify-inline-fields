@@ -42,12 +42,11 @@
 		>
 			<template #item="{ item }">
 				<v-list-item
-					:key="item.raw.key"
 					density="compact"
-					:href="item.raw.link"
-					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
+					:href="item.link"
+					:prepend-icon="item.icon ? item.icon : '$vuetify'"
 					target="_blank"
-					:title="item.raw?.topTitle || item.title"
+					:title="item.topTitle || item.title"
 				>
 				</v-list-item>
 			</template>
@@ -146,13 +145,13 @@ function getTheme() {
 		return false;
 	}
 
-	theme.global.name.value = themeName.value;
+	theme.change(themeName.value);
 	emit('changedTheme', themeName.value);
 }
 
 function setTheme() {
 	themeName.value = store.setTheme(themeName.value);
-	theme.global.name.value = themeName.value;
+	theme.change(themeName.value);
 }
 
 function toggleDrawer() {
@@ -160,5 +159,4 @@ function toggleDrawer() {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

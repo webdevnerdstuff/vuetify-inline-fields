@@ -90,7 +90,7 @@ import {
 	TimeOpened,
 } from '@/plugin/types';
 import type { VInlineCustomFieldProps } from './';
-import { IconOptions } from 'vuetify';
+import type { IconOptions } from 'vuetify';
 import {
 	defaultCardProps,
 	textFieldProps,
