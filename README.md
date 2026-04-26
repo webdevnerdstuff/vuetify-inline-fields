@@ -25,20 +25,30 @@ Additionally, this library provides enhanced integration specifically tailored f
 
 
 ## Installation
- 
+
+> **Note:** This branch targets Vuetify v3. For the current Vuetify v4 version, see the [main branch](https://github.com/webdevnerdstuff/vuetify-inline-fields).
+
 Using [pnpm](https://pnpm.io/):
 ```
-pnpm add @wdns/vuetify-inline-fields
+pnpm add @wdns/vuetify-inline-fields@^1.0.9
 ```
 
 Using npm:
 ```
-npm i @wdns/vuetify-inline-fields
+npm i @wdns/vuetify-inline-fields@^1.0.9
 ```
  
 ## Documentation
  
 [Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-inline-fields/) 
+
+## Versions
+
+| Version | Branch |
+|---|---|
+| Vuetify v4 (current) | [main](https://github.com/webdevnerdstuff/vuetify-inline-fields) |
+| Vuetify v3 | [vuetify-v3](https://github.com/webdevnerdstuff/vuetify-inline-fields/tree/vuetify-v3) |
+
 
 ## Dependencies
  

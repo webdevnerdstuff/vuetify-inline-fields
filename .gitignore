@@ -9,7 +9,9 @@ lerna-debug.log*
 
 node_modules
 docs
+/dist
 dist-ssr
+/.claude
 *.local
 
 # Editor directories and files
