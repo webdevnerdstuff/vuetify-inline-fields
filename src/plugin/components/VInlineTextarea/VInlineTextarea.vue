@@ -121,7 +121,7 @@ import {
 	TimeOpened,
 } from '@/plugin/types';
 import type { VInlineTextareaProps } from './';
-import { IconOptions } from 'vuetify';
+import type { IconOptions } from 'vuetify';
 import {
 	defaultCardProps,
 	textareaProps,

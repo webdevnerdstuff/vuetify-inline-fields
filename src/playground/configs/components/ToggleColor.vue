@@ -31,14 +31,14 @@ const selectedColor = ref('primary');
 const { colors } = unref(theme.current);
 
 const themeColors = ref({
-	primary: colors.primary,
-	secondary: colors.secondary,
-	success: colors.success,
-	accent: colors.accent,
-	info: colors.info,
-	warning: colors.warning,
-	danger: colors.danger,
-	error: colors.error,
+	primary: String(colors.primary),
+	secondary: String(colors.secondary),
+	success: String(colors.success),
+	accent: String(colors.accent),
+	info: String(colors.info),
+	warning: String(colors.warning),
+	danger: String(colors.danger),
+	error: String(colors.error),
 });
 
 function emitUpdate() {

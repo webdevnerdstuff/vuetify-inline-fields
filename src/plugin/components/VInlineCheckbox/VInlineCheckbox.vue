@@ -134,7 +134,8 @@ import {
 	TimeOpened,
 } from '@/plugin/types';
 import type { VInlineCheckboxProps } from './';
-import { IconOptions, useTheme } from 'vuetify';
+import { useTheme } from 'vuetify';
+import type { IconOptions } from 'vuetify';
 import {
 	checkboxProps,
 	defaultCardProps,

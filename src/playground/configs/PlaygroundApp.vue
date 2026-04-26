@@ -8,10 +8,16 @@
 			<v-responsive>
 				<v-container class="px-10">
 					<v-row>
-						<v-col class="v-col-12 text-center">
+						<v-col
+							class="text-center"
+							cols="12"
+						>
 							<h1>Vuetify Inline Fields</h1>
 						</v-col>
-						<v-col class="v-col-12 text-center">
+						<v-col
+							class="text-center"
+							cols="12"
+						>
 							<v-chip color="primary">
 								Playground v{{ store.pluginVersion }}
 							</v-chip>
@@ -19,7 +25,7 @@
 					</v-row>
 
 					<v-row>
-						<v-col class="v-col-12">
+						<v-col cols="12">
 							<v-container>
 								<v-row class="row mb-4">
 									<PlaygroundPage is-playground />
@@ -45,5 +51,4 @@ provide('links', store.links);
 </script>
 
 
-<style scoped>
-</style>
+<style scoped></style>

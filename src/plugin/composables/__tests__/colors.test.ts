@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { createVuetify } from 'vuetify';
 import { useGetColor } from '../colors';
 import defaultThemes from '../../../plugins/theme';
@@ -17,54 +17,69 @@ describe('Colors Composable', () => {
 	const { theme } = vuetify;
 	const hslRed = 'hsl(0 100% 50% / 100%)';
 
-	const checkColors = [
-		'error',
-		'red',
-		'#f00',
-		'rgb(255, 0, 0)',
-		'rgba(255, 0, 0, 100)',
-	];
-
 	describe('useGetColor', () => {
-		checkColors.forEach((color) => {
-			it(`should return HSLA using color string "${color}"`, () => {
-				const responseColor = useGetColor(color, theme);
+		describe('red equivalents all resolve to the same HSL', () => {
+			const redColors = [
+				'error',
+				'red',
+				'#f00',
+				'#ff0000',
+				'rgb(255, 0, 0)',
+				'rgba(255, 0, 0, 100)',
+				'Red',
+			];
 
-				expect(responseColor).toBe(hslRed);
+			redColors.forEach((color) => {
+				it(`"${color}" → ${hslRed}`, () => {
+					expect(useGetColor(color, theme)).toBe(hslRed);
+				});
 			});
 		});
 
-		// console.warn tests //
-		const logSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-
-		it('should return HSLA default value if color not found', () => {
-			const responseColor = useGetColor('foobar', theme);
-
-			expect(responseColor).toMatchInlineSnapshot(`"hsl(0 0% 100% / 12%)"`);
+		it('should return a theme color variable as rgb(var(...))', () => {
+			expect(useGetColor('--v-theme-primary', theme)).toBe('rgb(var(--v-theme-primary))');
 		});
 
-		it('should return RGB using theme color variable', () => {
-			const responseColor = useGetColor('--v-theme-primary', theme);
-
-			expect(responseColor).toMatchInlineSnapshot(`"rgb(var(--v-theme-primary))"`);
+		it('should convert an HSL string input', () => {
+			const result = useGetColor('hsl(0, 100%, 50%)', theme);
+			expect(result).toContain('hsl(');
 		});
 
-		it('should console warn when color prop "foobar" doesn\'t exist in colors', () => {
-			logSpy.mockReset();
+		describe('pass-through colors (never converted)', () => {
+			const passthroughs = ['transparent', 'none', 'inherit', 'currentColor', 'initial', 'unset'];
 
-			useGetColor('foobar', theme);
-
-			expect(logSpy).toHaveBeenCalled();
-			expect(logSpy).toHaveBeenCalledTimes(1);
+			passthroughs.forEach((color) => {
+				it(`"${color}" is returned as-is`, () => {
+					expect(useGetColor(color, theme)).toBe(color);
+				});
+			});
 		});
 
-		it('should console warn when color prop "--v-foobar" doesn\'t exist in colors', () => {
-			logSpy.mockReset();
+		describe('console.warn on unknown color', () => {
+			let logSpy: ReturnType<typeof vi.spyOn>;
 
-			useGetColor('--v-foobar', theme);
+			beforeEach(() => {
+				logSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+			});
 
-			expect(logSpy).toHaveBeenCalled();
-			expect(logSpy).toHaveBeenCalledTimes(1);
+			afterEach(() => {
+				logSpy.mockRestore();
+			});
+
+			it('should return the HSL fallback when color is not found', () => {
+				const result = useGetColor('foobar', theme);
+				expect(result).toBe('hsl(0 0% 100% / 12%)');
+			});
+
+			it('should warn exactly once for an unknown color name', () => {
+				useGetColor('foobar', theme);
+				expect(logSpy).toHaveBeenCalledTimes(1);
+			});
+
+			it('should warn exactly once for an unknown --v- variable', () => {
+				useGetColor('--v-foobar', theme);
+				expect(logSpy).toHaveBeenCalledTimes(1);
+			});
 		});
 	});
 });

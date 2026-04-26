@@ -1,50 +1,82 @@
 import { describe, it, expect } from 'vitest';
-import {
-	useGetIcon
-} from '../icons';
+import { useGetIcon } from '../icons';
 
-
-const iconOptions = {
-	defaultSet: 'mdi'
-};
 
 describe('Icon Composable', () => {
 	describe('useGetIcon', () => {
-		it('should return supplied icon value', () => {
-
-			const unit = useGetIcon({
-				icon: 'mdi:mdi-cog',
-				iconOptions,
-				name: 'loading',
+		describe('returns the supplied icon value when icon prop is provided', () => {
+			it('mdi icon set', () => {
+				expect(useGetIcon({ icon: 'mdi:mdi-cog', iconOptions: { defaultSet: 'mdi' }, name: 'loading' })).toBe('mdi:mdi-cog');
 			});
 
-			expect(unit).toMatchInlineSnapshot(`"mdi:mdi-cog"`);
+			it('fa icon set', () => {
+				expect(useGetIcon({ icon: 'fa-cog', iconOptions: { defaultSet: 'fa' }, name: 'loading' })).toBe('fa-cog');
+			});
 		});
 
-		it('should return icon value using name', () => {
-			const unit = useGetIcon({
-				icon: undefined,
-				iconOptions,
-				name: 'loading',
+		describe('mdi icon set defaults', () => {
+			const iconOptions = { defaultSet: 'mdi' };
+
+			it('loading', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'loading' })).toBe('mdi-loading');
 			});
 
-			expect(unit).toMatchInlineSnapshot(`"mdi-loading"`);
+			it('save', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'save' })).toBe('mdi-content-save');
+			});
+
+			it('checkboxTrue', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'checkboxTrue' })).toBe('mdi:mdi-checkbox-outline');
+			});
+
+			it('checkboxFalse', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'checkboxFalse' })).toBe('$checkboxOff');
+			});
+
+			it('clear', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'clear' })).toBe('$clear');
+			});
+
+			it('true', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'true' })).toBe('$complete');
+			});
+
+			it('false', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'false' })).toBe('$close');
+			});
 		});
 
-		it('throws error if vuetify defaultSet is not supplied', () => {
-			expect(() => useGetIcon({
-				icon: undefined,
-				iconOptions: {},
-				name: 'loading',
-			})).toThrowError('[VInlineFields]: No default undefined icon set found.');
+		describe('fa icon set defaults', () => {
+			const iconOptions = { defaultSet: 'fa' };
+
+			it('loading', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'loading' })).toBe('fa-circle-notch');
+			});
+
+			it('save', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'save' })).toBe('fa-floppy-disk');
+			});
+
+			it('checkboxTrue', () => {
+				expect(useGetIcon({ icon: undefined, iconOptions, name: 'checkboxTrue' })).toBe('far fa-square-check');
+			});
 		});
 
-		it('throws error if supplied name not found', () => {
-			expect(() => useGetIcon({
-				icon: undefined,
-				iconOptions,
-				name: 'foobar',
-			})).toThrowError('[VInlineFields]: No foobar icon found.');
+		describe('throws errors', () => {
+			it('throws when iconOptions has no defaultSet', () => {
+				expect(() => useGetIcon({ icon: undefined, iconOptions: {}, name: 'loading' }))
+					.toThrowError('[VInlineFields]: No default undefined icon set found.');
+			});
+
+			it('throws when iconOptions is undefined', () => {
+				expect(() => useGetIcon({ icon: undefined, iconOptions: undefined, name: 'loading' }))
+					.toThrowError('[VInlineFields]: No default undefined icon set found.');
+			});
+
+			it('throws when name is not found in the icon set', () => {
+				expect(() => useGetIcon({ icon: undefined, iconOptions: { defaultSet: 'mdi' }, name: 'foobar' }))
+					.toThrowError('[VInlineFields]: No foobar icon found.');
+			});
 		});
 	});
 });
