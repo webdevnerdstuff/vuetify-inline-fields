@@ -47,6 +47,14 @@ npm i @wdns/vuetify-inline-fields
 [VueUse](https://vueuse.org/)
 
 
+## Versions
+
+| Version | Branch |
+|---|---|
+| Vuetify v4 | [main](https://github.com/webdevnerdstuff/vuetify-inline-fields) |
+| Vuetify v3 | [vuetify-v3](https://github.com/webdevnerdstuff/vuetify-inline-fields/tree/vuetify-v3) |
+
+
 ## Change Log
  
 [CHANGELOG](https://github.com/webdevnerdstuff/vuetify-inline-fields/blob/main/CHANGELOG.md)
