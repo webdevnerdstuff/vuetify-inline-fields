@@ -16,6 +16,7 @@
 /.worktrees
 knit.lock
 .stylelintcache
+.eslintcache
 
 # Logs
 logs
