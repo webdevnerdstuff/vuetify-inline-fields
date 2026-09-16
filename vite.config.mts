@@ -75,6 +75,8 @@ export default defineConfig({
 		],
 	},
 	server: {
+		// Bind to all interfaces so port conflicts on IPv4 or IPv6 (e.g. Docker) are detected and Vite picks the next free port
+		host: '::',
 		hmr: {
 			protocol: 'ws',
 		},

@@ -24,8 +24,6 @@ import { useGetIcon } from '@composables/icons';
 import type { IconOptions } from 'vuetify';
 import { useTruthyModelValue } from '@composables/helpers';
 
-import { VIcon } from 'vuetify/components';
-
 const props = withDefaults(defineProps<BooleanIcons>(), {});
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));
 
