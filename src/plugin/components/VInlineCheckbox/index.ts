@@ -1,6 +1,6 @@
-import type { VCheckbox } from 'vuetify/components';
-import type { SharedProps } from '@/plugin/types';
 import type VInlineCheckbox from './VInlineCheckbox.vue';
+import type { SharedProps } from '@/plugin/types';
+import type { VCheckbox } from 'vuetify/components';
 
 
 export interface VInlineCheckboxProps extends Omit<SharedProps,

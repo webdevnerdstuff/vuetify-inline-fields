@@ -1,6 +1,6 @@
-import type { VSwitch } from 'vuetify/components';
-import type { SharedProps } from '@/plugin/types';
 import type VInlineSwitch from './VInlineSwitch.vue';
+import type { SharedProps } from '@/plugin/types';
+import type { VSwitch } from 'vuetify/components';
 
 
 export interface VInlineSwitchProps extends Omit<SharedProps,

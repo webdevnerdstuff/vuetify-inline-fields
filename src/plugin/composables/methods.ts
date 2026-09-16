@@ -1,7 +1,7 @@
 import {
 	UseCheckForErrors,
 	UseToggleField,
-	UseTruncateText
+	UseTruncateText,
 } from '@/plugin/types';
 
 

@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import * as path from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
-import commonjs from '@rollup/plugin-commonjs';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
 import pkg from './package.json';
@@ -59,7 +58,6 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-		commonjs(),
 		AutoImport({
 			dts: false,
 			imports: [
@@ -77,6 +75,8 @@ export default defineConfig({
 			template: { transformAssetUrls },
 		}),
 		dts({
+			entryRoot: 'src',
+			include: ['src/plugin/**/*.ts', 'src/plugin/**/*.tsx', 'src/plugin/**/*.vue'],
 			insertTypesEntry: true,
 		}),
 		typescript({
@@ -93,6 +93,7 @@ export default defineConfig({
 				{
 					src: 'src/plugin/styles/*',
 					dest: 'scss',
+					rename: { stripBase: true },
 				},
 			]
 		}),

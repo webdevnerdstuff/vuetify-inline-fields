@@ -1,11 +1,11 @@
 import '@/libraries/fontawesome';
-import PlaygroundApp from './PlaygroundApp.vue';
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import { registerPlugins } from '../../plugins';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { makeServer } from '../../server';
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
 import { createVInlineFields } from '../../plugin/index';
+import { registerPlugins } from '../../plugins';
+import { makeServer } from '../../server';
+import PlaygroundApp from './PlaygroundApp.vue';
 
 
 makeServer({ environment: 'playground' });

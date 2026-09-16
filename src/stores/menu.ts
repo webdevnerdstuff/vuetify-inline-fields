@@ -108,7 +108,7 @@ export const useMenuStore = defineStore('menu', () => {
 					key: 'v-inline-custom-field',
 					title: 'VInlineCustomField',
 					topTitle: 'VInlineCustomField',
-				}
+				},
 			],
 			key: 'components',
 			title: 'Components',

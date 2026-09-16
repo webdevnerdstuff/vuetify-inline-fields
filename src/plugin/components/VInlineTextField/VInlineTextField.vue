@@ -97,7 +97,7 @@
 			</Teleport>
 		</div>
 
-		<!-- Card Field-->
+		<!-- Card Field -->
 		<div
 			v-if="cardField"
 			:class="cardContainerClass"
@@ -113,25 +113,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-	CloseSiblingsBus,
-	FieldValue,
-	SharedProps,
-	TimeOpened,
-} from '@/plugin/types';
-import type { VInlineTextFieldProps } from './';
-import type { IconOptions } from 'vuetify';
-import {
-	defaultCardProps,
-	textFieldProps,
-} from '@utils/props';
 import DisplayedValue from '@components/common/DisplayedValue.vue';
 import SaveFieldButtons from '@components/common/SaveFieldButtons.vue';
-import {
-	useCheckForErrors,
-	useToggleField,
-	useTruncateText,
-} from '@composables/methods';
+import { useBindingSettings } from '@composables/bindings';
 import {
 	useCardContainerClass,
 	useDisplayContainerClass,
@@ -139,14 +123,30 @@ import {
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from '@composables/classes';
+import { useGetIcon } from '@composables/icons';
+import {
+	useCheckForErrors,
+	useToggleField,
+	useTruncateText,
+} from '@composables/methods';
 import {
 	useCardContainerStyle,
 	useInlineFieldsContainerStyle,
 } from '@composables/styles';
 import inlineEmits from '@utils/emits';
-import { useBindingSettings } from '@composables/bindings';
-import { useGetIcon } from '@composables/icons';
+import {
+	defaultCardProps,
+	textFieldProps,
+} from '@utils/props';
+import type { VInlineTextFieldProps } from './';
+import type { IconOptions } from 'vuetify';
 import { globalOptions } from '../../';
+import {
+	CloseSiblingsBus,
+	FieldValue,
+	SharedProps,
+	TimeOpened,
+} from '@/plugin/types';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -165,7 +165,8 @@ watchEffect(() => {
 	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
 });
 
-const { cancelButtonColor,
+const {
+	cancelButtonColor,
 	cancelButtonSize,
 	cancelButtonTitle,
 	cancelButtonVariant,
@@ -185,7 +186,8 @@ const { cancelButtonColor,
 	saveButtonTitle,
 	saveButtonVariant,
 	saveIcon,
-	saveIconColor } = toRefs(settings);
+	saveIconColor, 
+} = toRefs(settings);
 
 const disabled = computed(() => props.disabled);
 const loadingProp = computed(() => props.loading);
@@ -410,7 +412,7 @@ function saveValue() {
 
 
 // ------------------------------------------------ Close siblings bus event //
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 let closeSiblingsBus: unknown | any;
 let unsubscribeBus: () => void;
 
@@ -422,7 +424,7 @@ if (closeSiblings.value) {
 }
 
 function closeSiblingsListener(identifier: TimeOpened) {
-	emit('update:closeSiblingFields', timeOpened);
+	emit('update:closeSiblingFields', timeOpened.value);
 
 	if (showField.value && timeOpened.value !== identifier) {
 		closeField();

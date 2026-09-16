@@ -177,7 +177,7 @@ const textFieldProps = {
 		truncateLength: undefined,
 		truncateSuffix: '...',
 		variant: 'underlined' as const,
-	}
+	},
 };
 
 

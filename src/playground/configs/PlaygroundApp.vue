@@ -42,9 +42,9 @@
 
 <script setup>
 import { provide } from 'vue';
-import { useCoreStore } from '@/stores/index';
-import PlaygroundPage from '@/playground/PlaygroundPage.vue';
 import AppBar from '@/documentation/layout/AppBar.vue';
+import PlaygroundPage from '@/playground/PlaygroundPage.vue';
+import { useCoreStore } from '@/stores/index';
 
 const store = useCoreStore();
 provide('links', store.links);

@@ -48,13 +48,13 @@ function percentageConvert(value: number | string | void): number {
  */
 function convertToHSL(color: string): string {
 	let newColor: HEXColor | RGBColor | HSLColor = checkColorNames(color);
-	let h = 0;
-	let s = 0;
-	let l = 0;
-	let a = 100 as string | number;
-	let r = 0;
-	let g = 0;
-	let b = 0;
+	let h: number;
+	let s: number;
+	let l: number;
+	let a: string | number;
+	let r: number;
+	let g: number;
+	let b: number;
 
 	// Convert hex color to RGB if necessary
 	if (newColor.substring(0, 1) === '#') {
@@ -90,7 +90,7 @@ function convertToHSL(color: string): string {
 	const min = Math.min(r, g, b);
 
 	// Color doesn't exist, return --v-theme-surface //
-	if (max === null || !min === null || isNaN(max) || isNaN(min)) {
+	if (max === null || min === null || isNaN(max) || isNaN(min)) {
 		const defaultColor = '0 0% 100% / 12%';
 
 		console.warn(`[VuetifyInlineFields]: The "color" prop value using "${newColor}" doesn't exist. Using the value "hsl(${defaultColor})" in it's place.`);
@@ -98,7 +98,6 @@ function convertToHSL(color: string): string {
 	}
 
 	h = (max + min) / 2;
-	s = (max + min) / 2;
 	l = (max + min) / 2;
 
 	if (max == min) {

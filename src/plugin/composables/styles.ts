@@ -1,11 +1,11 @@
 import { CSSProperties } from 'vue';
-import {
-	UseDisplayValueStyles,
-	UseCardContainerStyle,
-	UsePrependAppendIconStyles,
-} from '@/plugin/types';
 import { useGetColor } from './colors';
 import { useGetFieldCoordinates } from './helpers';
+import {
+	UseCardContainerStyle,
+	UseDisplayValueStyles,
+	UsePrependAppendIconStyles,
+} from '@/plugin/types';
 
 
 export const useInlineFieldsContainerStyle = () => {
@@ -65,6 +65,7 @@ export const useCardContainerStyle: UseCardContainerStyle = (options) => {
 	}
 
 	if (!minWidth) {
+		// eslint-disable-next-line no-useless-assignment -- kept for when `minWidth` is re-enabled below
 		minWidth = name === 'checkbox' ? 'fit-content' : coords.width;
 	}
 

@@ -1,6 +1,6 @@
-import type { VAutocomplete } from 'vuetify/components';
-import type { SharedProps } from '@/plugin/types';
 import type VInlineAutocomplete from './VInlineAutocomplete.vue';
+import type { SharedProps } from '@/plugin/types';
+import type { VAutocomplete } from 'vuetify/components';
 
 
 export interface VInlineAutocompleteProps extends Omit<SharedProps,

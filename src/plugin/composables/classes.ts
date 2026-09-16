@@ -1,3 +1,4 @@
+import { componentName } from '../utils/globals';
 import {
 	UseCancelButtonClass,
 	UseCardContainerClass,
@@ -9,7 +10,6 @@ import {
 	UseInlineFieldsContainerClass,
 	UsePrependAppendIconClasses,
 } from '@/plugin/types';
-import { componentName } from '../utils/globals';
 
 
 // -------------------------------------------------- Main Container //

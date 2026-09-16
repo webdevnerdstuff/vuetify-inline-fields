@@ -19,10 +19,10 @@
 
 
 <script setup lang="ts">
-import type { BooleanIcons } from './';
-import { useGetIcon } from '@composables/icons';
-import type { IconOptions } from 'vuetify';
 import { useTruthyModelValue } from '@composables/helpers';
+import { useGetIcon } from '@composables/icons';
+import type { BooleanIcons } from './';
+import type { IconOptions } from 'vuetify';
 
 const props = withDefaults(defineProps<BooleanIcons>(), {});
 const iconOptions = inject<IconOptions>(Symbol.for('vuetify:icons'));

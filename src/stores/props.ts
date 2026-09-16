@@ -52,13 +52,13 @@ const sharedProps = [
 		default: 'default',
 		desc: `${colorDesc} cancel button`,
 		name: 'cancel-button-color',
-		type: "string | undefined",
+		type: 'string | undefined',
 	},
 	{
 		default: 'x-small',
 		desc: 'Sets the height and width of the cancel button',
 		name: 'cancel-button-size',
-		type: "string | number | undefined",
+		type: 'string | number | undefined',
 	},
 	{
 		default: 'Cancel',
@@ -155,13 +155,13 @@ const sharedProps = [
 		default: false,
 		desc: 'Hides the cancel icon',
 		name: 'hide-cancel-icon',
-		type: 'boolean'
+		type: 'boolean',
 	},
 	{
 		default: true,
 		desc: 'Hide details is not fully supported as the fields are intended for use in tables. You can set this prop to <code class="ic">false</code> to show the details but styling will not be ideal',
 		name: 'hide-details',
-		type: 'boolean'
+		type: 'boolean',
 	},
 	{
 		default: undefined,
@@ -239,7 +239,7 @@ const clearIconProp = [
 		default: '$clear',
 		desc: 'The icon to use to clear the field',
 		name: 'clear-icon',
-		type: "string | undefined",
+		type: 'string | undefined',
 	},
 ];
 
@@ -266,13 +266,13 @@ const saveAndLoadingIconProps = [
 		default: 'primary',
 		desc: `${colorDesc} save button`,
 		name: 'save-button-color',
-		type: "string | undefined",
+		type: 'string | undefined',
 	},
 	{
 		default: 'x-small',
 		desc: 'Sets the height and width of the save/loading button',
 		name: 'save-button-size',
-		type: "string | number | undefined",
+		type: 'string | number | undefined',
 	},
 	{
 		default: 'Save',
@@ -456,15 +456,15 @@ const vInlineCheckboxProps = [
 			default: '$close',
 			desc: 'The icon of the checkbox when <code class="ic">false</code>',
 			name: 'false-icon',
-			type: "string | undefined",
+			type: 'string | undefined',
 		},
 		{
 			default: '$complete',
 			desc: 'The icon of the checkbox when <code class="ic">true</code>',
 			name: 'true-icon',
-			type: "string | undefined",
+			type: 'string | undefined',
 		},
-	]
+	],
 ];
 
 const vInlineSelectProps = [
@@ -478,13 +478,13 @@ const vInlineSelectProps = [
 			default: false,
 			desc: 'Allows for the component to be cleared',
 			name: 'clearable',
-			type: "boolean | undefined",
+			type: 'boolean | undefined',
 		},
 		{
 			default: true,
 			desc: 'Hides the selected items',
 			name: 'hide-selected',
-			type: "boolean | undefined",
+			type: 'boolean | undefined',
 		},
 		{
 			default: 'title',
@@ -510,7 +510,7 @@ const vInlineSelectProps = [
 			name: 'variant',
 			type: "VSelect['$props']['variant']",
 		},
-	]
+	],
 ];
 
 const vInlineSwitchProps = [
@@ -523,7 +523,7 @@ const vInlineSwitchProps = [
 			name: 'false-icon',
 			type: "VSwitch['$props']['falseIcon']",
 		},
-	]
+	],
 ];
 
 const vInlineTextareaProps = [
@@ -538,13 +538,13 @@ const vInlineTextareaProps = [
 			default: true,
 			desc: 'Automatically grow the textarea depending on amount of text',
 			name: 'auto-grow',
-			type: "boolean | undefined",
+			type: 'boolean | undefined',
 		},
 		{
 			default: 1,
 			desc: 'Default row count',
 			name: 'rows',
-			type: "string | number | undefined",
+			type: 'string | number | undefined',
 		},
 		{
 			default: 'underlined',
@@ -552,7 +552,7 @@ const vInlineTextareaProps = [
 			name: 'variant',
 			type: "VTextarea['$props']['variant']",
 		},
-	]
+	],
 ];
 
 const vInlineTextFieldProps = [
@@ -569,7 +569,7 @@ const vInlineTextFieldProps = [
 			name: 'variant',
 			type: "VTextField['$props']['variant']",
 		},
-	]
+	],
 ];
 
 export const usePropsStore = defineStore('props', {

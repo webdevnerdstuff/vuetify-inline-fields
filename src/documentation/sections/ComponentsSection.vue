@@ -32,16 +32,15 @@
 
 <script setup>
 import { inject } from 'vue';
-import { useCoreStore } from '@/stores/index';
-
 import {
 	CheckboxComponent,
 	CustomComponent,
 	SelectComponent,
 	SwitchComponent,
-	TextareaComponent,
 	TextFieldComponent,
+	TextareaComponent,
 } from '@/documentation/components/index';
+import { useCoreStore } from '@/stores/index';
 
 
 defineProps({

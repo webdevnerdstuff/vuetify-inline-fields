@@ -63,9 +63,9 @@
 
 <script setup>
 import { inject } from 'vue';
+import PropsTable from '@/documentation/components/PropsTable.vue';
 import { useCoreStore } from '@/stores/index';
 import { usePropsStore } from '@/stores/props';
-import PropsTable from '@/documentation/components/PropsTable.vue';
 
 const classes = inject('classes');
 const store = useCoreStore();

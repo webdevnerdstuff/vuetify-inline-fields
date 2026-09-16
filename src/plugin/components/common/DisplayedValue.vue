@@ -89,8 +89,6 @@
 
 
 <script setup lang="ts">
-import { DisplayValueProps } from './';
-import { useTheme } from 'vuetify';
 import {
 	useDisplayValueClass,
 	usePrependAppendIconClasses,
@@ -99,6 +97,8 @@ import {
 	useDisplayValueStyles,
 	usePrependAppendIconStyles,
 } from '@composables/styles';
+import { useTheme } from 'vuetify';
+import { DisplayValueProps } from './';
 
 
 const attrs = useAttrs();
@@ -125,7 +125,7 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	{
 		empty: props.empty,
 		error: props.error,
-	}
+	},
 ));
 
 const displayValueStyle = computed(() => useDisplayValueStyles({
