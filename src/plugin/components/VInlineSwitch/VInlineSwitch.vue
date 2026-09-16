@@ -112,7 +112,7 @@
 			</Teleport>
 		</div>
 
-		<!-- Card Field-->
+		<!-- Card Field -->
 		<div
 			v-if="cardField"
 			:class="cardContainerClass"
@@ -128,22 +128,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-	CloseSiblingsBus,
-	FieldValue,
-	SharedProps,
-	TimeOpened,
-} from '@/plugin/types';
-import type { VInlineSwitchProps } from './';
-import { useTheme } from 'vuetify';
-import {
-	defaultCardProps,
-	switchProps,
-} from '@utils/props';
 import BooleanIcons from '@components/common/BooleanIcons.vue';
 import SaveFieldButtons from '@components/common/SaveFieldButtons.vue';
-import { useTruthyModelValue } from '@composables/helpers';
-import { useToggleField } from '@composables/methods';
+import { useBindingSettings } from '@composables/bindings';
 import {
 	useCardContainerClass,
 	useDisplayContainerClass,
@@ -152,14 +139,27 @@ import {
 	useFieldContainerClass,
 	useInlineFieldsContainerClass,
 } from '@composables/classes';
+import { useTruthyModelValue } from '@composables/helpers';
+import { useToggleField } from '@composables/methods';
 import {
-	useDisplayValueStyles,
 	useCardContainerStyle,
+	useDisplayValueStyles,
 	useInlineFieldsContainerStyle,
 } from '@composables/styles';
 import inlineEmits from '@utils/emits';
-import { useBindingSettings } from '@composables/bindings';
+import {
+	defaultCardProps,
+	switchProps,
+} from '@utils/props';
+import { useTheme } from 'vuetify';
+import type { VInlineSwitchProps } from './';
 import { globalOptions } from '../../';
+import {
+	CloseSiblingsBus,
+	FieldValue,
+	SharedProps,
+	TimeOpened,
+} from '@/plugin/types';
 
 
 const modelValue = defineModel<FieldValue>();
@@ -178,7 +178,8 @@ watchEffect(() => {
 	Object.assign(settings, { ...attrs, ...props, ...injectedOptions });
 });
 
-const { cancelButtonColor,
+const {
+	cancelButtonColor,
 	cancelButtonSize,
 	cancelButtonTitle,
 	cancelButtonVariant,
@@ -197,7 +198,8 @@ const { cancelButtonColor,
 	saveButtonTitle,
 	saveButtonVariant,
 	saveIcon,
-	saveIconColor } = toRefs(settings);
+	saveIconColor, 
+} = toRefs(settings);
 
 const disabled = computed(() => props.disabled);
 const loadingProp = computed(() => props.loading);
@@ -266,7 +268,7 @@ const displayValueClass = computed(() => useDisplayValueClass(
 	settings.valueColor,
 	{
 		error,
-	}
+	},
 ));
 
 const cardContainerClass = computed(() => useCardContainerClass({
@@ -335,7 +337,7 @@ function toggleField() {
 
 
 // ------------------------------------------------ Save the value / Emit update //
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 function saveValue(value: any) {
 	modelValue.value = value;
 
@@ -348,7 +350,7 @@ function saveValue(value: any) {
 
 
 // ------------------------------------------------ Close siblings bus event //
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 let closeSiblingsBus: unknown | any;
 let unsubscribeBus: () => void;
 
@@ -360,7 +362,7 @@ if (closeSiblings.value) {
 }
 
 function closeSiblingsListener(identifier: TimeOpened) {
-	emit('update:closeSiblingFields', timeOpened);
+	emit('update:closeSiblingFields', timeOpened.value);
 
 	if (showField.value && timeOpened.value !== identifier) {
 		toggleField();

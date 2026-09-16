@@ -74,8 +74,8 @@
 
 <script setup>
 import { computed, inject, reactive, ref } from 'vue';
-import { usePropsStore } from '@/stores/props';
 import PropsTable from '@/documentation/components/PropsTable.vue';
+import { usePropsStore } from '@/stores/props';
 
 
 const props = defineProps({

@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-unused-vars */
+ 
+ 
+import type { SharedProps } from '@/plugin/types';
 import type {
 	MaybeRef,
 	Ref,
 } from 'vue';
-import type { SharedProps } from '@/plugin/types';
 
 
 export interface BooleanIcons extends

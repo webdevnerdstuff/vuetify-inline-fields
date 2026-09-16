@@ -1,6 +1,6 @@
-import type { VTextField } from 'vuetify/components';
-import type { SharedProps } from '@/plugin/types';
 import type VInlineTextField from './VInlineTextField.vue';
+import type { SharedProps } from '@/plugin/types';
+import type { VTextField } from 'vuetify/components';
 
 
 export interface VInlineTextFieldProps extends Omit<SharedProps,

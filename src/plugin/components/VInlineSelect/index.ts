@@ -1,6 +1,6 @@
-import type { VSelect } from 'vuetify/components';
-import type { SharedProps } from '@/plugin/types';
 import type VInlineSelect from './VInlineSelect.vue';
+import type { SharedProps } from '@/plugin/types';
+import type { VSelect } from 'vuetify/components';
 
 
 export interface VInlineSelectProps extends Omit<SharedProps,

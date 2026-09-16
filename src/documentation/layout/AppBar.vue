@@ -106,9 +106,9 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import { useTheme } from 'vuetify';
 import { useCoreStore } from '@/stores/index';
 import { useMenuStore } from '@/stores/menu';
-import { useTheme } from 'vuetify';
 
 const emit = defineEmits(['changedTheme', 'updatedDrawer']);
 

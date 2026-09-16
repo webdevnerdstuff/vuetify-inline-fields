@@ -1,6 +1,6 @@
-import type { VTextarea } from 'vuetify/components';
-import type { SharedProps } from '@/plugin/types';
 import type VInlineTextarea from './VInlineTextarea.vue';
+import type { SharedProps } from '@/plugin/types';
+import type { VTextarea } from 'vuetify/components';
 
 
 export interface VInlineTextareaProps extends Omit<SharedProps,

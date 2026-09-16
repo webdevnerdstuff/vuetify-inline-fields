@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
 import packageJson from '@root/package.json';
+import { defineStore } from 'pinia';
 
 
 export const useCoreStore = defineStore('core', () => {

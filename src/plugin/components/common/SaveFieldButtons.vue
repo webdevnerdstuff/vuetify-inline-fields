@@ -54,13 +54,13 @@
 </template>
 
 <script setup lang="ts">
-import { SaveFieldButtons } from './';
-import type { IconOptions } from 'vuetify';
 import {
 	useCancelButtonClass,
 	useSaveFieldsContainerClass,
 } from '@composables/classes';
 import { useGetIcon } from '@composables/icons';
+import type { IconOptions } from 'vuetify';
+import { SaveFieldButtons } from './';
 
 const attrs = useAttrs();
 const emit = defineEmits([
